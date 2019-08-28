@@ -8,6 +8,7 @@
 #include <stdlib.h>
 
 size_t e0_length = 10;
+size_t e1_length = 11;
 bool logical_pre = true;
 bool logical_post = false;
 

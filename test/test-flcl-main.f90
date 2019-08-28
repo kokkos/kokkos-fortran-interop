@@ -36,6 +36,12 @@ program test_flcl_main
   call test_ndarray_r32_1d()
   call test_ndarray_r64_1d()
 
+  call test_ndarray_l_2d()
+  call test_ndarray_i32_2d()
+  call test_ndarray_i64_2d()
+  call test_ndarray_r32_2d()
+  call test_ndarray_r64_2d()
+
   call kokkos_finalize()
 
 
