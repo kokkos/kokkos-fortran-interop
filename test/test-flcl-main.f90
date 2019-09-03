@@ -7,27 +7,6 @@ program test_flcl_main
 
   implicit none
 
-  integer :: m
-  integer :: ii
-  integer :: refine_count
-  integer :: refine_steps
-  real(c_double) :: percentage
-  integer(c_int32_t) ::dimension
-  integer :: block_size
-  integer(c_int32_t) :: ntop
-  integer(c_int32_t) :: nchunks
-  integer(c_int32_t), dimension(:), pointer :: mesh_ids
-  integer(c_int32_t), dimension(:), allocatable, target :: mesh_status
-  integer(c_int32_t), dimension(:), allocatable, target :: new_mesh_status
-  integer(c_int32_t), dimension(:), pointer :: p_mesh_status
-  integer(c_int32_t), dimension(:), pointer :: p_new_mesh_status
-  integer(c_int32_t), dimension(:), pointer :: p_ltop
-  real(c_double), dimension(:), pointer :: array_x
-  real(c_double), dimension(:), pointer :: array_y
-  real(c_double) :: s_val
-  type(c_ptr) :: v_x
-  type(c_ptr) :: v_y
-
   call kokkos_initialize()
 
   call test_ndarray_l_1d()
