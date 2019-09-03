@@ -45,4 +45,4 @@ test-flcl.x: test-flcl-cxx.o test-flcl-f.o test-flcl-main.o libflcl.a
 	$(FC) $(FSTD) $(DEBUG) -I$(TESTSRCDIR)/ test-flcl-cxx.o test-flcl-f.o test-flcl-main.o -L. -lflcl $(KOKKOS_LIB) -lstdc++ -o test-flcl.x
 
 clean:
-	rm -f ./*.o ./*.mod ./libflcl.a
+	rm -f ./*.o ./*.x ./*.mod ./libflcl.a
