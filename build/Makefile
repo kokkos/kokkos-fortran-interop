@@ -43,7 +43,7 @@
 include $(KOKKOS_ROOT)/Makefile.kokkos
 
 KOKKOS_INC= $(KOKKOS_CXXFLAGS)
-KOKKOS_LIB=-L $(KOKKOS_ROOT)/lib $(KOKKOS_CXXLDFLAGS) $(KOKKOS_LIBS)
+KOKKOS_LIB=-L $(KOKKOS_ROOT)/lib $(KOKKOS_CXXLDFLAGS) $(KOKKOS_LIBS) $(KOKKOS_LINK_FLAGS)
 
 OMP = -fopenmp
 #DEBUG = -g
@@ -52,10 +52,14 @@ SRCDIR=../src
 TESTSRCDIR=../test
 
 ifeq ($(FC),ifort)
-  FSTD = -std08
+	FSTD = -std08
 endif
 ifeq ($(FC),gfortran)
-  FSTD = -std=f2008
+	FSTD = -std=f2008
+endif
+
+ifeq ($(KOKKOS_DEVICES),Cuda)
+	CXX=$(NVCC_WRAPPER)
 endif
 
 all: libflcl.a
