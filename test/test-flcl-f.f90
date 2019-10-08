@@ -49,6 +49,11 @@ module test_flcl_f_mod
   logical(c_bool), parameter :: logical_pre = .true.
   logical(c_bool), parameter :: logical_post = .false.
 
+  enum, bind(c)
+    enumerator :: flcl_test_fail = 0
+    enumerator :: flcl_test_pass = 1
+  end enum
+
   public
 
     interface
@@ -247,7 +252,9 @@ module test_flcl_f_mod
         call f_kokkos_finalize()
       end subroutine kokkos_finalize
 
-      subroutine test_ndarray_l_1d()
+      integer(c_size_t) &
+        & function test_ndarray_l_1d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -273,12 +280,16 @@ module test_flcl_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_1d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarry_l_1d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_l_1d
+      end function test_ndarray_l_1d
 
-      subroutine test_ndarray_i32_1d()
+      integer(c_size_t) &
+        & function test_ndarray_i32_1d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -300,12 +311,16 @@ module test_flcl_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_1d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_i32_1d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_i32_1d
+      end function test_ndarray_i32_1d
 
-      subroutine test_ndarray_i64_1d()
+      integer(c_size_t) &
+        & function test_ndarray_i64_1d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -327,12 +342,16 @@ module test_flcl_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_1d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_i64_1d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_i64_1d
+      end function test_ndarray_i64_1d
 
-      subroutine test_ndarray_r32_1d()
+      integer(c_size_t) &
+        & function test_ndarray_r32_1d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -354,12 +373,16 @@ module test_flcl_f_mod
         end do
         if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
           write(*,*)'PASSED ndarray_r32_1d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_r32_1d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_r32_1d
+      end function test_ndarray_r32_1d
   
-      subroutine test_ndarray_r64_1d()
+      integer(c_size_t) &
+        & function test_ndarray_r64_1d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -381,12 +404,16 @@ module test_flcl_f_mod
         end do
         if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
           write(*,*)'PASSED ndarray_r64_1d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_r64_1d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_r64_1d
+      end function test_ndarray_r64_1d
 
-      subroutine test_ndarray_l_2d()
+      integer(c_size_t) &
+        & function test_ndarray_l_2d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -416,12 +443,16 @@ module test_flcl_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_2d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarry_l_2d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_l_2d
+      end function test_ndarray_l_2d
   
-      subroutine test_ndarray_i32_2d()
+      integer(c_size_t) &
+        & function test_ndarray_i32_2d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -447,12 +478,16 @@ module test_flcl_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_2d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_i32_2d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_i32_2d
+      end function test_ndarray_i32_2d
 
-      subroutine test_ndarray_i64_2d()
+      integer(c_size_t) &
+        & function test_ndarray_i64_2d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -478,12 +513,16 @@ module test_flcl_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_2d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_i64_2d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_i64_2d
+      end function test_ndarray_i64_2d
 
-      subroutine test_ndarray_r32_2d()
+      integer(c_size_t) &
+        & function test_ndarray_r32_2d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -509,12 +548,16 @@ module test_flcl_f_mod
         end do
         if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
           write(*,*)'PASSED ndarray_r32_2d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_r32_2d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_r32_2d
+      end function test_ndarray_r32_2d
   
-      subroutine test_ndarray_r64_2d()
+      integer(c_size_t) &
+        & function test_ndarray_r64_2d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -540,12 +583,16 @@ module test_flcl_f_mod
         end do
         if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
           write(*,*)'PASSED ndarray_r64_2d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_r64_2d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_r64_2d
+      end function test_ndarray_r64_2d
 
-      subroutine test_ndarray_l_3d()
+      integer(c_size_t) &
+        & function test_ndarray_l_3d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -579,12 +626,16 @@ module test_flcl_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_3d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarry_l_3d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_l_3d
+      end function test_ndarray_l_3d
   
-      subroutine test_ndarray_i32_3d()
+      integer(c_size_t) &
+        & function test_ndarray_i32_3d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -614,12 +665,16 @@ module test_flcl_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_3d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_i32_3d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_i32_3d
+      end function test_ndarray_i32_3d
 
-      subroutine test_ndarray_i64_3d()
+      integer(c_size_t) &
+        & function test_ndarray_i64_3d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -649,12 +704,16 @@ module test_flcl_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_3d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_i64_3d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_i64_3d
+      end function test_ndarray_i64_3d
 
-      subroutine test_ndarray_r32_3d()
+      integer(c_size_t) &
+        & function test_ndarray_r32_3d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -684,12 +743,16 @@ module test_flcl_f_mod
         end do
         if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
           write(*,*)'PASSED ndarray_r32_3d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_r32_3d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_r32_3d
+      end function test_ndarray_r32_3d
   
-      subroutine test_ndarray_r64_3d()
+      integer(c_size_t) &
+        & function test_ndarray_r64_3d() &
+        & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
@@ -719,9 +782,11 @@ module test_flcl_f_mod
         end do
         if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
           write(*,*)'PASSED ndarray_r64_3d'
+          ierr = flcl_test_pass
         else
           write(*,*)'FAILED ndarray_r64_3d'
+          ierr = flcl_test_fail
         end if
-      end subroutine test_ndarray_r64_3d
+      end function test_ndarray_r64_3d
 
 end module test_flcl_f_mod

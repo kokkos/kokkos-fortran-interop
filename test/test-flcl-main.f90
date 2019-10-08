@@ -44,25 +44,57 @@ program test_flcl_main
 
   implicit none
 
+  integer(c_size_t) :: ierr
+
   call kokkos_initialize()
 
-  call test_ndarray_l_1d()
-  call test_ndarray_i32_1d()
-  call test_ndarray_i64_1d()
-  call test_ndarray_r32_1d()
-  call test_ndarray_r64_1d()
+  ierr = test_ndarray_l_1d()
+  write(*,*)'ierr ',ierr
 
-  call test_ndarray_l_2d()
-  call test_ndarray_i32_2d()
-  call test_ndarray_i64_2d()
-  call test_ndarray_r32_2d()
-  call test_ndarray_r64_2d()
+  ierr =  test_ndarray_i32_1d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_1d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_1d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_1d()
+  write(*,*)'ierr ',ierr
+  
 
-  call test_ndarray_l_3d()
-  call test_ndarray_i32_3d()
-  call test_ndarray_i64_3d()
-  call test_ndarray_r32_3d()
-  call test_ndarray_r64_3d()
+  ierr =  test_ndarray_l_2d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_2d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_2d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_2d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_2d()
+  write(*,*)'ierr ',ierr
+  
+
+  ierr =  test_ndarray_l_3d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_3d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_3d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_3d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_3d()
+  write(*,*)'ierr ',ierr
+  
 
   call kokkos_finalize()
 
