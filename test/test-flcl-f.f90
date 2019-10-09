@@ -947,4 +947,203 @@ module test_flcl_f_mod
         end if
       end subroutine test_ndarray_r64_3d
 
+      subroutine test_ndarray_l_4d()
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(c_bool), dimension(:,:,:,:), allocatable :: array_l_4d
+        integer :: ii, jj, kk, ll
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        allocate( array_l_4d(e0_length, e1_length, e2_length, e3_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_l_4d(ii,jj,kk,ll) = logical_pre
+                if (array_l_4d(ii,jj,kk,ll) .eqv. logical_pre) then
+                  f_sum = f_sum + 1
+                end if
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_l_4d( to_nd_array(array_l_4d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                if (array_l_4d(ii,jj,kk,ll) .eqv. logical_post) then
+                  f_sum = f_sum + 1
+                end if
+              end do
+            end do
+          end do
+        end do
+        if (f_sum == c_sum) then
+          write(*,*)'PASSED ndarray_l_4d'
+        else
+          write(*,*)'FAILED ndarry_l_4d'
+        end if
+      end subroutine test_ndarray_l_4d
+  
+      subroutine test_ndarray_i32_4d()
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(c_int32_t), dimension(:,:,:,:), allocatable :: array_i32_4d
+        integer :: ii, jj, kk, ll
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        allocate( array_i32_4d(e0_length, e1_length, e2_length, e3_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_i32_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                f_sum = f_sum + array_i32_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_i32_4d( to_nd_array(array_i32_4d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                f_sum = f_sum + array_i32_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_i32_4d'
+        else
+          write(*,*)'FAILED ndarray_i32_4d'
+        end if
+      end subroutine test_ndarray_i32_4d
+
+      subroutine test_ndarray_i64_4d()
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(c_int64_t), dimension(:,:,:,:), allocatable :: array_i64_4d
+        integer :: ii, jj, kk, ll
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        allocate( array_i64_4d(e0_length, e1_length, e2_length, e3_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_i64_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                f_sum = f_sum + array_i64_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_i64_4d( to_nd_array(array_i64_4d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                f_sum = f_sum + array_i64_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_i64_4d'
+        else
+          write(*,*)'FAILED ndarray_i64_4d'
+        end if
+      end subroutine test_ndarray_i64_4d
+
+      subroutine test_ndarray_r32_4d()
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_float), dimension(:,:,:,:), allocatable :: array_r32_4d
+        integer :: ii, jj, kk, ll
+        real(c_float) :: f_sum = 0
+        real(c_float) :: c_sum = 0
+
+        allocate( array_r32_4d(e0_length, e1_length, e2_length, e3_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_r32_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                f_sum = f_sum + array_r32_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_r32_4d( to_nd_array(array_r32_4d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                f_sum = f_sum + array_r32_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+          write(*,*)'PASSED ndarray_r32_4d'
+        else
+          write(*,*)'FAILED ndarray_r32_4d'
+        end if
+      end subroutine test_ndarray_r32_4d
+  
+      subroutine test_ndarray_r64_4d()
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_double), dimension(:,:,:,:), allocatable :: array_r64_4d
+        integer :: ii, jj, kk, ll
+        real(c_double) :: f_sum = 0
+        real(c_double) :: c_sum = 0
+
+        allocate( array_r64_4d(e0_length, e1_length, e2_length, e3_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_r64_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                f_sum = f_sum + array_r64_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_r64_4d( to_nd_array(array_r64_4d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                f_sum = f_sum + array_r64_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+          write(*,*)'PASSED ndarray_r64_4d'
+        else
+          write(*,*)'FAILED ndarray_r64_4d'
+        end if
+      end subroutine test_ndarray_r64_4d
+
 end module test_flcl_f_mod
