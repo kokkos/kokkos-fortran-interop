@@ -46,6 +46,10 @@ module test_flcl_f_mod
   integer(c_size_t), parameter :: e0_length = 10
   integer(c_size_t), parameter :: e1_length = 11
   integer(c_size_t), parameter :: e2_length = 12
+  integer(c_size_t), parameter :: e3_length = 13
+  integer(c_size_t), parameter :: e4_length = 14
+  integer(c_size_t), parameter :: e5_length = 15
+  integer(c_size_t), parameter :: e6_length = 16
   logical(c_bool), parameter :: logical_pre = .true.
   logical(c_bool), parameter :: logical_post = .false.
 
@@ -177,7 +181,6 @@ module test_flcl_f_mod
       end function f_test_ndarray_r64_2d
     end interface
 
-
     interface
       integer(c_size_t) &
         & function f_test_ndarray_l_3d( nd_array_l_3d, f_sum ) &
@@ -231,6 +234,226 @@ module test_flcl_f_mod
         type(nd_array_t), intent(in) :: nd_array_r64_3d
         real(c_double), intent(inout) :: f_sum
       end function f_test_ndarray_r64_3d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_l_4d( nd_array_l_4d, f_sum ) &
+        & bind(c, name='c_test_ndarray_l_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_4d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_l_4d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i32_4d( nd_array_i32_4d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_4d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i32_4d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i64_4d( nd_array_i64_4d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_4d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i64_4d
+    end interface
+
+    interface
+      real(c_float) &
+        & function f_test_ndarray_r32_4d( nd_array_r32_4d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_4d
+        real(c_float), intent(inout) :: f_sum
+      end function f_test_ndarray_r32_4d
+    end interface
+
+    interface
+      real(c_double) &
+        & function f_test_ndarray_r64_4d( nd_array_r64_4d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_4d
+        real(c_double), intent(inout) :: f_sum
+      end function f_test_ndarray_r64_4d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_l_5d( nd_array_l_5d, f_sum ) &
+        & bind(c, name='c_test_ndarray_l_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_5d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_l_5d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i32_5d( nd_array_i32_5d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_5d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i32_5d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i64_5d( nd_array_i64_5d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_5d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i64_5d
+    end interface
+
+    interface
+      real(c_float) &
+        & function f_test_ndarray_r32_5d( nd_array_r32_5d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_5d
+        real(c_float), intent(inout) :: f_sum
+      end function f_test_ndarray_r32_5d
+    end interface
+
+    interface
+      real(c_double) &
+        & function f_test_ndarray_r64_5d( nd_array_r64_5d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_5d
+        real(c_double), intent(inout) :: f_sum
+      end function f_test_ndarray_r64_5d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_l_6d( nd_array_l_6d, f_sum ) &
+        & bind(c, name='c_test_ndarray_l_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_6d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_l_6d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i32_6d( nd_array_i32_6d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_6d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i32_6d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i64_6d( nd_array_i64_6d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_6d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i64_6d
+    end interface
+
+    interface
+      real(c_float) &
+        & function f_test_ndarray_r32_6d( nd_array_r32_6d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_6d
+        real(c_float), intent(inout) :: f_sum
+      end function f_test_ndarray_r32_6d
+    end interface
+
+    interface
+      real(c_double) &
+        & function f_test_ndarray_r64_6d( nd_array_r64_6d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_6d
+        real(c_double), intent(inout) :: f_sum
+      end function f_test_ndarray_r64_6d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_l_7d( nd_array_l_7d, f_sum ) &
+        & bind(c, name='c_test_ndarray_l_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_7d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_l_7d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i32_7d( nd_array_i32_7d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_7d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i32_7d
+    end interface
+
+    interface
+      integer(c_size_t) &
+        & function f_test_ndarray_i64_7d( nd_array_i64_7d, f_sum ) &
+        & bind(c, name='c_test_ndarray_i64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_7d
+        integer(c_size_t), intent(inout) :: f_sum
+      end function f_test_ndarray_i64_7d
+    end interface
+
+    interface
+      real(c_float) &
+        & function f_test_ndarray_r32_7d( nd_array_r32_7d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_7d
+        real(c_float), intent(inout) :: f_sum
+      end function f_test_ndarray_r32_7d
+    end interface
+
+    interface
+      real(c_double) &
+        & function f_test_ndarray_r64_7d( nd_array_r64_7d, f_sum ) &
+        & bind(c, name='c_test_ndarray_r64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_7d
+        real(c_double), intent(inout) :: f_sum
+      end function f_test_ndarray_r64_7d
     end interface
 
     contains
