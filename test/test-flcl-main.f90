@@ -96,6 +96,22 @@ program test_flcl_main
   write(*,*)'ierr ',ierr
   
 
+  ierr =  test_ndarray_l_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_4d()
+  write(*,*)'ierr ',ierr
+
+
   call kokkos_finalize()
 
 
