@@ -144,6 +144,22 @@ program test_flcl_main
   ierr =  test_ndarray_r64_6d()
   write(*,*)'ierr ',ierr
 
+  ! test ndarray 7d specializations
+  ierr =  test_ndarray_l_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_7d()
+  write(*,*)'ierr ',ierr
+
   call kokkos_finalize()
 
 

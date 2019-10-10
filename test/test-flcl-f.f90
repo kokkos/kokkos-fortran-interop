@@ -1729,4 +1729,283 @@ module test_flcl_f_mod
         end if
       end function test_ndarray_r64_6d
 
+      integer(c_size_t) &
+        & function  test_ndarray_l_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(c_bool), dimension(:,:,:,:,:,:,:), allocatable :: array_l_7d
+        integer :: ii, jj, kk, ll, mm, nn, oo
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        allocate( array_l_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_l_7d(ii,jj,kk,ll,mm,nn,oo) = logical_pre
+                      if (array_l_7d(ii,jj,kk,ll,mm,nn,oo) .eqv. logical_pre) then
+                        f_sum = f_sum + 1
+                      end if
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_l_7d( to_nd_array(array_l_7d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      if (array_l_7d(ii,jj,kk,ll,mm,nn,oo) .eqv. logical_post) then
+                        f_sum = f_sum + 1
+                      end if
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        if (f_sum == c_sum) then
+          write(*,*)'PASSED ndarray_l_7d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarry_l_7d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_l_7d
+
+      integer(c_size_t) &
+        & function  test_ndarray_i32_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(c_int32_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i32_7d
+        integer :: ii, jj, kk, ll, mm, nn, oo
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        allocate( array_i32_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_i32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      f_sum = f_sum + array_i32_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_i32_7d( to_nd_array(array_i32_7d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      f_sum = f_sum + array_i32_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_i32_7d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_i32_7d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_i32_7d
+
+      integer(c_size_t) &
+        & function  test_ndarray_i64_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(c_int64_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i64_7d
+        integer :: ii, jj, kk, ll, mm, nn,oo
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        allocate( array_i64_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_i64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      f_sum = f_sum + array_i64_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_i64_7d( to_nd_array(array_i64_7d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      f_sum = f_sum + array_i64_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_i64_7d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_i64_7d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_i64_7d
+
+      integer(c_size_t) &
+        & function  test_ndarray_r32_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_float), dimension(:,:,:,:,:,:,:), allocatable :: array_r32_7d
+        integer :: ii, jj, kk, ll, mm, nn, oo
+        real(c_float) :: f_sum = 0
+        real(c_float) :: c_sum = 0
+
+        allocate( array_r32_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_r32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      f_sum = f_sum + array_r32_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_r32_7d( to_nd_array(array_r32_7d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      f_sum = f_sum + array_r32_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+          write(*,*)'PASSED ndarray_r32_7d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_r32_7d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_r32_7d
+
+      integer(c_size_t) &
+        & function  test_ndarray_r64_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_double), dimension(:,:,:,:,:,:,:), allocatable :: array_r64_7d
+        integer :: ii, jj, kk, ll, mm, nn, oo
+        real(c_double) :: f_sum = 0
+        real(c_double) :: c_sum = 0
+
+        allocate( array_r64_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_r64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      f_sum = f_sum + array_r64_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        c_sum = f_test_ndarray_r64_7d( to_nd_array(array_r64_7d), f_sum )
+        f_sum = 0
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      f_sum = f_sum + array_r64_7d(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+          write(*,*)'PASSED ndarray_r64_7d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_r64_7d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_r64_7d
+
 end module test_flcl_f_mod
