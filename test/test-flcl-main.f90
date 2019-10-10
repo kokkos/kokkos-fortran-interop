@@ -48,6 +48,7 @@ program test_flcl_main
 
   call kokkos_initialize()
 
+  ! test ndarray 1d specializations
   ierr = test_ndarray_l_1d()
   write(*,*)'ierr ',ierr
 
@@ -63,7 +64,7 @@ program test_flcl_main
   ierr =  test_ndarray_r64_1d()
   write(*,*)'ierr ',ierr
   
-
+  ! test ndarray 2d specializations
   ierr =  test_ndarray_l_2d()
   write(*,*)'ierr ',ierr
   
@@ -79,7 +80,7 @@ program test_flcl_main
   ierr =  test_ndarray_r64_2d()
   write(*,*)'ierr ',ierr
   
-
+  ! test ndarray 3d specializations
   ierr =  test_ndarray_l_3d()
   write(*,*)'ierr ',ierr
   
@@ -95,6 +96,69 @@ program test_flcl_main
   ierr =  test_ndarray_r64_3d()
   write(*,*)'ierr ',ierr
   
+  ! test ndarray 4d specializations
+  ierr =  test_ndarray_l_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_4d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_4d()
+  write(*,*)'ierr ',ierr
+
+  ! test ndarray 5d specializations
+  ierr =  test_ndarray_l_5d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_5d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_5d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_5d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_5d()
+  write(*,*)'ierr ',ierr
+
+  ! test ndarray 6d specializations
+  ierr =  test_ndarray_l_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_6d()
+  write(*,*)'ierr ',ierr
+
+  ! test ndarray 7d specializations
+  ierr =  test_ndarray_l_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_7d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_7d()
+  write(*,*)'ierr ',ierr
 
   call kokkos_finalize()
 
