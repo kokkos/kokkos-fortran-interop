@@ -128,6 +128,22 @@ program test_flcl_main
   ierr =  test_ndarray_r64_5d()
   write(*,*)'ierr ',ierr
 
+  ! test ndarray 6d specializations
+  ierr =  test_ndarray_l_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i32_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_i64_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r32_6d()
+  write(*,*)'ierr ',ierr
+  
+  ierr =  test_ndarray_r64_6d()
+  write(*,*)'ierr ',ierr
+
   call kokkos_finalize()
 
 
