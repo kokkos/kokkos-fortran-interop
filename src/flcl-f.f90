@@ -1823,7 +1823,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 1
-      ndarray%data = c_loc(array(1))
+      if (size(array, 1) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1))
+      end if
     end function to_nd_array_l_1d
     
     function to_nd_array_i32_1d(array) result(ndarray)
@@ -1841,7 +1845,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 1
-      ndarray%data = c_loc(array(1))
+      if (size(array, 1) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1))
+      end if
     end function to_nd_array_i32_1d
     
     function to_nd_array_i64_1d(array) result(ndarray)
@@ -1859,7 +1867,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 1
-      ndarray%data = c_loc(array(1))
+      if (size(array, 1) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1))
+      end if
     end function to_nd_array_i64_1d
     
     function to_nd_array_r32_1d(array) result(ndarray)
@@ -1877,7 +1889,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 1
-      ndarray%data = c_loc(array(1))
+      if (size(array, 1) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1))
+      end if
     end function to_nd_array_r32_1d
     
     function to_nd_array_r64_1d(array) result(ndarray)
@@ -1895,7 +1911,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 1
-      ndarray%data = c_loc(array(1))
+      if (size(array, 1) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1))
+      end if
     end function to_nd_array_r64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! to_nd_array 2D implementations
@@ -1925,7 +1945,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 2
-      ndarray%data = c_loc(array(1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1))
+      end if
     end function to_nd_array_l_2d
     
     function to_nd_array_i32_2d(array) result(ndarray)
@@ -1953,7 +1977,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 2
-      ndarray%data = c_loc(array(1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1))
+      end if
     end function to_nd_array_i32_2d
     
     function to_nd_array_i64_2d(array) result(ndarray)
@@ -1981,7 +2009,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 2
-      ndarray%data = c_loc(array(1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1))
+      end if
     end function to_nd_array_i64_2d
     
     function to_nd_array_r32_2d(array) result(ndarray)
@@ -2009,7 +2041,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 2
-      ndarray%data = c_loc(array(1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1))
+      end if
     end function to_nd_array_r32_2d
     
     function to_nd_array_r64_2d(array) result(ndarray)
@@ -2037,7 +2073,11 @@ module flcl_mod
       end if
   
       ndarray%rank = 2
-      ndarray%data = c_loc(array(1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1))
+      end if
     end function to_nd_array_r64_2d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! to_nd_array 3D implementations
@@ -2076,7 +2116,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 3
-      ndarray%data = c_loc(array(1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1))
+      end if
     end function to_nd_array_l_3d
     
     function to_nd_array_i32_3d(array) result(ndarray)
@@ -2113,7 +2158,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 3
-      ndarray%data = c_loc(array(1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1))
+      end if
     end function to_nd_array_i32_3d
     
     function to_nd_array_i64_3d(array) result(ndarray)
@@ -2150,7 +2200,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 3
-      ndarray%data = c_loc(array(1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1))
+      end if
     end function to_nd_array_i64_3d
     
     function to_nd_array_r32_3d(array) result(ndarray)
@@ -2187,7 +2242,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 3
-      ndarray%data = c_loc(array(1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1))
+      end if
     end function to_nd_array_r32_3d
     
     function to_nd_array_r64_3d(array) result(ndarray)
@@ -2224,7 +2284,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 3
-      ndarray%data = c_loc(array(1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1))
+      end if
     end function to_nd_array_r64_3d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! to_nd_array 4D implementations
@@ -2272,7 +2337,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 4
-      ndarray%data = c_loc(array(1,1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1,1))
+      end if
     end function to_nd_array_l_4d
   
     function to_nd_array_i32_4d(array) result(ndarray)
@@ -2318,7 +2388,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 4
-      ndarray%data = c_loc(array(1,1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1,1))
+      end if
     end function to_nd_array_i32_4d
   
     function to_nd_array_i64_4d(array) result(ndarray)
@@ -2364,7 +2439,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 4
-      ndarray%data = c_loc(array(1,1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1,1))
+      end if
     end function to_nd_array_i64_4d
   
     function to_nd_array_r32_4d(array) result(ndarray)
@@ -2410,7 +2490,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 4
-      ndarray%data = c_loc(array(1,1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1,1))
+      end if
     end function to_nd_array_r32_4d
   
     function to_nd_array_r64_4d(array) result(ndarray)
@@ -2456,7 +2541,12 @@ module flcl_mod
       end if
   
       ndarray%rank = 4
-      ndarray%data = c_loc(array(1,1,1,1))
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1,1,1,1))
+      end if
     end function to_nd_array_r64_4d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! to_nd_array 5D implementations
@@ -2513,7 +2603,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 5
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1))
@@ -2572,7 +2664,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 5
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1))
@@ -2631,7 +2725,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 5
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1))
@@ -2690,7 +2786,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 5
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1))
@@ -2749,7 +2847,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 5
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1))
@@ -2819,7 +2919,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 6
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1))
@@ -2887,7 +2989,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 6
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1))
@@ -2955,7 +3059,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 6
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1))
@@ -3023,7 +3129,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 6
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1))
@@ -3091,7 +3199,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 6
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1))
@@ -3170,7 +3280,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 7
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1,1))
@@ -3247,7 +3359,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 7
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1,1))
@@ -3324,7 +3438,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 7
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1,1))
@@ -3401,7 +3517,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 7
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1,1))
@@ -3478,7 +3596,9 @@ module flcl_mod
       end if
   
       ndarray%rank = 7
-      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
+      if (size(array, 1) .eq. 0 .or. size(array, 2) .eq. 0 .or. &
+        & size(array, 3) .eq. 0 .or. size(array, 4) .eq. 0 .or. &
+        & size(array, 5) .eq. 0 .or. size(array, 6) .eq. 0 .or. size(array, 7) .eq. 0) then
         ndarray%data = c_null_ptr
       else
         ndarray%data = c_loc(array(1,1,1,1,1,1,1))
