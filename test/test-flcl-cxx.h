@@ -46,6 +46,12 @@
 
 size_t e0_length = 10;
 size_t e1_length = 11;
+size_t e2_length = 12;
+size_t e3_length = 13;
+size_t e4_length = 14;
+size_t e5_length = 15;
+size_t e6_length = 16;
+
 bool logical_pre = true;
 bool logical_post = false;
 
