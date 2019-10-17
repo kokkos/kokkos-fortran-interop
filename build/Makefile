@@ -70,10 +70,10 @@ flcl-cxx.o: $(SRCDIR)/flcl-cxx.cc $(SRCDIR)/flcl-cxx.hpp
 flcl-f.o: $(SRCDIR)/flcl-f.f90
 	$(FC) $(FSTD) $(DEBUG) -I$(SRCDIR)/ -c $(SRCDIR)/flcl-f.f90
 
-flcl-util-cxx.o: $(SRCDIR)/flcl-util-cxx.cc $(SRCDIR)/flcl-util-cxx.hpp
+flcl-util-cxx.o: $(SRCDIR)/flcl-util-cxx.cc $(SRCDIR)/flcl-util-cxx.h
 	$(CXX) $(DEBUG) -I$(SRCDIR)/ $(KOKKOS_INC) -c $(SRCDIR)/flcl-util-cxx.cc
 
-flcl-util-f.o: $(SRCDIR)/flcl-util-f.f90
+flcl-util-f.o: $(SRCDIR)/flcl-util-f.f90 $(SRCDIR)/flcl-f.f90
 	$(FC) $(FSTD) $(DEBUG) -I$(SRCDIR)/ -c $(SRCDIR)/flcl-util-f.f90
 
 libflcl.a: flcl-f.o flcl-cxx.o flcl-util-f.o flcl-util-cxx.o
@@ -92,4 +92,4 @@ test-flcl.x: test-flcl-cxx.o test-flcl-f.o test-flcl-main.o libflcl.a
 	$(FC) $(FSTD) $(DEBUG) -I$(TESTSRCDIR)/ test-flcl-cxx.o test-flcl-f.o test-flcl-main.o -L. -lflcl $(KOKKOS_LIB) -lstdc++ -o test-flcl.x
 
 clean:
-	rm -f ./*.o ./*.x ./*.mod ./libflcl.a
+	rm -f ./*.o ./*.x ./*.mod ./*.out ./libflcl.a

@@ -45,7 +45,9 @@ module flcl_util_mod
     public :: &
       & kokkos_initialize, &
       & kokkos_initialize_without_args, &
-      & kokkos_finalize
+      & kokkos_finalize, &
+      & kokkos_print_configuration, &
+      & kokkos_is_initialized
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos library initialization interfaces
@@ -66,18 +68,40 @@ module flcl_util_mod
       implicit none
     end subroutine f_kokkos_initialize_without_args
   end interface
-
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos library finalization interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   interface
     subroutine f_kokkos_finalize() &
       & bind(c, name="c_kokkos_finalize")  
     end subroutine f_kokkos_finalize
   end interface
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos library helper routine interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface
+    subroutine f_kokkos_print_configuration( prepend_name_in, file_name_in ) &
+      & bind(c, name='c_kokkos_print_configuration')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type (c_ptr), intent(in) :: prepend_name_in
+      type (c_ptr), intent(in) :: file_name_in
+    end subroutine f_kokkos_print_configuration
+  end interface
+
+  interface
+    function f_kokkos_is_initialized() result(is_init) &
+      & bind(c, name='c_kokkos_is_initialized')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      logical(c_bool) :: is_init
+    end function f_kokkos_is_initialized
+  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   contains
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!! kokkos initialize implementations
+!!! kokkos library initialization implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   subroutine kokkos_initialize()
     use, intrinsic :: iso_c_binding
@@ -106,17 +130,48 @@ module flcl_util_mod
     cli_count = arg_count + 1
     call f_kokkos_initialize(cli_count, c_loc(c_strs(0)))
   end subroutine kokkos_initialize
-
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   subroutine kokkos_initialize_without_args()
     use, intrinsic :: iso_c_binding
     implicit none
     call f_kokkos_initialize_without_args()
   end subroutine kokkos_initialize_without_args
-
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos library finalization implementation
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   subroutine kokkos_finalize()
     use, intrinsic :: iso_c_binding
     implicit none
     call f_kokkos_finalize
   end subroutine kokkos_finalize
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos library helper routine implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  subroutine kokkos_print_configuration( prepend_name_in, file_name_in )
+    use, intrinsic :: iso_c_binding
+    use flcl_mod, only: char_add_null
+    implicit none
 
+    character(len=*), intent(in) :: prepend_name_in
+    character(len=*), intent(in) :: file_name_in
+    character(len=:, kind=c_char), allocatable, target :: prepend_name_out
+    character(len=:, kind=c_char), allocatable, target :: file_name_out
+
+    call char_add_null( prepend_name_in, prepend_name_out )
+    call char_add_null( file_name_in, file_name_out )
+  
+    call f_kokkos_print_configuration( &
+      & c_loc(prepend_name_out), c_loc(file_name_out) )
+
+  end subroutine kokkos_print_configuration
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  function kokkos_is_initialized() result(is_init)
+    use, intrinsic :: iso_c_binding
+    implicit none
+    logical :: is_init
+    logical(c_bool) :: c_is_init
+    c_is_init = f_kokkos_is_initialized()
+    is_init = logical(c_is_init)
+  end function kokkos_is_initialized
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 end module flcl_util_mod

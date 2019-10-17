@@ -34,7 +34,12 @@
 // ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#include "flcl-util-cxx.hpp"
+#include <Kokkos_Core.hpp>
+#include <iostream>
+#include <fstream>
+#include <cstdio>
+#include <stddef.h>
+#include "flcl-util-cxx.h"
 
 extern "C" {
 
@@ -49,5 +54,27 @@ extern "C" {
   void c_kokkos_finalize() {
     Kokkos::finalize();
   }
+
+  void c_kokkos_print_configuration(const char** prepend_name_in, const char** file_name_in) {
+
+    std::string prepend_name( *prepend_name_in );
+    std::string file_name( *file_name_in );
+    std::string output_filename = prepend_name + file_name;
+    std::ofstream kokkos_output_file ( output_filename );
+    if ( kokkos_output_file.is_open()) {
+      Kokkos::print_configuration( kokkos_output_file, true );
+      kokkos_output_file.close();
+    } else {
+      std::cout << "Could not open filename " << output_filename;
+      std::cout << " to dump Kokkos::print_configuration to." << std::endl;
+    }
+    
+  }
+
+  bool c_kokkos_is_initialized() {
+    return Kokkos::is_initialized();
+  }
+
+
 
 } // extern "C"

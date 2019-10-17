@@ -49,7 +49,7 @@ module flcl_mod
   public kokkos_allocate_dualview
   public kokkos_deallocate_view
   public kokkos_deallocate_dualview
-  
+  public char_add_null
   integer, parameter :: ND_ARRAY_MAX_RANK = 8
 
   type, bind(C) :: nd_array_t
