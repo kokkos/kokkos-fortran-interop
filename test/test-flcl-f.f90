@@ -61,22 +61,6 @@ module test_flcl_f_mod
   public
 
     interface
-      subroutine f_kokkos_initialize() &
-        bind(c, name='c_kokkos_initialize')
-        use, intrinsic :: iso_c_binding
-        implicit none
-      end subroutine f_kokkos_initialize
-    end interface
-
-    interface
-      subroutine f_kokkos_finalize() &
-        bind(c, name='c_kokkos_finalize')
-        use, intrinsic :: iso_c_binding
-        implicit none
-      end subroutine f_kokkos_finalize
-    end interface
-
-    interface
       integer(c_size_t) &
         & function f_test_ndarray_l_1d( nd_array_l_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_1d')
@@ -462,18 +446,6 @@ module test_flcl_f_mod
     end interface
 
     contains
-
-      subroutine kokkos_initialize()
-        use, intrinsic :: iso_c_binding
-        implicit none
-        call f_kokkos_initialize()
-      end subroutine kokkos_initialize
-      
-      subroutine kokkos_finalize()
-        use, intrinsic :: iso_c_binding
-        implicit none
-        call f_kokkos_finalize()
-      end subroutine kokkos_finalize
 
       integer(c_size_t) &
         & function test_ndarray_l_1d() &

@@ -40,6 +40,7 @@ program test_flcl_main
   use, intrinsic :: iso_fortran_env
 
   use :: flcl_mod
+  use :: flcl_util_mod
   use :: test_flcl_f_mod
 
   implicit none

@@ -93,8 +93,8 @@ module flcl_util_mod
       max_length = max(max_length, str_length)
     end do
 
-    allocate(character(max_length + 1) :: strs(arg_count + 1))
-    allocate(c_strs(arg_count + 1))
+    allocate(character(max_length + 1) :: strs(0:arg_count))
+    allocate(c_strs(0:arg_count))
 
     do n = 0, arg_count
       call get_command_argument(n, length=str_length)
