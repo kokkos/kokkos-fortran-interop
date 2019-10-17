@@ -40,6 +40,7 @@ program test_flcl_main
   use, intrinsic :: iso_fortran_env
 
   use :: flcl_mod
+  use :: flcl_util_mod
   use :: test_flcl_f_mod
 
   implicit none
@@ -48,119 +49,124 @@ program test_flcl_main
 
   call kokkos_initialize()
 
-  ! test ndarray 1d specializations
-  ierr = test_ndarray_l_1d()
-  write(*,*)'ierr ',ierr
+  if ( kokkos_is_initialized() ) then
+    
+    call kokkos_print_configuration('flcl-test-', 'kokkos.out')
 
-  ierr =  test_ndarray_i32_1d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i64_1d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r32_1d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r64_1d()
-  write(*,*)'ierr ',ierr
-  
-  ! test ndarray 2d specializations
-  ierr =  test_ndarray_l_2d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i32_2d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i64_2d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r32_2d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r64_2d()
-  write(*,*)'ierr ',ierr
-  
-  ! test ndarray 3d specializations
-  ierr =  test_ndarray_l_3d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i32_3d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i64_3d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r32_3d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r64_3d()
-  write(*,*)'ierr ',ierr
-  
-  ! test ndarray 4d specializations
-  ierr =  test_ndarray_l_4d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i32_4d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i64_4d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r32_4d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r64_4d()
-  write(*,*)'ierr ',ierr
+    ! test ndarray 1d specializations
+    ierr = test_ndarray_l_1d()
+    write(*,*)'ierr ',ierr
 
-  ! test ndarray 5d specializations
-  ierr =  test_ndarray_l_5d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i32_5d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i64_5d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r32_5d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r64_5d()
-  write(*,*)'ierr ',ierr
+    ierr =  test_ndarray_i32_1d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i64_1d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r32_1d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r64_1d()
+    write(*,*)'ierr ',ierr
+    
+    ! test ndarray 2d specializations
+    ierr =  test_ndarray_l_2d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i32_2d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i64_2d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r32_2d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r64_2d()
+    write(*,*)'ierr ',ierr
+    
+    ! test ndarray 3d specializations
+    ierr =  test_ndarray_l_3d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i32_3d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i64_3d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r32_3d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r64_3d()
+    write(*,*)'ierr ',ierr
+    
+    ! test ndarray 4d specializations
+    ierr =  test_ndarray_l_4d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i32_4d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i64_4d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r32_4d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r64_4d()
+    write(*,*)'ierr ',ierr
 
-  ! test ndarray 6d specializations
-  ierr =  test_ndarray_l_6d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i32_6d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i64_6d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r32_6d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r64_6d()
-  write(*,*)'ierr ',ierr
+    ! test ndarray 5d specializations
+    ierr =  test_ndarray_l_5d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i32_5d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i64_5d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r32_5d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r64_5d()
+    write(*,*)'ierr ',ierr
 
-  ! test ndarray 7d specializations
-  ierr =  test_ndarray_l_7d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i32_7d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_i64_7d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r32_7d()
-  write(*,*)'ierr ',ierr
-  
-  ierr =  test_ndarray_r64_7d()
-  write(*,*)'ierr ',ierr
+    ! test ndarray 6d specializations
+    ierr =  test_ndarray_l_6d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i32_6d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i64_6d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r32_6d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r64_6d()
+    write(*,*)'ierr ',ierr
 
-  call kokkos_finalize()
+    ! test ndarray 7d specializations
+    ierr =  test_ndarray_l_7d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i32_7d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_i64_7d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r32_7d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_ndarray_r64_7d()
+    write(*,*)'ierr ',ierr
 
+    call kokkos_finalize()
 
+  end if
+  
 end program test_flcl_main

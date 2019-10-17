@@ -39,14 +39,6 @@
 
 extern "C" {
 
-  void c_kokkos_initialize() {
-    Kokkos::initialize();
-  }
-
-  void c_kokkos_finalize( void ) {
-    Kokkos::finalize();
-  }
-
   size_t c_test_ndarray_l_1d( flcl_ndarray_t *nd_array_l_1d, size_t *f_sum ) {
     using flcl::view_from_ndarray;
 
