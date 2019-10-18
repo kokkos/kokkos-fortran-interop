@@ -39,14 +39,6 @@
 
 extern "C" {
 
-  void c_kokkos_initialize() {
-    Kokkos::initialize();
-  }
-
-  void c_kokkos_finalize( void ) {
-    Kokkos::finalize();
-  }
-
   size_t c_test_ndarray_l_1d( flcl_ndarray_t *nd_array_l_1d, size_t *f_sum ) {
     using flcl::view_from_ndarray;
 
@@ -402,5 +394,759 @@ extern "C" {
 
   }
 
+  size_t c_test_ndarray_l_4d( flcl_ndarray_t *nd_array_l_4d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
 
+    size_t c_sum = 0;
+    auto array_l_4d = view_from_ndarray<bool****>(*nd_array_l_4d);
+    for (size_t ii = 0; ii < array_l_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_4d.extent(3); ll++) {
+            if ( array_l_4d(ii,jj,kk,ll) ) c_sum++;
+          }
+        }
+      }
+    }
+    if (c_sum != *f_sum) {
+      std::cout << "FAILED ndarray_l_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    for (size_t ii = 0; ii < array_l_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_4d.extent(3); ll++) {
+            array_l_4d(ii,jj,kk,ll) = logical_post;
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i32_4d( flcl_ndarray_t *nd_array_i32_4d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i32_4d = view_from_ndarray<int32_t****>(*nd_array_i32_4d);
+    for (size_t ii = 0; ii < array_i32_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_4d.extent(3); ll++) {
+            c_sum += array_i32_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i32_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i32_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_4d.extent(3); ll++) {
+            array_i32_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
+            c_sum += array_i32_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i64_4d( flcl_ndarray_t *nd_array_i64_4d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i64_4d = view_from_ndarray<int64_t****>(*nd_array_i64_4d);
+    for (size_t ii = 0; ii < array_i64_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_4d.extent(3); ll++) {
+            c_sum += array_i64_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i64_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i64_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_4d.extent(3); ll++) {
+            array_i64_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
+            c_sum += array_i64_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  float c_test_ndarray_r32_4d( flcl_ndarray_t *nd_array_r32_4d, float *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    float c_sum = 0;
+    auto array_r32_4d = view_from_ndarray<float****>(*nd_array_r32_4d);
+    for (size_t ii = 0; ii < array_r32_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_4d.extent(3); ll++) {
+            c_sum += array_r32_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-7 ) {
+      std::cout << "FAILED ndarray_r32_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r32_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_4d.extent(3); ll++) {
+            array_r32_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
+            c_sum += array_r32_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  double c_test_ndarray_r64_4d( flcl_ndarray_t *nd_array_r64_4d, double *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    double c_sum = 0;
+    auto array_r64_4d = view_from_ndarray<double****>(*nd_array_r64_4d);
+    for (size_t ii = 0; ii < array_r64_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_4d.extent(3); ll++) {
+            c_sum += array_r64_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-14 ) {
+      std::cout << "FAILED ndarray_r64_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r64_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_4d.extent(3); ll++) {
+            array_r64_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
+            c_sum += array_r64_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+    return c_sum;
+
+  }
+
+  size_t c_test_ndarray_l_5d( flcl_ndarray_t *nd_array_l_5d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_l_5d = view_from_ndarray<bool*****>(*nd_array_l_5d);
+    for (size_t ii = 0; ii < array_l_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_5d.extent(4); mm++) {
+              if ( array_l_5d(ii,jj,kk,ll,mm) ) c_sum++;
+            }
+          }
+        }
+      }
+    }
+    if (c_sum != *f_sum) {
+      std::cout << "FAILED ndarray_l_5d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    for (size_t ii = 0; ii < array_l_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_5d.extent(4); mm++) {
+              array_l_5d(ii,jj,kk,ll,mm) = logical_post;
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i32_5d( flcl_ndarray_t *nd_array_i32_5d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i32_5d = view_from_ndarray<int32_t*****>(*nd_array_i32_5d);
+    for (size_t ii = 0; ii < array_i32_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_5d.extent(4); mm++) {
+              c_sum += array_i32_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i32_5d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i32_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_5d.extent(4); mm++) {
+              array_i32_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
+              c_sum += array_i32_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i64_5d( flcl_ndarray_t *nd_array_i64_5d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i64_5d = view_from_ndarray<int64_t*****>(*nd_array_i64_5d);
+    for (size_t ii = 0; ii < array_i64_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_5d.extent(4); mm++) {
+              c_sum += array_i64_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i64_5d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i64_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_5d.extent(4); mm++) {
+              array_i64_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
+              c_sum += array_i64_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  float c_test_ndarray_r32_5d( flcl_ndarray_t *nd_array_r32_5d, float *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    float c_sum = 0;
+    auto array_r32_5d = view_from_ndarray<float*****>(*nd_array_r32_5d);
+    for (size_t ii = 0; ii < array_r32_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_5d.extent(4); mm++) {
+              c_sum += array_r32_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-7 ) {
+      std::cout << "FAILED ndarray_r32_5d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r32_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_5d.extent(4); mm++) {
+              array_r32_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
+              c_sum += array_r32_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  double c_test_ndarray_r64_5d( flcl_ndarray_t *nd_array_r64_5d, double *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    double c_sum = 0;
+    auto array_r64_5d = view_from_ndarray<double*****>(*nd_array_r64_5d);
+    for (size_t ii = 0; ii < array_r64_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_5d.extent(4); mm++) {
+              c_sum += array_r64_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-14 ) {
+      std::cout << "FAILED ndarray_r64_5d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r64_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_5d.extent(4); mm++) {
+              array_r64_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
+              c_sum += array_r64_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+
+  }
+
+  size_t c_test_ndarray_l_6d( flcl_ndarray_t *nd_array_l_6d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_l_6d = view_from_ndarray<bool******>(*nd_array_l_6d);
+    for (size_t ii = 0; ii < array_l_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_l_6d.extent(5); nn++) {
+                if ( array_l_6d(ii,jj,kk,ll,mm,nn) ) c_sum++;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (c_sum != *f_sum) {
+      std::cout << "FAILED ndarray_l_6d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    for (size_t ii = 0; ii < array_l_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_l_6d.extent(5); nn++) {
+                array_l_6d(ii,jj,kk,ll,mm,nn) = logical_post;
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i32_6d( flcl_ndarray_t *nd_array_i32_6d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i32_6d = view_from_ndarray<int32_t******>(*nd_array_i32_6d);
+    for (size_t ii = 0; ii < array_i32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
+                c_sum += array_i32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i32_6d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
+                array_i32_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
+                c_sum += array_i32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i64_6d( flcl_ndarray_t *nd_array_i64_6d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i64_6d = view_from_ndarray<int64_t******>(*nd_array_i64_6d);
+    for (size_t ii = 0; ii < array_i64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
+                c_sum += array_i64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i64_6d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
+                array_i64_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
+                c_sum += array_i64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  float c_test_ndarray_r32_6d( flcl_ndarray_t *nd_array_r32_6d, float *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    float c_sum = 0;
+    auto array_r32_6d = view_from_ndarray<float******>(*nd_array_r32_6d);
+    for (size_t ii = 0; ii < array_r32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
+                c_sum += array_r32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-7 ) {
+      std::cout << "FAILED ndarray_r32_6d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
+                array_r32_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
+                c_sum += array_r32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  double c_test_ndarray_r64_6d( flcl_ndarray_t *nd_array_r64_6d, double *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    double c_sum = 0;
+    auto array_r64_6d = view_from_ndarray<double******>(*nd_array_r64_6d);
+    for (size_t ii = 0; ii < array_r64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
+                c_sum += array_r64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-14 ) {
+      std::cout << "FAILED ndarray_r64_6d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
+                array_r64_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
+                c_sum += array_r64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+
+  }
+
+  size_t c_test_ndarray_l_7d( flcl_ndarray_t *nd_array_l_7d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_l_7d = view_from_ndarray<bool*******>(*nd_array_l_7d);
+    for (size_t ii = 0; ii < array_l_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_l_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_l_7d.extent(6); oo++) {
+                  if ( array_l_7d(ii,jj,kk,ll,mm,nn,oo) ) c_sum++;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if (c_sum != *f_sum) {
+      std::cout << "FAILED ndarray_l_7d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    for (size_t ii = 0; ii < array_l_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_l_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_l_7d.extent(6); oo++) {
+                  array_l_7d(ii,jj,kk,ll,mm,nn,oo) = logical_post;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i32_7d( flcl_ndarray_t *nd_array_i32_7d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i32_7d = view_from_ndarray<int32_t*******>(*nd_array_i32_7d);
+    for (size_t ii = 0; ii < array_i32_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i32_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_i32_7d.extent(6); oo++) {
+                  c_sum += array_i32_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i32_7d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i32_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i32_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_i32_7d.extent(6); oo++) {
+                  array_i32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
+                  c_sum += array_i32_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  size_t c_test_ndarray_i64_7d( flcl_ndarray_t *nd_array_i64_7d, size_t *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    size_t c_sum = 0;
+    auto array_i64_7d = view_from_ndarray<int64_t*******>(*nd_array_i64_7d);
+    for (size_t ii = 0; ii < array_i64_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i64_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_i64_7d.extent(6); oo++) {
+                  c_sum += array_i64_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( c_sum != *f_sum ) {
+      std::cout << "FAILED ndarray_i64_7d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_i64_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i64_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_i64_7d.extent(6); oo++) {
+                  array_i64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
+                  c_sum += array_i64_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  float c_test_ndarray_r32_7d( flcl_ndarray_t *nd_array_r32_7d, float *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    float c_sum = 0;
+    auto array_r32_7d = view_from_ndarray<float*******>(*nd_array_r32_7d);
+    for (size_t ii = 0; ii < array_r32_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r32_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_r32_7d.extent(6); oo++) {
+                  c_sum += array_r32_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-7 ) {
+      std::cout << "FAILED ndarray_r32_7d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r32_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r32_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_r32_7d.extent(6); oo++) {
+                  array_r32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
+                  c_sum += array_r32_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+  }
+
+  double c_test_ndarray_r64_7d( flcl_ndarray_t *nd_array_r64_7d, double *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    double c_sum = 0;
+    auto array_r64_7d = view_from_ndarray<double*******>(*nd_array_r64_7d);
+    for (size_t ii = 0; ii < array_r64_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r64_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_r64_7d.extent(6); oo++) {
+                  c_sum += array_r64_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(c_sum - *f_sum) > 1.0e-14 ) {
+      std::cout << "FAILED ndarray_r64_7d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum = 0;
+    for (size_t ii = 0; ii < array_r64_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r64_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_r64_7d.extent(6); oo++) {
+                  array_r64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
+                  c_sum += array_r64_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return c_sum;
+
+  }
 }

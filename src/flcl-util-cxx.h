@@ -35,24 +35,27 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef TEST_FLCL_CXX_H
-#define TEST_FLCL_CXX_H
+#ifndef FLCL_UTIL_CXX_H
+#define FLCL_UTIL_CXX_H
 
-#include <Kokkos_Core.hpp>
-#include <flcl-cxx.hpp>
-#include <iostream>
-#include <stdbool.h>
-#include <stdlib.h>
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
-size_t e0_length = 10;
-size_t e1_length = 11;
-size_t e2_length = 12;
-size_t e3_length = 13;
-size_t e4_length = 14;
-size_t e5_length = 15;
-size_t e6_length = 16;
+void c_kokkos_initialize(int *argc, char **argv);
+void c_kokkos_initialize_without_args(void);
+void c_kokkos_finalize(void);
+void c_kokkos_print_configuration(const char** prepend_name_in, const char** file_name_in);
 
-bool logical_pre = true;
-bool logical_post = false;
+#ifdef __cplusplus
+bool c_kokkos_is_initialized(void);
+#else
+_Bool c_kokkos_is_initialized(void);
+#endif
 
-#endif // TEST_FLCL_CXX_H
+#ifdef __cplusplus
+}  // extern "C"
+#endif
+
+#endif // FLCL_UTIL_CXX_H

@@ -8,3 +8,6 @@
 
 # vscode configuration
 .vscode/*
+
+# output files
+*.out
