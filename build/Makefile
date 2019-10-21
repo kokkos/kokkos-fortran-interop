@@ -64,14 +64,14 @@ endif
 
 all: libflcl.a
 
-flcl-cxx.o: $(SRCDIR)/flcl-cxx.cc $(SRCDIR)/flcl-cxx.hpp
-	$(CXX) $(DEBUG) -I$(SRCDIR)/ $(KOKKOS_INC) -c $(SRCDIR)/flcl-cxx.cc
+flcl-cxx.o: $(SRCDIR)/flcl-cxx.cpp $(SRCDIR)/flcl-cxx.hpp
+	$(CXX) $(DEBUG) -I$(SRCDIR)/ $(KOKKOS_INC) -c $(SRCDIR)/flcl-cxx.cpp
 
 flcl-f.o: $(SRCDIR)/flcl-f.f90
 	$(FC) $(FSTD) $(DEBUG) -I$(SRCDIR)/ -c $(SRCDIR)/flcl-f.f90
 
-flcl-util-cxx.o: $(SRCDIR)/flcl-util-cxx.cc $(SRCDIR)/flcl-util-cxx.h
-	$(CXX) $(DEBUG) -I$(SRCDIR)/ $(KOKKOS_INC) -c $(SRCDIR)/flcl-util-cxx.cc
+flcl-util-cxx.o: $(SRCDIR)/flcl-util-cxx.cpp $(SRCDIR)/flcl-util-cxx.h
+	$(CXX) $(DEBUG) -I$(SRCDIR)/ $(KOKKOS_INC) -c $(SRCDIR)/flcl-util-cxx.cpp
 
 flcl-util-f.o: $(SRCDIR)/flcl-util-f.f90 $(SRCDIR)/flcl-f.f90
 	$(FC) $(FSTD) $(DEBUG) -I$(SRCDIR)/ -c $(SRCDIR)/flcl-util-f.f90
@@ -79,8 +79,8 @@ flcl-util-f.o: $(SRCDIR)/flcl-util-f.f90 $(SRCDIR)/flcl-f.f90
 libflcl.a: flcl-f.o flcl-cxx.o flcl-util-f.o flcl-util-cxx.o
 	ar rcs libflcl.a flcl-f.o flcl-cxx.o flcl-util-f.o flcl-util-cxx.o
 
-test-flcl-cxx.o: $(TESTSRCDIR)/test-flcl-cxx.cc
-	$(CXX) $(DEBUG) -I$(SRCDIR) -I$(TESTSRCDIR)/ $(KOKKOS_INC) -c $(TESTSRCDIR)/test-flcl-cxx.cc
+test-flcl-cxx.o: $(TESTSRCDIR)/test-flcl-cxx.cpp
+	$(CXX) $(DEBUG) -I$(SRCDIR) -I$(TESTSRCDIR)/ $(KOKKOS_INC) -c $(TESTSRCDIR)/test-flcl-cxx.cpp
 
 test-flcl-f.o: flcl-f.o $(TESTSRCDIR)/test-flcl-f.f90
 	$(FC) $(FSTD) $(DEBUG) -I$(TESTSRCDIR)/ -c $(TESTSRCDIR)/test-flcl-f.f90
