@@ -44,12 +44,12 @@ module test_flcl_f_mod
   implicit none
   
   integer(c_size_t), parameter :: e0_length = 10
-  integer(c_size_t), parameter :: e1_length = 11
-  integer(c_size_t), parameter :: e2_length = 12
-  integer(c_size_t), parameter :: e3_length = 13
-  integer(c_size_t), parameter :: e4_length = 14
-  integer(c_size_t), parameter :: e5_length = 15
-  integer(c_size_t), parameter :: e6_length = 16
+  integer(c_size_t), parameter :: e1_length = 9
+  integer(c_size_t), parameter :: e2_length = 8
+  integer(c_size_t), parameter :: e3_length = 7
+  integer(c_size_t), parameter :: e4_length = 6
+  integer(c_size_t), parameter :: e5_length = 5
+  integer(c_size_t), parameter :: e6_length = 4
   logical(c_bool), parameter :: logical_pre = .true.
   logical(c_bool), parameter :: logical_post = .false.
 
