@@ -45,12 +45,12 @@
 #include <stdlib.h>
 
 size_t e0_length = 10;
-size_t e1_length = 11;
-size_t e2_length = 12;
-size_t e3_length = 13;
-size_t e4_length = 14;
-size_t e5_length = 15;
-size_t e6_length = 16;
+size_t e1_length = 9;
+size_t e2_length = 8;
+size_t e3_length = 7;
+size_t e4_length = 6;
+size_t e5_length = 5;
+size_t e6_length = 4;
 
 bool logical_pre = true;
 bool logical_post = false;
