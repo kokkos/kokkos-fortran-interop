@@ -35,7 +35,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "test-flcl-cxx.h"
+#include <test-flcl-cxx.h>
+#include <Kokkos_Core.hpp>
+#include <flcl-cxx.hpp>
+#include <iostream>
 
 extern "C" {
 

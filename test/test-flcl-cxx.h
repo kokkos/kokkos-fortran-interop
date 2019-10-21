@@ -38,11 +38,12 @@
 #ifndef TEST_FLCL_CXX_H
 #define TEST_FLCL_CXX_H
 
-#include <Kokkos_Core.hpp>
-#include <flcl-cxx.hpp>
-#include <iostream>
 #include <stdbool.h>
 #include <stdlib.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 size_t e0_length = 10;
 size_t e1_length = 9;
@@ -52,7 +53,16 @@ size_t e4_length = 6;
 size_t e5_length = 5;
 size_t e6_length = 4;
 
-bool logical_pre = true;
-bool logical_post = false;
+#ifdef __cplusplus
+  bool logical_pre = true;
+  bool logical_post = false;
+#else
+  _Bool logical_pre = true;
+  _Bool logical_post = false;
+#endif
+
+#ifdef __cplusplus
+}  // extern "C"
+#endif
 
 #endif // TEST_FLCL_CXX_H
