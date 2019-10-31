@@ -40,36 +40,36 @@
 extern "C" {
 
   // 1D flcl view allocation routines
-  void c_kokkos_allocate_v_l_1d(bool** A, flcl::view_l_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_v_l_1d(bool** A, flcl::view_l_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_l_1d_t(c_label, e0t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_i32_1d(int32_t** A, flcl::view_i32_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_v_i32_1d(int32_t** A, flcl::view_i32_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_i32_1d_t(c_label, e0t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_i64_1d(int64_t** A, flcl::view_i64_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_v_i64_1d(int64_t** A, flcl::view_i64_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_i64_1d_t(c_label, e0t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_r32_1d(float** A, flcl::view_r32_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_v_r32_1d(float** A, flcl::view_r32_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_r32_1d_t(c_label, e0t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_r64_1d(double** A, flcl::view_r64_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_v_r64_1d(double** A, flcl::view_r64_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_r64_1d_t(c_label, e0t));
     *A = (*v_A)->data();
@@ -78,123 +78,123 @@ extern "C" {
   }
 
   // 2D flcl view allocation routines
-  void c_kokkos_allocate_v_l_2d(bool** A, flcl::view_l_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_v_l_2d(bool** A, flcl::view_l_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_l_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_i32_2d(int32_t** A, flcl::view_i32_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_v_i32_2d(int32_t** A, flcl::view_i32_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_i32_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_i64_2d(int64_t** A, flcl::view_i64_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_v_i64_2d(int64_t** A, flcl::view_i64_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_i64_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_r32_2d(float** A, flcl::view_r32_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_v_r32_2d(float** A, flcl::view_r32_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_r32_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_r64_2d(double** A, flcl::view_r64_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_v_r64_2d(double** A, flcl::view_r64_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_r64_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->data();
   }
 
 // 3D flcl view allocation routines
-  void c_kokkos_allocate_v_l_3d(bool** A, flcl::view_l_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_v_l_3d(bool** A, flcl::view_l_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_l_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_i32_3d(int32_t** A, flcl::view_i32_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_v_i32_3d(int32_t** A, flcl::view_i32_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_i32_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_i64_3d(int64_t** A, flcl::view_i64_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_v_i64_3d(int64_t** A, flcl::view_i64_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_i64_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_r32_3d(float** A, flcl::view_r32_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_v_r32_3d(float** A, flcl::view_r32_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_r32_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_r64_3d(double** A, flcl::view_r64_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_v_r64_3d(double** A, flcl::view_r64_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::view_r64_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->data();
   }
 
   // 1D flcl dualview allocation routines
-  void c_kokkos_allocate_dv_l_1d(bool** A, flcl::dualview_l_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_dv_l_1d(bool** A, flcl::dualview_l_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_l_1d_t(c_label, e0t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_i32_1d(int32_t** A, flcl::dualview_i32_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_dv_i32_1d(int32_t** A, flcl::dualview_i32_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_i32_1d_t(c_label, e0t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_i64_1d(int64_t** A, flcl::dualview_i64_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_dv_i64_1d(int64_t** A, flcl::dualview_i64_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_i64_1d_t(c_label, e0t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_r32_1d(float** A, flcl::dualview_r32_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_dv_r32_1d(float** A, flcl::dualview_r32_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_r32_1d_t(c_label, e0t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_r64_1d(double** A, flcl::dualview_r64_1d_t** v_A, const char** f_label, const int* e0) {
-    const int e0t = std::max(*e0, 1);
+  void c_kokkos_allocate_dv_r64_1d(double** A, flcl::dualview_r64_1d_t** v_A, const char** f_label, const size_t* e0) {
+    const size_t e0t = std::max(*e0, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_r64_1d_t(c_label, e0t));
     *A = (*v_A)->h_view.data();
@@ -203,87 +203,87 @@ extern "C" {
   }
 
   // 2D flcl dualview allocation routines
-  void c_kokkos_allocate_dv_l_2d(bool** A, flcl::dualview_l_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_dv_l_2d(bool** A, flcl::dualview_l_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_l_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_i32_2d(int32_t** A, flcl::dualview_i32_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_dv_i32_2d(int32_t** A, flcl::dualview_i32_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_i32_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_i64_2d(int64_t** A, flcl::dualview_i64_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_dv_i64_2d(int64_t** A, flcl::dualview_i64_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_i64_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_r32_2d(float** A, flcl::dualview_r32_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_dv_r32_2d(float** A, flcl::dualview_r32_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_r32_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_r64_2d(double** A, flcl::dualview_r64_2d_t** v_A, const char** f_label, const int* e0, const int* e1) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
+  void c_kokkos_allocate_dv_r64_2d(double** A, flcl::dualview_r64_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_r64_2d_t(c_label, e0t, e1t));
     *A = (*v_A)->h_view.data();
   }
 
 // 3D flcl dualview allocation routines
-  void c_kokkos_allocate_dv_l_3d(bool** A, flcl::dualview_l_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_dv_l_3d(bool** A, flcl::dualview_l_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_l_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_i32_3d(int32_t** A, flcl::dualview_i32_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_dv_i32_3d(int32_t** A, flcl::dualview_i32_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_i32_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_i64_3d(int64_t** A, flcl::dualview_i64_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_dv_i64_3d(int64_t** A, flcl::dualview_i64_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_i64_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_r32_3d(float** A, flcl::dualview_r32_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_dv_r32_3d(float** A, flcl::dualview_r32_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_r32_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->h_view.data();
   }
 
-  void c_kokkos_allocate_dv_r64_3d(double** A, flcl::dualview_r64_3d_t** v_A, const char** f_label, const int* e0, const int* e1, const int* e2) {
-    const int e0t = std::max(*e0, 1);
-    const int e1t = std::max(*e1, 1);
-    const int e2t = std::max(*e2, 1);
+  void c_kokkos_allocate_dv_r64_3d(double** A, flcl::dualview_r64_3d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1, const size_t* e2) {
+    const size_t e0t = std::max(*e0, 1);
+    const size_t e1t = std::max(*e1, 1);
+    const size_t e2t = std::max(*e2, 1);
     std::string c_label( *f_label );
     *v_A = (new flcl::dualview_r64_3d_t(c_label, e0t, e1t, e2t));
     *A = (*v_A)->h_view.data();
