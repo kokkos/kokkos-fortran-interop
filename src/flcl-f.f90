@@ -46,6 +46,7 @@ module flcl_mod
   public to_nd_array
   public ND_ARRAY_MAX_RANK
   public kokkos_allocate_view
+  public kokkos_allocate_v_l_1d
   public kokkos_allocate_dualview
   public kokkos_deallocate_view
   public kokkos_deallocate_dualview
@@ -219,10 +220,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_l_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0      
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0      
     end subroutine f_kokkos_allocate_v_l_1d
   end interface
 
@@ -231,10 +232,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_i32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_i32_1d
   end interface
   
@@ -243,10 +244,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_i64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_i64_1d
   end interface
 
@@ -255,10 +256,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_r32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_r32_1d
   end interface
   
@@ -267,10 +268,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_r64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_r64_1d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -281,11 +282,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_l_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_l_2d
   end interface
   
@@ -294,11 +295,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_i32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_i32_2d
   end interface
 
@@ -307,11 +308,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_i64_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_i64_2d
   end interface
   
@@ -320,11 +321,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_r32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_r32_2d
   end interface
 
@@ -333,11 +334,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_r64_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_r64_2d
   end interface  
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -348,12 +349,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_l_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_v_l_3d
   end interface
 
@@ -362,12 +363,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_i32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_v_i32_3d
   end interface
   
@@ -376,12 +377,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_i64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_v_i64_3d
   end interface
 
@@ -390,12 +391,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_r32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_v_r32_3d
   end interface
   
@@ -404,12 +405,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_v_r64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_v_r64_3d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -420,10 +421,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_l_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0      
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0      
     end subroutine f_kokkos_allocate_dv_l_1d
   end interface
 
@@ -432,10 +433,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_i32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_i32_1d
   end interface
   
@@ -444,10 +445,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_i64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_i64_1d
   end interface
 
@@ -456,10 +457,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_r32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_r32_1d
   end interface
   
@@ -468,10 +469,10 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_r64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_r64_1d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -482,11 +483,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_l_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_l_2d
   end interface
   
@@ -495,11 +496,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_i32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_i32_2d
   end interface
 
@@ -508,11 +509,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_i64_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_i64_2d
   end interface
   
@@ -521,11 +522,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_r32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_r32_2d
   end interface
 
@@ -534,11 +535,11 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_r64_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_r64_2d
   end interface  
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -549,12 +550,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_l_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_l_3d
   end interface
 
@@ -563,12 +564,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_i32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_i32_3d
   end interface
   
@@ -577,12 +578,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_i64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_i64_3d
   end interface
 
@@ -591,12 +592,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_r32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_r32_3d
   end interface
   
@@ -605,12 +606,12 @@ module flcl_mod
       & bind (c, name='c_kokkos_allocate_dv_r64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      integer (c_int), intent(in) :: e1
-      integer (c_int), intent(in) :: e2
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_r64_3d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -621,7 +622,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_l_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_l_1d
   end interface
 
@@ -630,7 +631,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_i32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_i32_1d
   end interface
 
@@ -639,7 +640,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_i64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_i64_1d
   end interface
 
@@ -648,7 +649,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_r32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r32_1d
   end interface
 
@@ -657,7 +658,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_r64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r64_1d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -668,7 +669,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_l_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_l_2d
   end interface
 
@@ -677,7 +678,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_i32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_i32_2d
   end interface
 
@@ -686,7 +687,7 @@ module flcl_mod
     & bind (c, name='c_kokkos_deallocate_v_i64_2d')
     use, intrinsic :: iso_c_binding
     implicit none
-    type (c_ptr), intent(out) :: v_A
+    type(c_ptr), intent(out) :: v_A
   end subroutine f_kokkos_deallocate_v_i64_2d
   end interface
 
@@ -695,7 +696,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_r32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r32_2d
   end interface
 
@@ -704,7 +705,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_r64_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r64_2d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -715,7 +716,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_l_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_l_3d
   end interface
 
@@ -724,7 +725,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_i32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_i32_3d
   end interface
 
@@ -733,7 +734,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_i64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_i64_3d
   end interface
 
@@ -742,7 +743,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_r32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r32_3d
   end interface
 
@@ -751,7 +752,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_v_r64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r64_3d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -762,7 +763,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_l_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_1d
   end interface
 
@@ -771,7 +772,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_i32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_1d
   end interface
 
@@ -780,7 +781,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_i64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_1d
   end interface
 
@@ -789,7 +790,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_r32_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_1d
   end interface
 
@@ -798,7 +799,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_r64_1d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_1d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -809,7 +810,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_l_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_2d
   end interface
 
@@ -818,7 +819,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_i32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_2d
   end interface
 
@@ -827,7 +828,7 @@ module flcl_mod
     & bind (c, name='c_kokkos_deallocate_dv_i64_2d')
     use, intrinsic :: iso_c_binding
     implicit none
-    type (c_ptr), intent(out) :: v_A
+    type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_2d
   end interface
 
@@ -836,7 +837,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_r32_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_2d
   end interface
 
@@ -845,7 +846,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_r64_2d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_2d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -856,7 +857,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_l_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_3d
   end interface
 
@@ -865,7 +866,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_i32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_3d
   end interface
 
@@ -874,7 +875,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_i64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_3d
   end interface
 
@@ -883,7 +884,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_r32_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_3d
   end interface
 
@@ -892,7 +893,7 @@ module flcl_mod
       & bind (c, name='c_kokkos_deallocate_dv_r64_3d')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_3d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -920,7 +921,7 @@ module flcl_mod
       logical(c_bool), pointer, dimension(:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e0
       type(c_ptr) :: c_A
       
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -934,10 +935,10 @@ module flcl_mod
       use, intrinsic :: iso_c_binding
       implicit none
       integer (INT32), pointer, dimension(:), intent(inout) :: A
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      type (c_ptr) :: c_A
+      integer(c_size_t), intent(in) :: e0
+      type(c_ptr) :: c_A
       
       character(len=:, kind=c_char), allocatable, target :: f_label
       
@@ -952,7 +953,7 @@ module flcl_mod
       integer(INT64), pointer, dimension(:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e0
       type(c_ptr) :: c_A
       
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -968,7 +969,7 @@ module flcl_mod
         real(REAL32), pointer, dimension(:), intent(inout) :: A
         type(c_ptr), intent(out) :: v_A
         character(len=*), intent(in) :: n_A
-        integer(c_int), intent(in) :: e0
+        integer(c_size_t), intent(in) :: e0
         type(c_ptr) :: c_A
   
         character(len=:, kind=c_char), allocatable, target :: f_label
@@ -984,7 +985,7 @@ module flcl_mod
         real(REAL64), pointer, dimension(:), intent(inout) :: A
         type(c_ptr), intent(out) :: v_A
         character(len=*), intent(in) :: n_A
-        integer(c_int), intent(in) :: e0
+        integer(c_size_t), intent(in) :: e0
         type(c_ptr) :: c_A
   
         character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1002,8 +1003,8 @@ module flcl_mod
       logical(c_bool), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1019,8 +1020,8 @@ module flcl_mod
       integer(INT32), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1036,8 +1037,8 @@ module flcl_mod
       integer (INT64), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1053,8 +1054,8 @@ module flcl_mod
       real(REAL32), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1070,8 +1071,8 @@ module flcl_mod
       real(REAL64), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1089,9 +1090,9 @@ module flcl_mod
       logical(c_bool), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1107,9 +1108,9 @@ module flcl_mod
       integer(INT32), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1125,9 +1126,9 @@ module flcl_mod
       integer(INT64), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1143,9 +1144,9 @@ module flcl_mod
       real(REAL32), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1161,9 +1162,9 @@ module flcl_mod
         real(REAL64), pointer, dimension(:,:,:), intent(inout) :: A
         type(c_ptr), intent(out) :: v_A
         character(len=*), intent(in) :: n_A
-        integer(c_int), intent(in) :: e0
-        integer(c_int), intent(in) :: e1
-        integer(c_int), intent(in) :: e2
+        integer(c_size_t), intent(in) :: e0
+        integer(c_size_t), intent(in) :: e1
+        integer(c_size_t), intent(in) :: e2
         type(c_ptr) :: c_A
   
         character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1181,7 +1182,7 @@ module flcl_mod
       logical(c_bool), pointer, dimension(:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e0
       type(c_ptr) :: c_A
       
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1195,10 +1196,10 @@ module flcl_mod
       use, intrinsic :: iso_c_binding
       implicit none
       integer (INT32), pointer, dimension(:), intent(inout) :: A
-      type (c_ptr), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-      type (c_ptr) :: c_A
+      integer(c_size_t), intent(in) :: e0
+      type(c_ptr) :: c_A
       
       character(len=:, kind=c_char), allocatable, target :: f_label
       
@@ -1213,7 +1214,7 @@ module flcl_mod
       integer(INT64), pointer, dimension(:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e0
       type(c_ptr) :: c_A
       
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1229,7 +1230,7 @@ module flcl_mod
         real(REAL32), pointer, dimension(:), intent(inout) :: A
         type(c_ptr), intent(out) :: v_A
         character(len=*), intent(in) :: n_A
-        integer(c_int), intent(in) :: e0
+        integer(c_size_t), intent(in) :: e0
         type(c_ptr) :: c_A
   
         character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1245,7 +1246,7 @@ module flcl_mod
         real(REAL64), pointer, dimension(:), intent(inout) :: A
         type(c_ptr), intent(out) :: v_A
         character(len=*), intent(in) :: n_A
-        integer(c_int), intent(in) :: e0
+        integer(c_size_t), intent(in) :: e0
         type(c_ptr) :: c_A
   
         character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1263,8 +1264,8 @@ module flcl_mod
       logical(c_bool), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1280,8 +1281,8 @@ module flcl_mod
       integer(INT32), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1297,8 +1298,8 @@ module flcl_mod
       integer (INT64), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1314,8 +1315,8 @@ module flcl_mod
       real(REAL32), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1331,8 +1332,8 @@ module flcl_mod
       real(REAL64), pointer, dimension(:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1350,9 +1351,9 @@ module flcl_mod
       logical(c_bool), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1368,9 +1369,9 @@ module flcl_mod
       integer(INT32), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1386,9 +1387,9 @@ module flcl_mod
       integer(INT64), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1404,9 +1405,9 @@ module flcl_mod
       real(REAL32), pointer, dimension(:,:,:), intent(inout) :: A
       type(c_ptr), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
-      integer(c_int), intent(in) :: e0
-      integer(c_int), intent(in) :: e1
-      integer(c_int), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
       type(c_ptr) :: c_A
   
       character(len=:, kind=c_char), allocatable, target :: f_label
@@ -1422,9 +1423,9 @@ module flcl_mod
         real(REAL64), pointer, dimension(:,:,:), intent(inout) :: A
         type(c_ptr), intent(out) :: v_A
         character(len=*), intent(in) :: n_A
-        integer(c_int), intent(in) :: e0
-        integer(c_int), intent(in) :: e1
-        integer(c_int), intent(in) :: e2
+        integer(c_size_t), intent(in) :: e0
+        integer(c_size_t), intent(in) :: e1
+        integer(c_size_t), intent(in) :: e2
         type(c_ptr) :: c_A
   
         character(len=:, kind=c_char), allocatable, target :: f_label
