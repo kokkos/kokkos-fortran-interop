@@ -1246,7 +1246,7 @@ extern "C" {
     auto array_l_2d = **v_array_l_2d;
     for (size_t ii = 0; ii < array_l_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_l_2d.extent(1); jj++) { 
-        if ( array_l_2d(ii,jj) ) *c_sum++;
+        if ( array_l_2d(ii,jj) ) (*c_sum)++;
       }
     }
     if (*c_sum != *f_sum) {
@@ -1355,7 +1355,7 @@ extern "C" {
     for (size_t ii = 0; ii < array_l_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_l_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_l_3d.extent(2); kk++) {
-          if ( array_l_3d(ii,jj,kk) ) *c_sum++;
+          if ( array_l_3d(ii,jj,kk) ) (*c_sum)++;
         }
       }
     }

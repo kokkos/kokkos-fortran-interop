@@ -169,6 +169,50 @@ program test_flcl_main
     ierr =  test_kokkos_allocate_view_l_1d()
     write(*,*)'ierr ',ierr
 
+    ierr =  test_kokkos_allocate_view_i32_1d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_i64_1d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_kokkos_allocate_view_r32_1d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_r64_1d()
+    write(*,*)'ierr ',ierr
+
+    ! test kokkos_allocate_view 2d specializations
+    ierr =  test_kokkos_allocate_view_l_2d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_i32_2d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_i64_2d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_kokkos_allocate_view_r32_2d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_r64_2d()
+    write(*,*)'ierr ',ierr
+
+    ! test kokkos_allocate_view 3d specializations
+    ierr =  test_kokkos_allocate_view_l_3d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_i32_3d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_i64_3d()
+    write(*,*)'ierr ',ierr
+    
+    ierr =  test_kokkos_allocate_view_r32_3d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_kokkos_allocate_view_r64_3d()
+    write(*,*)'ierr ',ierr
+
     call kokkos_finalize()
 
   end if
