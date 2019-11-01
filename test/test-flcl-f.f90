@@ -457,6 +457,174 @@ module test_flcl_f_mod
       end function f_test_kokkos_allocate_view_l_1d
     end interface
 
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i32_1d( v_array_i32_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i32_1d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i32_1d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i64_1d( v_array_i64_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i64_1d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i64_1d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r32_1d( v_array_r32_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r32_1d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r32_1d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r64_1d( v_array_r64_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r64_1d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r64_1d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_l_2d( v_array_l_2d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_l_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_l_2d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_l_2d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i32_2d( v_array_i32_2d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i32_2d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i32_2d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i64_2d( v_array_i64_2d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i64_2d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i64_2d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r32_2d( v_array_r32_2d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r32_2d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r32_2d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r64_2d( v_array_r64_2d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r64_2d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r64_2d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_l_3d( v_array_l_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_l_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_l_3d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_l_3d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i32_3d( v_array_i32_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i32_3d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i32_3d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i64_3d( v_array_i64_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i64_3d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i64_3d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r32_3d( v_array_r32_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r32_3d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r32_3d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r64_3d( v_array_r64_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r64_3d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r64_3d
+    end interface
+
     contains
 
       integer(c_size_t) &
