@@ -445,6 +445,18 @@ module test_flcl_f_mod
       end function f_test_ndarray_r64_7d
     end interface
 
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_l_1d( v_array_l_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_l_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_l_1d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_l_1d
+    end interface
+
     contains
 
       integer(c_size_t) &
@@ -1979,5 +1991,44 @@ module test_flcl_f_mod
           ierr = flcl_test_fail
         end if
       end function test_ndarray_r64_7d
+
+      integer(c_size_t) &
+        & function test_kokkos_allocate_view_l_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(c_bool), pointer, dimension(:)  :: array_l_1d
+        type(c_ptr) :: v_array_l_1d
+        integer :: ii
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        call kokkos_allocate_view( array_l_1d, v_array_l_1d, 'array_l_1d', e0_length )
+        do ii = 1, e0_length
+          array_l_1d(ii) = logical_pre
+          if (array_l_1d(ii) .eqv. logical_pre) then
+            f_sum = f_sum + 1
+          end if
+        end do
+        ierr = f_test_kokkos_allocate_view_l_1d( v_array_l_1d, f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            if (array_l_1d(ii) .eqv. logical_post) then
+              f_sum = f_sum + 1
+            end if
+          end do
+  
+          if (f_sum == c_sum) then
+            write(*,*)'PASSED kokkos_allocate_view_l_1d'
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED kokkos_allocate_view_l_1d'
+            ierr = flcl_test_fail
+          end if
+        end if
+      end function test_kokkos_allocate_view_l_1d
 
 end module test_flcl_f_mod

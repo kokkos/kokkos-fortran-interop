@@ -45,6 +45,12 @@
 extern "C" {
 #endif
 
+typedef enum _flcl_test_error_t {
+    FLCL_TEST_FAIL = 0,
+    FLCL_TEST_PASS = 1,
+} flcl_test_error_t;
+
+
 size_t e0_length = 10;
 size_t e1_length = 9;
 size_t e2_length = 8;

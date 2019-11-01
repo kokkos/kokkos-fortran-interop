@@ -165,6 +165,10 @@ program test_flcl_main
     ierr =  test_ndarray_r64_7d()
     write(*,*)'ierr ',ierr
 
+    ! test kokkos_allocate_view 1d specializations
+    ierr =  test_kokkos_allocate_view_l_1d()
+    write(*,*)'ierr ',ierr
+
     call kokkos_finalize()
 
   end if
