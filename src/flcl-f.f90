@@ -46,7 +46,6 @@ module flcl_mod
   public to_nd_array
   public ND_ARRAY_MAX_RANK
   public kokkos_allocate_view
-  public kokkos_allocate_v_l_1d
   public kokkos_allocate_dualview
   public kokkos_deallocate_view
   public kokkos_deallocate_dualview
@@ -69,6 +68,7 @@ module flcl_mod
     module procedure to_nd_array_i64_1d
     module procedure to_nd_array_r32_1d
     module procedure to_nd_array_r64_1d
+    module procedure to_nd_array_c32_1d
     
     ! 2D specializations
     module procedure to_nd_array_l_2d
@@ -1918,6 +1918,28 @@ module flcl_mod
         ndarray%data = c_loc(array(1))
       end if
     end function to_nd_array_r64_1d
+
+    function to_nd_array_c32_1d(array) result(ndarray)
+      complex(c_float_complex), target, intent(in) :: array(:)
+      
+      type(nd_array_t) :: ndarray
+  
+      ndarray%dims(1) = size(array, 1, c_size_t)
+      if (size(array, 1) .ge. 2) then
+        ndarray%strides(1) = &
+          (transfer(c_loc(array(2)), 1_c_size_t) - &
+            transfer(c_loc(array(1)), 1_c_size_t)) / c_sizeof(array(1))
+      else
+        ndarray%strides(1) = 1
+      end if
+  
+      ndarray%rank = 1
+      if (size(array, 1) .eq. 0) then
+        ndarray%data = c_null_ptr
+      else
+        ndarray%data = c_loc(array(1))
+      end if
+    end function to_nd_array_c32_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! to_nd_array 2D implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

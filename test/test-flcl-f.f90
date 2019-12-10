@@ -116,6 +116,17 @@ module test_flcl_f_mod
     end interface
 
     interface
+      complex(c_float_complex) &
+        & function f_test_ndarray_c32_1d( nd_array_c32_1d, f_sum ) &
+        & bind(c, name='c_test_ndarray_c32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_1d
+        complex(c_float_complex), intent(inout) :: f_sum
+      end function f_test_ndarray_c32_1d
+    end interface
+
+    interface
       integer(c_size_t) &
         & function f_test_ndarray_l_2d( nd_array_l_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_2d')
@@ -785,6 +796,37 @@ module test_flcl_f_mod
           ierr = flcl_test_fail
         end if
       end function test_ndarray_r64_1d
+
+      integer(c_size_t) &
+        & function test_ndarray_c32_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(c_float_complex), dimension(:), allocatable :: array_c32_1d
+        integer :: ii
+        complex(c_float_complex) :: f_sum = (0,0)
+        complex(c_float_complex) :: c_sum = (e0_length, e0_length)
+
+        allocate( array_c32_1d(e0_length) )
+        do ii = 1, e0_length
+          array_c32_1d(ii) = cmplx(ii,-ii)
+          f_sum = f_sum + array_c32_1d(ii)
+        end do
+        c_sum = f_test_ndarray_c32_1d( to_nd_array(array_c32_1d), f_sum )
+        f_sum = (0,0)
+        do ii = 1, e0_length
+          f_sum = f_sum + array_c32_1d(ii)
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_c32_1d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_c32_1d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_c32_1d
 
       integer(c_size_t) &
         & function test_ndarray_l_2d() &

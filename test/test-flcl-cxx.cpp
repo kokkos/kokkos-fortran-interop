@@ -39,6 +39,7 @@
 #include <Kokkos_Core.hpp>
 #include <flcl-cxx.hpp>
 #include <iostream>
+#include <complex.h>
 
 extern "C" {
 
@@ -138,6 +139,34 @@ extern "C" {
       c_sum += array_r64_1d(ii);
     }
     return c_sum;
+  }
+
+  float _Complex c_test_ndarray_c32_1d( flcl_ndarray_t *nd_array_c32_1d, float _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    Kokkos::complex<float> c_sum;
+    c_sum.real() = 0.0;
+    c_sum.imag() = 0.0;
+    auto array_c32_1d = view_from_ndarray<Kokkos::complex<float>*>(*nd_array_c32_1d);
+    for (size_t ii = 0; ii < array_c32_1d.extent(0); ii++) {
+      // c_sum.real() += array_c32_1d(ii).real();
+      // c_sum.imag() += array_c32_1d(ii).imag();
+      c_sum += array_c32_1d(ii);
+    }
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c32_1d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    c_sum.real() = 0.0;
+    c_sum.imag() = 0.0;
+    for (size_t ii = 0; ii < array_c32_1d.extent(0); ii++) {
+      array_c32_1d(ii).real() = ii;
+      array_c32_1d(ii).imag() = -ii;
+      c_sum += array_c32_1d(ii);
+    }
+    float _Complex c_sum_to_return;
+    c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    return c_sum_to_return;
   }
 
   size_t c_test_ndarray_l_2d( flcl_ndarray_t *nd_array_l_2d, size_t *f_sum ) {
