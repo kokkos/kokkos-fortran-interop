@@ -127,6 +127,17 @@ module test_flcl_f_mod
     end interface
 
     interface
+      complex(c_double_complex) &
+        & function f_test_ndarray_c64_1d( nd_array_c64_1d, f_sum ) &
+        & bind(c, name='c_test_ndarray_c64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_1d
+        complex(c_double_complex), intent(inout) :: f_sum
+      end function f_test_ndarray_c64_1d
+    end interface
+
+    interface
       integer(c_size_t) &
         & function f_test_ndarray_l_2d( nd_array_l_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_2d')
@@ -179,6 +190,28 @@ module test_flcl_f_mod
         type(nd_array_t), intent(in) :: nd_array_r64_2d
         real(c_double), intent(inout) :: f_sum
       end function f_test_ndarray_r64_2d
+    end interface
+
+    interface
+      complex(c_float_complex) &
+        & function f_test_ndarray_c32_2d( nd_array_c32_2d, f_sum ) &
+        & bind(c, name='c_test_ndarray_c32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_2d
+        complex(c_float_complex), intent(inout) :: f_sum
+      end function f_test_ndarray_c32_2d
+    end interface
+
+    interface
+      complex(c_double_complex) &
+        & function f_test_ndarray_c64_2d( nd_array_c64_2d, f_sum ) &
+        & bind(c, name='c_test_ndarray_c64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_2d
+        complex(c_double_complex), intent(inout) :: f_sum
+      end function f_test_ndarray_c64_2d
     end interface
 
     interface
@@ -829,6 +862,37 @@ module test_flcl_f_mod
       end function test_ndarray_c32_1d
 
       integer(c_size_t) &
+        & function test_ndarray_c64_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(c_double_complex), dimension(:), allocatable :: array_c64_1d
+        integer :: ii
+        complex(c_double_complex) :: f_sum = (0,0)
+        complex(c_double_complex) :: c_sum = (e0_length, e0_length)
+
+        allocate( array_c64_1d(e0_length) )
+        do ii = 1, e0_length
+          array_c64_1d(ii) = cmplx(ii,-ii)
+          f_sum = f_sum + array_c64_1d(ii)
+        end do
+        c_sum = f_test_ndarray_c64_1d( to_nd_array(array_c64_1d), f_sum )
+        f_sum = (0,0)
+        do ii = 1, e0_length
+          f_sum = f_sum + array_c64_1d(ii)
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_c64_1d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_c64_1d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_c64_1d
+
+      integer(c_size_t) &
         & function test_ndarray_l_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1006,6 +1070,76 @@ module test_flcl_f_mod
           ierr = flcl_test_fail
         end if
       end function test_ndarray_r64_2d
+
+      integer(c_size_t) &
+        & function test_ndarray_c32_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(c_float_complex), dimension(:,:), allocatable :: array_c32_2d
+        integer :: ii,jj
+        complex(c_float_complex) :: f_sum = (0,0)
+        complex(c_float_complex) :: c_sum = (e0_length, e0_length)
+
+        allocate( array_c32_2d(e0_length, e1_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_c32_2d(ii,jj) = cmplx(ii*jj,-(ii*jj))
+            f_sum = f_sum + array_c32_2d(ii,jj)
+          end do
+        end do
+        c_sum = f_test_ndarray_c32_2d( to_nd_array(array_c32_2d), f_sum )
+        f_sum = (0,0)
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            f_sum = f_sum + array_c32_2d(ii,jj)
+          end do
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_c32_2d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_c32_2d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_c32_2d
+
+      integer(c_size_t) &
+        & function test_ndarray_c64_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(c_double_complex), dimension(:,:), allocatable :: array_c64_2d
+        integer :: ii,jj
+        complex(c_double_complex) :: f_sum = (0,0)
+        complex(c_double_complex) :: c_sum = (e0_length, e0_length)
+
+        allocate( array_c64_2d(e0_length, e1_length) )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_c64_2d(ii,jj) = cmplx(ii*jj,-(ii*jj))
+            f_sum = f_sum + array_c64_2d(ii,jj)
+          end do
+        end do
+        c_sum = f_test_ndarray_c64_2d( to_nd_array(array_c64_2d), f_sum )
+        f_sum = (0,0)
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            f_sum = f_sum + array_c64_2d(ii,jj)
+          end do
+        end do
+        if ( f_sum .eq. c_sum ) then
+          write(*,*)'PASSED ndarray_c64_2d'
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED ndarray_c64_2d'
+          ierr = flcl_test_fail
+        end if
+      end function test_ndarray_c64_2d
 
       integer(c_size_t) & 
         & function test_ndarray_l_3d() &

@@ -72,6 +72,9 @@ program test_flcl_main
     ierr =  test_ndarray_c32_1d()
     write(*,*)'ierr ',ierr
 
+    ierr =  test_ndarray_c64_1d()
+    write(*,*)'ierr ',ierr
+
     ! test ndarray 2d specializations
     ierr =  test_ndarray_l_2d()
     write(*,*)'ierr ',ierr
@@ -86,6 +89,12 @@ program test_flcl_main
     write(*,*)'ierr ',ierr
     
     ierr =  test_ndarray_r64_2d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_ndarray_c32_2d()
+    write(*,*)'ierr ',ierr
+
+    ierr =  test_ndarray_c64_2d()
     write(*,*)'ierr ',ierr
     
     ! test ndarray 3d specializations
