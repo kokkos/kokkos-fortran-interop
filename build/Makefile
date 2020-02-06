@@ -46,8 +46,8 @@ KOKKOS_INC= $(KOKKOS_CXXFLAGS)
 KOKKOS_LIB=-L $(KOKKOS_ROOT)/lib $(KOKKOS_CXXLDFLAGS) $(KOKKOS_LIBS) $(KOKKOS_LINK_FLAGS)
 
 OMP = -fopenmp
-#DEBUG = -g
-DEBUG =
+DEBUG = -g
+#DEBUG =
 SRCDIR=../src
 TESTSRCDIR=../test
 
@@ -61,6 +61,7 @@ endif
 ifeq ($(KOKKOS_DEVICES),Cuda)
 	CXX=$(NVCC_WRAPPER)
 endif
+CXX=/home/womeld/kokkos/kokkos-3.0.00-rc/bin/nvcc_wrapper
 
 all: libflcl.a
 
