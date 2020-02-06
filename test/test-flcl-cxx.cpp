@@ -163,9 +163,21 @@ extern "C" {
       c_sum += array_c32_1d(ii);
     }
 
+    // float _Complex c_sum_to_return;
+    // c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    // return c_sum_to_return;
+    // return c_sum;
+
+    // float _Complex c_sum_to_return;
+    // Kokkos::View<Kokkos::complex<float>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged> kvtr = 
+    // Kokkos::View<Kokkos::complex<float>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged>(reinterpret_cast<Kokkos::complex<float> *>(&c_sum_to_return));
+    // kvtr(0) = c_sum;
+    // return c_sum_to_return;
+
     float _Complex c_sum_to_return;
-    c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
     return c_sum_to_return;
+
   }
 
   double _Complex c_test_ndarray_c64_1d( flcl_ndarray_t *nd_array_c64_1d, double _Complex *f_sum ) {
@@ -190,9 +202,20 @@ extern "C" {
       c_sum += array_c64_1d(ii);
     }
 
+    // double _Complex c_sum_to_return;
+    // c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    // return c_sum_to_return;
+
+    // double _Complex c_sum_to_return;
+    // Kokkos::View<Kokkos::complex<double>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged> kvtr = 
+    // Kokkos::View<Kokkos::complex<double>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged>(reinterpret_cast<Kokkos::complex<double> *>(&c_sum_to_return));
+    // kvtr(0) = c_sum;
+    // return c_sum_to_return;
+
     double _Complex c_sum_to_return;
-    c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
     return c_sum_to_return;
+
   }
 
   size_t c_test_ndarray_l_2d( flcl_ndarray_t *nd_array_l_2d, size_t *f_sum ) {
@@ -339,8 +362,17 @@ extern "C" {
       }
     }
 
+    // float _Complex c_sum_to_return;
+    // c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    // return c_sum_to_return;
+
+    // float _Complex c_sum_to_return;
+    // Kokkos::View<Kokkos::complex<float>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged> kvtr = 
+    // Kokkos::View<Kokkos::complex<float>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged>(reinterpret_cast<Kokkos::complex<float> *>(&c_sum_to_return));
+    // kvtr(0) = c_sum;
+    // return c_sum_to_return;
     float _Complex c_sum_to_return;
-    c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
     return c_sum_to_return;
   }
 
@@ -370,8 +402,16 @@ extern "C" {
       }
     }
 
+    // double _Complex c_sum_to_return;
+    // c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    // return c_sum_to_return;
+    // double _Complex c_sum_to_return;
+    // Kokkos::View<Kokkos::complex<double>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged> kvtr = 
+    // Kokkos::View<Kokkos::complex<double>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged>(reinterpret_cast<Kokkos::complex<double> *>(&c_sum_to_return));
+    // kvtr(0) = c_sum;
+    // return c_sum_to_return;
     double _Complex c_sum_to_return;
-    c_sum_to_return = c_sum.real() + c_sum.imag()*I;
+    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
     return c_sum_to_return;
   }
 

@@ -853,6 +853,8 @@ module test_flcl_f_mod
           f_sum = f_sum + array_c32_1d(ii)
         end do
         if ( f_sum .eq. c_sum ) then
+          write(*,*)'f_sum',f_sum
+          write(*,*)'c_sum',c_sum
           write(*,*)'PASSED ndarray_c32_1d'
           ierr = flcl_test_pass
         else
@@ -884,6 +886,8 @@ module test_flcl_f_mod
           f_sum = f_sum + array_c64_1d(ii)
         end do
         if ( f_sum .eq. c_sum ) then
+          write(*,*)'f_sum',f_sum
+          write(*,*)'c_sum',c_sum
           write(*,*)'PASSED ndarray_c64_1d'
           ierr = flcl_test_pass
         else
@@ -1098,6 +1102,8 @@ module test_flcl_f_mod
           end do
         end do
         if ( f_sum .eq. c_sum ) then
+          write(*,*)'f_sum',f_sum
+          write(*,*)'c_sum',c_sum
           write(*,*)'PASSED ndarray_c32_2d'
           ierr = flcl_test_pass
         else
@@ -1133,6 +1139,8 @@ module test_flcl_f_mod
           end do
         end do
         if ( f_sum .eq. c_sum ) then
+          write(*,*)'f_sum',f_sum
+          write(*,*)'c_sum',c_sum
           write(*,*)'PASSED ndarray_c64_2d'
           ierr = flcl_test_pass
         else
