@@ -21,6 +21,11 @@ add_library(flcl-fortran
         src/flcl-f.f90
         src/flcl-util-kokkos-f.f90
 )
+target_include_directories(flcl-fortran
+    INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+        $<INSTALL_INTERFACE:mod>
+)
 set_target_properties(
     flcl-fortran
     PROPERTIES
