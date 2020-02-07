@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.14)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 
 project(FLCL VERSION 0.1.0 LANGUAGES Fortran C CXX)
