@@ -35,7 +35,7 @@
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-module flcl_util_mod
+module flcl_util_kokkos_mod
     use, intrinsic :: iso_c_binding
     use, intrinsic :: iso_fortran_env
     
@@ -149,7 +149,7 @@ module flcl_util_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   subroutine kokkos_print_configuration( prepend_name_in, file_name_in )
     use, intrinsic :: iso_c_binding
-    use flcl_mod, only: char_add_null
+    use flcl_util_strings_mod, only: char_add_null
     implicit none
 
     character(len=*), intent(in) :: prepend_name_in
@@ -174,4 +174,4 @@ module flcl_util_mod
     is_init = logical(c_is_init)
   end function kokkos_is_initialized
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-end module flcl_util_mod
+end module flcl_util_kokkos_mod

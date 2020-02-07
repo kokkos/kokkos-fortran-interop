@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 
-project(flcl VERSION 0.1.0 LANGUAGES Fortran C CXX)
+project(FLCL VERSION 0.1.0 LANGUAGES Fortran C CXX)
 
 set(default_build_type "RelWithDebInfo")
 
@@ -17,8 +17,9 @@ include(CheckCCompilerFlag)
 
 add_library(flcl-fortran
     OBJECT
+        src/flcl-util-strings-f.f90
         src/flcl-f.f90
-        src/flcl-util-f.f90
+        src/flcl-util-kokkos-f.f90
 )
 set_target_properties(
     flcl-fortran
@@ -33,24 +34,24 @@ add_library(flcl-cxx
 )
 target_link_libraries(flcl-cxx
     PRIVATE
-        Kokkos::Kokkos
+        Kokkos::kokkos
 )
 
-add_library(flcl
+add_library(FLCL
     STATIC
         $<TARGET_OBJECTS:flcl-fortran>
         $<TARGET_OBJECTS:flcl-cxx>
 )
-target_include_directories(flcl
+target_include_directories(FLCL
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
         $<INSTALL_INTERFACE:mod>
 )
-target_link_libraries(flcl
+target_link_libraries(FLCL
     INTERFACE
-    Kokkos::Kokkos
+    Kokkos::kokkos
 )
-add_library(flcl::flcl ALIAS flcl)
+add_library(FLCL::flcl ALIAS FLCL)
 
 include(CMakePackageConfigHelpers)
 
@@ -72,12 +73,12 @@ install(
         DESTINATION lib/cmake/flcl
 )
 
-install(TARGETS flcl EXPORT flclTargets)
+install(TARGETS FLCL EXPORT flclTargets)
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod DESTINATION .)
 install(
     EXPORT flclTargets
     DESTINATION lib/cmake/flcl
-    NAMESPACE flcl::)
+    NAMESPACE FLCL::)
 
 
 
