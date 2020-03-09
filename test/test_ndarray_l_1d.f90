@@ -58,6 +58,7 @@ program test_ndarray_l_1d_main
   
       call kokkos_finalize()
   
+      exit(ierr)
     end if
     
   end program test_ndarray_l_1d_main
