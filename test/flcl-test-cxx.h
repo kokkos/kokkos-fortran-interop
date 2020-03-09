@@ -46,8 +46,9 @@ extern "C" {
 #endif
 
 typedef enum _flcl_test_error_t {
-    FLCL_TEST_FAIL = 0,
-    FLCL_TEST_PASS = 1,
+  FLCL_TEST_PASS = 0,
+  FLCL_TEST_FAIL = 1,
+    
 } flcl_test_error_t;
 
 

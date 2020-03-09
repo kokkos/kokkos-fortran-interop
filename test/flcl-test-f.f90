@@ -35,7 +35,7 @@
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-module test_flcl_f_mod
+module flcl_test_f_mod
   use, intrinsic :: iso_c_binding
   use, intrinsic :: iso_fortran_env
 
@@ -54,8 +54,8 @@ module test_flcl_f_mod
   logical(c_bool), parameter :: logical_post = .false.
 
   enum, bind(c)
-    enumerator :: flcl_test_fail = 0
-    enumerator :: flcl_test_pass = 1
+    enumerator :: flcl_test_pass = 0
+    enumerator :: flcl_test_fail = 1
   end enum
 
   public
@@ -2927,4 +2927,4 @@ module test_flcl_f_mod
         end if
       end function test_kokkos_allocate_view_r64_3d
 
-end module test_flcl_f_mod
+end module flcl_test_f_mod

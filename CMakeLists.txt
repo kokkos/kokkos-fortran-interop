@@ -87,7 +87,9 @@ install(
     DESTINATION lib/cmake/flcl
     NAMESPACE FLCL::)
 
+include(CTest)
 
+add_subdirectory(test)
 
 
 

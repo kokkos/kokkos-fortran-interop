@@ -41,7 +41,7 @@ program test_flcl_main
 
   use :: flcl_mod
   use :: flcl_util_mod
-  use :: test_flcl_f_mod
+  use :: flcl_tests_f_mod
 
   implicit none
 

@@ -85,8 +85,8 @@ module flcl_util_kokkos_mod
       & bind(c, name='c_kokkos_print_configuration')
       use, intrinsic :: iso_c_binding
       implicit none
-      type (c_ptr), intent(in) :: prepend_name_in
-      type (c_ptr), intent(in) :: file_name_in
+      character(kind=c_char), intent(in) :: prepend_name_in(*)
+      character(kind=c_char), intent(in) :: file_name_in(*)
     end subroutine f_kokkos_print_configuration
   end interface
 
@@ -107,7 +107,8 @@ module flcl_util_kokkos_mod
     use, intrinsic :: iso_c_binding
     implicit none
     integer :: arg_count, max_length = 0, str_length, n, cli_count
-    character(kind=c_char, len=:), allocatable, target :: strs(:)
+    character(kind=c_char, len=:), allocatable :: str
+    character(kind=c_char), allocatable, target :: strs_array(:,:)
     type(c_ptr), allocatable, target :: c_strs(:)
 
     arg_count = command_argument_count()
@@ -117,18 +118,25 @@ module flcl_util_kokkos_mod
       max_length = max(max_length, str_length)
     end do
 
-    allocate(character(max_length + 1) :: strs(0:arg_count))
+    allocate(strs_array(1:max_length + 1, 0:arg_count))
     allocate(c_strs(0:arg_count))
+    allocate(character(max_length) :: str)
 
     do n = 0, arg_count
-      call get_command_argument(n, length=str_length)
-      call get_command_argument(n, value=strs(n), length=str_length)
-      strs(n)(str_length + 1:str_length + 1) = c_null_char
-      c_strs(n) = c_loc(strs(n))
+      call get_command_argument(n, value=str, length=str_length)
+      strs_array(1:str_length, n) = transfer(str, ' ', size=str_length)
+      strs_array(str_length+1, n) = c_null_char
+      c_strs(n) = c_loc(strs_array(:,n))
     end do
 
     cli_count = arg_count + 1
-    call f_kokkos_initialize(cli_count, c_loc(c_strs(0)))
+    if( cli_count .le. 0 ) then
+       ! must call the without_args variant or get array-oob error
+       call f_kokkos_initialize_without_args()
+    else
+       call f_kokkos_initialize(cli_count, c_loc(c_strs(0)))
+    endif
+       
   end subroutine kokkos_initialize
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   subroutine kokkos_initialize_without_args()
@@ -159,9 +167,8 @@ module flcl_util_kokkos_mod
 
     call char_add_null( prepend_name_in, prepend_name_out )
     call char_add_null( file_name_in, file_name_out )
-  
-    call f_kokkos_print_configuration( &
-      & c_loc(prepend_name_out), c_loc(file_name_out) )
+
+    call f_kokkos_print_configuration( prepend_name_out, file_name_out )
 
   end subroutine kokkos_print_configuration
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

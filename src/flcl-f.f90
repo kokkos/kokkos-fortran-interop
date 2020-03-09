@@ -235,7 +235,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0      
     end subroutine f_kokkos_allocate_v_l_1d
   end interface
@@ -247,7 +247,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_i32_1d
   end interface
@@ -259,7 +259,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_i64_1d
   end interface
@@ -271,7 +271,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_r32_1d
   end interface
@@ -283,7 +283,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_r64_1d
   end interface
@@ -297,7 +297,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_l_2d
@@ -310,7 +310,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_i32_2d
@@ -323,7 +323,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_i64_2d
@@ -336,7 +336,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_r32_2d
@@ -349,7 +349,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_v_r64_2d
@@ -364,7 +364,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -378,7 +378,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -392,7 +392,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -406,7 +406,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -420,7 +420,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -436,7 +436,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0      
     end subroutine f_kokkos_allocate_dv_l_1d
   end interface
@@ -448,7 +448,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_i32_1d
   end interface
@@ -460,7 +460,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_i64_1d
   end interface
@@ -472,7 +472,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_r32_1d
   end interface
@@ -484,7 +484,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_r64_1d
   end interface
@@ -498,7 +498,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_l_2d
@@ -511,7 +511,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_i32_2d
@@ -524,7 +524,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_i64_2d
@@ -537,7 +537,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_r32_2d
@@ -550,7 +550,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_r64_2d
@@ -565,7 +565,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -579,7 +579,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -593,7 +593,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -607,7 +607,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -621,7 +621,7 @@ module flcl_mod
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(c_ptr), intent(out) :: v_A
-      type(c_ptr), intent(in) :: n_A
+      character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
       integer(c_size_t), intent(in) :: e2
@@ -929,7 +929,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_l_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_v_l_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_l_1d
   
@@ -946,7 +946,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i32_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_v_i32_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_i32_1d
   
@@ -963,7 +963,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i64_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_v_i64_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_i64_1d
   
@@ -980,7 +980,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r32_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_v_r32_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_r32_1d
   
@@ -997,7 +997,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r64_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_v_r64_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_r64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1017,7 +1017,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_l_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_v_l_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_l_2d
   
@@ -1035,7 +1035,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i32_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_v_i32_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_i32_2d
   
@@ -1053,7 +1053,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i64_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_v_i64_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_i64_2d
   
@@ -1071,7 +1071,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r32_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_v_r32_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_r32_2d
   
@@ -1089,7 +1089,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r64_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_v_r64_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_r64_2d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1110,7 +1110,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_l_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_v_l_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_l_3d
   
@@ -1129,7 +1129,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i32_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_v_i32_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_i32_3d
   
@@ -1148,7 +1148,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i64_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_v_i64_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_i64_3d
   
@@ -1167,7 +1167,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
   
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r32_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_v_r32_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_r32_3d
   
@@ -1186,7 +1186,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
 
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r64_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_v_r64_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_r64_3d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1205,7 +1205,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_l_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_dv_l_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_dv_l_1d
   
@@ -1222,7 +1222,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_i32_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_dv_i32_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_dv_i32_1d
   
@@ -1239,7 +1239,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_i64_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_dv_i64_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_dv_i64_1d
   
@@ -1256,7 +1256,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_r32_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_dv_r32_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_dv_r32_1d
   
@@ -1273,7 +1273,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_r64_1d(c_A, v_A, c_loc(f_label), e0)
+      call f_kokkos_allocate_dv_r64_1d(c_A, v_A, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_dv_r64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1293,7 +1293,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_l_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_dv_l_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_dv_l_2d
   
@@ -1311,7 +1311,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_i32_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_dv_i32_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_dv_i32_2d
   
@@ -1329,7 +1329,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_i64_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_dv_i64_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_dv_i64_2d
   
@@ -1347,7 +1347,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_r32_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_dv_r32_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_dv_r32_2d
   
@@ -1365,7 +1365,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_r64_2d(c_A, v_A, c_loc(f_label), e0, e1)
+      call f_kokkos_allocate_dv_r64_2d(c_A, v_A, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_dv_r64_2d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1386,7 +1386,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_l_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_dv_l_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_dv_l_3d
   
@@ -1405,7 +1405,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_i32_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_dv_i32_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_dv_i32_3d
   
@@ -1424,7 +1424,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_i64_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_dv_i64_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_dv_i64_3d
   
@@ -1443,7 +1443,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
   
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_r32_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_dv_r32_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_dv_r32_3d
   
@@ -1462,7 +1462,7 @@ module flcl_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
 
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_r64_3d(c_A, v_A, c_loc(f_label), e0, e1, e2)
+      call f_kokkos_allocate_dv_r64_3d(c_A, v_A, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_dv_r64_3d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
