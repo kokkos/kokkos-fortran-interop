@@ -13,5 +13,5 @@
 *.out
 
 # CI temporary things
-ci/build
-ci/install
+ci/build*
+ci/install*
