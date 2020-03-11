@@ -51,14 +51,15 @@ program test_ndarray_l_1d_main
   
     if ( kokkos_is_initialized() ) then
       
-      call kokkos_print_configuration('flcl-test-', 'kokkos.out')
+      ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
   
       ierr = test_ndarray_l_1d()
       write(*,*)'ierr ',ierr
   
       call kokkos_finalize()
   
-      exit(ierr)
+      call exit(ierr)
+
     end if
     
   end program test_ndarray_l_1d_main

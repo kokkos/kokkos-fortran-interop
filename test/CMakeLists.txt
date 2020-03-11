@@ -32,7 +32,7 @@ target_link_libraries(flcl-testlib-cxx
 )
 
 add_library(flcl-testlib
-    STATIC
+    #STATIC
         $<TARGET_OBJECTS:flcl-testlib-fortran>
         $<TARGET_OBJECTS:flcl-testlib-cxx>
 )
@@ -45,23 +45,41 @@ target_link_libraries(flcl-testlib
     FLCL::flcl
 )
 
+#set_target_properties(flcl-testlib PROPERTIES INSTALL_RPATH ${RPATHS})
+
+
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/test)
 set(CTEST_BINARY_DIRECTORY ${PROJECT_BINARY_DIR}/test)
 
 file(GLOB files "test_*.f90")
 
-foreach(file ${files})
-	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
-	add_executable(${file_without_ext} ${file})
-	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} FLCL::flcl flcl-testlib)
-	add_test(${file_without_ext} ${file_without_ext})
-	set_tests_properties(${file_without_ext}
-		PROPERTIES
-		PASS_REGULAR_EXPRESSION "Test passed")
-	set_tests_properties(${file_without_ext}
-		PROPERTIES
-		FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
-	set_tests_properties(${file_without_ext}
-		PROPERTIES
-		TIMEOUT 120)
-endforeach()
+# if cmake 3.17 is supported everywhere
+# list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
+
+# foreach(file ${files})
+# 	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
+#     add_executable(${file_without_ext} ${file})
+#     set(RPATHS "$ENV{LD_LIBRARY_PATH}")
+#     message("****file_without_ext:" ${file_without_ext})
+#     set_target_properties(${file_without_ext} PROPERTIES INSTALL_RPATH ${RPATHS} BUILD_WITH_INSTALL_RPATH True)
+# 	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} FLCL::flcl flcl-testlib)
+#     #add_test(${file_without_ext} ${file_without_ext})
+#     #set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
+# 	# set_tests_properties(${file_without_ext}
+# 	# 	PROPERTIES
+# 	# 	PASS_REGULAR_EXPRESSION "Test passed")
+# 	# set_tests_properties(${file_without_ext}
+# 	# 	PROPERTIES
+# 	# 	FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+# 	#set_tests_properties(${file_without_ext}
+# 		#PROPERTIES
+#        # TIMEOUT 120)
+
+# endforeach()
+
+add_executable(test_ndarray_l_1d test_ndarray_l_1d.f90)
+target_link_libraries(test_ndarray_l_1d ${PROJECT_LIBS} FLCL::flcl flcl-testlib)
+set(RPATHS "$ENV{LD_LIBRARY_PATH}")
+set_target_properties(test_ndarray_l_1d PROPERTIES 
+                      BUILD_WITH_INSTALL_RPATH True
+                      INSTALL_RPATH ${RPATHS})
