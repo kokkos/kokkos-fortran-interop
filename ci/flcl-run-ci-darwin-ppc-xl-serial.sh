@@ -11,6 +11,9 @@ cd $CI_BUILD_DIR
 module load cmake/3.15.3
 module load gcc/7.4.0
 module load ibm/xlc-16.1.1.6-xlf-16.1.1.6
+# one of the important library dirs is not added
+# to LD_LIBRARY path for XL module above:
+setenv LD_LIBRARY_PATH /projects/opt/ppc64le/ibm/xlf-16.1.1.6/lib:$LD_LIBRARY_PATH
 cmake --version
 cmake -DKokkos_DIR=$CI_KOKKOS_PATH \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR $CI_PATH_PREFIX \

@@ -35,6 +35,8 @@ include(CheckCCompilerFlag)
 #    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 #endif("${isSystemDir}" STREQUAL "-1")
 
+add_link_options(LINKER:--disable-new-dtags)
+
 
 add_library(flcl-fortran
     OBJECT
