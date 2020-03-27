@@ -11,7 +11,7 @@ module load cmake/3.15.3
 module load gcc/7.4.0
 cd $CI_BUILD_DIR
 cmake /home/$USER/kokkos/kokkos-3.0.00 \
-    -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+    -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR \
     -DKokkos_ENABLE_SERIAL=ON \
     -DKokkos_ENABLE_TESTS=ON 

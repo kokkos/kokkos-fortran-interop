@@ -79,6 +79,15 @@ extern "C" {
     // std::cout << "allocated view with label: " << ((*v_A)->label()) << std::endl;
   }
 
+    void c_kokkos_allocate_v_r64_1d_old(double** A, flcl::view_r64_1d_t** v_A, const char** f_label, const int* e0) {
+    const int e0t = std::max(*e0, 1);
+    std::string c_label( *f_label );
+    *v_A = (new flcl::view_r64_1d_t(c_label, e0t));
+    *A = (*v_A)->data();
+    // below is a reminder of how to print the label
+    // std::cout << "allocated view with label: " << ((*v_A)->label()) << std::endl;
+  }
+
   // 2D flcl view allocation routines
   void c_kokkos_allocate_v_l_2d(bool** A, flcl::view_l_2d_t** v_A, const char** f_label, const size_t* e0, const size_t* e1) {
     const size_t e0t = std::max(*e0, one);

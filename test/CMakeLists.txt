@@ -62,6 +62,9 @@ foreach(file ${files})
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
         target_link_options(${file_without_ext} PRIVATE LINKER:-lxlf90_r)
     endif()
+    if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
+        set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
+    endif()
     set(RPATHS "$ENV{LD_LIBRARY_PATH}")
 	set_target_properties(${file_without_ext} PROPERTIES 
 						  BUILD_WITH_INSTALL_RPATH True
@@ -69,7 +72,7 @@ foreach(file ${files})
      set_target_properties(${file_without_ext} PROPERTIES INSTALL_RPATH ${RPATHS} BUILD_WITH_INSTALL_RPATH True)
  	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} FLCL::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
-	#set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
+	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
  	set_tests_properties(${file_without_ext}
  		PROPERTIES
  		PASS_REGULAR_EXPRESSION "PASSED")

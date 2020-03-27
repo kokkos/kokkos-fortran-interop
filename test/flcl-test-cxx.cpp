@@ -1398,6 +1398,24 @@ extern "C" {
     return FLCL_TEST_PASS;
   }
 
+  flcl_test_error_t c_test_kokkos_allocate_view_r64_1d_old( flcl::view_r64_1d_t **v_array_r64_1d, double *f_sum, double *c_sum ) {
+    *c_sum = 0;
+    auto array_r64_1d = **v_array_r64_1d;
+    for (size_t ii = 0; ii < array_r64_1d.extent(0); ii++) {
+      *c_sum += array_r64_1d(ii);
+    }
+    if ( std::fabs(*c_sum - *f_sum) > 1.0e-14 ) {
+      std::cout << "FAILED ndarray_r64_1d" << std::endl;
+      return FLCL_TEST_FAIL;
+    }
+    *c_sum = 0;
+    for (size_t ii = 0; ii < array_r64_1d.extent(0); ii++) {
+      array_r64_1d(ii) = ii;
+      *c_sum += array_r64_1d(ii);
+    }
+    return FLCL_TEST_PASS;
+  }
+
   flcl_test_error_t c_test_kokkos_allocate_view_l_2d( flcl::view_l_2d_t **v_array_l_2d, size_t *f_sum, size_t *c_sum ) {
     *c_sum = 0;
     auto array_l_2d = **v_array_l_2d;
