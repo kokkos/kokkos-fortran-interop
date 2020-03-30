@@ -17,11 +17,13 @@ setenv LD_LIBRARY_PATH /projects/opt/ppc64le/ibm/xlf-16.1.1.6/lib:$LD_LIBRARY_PA
 setenv OMP_NUM_THREADS 4
 setenv OMP_PROC_BIND false
 cmake -DKokkos_DIR=$CI_KOKKOS_PATH \
-    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR $CI_PATH_PREFIX \
     -DCMAKE_Fortran_COMPILER_ARG1=-F/projects/opt/ppc64le/ibm/xlf-16.1.1.6/xlf/16.1.1/etc/xlf.cfg.rhel.7.7.gcc.7.4.0.cuda.10.1 \
     -DCMAKE_CXX_COMPILER_ARG1=-F/projects/opt/ppc64le/ibm/xlc-16.1.1.6/xlC/16.1.1/etc/xlc.cfg.rhel.7.7.gcc.7.4.0.cuda.10.1 \
     -DCMAKE_Fortran_COMPILER=/projects/opt/ppc64le/ibm/xlf-16.1.1.6/xlf/16.1.1/bin/xlf2008_r
 cmake --build $CI_BUILD_DIR
 cmake --install $CI_BUILD_DIR
-ctest -V
+ctest
+unsetenv OMP_NUM_THREADS
+unsetenv OMP_PROC_BIND

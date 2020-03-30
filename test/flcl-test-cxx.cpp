@@ -554,6 +554,76 @@ extern "C" {
 
   }
 
+  float _Complex c_test_ndarray_c32_3d( flcl_ndarray_t *nd_array_c32_3d, float _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+    
+    Kokkos::complex<float> c_sum(0.0,0.0);
+
+    auto array_c32_3d = view_from_ndarray<Kokkos::complex<float>***>(*nd_array_c32_3d);
+    for (size_t ii = 0; ii < array_c32_3d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_3d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_3d.extent(2); kk++) {
+          c_sum += array_c32_3d(ii,jj,kk);
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c32_3d" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+
+    c_sum = Kokkos::complex<float>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c32_3d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_3d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_3d.extent(2); kk++) {
+          array_c32_3d(ii,jj,kk) = Kokkos::complex<float>(1.0*ii*jj*kk,-1.0*ii*jj*kk);
+          c_sum += array_c32_3d(ii,jj,kk);
+        }
+      }
+    }
+
+    float _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
+  }
+
+  double _Complex c_test_ndarray_c64_3d( flcl_ndarray_t *nd_array_c64_3d, double _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    Kokkos::complex<double> c_sum(0.0,0.0);
+
+    auto array_c64_3d = view_from_ndarray<Kokkos::complex<double>***>(*nd_array_c64_3d);
+    for (size_t ii = 0; ii < array_c64_3d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_3d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_3d.extent(2); kk++) {
+          c_sum += array_c64_3d(ii,jj,kk);
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c64_3d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    
+    c_sum = Kokkos::complex<double>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c64_3d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_3d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_3d.extent(2); kk++) {
+          array_c64_3d(ii,jj,kk) = Kokkos::complex<double>(1.0*ii*jj*kk,-1.0*ii*jj*kk);
+          c_sum += array_c64_3d(ii,jj,kk);
+        }
+      }
+    }
+
+    double _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
+  }
+
   size_t c_test_ndarray_l_4d( flcl_ndarray_t *nd_array_l_4d, size_t *f_sum ) {
     using flcl::view_from_ndarray;
 
@@ -711,6 +781,84 @@ extern "C" {
     }
     return c_sum;
 
+  }
+
+  float _Complex c_test_ndarray_c32_4d( flcl_ndarray_t *nd_array_c32_4d, float _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+    
+    Kokkos::complex<float> c_sum(0.0,0.0);
+
+    auto array_c32_4d = view_from_ndarray<Kokkos::complex<float>****>(*nd_array_c32_4d);
+    for (size_t ii = 0; ii < array_c32_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_4d.extent(3); ll++) {
+            c_sum += array_c32_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c32_4d" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+
+    c_sum = Kokkos::complex<float>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c32_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_4d.extent(3); ll++) {
+            array_c32_4d(ii,jj,kk,ll) = Kokkos::complex<float>(1.0*ii*jj*kk*ll,-1.0*ii*jj*kk*ll);
+            c_sum += array_c32_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+
+    float _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
+  }
+
+  double _Complex c_test_ndarray_c64_4d( flcl_ndarray_t *nd_array_c64_4d, double _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    Kokkos::complex<double> c_sum(0.0,0.0);
+
+    auto array_c64_4d = view_from_ndarray<Kokkos::complex<double>****>(*nd_array_c64_4d);
+    for (size_t ii = 0; ii < array_c64_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_4d.extent(3); ll++) {
+            c_sum += array_c64_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c64_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    
+    c_sum = Kokkos::complex<double>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c64_4d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_4d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_4d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_4d.extent(3); ll++) {
+            array_c64_4d(ii,jj,kk,ll) = Kokkos::complex<double>(1.0*ii*jj*kk*ll,-1.0*ii*jj*kk*ll);
+            c_sum += array_c64_4d(ii,jj,kk,ll);
+          }
+        }
+      }
+    }
+
+    double _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
   }
 
   size_t c_test_ndarray_l_5d( flcl_ndarray_t *nd_array_l_5d, size_t *f_sum ) {
@@ -890,6 +1038,92 @@ extern "C" {
     }
     return c_sum;
 
+  }
+
+  float _Complex c_test_ndarray_c32_5d( flcl_ndarray_t *nd_array_c32_5d, float _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+    
+    Kokkos::complex<float> c_sum(0.0,0.0);
+
+    auto array_c32_5d = view_from_ndarray<Kokkos::complex<float>*****>(*nd_array_c32_5d);
+    for (size_t ii = 0; ii < array_c32_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c32_5d.extent(4); mm++) {
+              c_sum += array_c32_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c32_5d" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+
+    c_sum = Kokkos::complex<float>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c32_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c32_5d.extent(4); mm++) {
+              array_c32_5d(ii,jj,kk,ll,mm) = Kokkos::complex<float>(1.0*ii*jj*kk*ll*mm,-1.0*ii*jj*kk*ll*mm);
+              c_sum += array_c32_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+
+    float _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
+  }
+
+  double _Complex c_test_ndarray_c64_5d( flcl_ndarray_t *nd_array_c64_5d, double _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    Kokkos::complex<double> c_sum(0.0,0.0);
+
+    auto array_c64_5d = view_from_ndarray<Kokkos::complex<double>*****>(*nd_array_c64_5d);
+    for (size_t ii = 0; ii < array_c64_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c64_5d.extent(4); mm++) {
+              c_sum += array_c64_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c64_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    
+    c_sum = Kokkos::complex<double>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c64_5d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_5d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_5d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_5d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c64_5d.extent(4); mm++) {
+              array_c64_5d(ii,jj,kk,ll,mm) = Kokkos::complex<double>(1.0*ii*jj*kk*ll*mm,-1.0*ii*jj*kk*ll*mm);
+              c_sum += array_c64_5d(ii,jj,kk,ll,mm);
+            }
+          }
+        }
+      }
+    }
+
+    double _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
   }
 
   size_t c_test_ndarray_l_6d( flcl_ndarray_t *nd_array_l_6d, size_t *f_sum ) {
@@ -1089,6 +1323,100 @@ extern "C" {
     }
     return c_sum;
 
+  }
+
+  float _Complex c_test_ndarray_c32_6d( flcl_ndarray_t *nd_array_c32_6d, float _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+    
+    Kokkos::complex<float> c_sum(0.0,0.0);
+
+    auto array_c32_6d = view_from_ndarray<Kokkos::complex<float>******>(*nd_array_c32_6d);
+    for (size_t ii = 0; ii < array_c32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c32_6d.extent(5); nn++) {
+                c_sum += array_c32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c32_5d" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+
+    c_sum = Kokkos::complex<float>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c32_6d.extent(5); nn++) {
+                array_c32_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<float>(1.0*ii*jj*kk*ll*mm*nn,-1.0*ii*jj*kk*ll*mm*nn);
+                c_sum += array_c32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    float _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
+  }
+
+  double _Complex c_test_ndarray_c64_6d( flcl_ndarray_t *nd_array_c64_6d, double _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    Kokkos::complex<double> c_sum(0.0,0.0);
+
+    auto array_c64_6d = view_from_ndarray<Kokkos::complex<double>******>(*nd_array_c64_6d);
+    for (size_t ii = 0; ii < array_c64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c64_6d.extent(5); nn++) {
+                c_sum += array_c64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c64_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    
+    c_sum = Kokkos::complex<double>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c64_6d.extent(5); nn++) {
+                array_c64_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<double>(1.0*ii*jj*kk*ll*mm*nn,-1.0*ii*jj*kk*ll*mm*nn);
+                c_sum += array_c64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    double _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
   }
 
   size_t c_test_ndarray_l_7d( flcl_ndarray_t *nd_array_l_7d, size_t *f_sum ) {
@@ -1308,6 +1636,108 @@ extern "C" {
     }
     return c_sum;
 
+  }
+
+  float _Complex c_test_ndarray_c32_7d( flcl_ndarray_t *nd_array_c32_7d, float _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+    
+    Kokkos::complex<float> c_sum(0.0,0.0);
+
+    auto array_c32_7d = view_from_ndarray<Kokkos::complex<float>*******>(*nd_array_c32_7d);
+    for (size_t ii = 0; ii < array_c32_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c32_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c32_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_c32_7d.extent(6); oo++) {
+                  c_sum += array_c32_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c32_5d" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+
+    c_sum = Kokkos::complex<float>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c32_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c32_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c32_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c32_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c32_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c32_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_c32_7d.extent(6); oo++) {
+                  array_c32_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<float>(1.0*ii*jj*kk*ll*mm*nn*oo,-1.0*ii*jj*kk*ll*mm*nn*oo);
+                  c_sum += array_c32_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    float _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
+  }
+
+  double _Complex c_test_ndarray_c64_7d( flcl_ndarray_t *nd_array_c64_7d, double _Complex *f_sum ) {
+    using flcl::view_from_ndarray;
+
+    Kokkos::complex<double> c_sum(0.0,0.0);
+
+    auto array_c64_7d = view_from_ndarray<Kokkos::complex<double>*******>(*nd_array_c64_7d);
+    for (size_t ii = 0; ii < array_c64_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c64_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c64_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_c64_7d.extent(6); oo++) {
+                  c_sum += array_c64_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if ( (c_sum.real() != crealf(*f_sum)) && (c_sum.imag() != cimagf(*f_sum)) ) {
+      std::cout << "FAILED ndarray_c64_4d" << std::endl;
+      exit(EXIT_FAILURE);    
+    }
+    
+    c_sum = Kokkos::complex<double>(0.0,0.0);
+
+    for (size_t ii = 0; ii < array_c64_7d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_c64_7d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_c64_7d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_c64_7d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_c64_7d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_c64_7d.extent(5); nn++) {
+                for (size_t oo = 0; oo < array_c64_7d.extent(6); oo++) {
+                  array_c64_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<double>(1.0*ii*jj*kk*ll*mm*nn*oo,-1.0*ii*jj*kk*ll*mm*nn*oo);
+                  c_sum += array_c64_7d(ii,jj,kk,ll,mm,nn,oo);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    double _Complex c_sum_to_return;
+    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
+    return c_sum_to_return;
   }
 
   flcl_test_error_t c_test_kokkos_allocate_view_l_1d( flcl::view_l_1d_t **v_array_l_1d, size_t *f_sum, size_t *c_sum ) {

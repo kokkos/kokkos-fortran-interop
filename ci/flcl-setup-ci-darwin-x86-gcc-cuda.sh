@@ -2,8 +2,8 @@
 ## salloc -n 1 --constraint=gpu_vendor:nvidia,cpu_vendor:Intel,gpu1_model:Tesla_K40c
 ## set-up
 setenv CI_PATH_PREFIX /home/$USER/kt
-setenv CI_INSTALL_DIR $CI_PATH_PREFIX/3.0-x86-gnu-7.4.0-cuda-10.1
-setenv CI_BUILD_DIR $CI_PATH_PREFIX//3.0-x86-gnu-7.4.0-cuda-10.1-build
+setenv CI_INSTALL_DIR $CI_PATH_PREFIX/3.0-x86-gcc-7.4.0-cuda-10.1
+setenv CI_BUILD_DIR $CI_PATH_PREFIX//3.0-x86-gcc-7.4.0-cuda-10.1-build
 rm -rf $CI_INSTALL_DIR
 rm -rf $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR

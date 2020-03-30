@@ -47,16 +47,13 @@ program test_ndarray_l_1d_main
   
     integer(c_size_t) :: ierr = 0
   
-    write(*,*)'before kokkos_init'
     call kokkos_initialize_without_args()
-    write(*,*)'after kokkos_init'
 
     if ( kokkos_is_initialized() ) then
       
       ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
   
       ierr = test_ndarray_l_1d()
-      write(*,*)'ierr ',ierr
   
       call kokkos_finalize()
   

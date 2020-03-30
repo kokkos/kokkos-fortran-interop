@@ -1,8 +1,8 @@
 #!/bin/tcsh
 # salloc -n 1 -p power9-asc -A asc-priority
 setenv CI_PATH_PREFIX /home/$USER/kt
-setenv CI_INSTALL_DIR $CI_PATH_PREFIX/3.0-ppc-gnu-7.4.0-serial
-setenv CI_BUILD_DIR $CI_PATH_PREFIX//3.0-ppc-gnu-7.4.0-serial-build
+setenv CI_INSTALL_DIR $CI_PATH_PREFIX/3.0-ppc-gcc-7.4.0-serial
+setenv CI_BUILD_DIR $CI_PATH_PREFIX//3.0-ppc-gcc-7.4.0-serial-build
 rm -rf $CI_INSTALL_DIR
 rm -rf $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR

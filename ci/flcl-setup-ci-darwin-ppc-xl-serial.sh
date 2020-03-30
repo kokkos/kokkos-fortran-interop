@@ -12,7 +12,7 @@ module load gcc/7.4.0
 module load ibm/xlc-16.1.1.6-xlf-16.1.1.6
 cd $CI_BUILD_DIR
 cmake /home/$USER/kokkos/kokkos-3.0.00 \
-    -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON \
+    -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
     -DCMAKE_CXX_COMPILER_ARG1=-F/projects/opt/ppc64le/ibm/xlc-16.1.1.6/xlC/16.1.1/etc/xlc.cfg.rhel.7.7.gcc.7.4.0.cuda.10.1 \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR \
     -DKokkos_ENABLE_SERIAL=ON \
