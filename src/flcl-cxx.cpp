@@ -70,9 +70,9 @@ extern "C" {
     *A = (*v_A)->data();
   }
 
-  void c_kokkos_allocate_v_r64_1d(double** A, flcl::view_r64_1d_t** v_A, const char** f_label, const size_t* e0) {
+  void c_kokkos_allocate_v_r64_1d(double** A, flcl::view_r64_1d_t** v_A, const char* f_label, const size_t* e0) {
     const size_t e0t = std::max(*e0, one);
-    std::string c_label( *f_label );
+    std::string c_label( f_label );
     *v_A = (new flcl::view_r64_1d_t(c_label, e0t));
     *A = (*v_A)->data();
     // below is a reminder of how to print the label
