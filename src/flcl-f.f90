@@ -51,7 +51,6 @@ module flcl_mod
   public kokkos_deallocate_view
   public kokkos_deallocate_dualview
   integer, parameter :: ND_ARRAY_MAX_RANK = 8
-  public kokkos_allocate_v_r64_1d_old
   
   type, bind(C) :: nd_array_t
     integer(c_size_t) :: rank
@@ -289,17 +288,6 @@ module flcl_mod
     end subroutine f_kokkos_allocate_v_r64_1d
   end interface
 
-  interface 
-    subroutine f_kokkos_allocate_v_r64_1d_old(c_A, v_A, n_A, e0) &
-      & bind (c, name='c_kokkos_allocate_v_r64_1d_old')
-      use, intrinsic :: iso_c_binding
-      implicit none
-      type (c_ptr), intent(out) :: c_A
-      type (c_ptr), intent(out) :: v_A
-      type (c_ptr), intent(in) :: n_A
-      integer (c_int), intent(in) :: e0
-    end subroutine f_kokkos_allocate_v_r64_1d_old
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_view 2D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1014,21 +1002,6 @@ module flcl_mod
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_r64_1d
 
-    subroutine kokkos_allocate_v_r64_1d_old(A, v_A, n_A, e0)
-      use, intrinsic :: iso_c_binding
-        implicit none
-        real(REAL64), pointer, dimension(:), intent(inout) :: A
-        type(c_ptr), intent(out) :: v_A
-        character(len=*), intent(in) :: n_A
-        integer(c_int), intent(in) :: e0
-        type(c_ptr) :: c_A
-  
-        character(len=:, kind=c_char), allocatable, target :: f_label
-        
-        call char_add_null( n_A, f_label )
-        call f_kokkos_allocate_v_r64_1d_old(c_A, v_A, c_loc(f_label), e0)
-        call c_f_pointer(c_A, A, shape=[e0])
-    end subroutine kokkos_allocate_v_r64_1d_old
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos allocate view 2D implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
