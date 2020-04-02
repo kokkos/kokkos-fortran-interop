@@ -15,4 +15,4 @@ cmake -DKokkos_DIR=$CI_KOKKOS_PATH \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR $CI_PATH_PREFIX
 cmake --build $CI_BUILD_DIR
 cmake --install $CI_BUILD_DIR
-#ctest
+ctest
