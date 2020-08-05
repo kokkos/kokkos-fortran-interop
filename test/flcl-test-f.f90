@@ -43,13 +43,13 @@ module flcl_test_f_mod
 
   implicit none
   
-  integer(c_size_t), parameter :: e0_length = 10
-  integer(c_size_t), parameter :: e1_length = 9
-  integer(c_size_t), parameter :: e2_length = 8
-  integer(c_size_t), parameter :: e3_length = 7
-  integer(c_size_t), parameter :: e4_length = 6
-  integer(c_size_t), parameter :: e5_length = 5
-  integer(c_size_t), parameter :: e6_length = 4
+  integer(c_size_t), parameter :: e0_length = 8
+  integer(c_size_t), parameter :: e1_length = 7
+  integer(c_size_t), parameter :: e2_length = 6
+  integer(c_size_t), parameter :: e3_length = 5
+  integer(c_size_t), parameter :: e4_length = 4
+  integer(c_size_t), parameter :: e5_length = 3
+  integer(c_size_t), parameter :: e6_length = 2
   logical(c_bool), parameter :: logical_pre = .true.
   logical(c_bool), parameter :: logical_post = .false.
 
@@ -57,6 +57,9 @@ module flcl_test_f_mod
     enumerator :: flcl_test_pass = 0
     enumerator :: flcl_test_fail = 1
   end enum
+
+  real(c_float) :: precision_single = 1.0e-7
+  real(c_double) :: precision_double = 1.0e-14
 
   public
 
@@ -809,9 +812,11 @@ module flcl_test_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarry_l_1d'
+          write(*,*)'FAILED F ndarry_l_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -842,9 +847,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i32_1d'
+          write(*,*)'FAILED F ndarray_i32_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -875,9 +882,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i64_1d'
+          write(*,*)'FAILED F ndarray_i64_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -906,11 +915,13 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_r32_1d(ii)
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+        if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
           write(*,*)'PASSED ndarray_r32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r32_1d'
+          write(*,*)'FAILED F ndarray_r32_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -939,11 +950,13 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_r64_1d(ii)
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
           write(*,*)'PASSED ndarray_r64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r64_1d'
+          write(*,*)'FAILED F ndarray_r64_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -974,9 +987,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c32_1d'
+          write(*,*)'FAILED F ndarray_c32_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1007,9 +1022,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c64_1d'
+          write(*,*)'FAILED F ndarray_c64_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1048,9 +1065,11 @@ module flcl_test_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarry_l_2d'
+          write(*,*)'FAILED F ndarry_l_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1072,7 +1091,7 @@ module flcl_test_f_mod
         allocate( array_i32_2d(e0_length, e1_length) )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_i32_2d(ii,jj) = ii*jj
+            array_i32_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_i32_2d(ii,jj)
           end do
         end do
@@ -1085,9 +1104,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i32_2d'
+          write(*,*)'FAILED F ndarray_i32_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1109,7 +1130,7 @@ module flcl_test_f_mod
         allocate( array_i64_2d(e0_length, e1_length) )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_i64_2d(ii,jj) = ii*jj
+            array_i64_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_i64_2d(ii,jj)
           end do
         end do
@@ -1122,9 +1143,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i64_2d'
+          write(*,*)'FAILED F ndarray_i64_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1146,7 +1169,7 @@ module flcl_test_f_mod
         allocate( array_r32_2d(e0_length, e1_length) )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_r32_2d(ii,jj) = ii*jj
+            array_r32_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_r32_2d(ii,jj)
           end do
         end do
@@ -1157,11 +1180,13 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r32_2d(ii,jj)
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r32_2d'
+          write(*,*)'FAILED F ndarray_r32_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1183,7 +1208,7 @@ module flcl_test_f_mod
         allocate( array_r64_2d(e0_length, e1_length) )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_r64_2d(ii,jj) = ii*jj
+            array_r64_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_r64_2d(ii,jj)
           end do
         end do
@@ -1194,11 +1219,13 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r64_2d(ii,jj)
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
           write(*,*)'PASSED ndarray_r64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r64_2d'
+          write(*,*)'FAILED F ndarray_r64_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1220,7 +1247,7 @@ module flcl_test_f_mod
         allocate( array_c32_2d(e0_length, e1_length) )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_c32_2d(ii,jj) = cmplx(ii*jj,-(ii*jj))
+            array_c32_2d(ii,jj) = cmplx(ii+jj,-(ii+jj))
             f_sum = f_sum + array_c32_2d(ii,jj)
           end do
         end do
@@ -1233,9 +1260,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c32_2d'
+          write(*,*)'FAILED F ndarray_c32_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1257,7 +1286,7 @@ module flcl_test_f_mod
         allocate( array_c64_2d(e0_length, e1_length) )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_c64_2d(ii,jj) = cmplx(ii*jj,-(ii*jj))
+            array_c64_2d(ii,jj) = cmplx(ii+jj,-(ii+jj))
             f_sum = f_sum + array_c64_2d(ii,jj)
           end do
         end do
@@ -1270,9 +1299,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c64_2d'
+          write(*,*)'FAILED F ndarray_c64_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1315,9 +1346,11 @@ module flcl_test_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarry_l_3d'
+          write(*,*)'FAILED F ndarry_l_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1340,7 +1373,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_i32_3d(ii,jj,kk) = ii*jj*kk
+              array_i32_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_i32_3d(ii,jj,kk)
             end do
           end do
@@ -1356,9 +1389,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i32_3d'
+          write(*,*)'FAILED F ndarray_i32_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1381,7 +1416,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_i64_3d(ii,jj,kk) = ii*jj*kk
+              array_i64_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_i64_3d(ii,jj,kk)
             end do
           end do
@@ -1397,9 +1432,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i64_3d'
+          write(*,*)'FAILED F ndarray_i64_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1422,7 +1459,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_r32_3d(ii,jj,kk) = ii*jj*kk
+              array_r32_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_r32_3d(ii,jj,kk)
             end do
           end do
@@ -1436,11 +1473,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r32_3d'
+          write(*,*)'FAILED F ndarray_r32_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1463,7 +1502,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_r64_3d(ii,jj,kk) = ii*jj*kk
+              array_r64_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_r64_3d(ii,jj,kk)
             end do
           end do
@@ -1477,11 +1516,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
           write(*,*)'PASSED ndarray_r64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r64_3d'
+          write(*,*)'FAILED F ndarray_r64_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1504,7 +1545,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_c32_3d(ii,jj,kk) = cmplx(ii*jj*kk,-(ii*jj*kk))
+              array_c32_3d(ii,jj,kk) = cmplx(ii+jj+kk,-(ii+jj+kk))
               f_sum = f_sum + array_c32_3d(ii,jj,kk)
             end do
           end do
@@ -1520,9 +1561,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c32_3d'
+          write(*,*)'FAILED F ndarray_c32_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1545,7 +1588,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_c64_3d(ii,jj,kk) = cmplx(ii*jj*kk,-(ii*jj*kk))
+              array_c64_3d(ii,jj,kk) = cmplx(ii+jj+kk,-(ii+jj+kk))
               f_sum = f_sum + array_c64_3d(ii,jj,kk)
             end do
           end do
@@ -1561,9 +1604,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c64_3d'
+          write(*,*)'FAILED F ndarray_c64_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1610,9 +1655,11 @@ module flcl_test_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarry_l_4d'
+          write(*,*)'FAILED F ndarry_l_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1636,7 +1683,7 @@ module flcl_test_f_mod
           do jj = 1, e1_length
             do kk = 1, e2_length
               do ll = 1, e3_length
-                array_i32_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                array_i32_4d(ii,jj,kk,ll) = ii+jj+kk+ll
                 f_sum = f_sum + array_i32_4d(ii,jj,kk,ll)
               end do
             end do
@@ -1655,9 +1702,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i32_4d'
+          write(*,*)'FAILED F ndarray_i32_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1681,7 +1730,7 @@ module flcl_test_f_mod
           do jj = 1, e1_length
             do kk = 1, e2_length
               do ll = 1, e3_length
-                array_i64_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                array_i64_4d(ii,jj,kk,ll) = ii+jj+kk+ll
                 f_sum = f_sum + array_i64_4d(ii,jj,kk,ll)
               end do
             end do
@@ -1700,9 +1749,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i64_4d'
+          write(*,*)'FAILED F ndarray_i64_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1726,7 +1777,7 @@ module flcl_test_f_mod
           do jj = 1, e1_length
             do kk = 1, e2_length
               do ll = 1, e3_length
-                array_r32_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                array_r32_4d(ii,jj,kk,ll) = ii+jj+kk+ll
                 f_sum = f_sum + array_r32_4d(ii,jj,kk,ll)
               end do
             end do
@@ -1743,11 +1794,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r32_4d'
+          write(*,*)'FAILED F ndarray_r32_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1771,7 +1824,7 @@ module flcl_test_f_mod
           do jj = 1, e1_length
             do kk = 1, e2_length
               do ll = 1, e3_length
-                array_r64_4d(ii,jj,kk,ll) = ii*jj*kk*ll
+                array_r64_4d(ii,jj,kk,ll) = ii+jj+kk+ll
                 f_sum = f_sum + array_r64_4d(ii,jj,kk,ll)
               end do
             end do
@@ -1788,11 +1841,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
           write(*,*)'PASSED ndarray_r64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r64_4d'
+          write(*,*)'FAILED F ndarray_r64_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1816,7 +1871,7 @@ module flcl_test_f_mod
           do jj = 1, e1_length
             do kk = 1, e2_length
               do ll = 1, e3_length
-                array_c32_4d(ii,jj,kk,ll) = cmplx(ii*jj*kk*ll,-(ii*jj*kk*ll))
+                array_c32_4d(ii,jj,kk,ll) = cmplx(ii+jj+kk+ll,-(ii+jj+kk+ll))
                 f_sum = f_sum + array_c32_4d(ii,jj,kk,ll)
               end do
             end do
@@ -1835,9 +1890,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c32_4d'
+          write(*,*)'FAILED F ndarray_c32_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1861,7 +1918,7 @@ module flcl_test_f_mod
           do jj = 1, e1_length
             do kk = 1, e2_length
               do ll = 1, e3_length
-                array_c64_4d(ii,jj,kk,ll) = cmplx(ii*jj*kk*ll,-(ii*jj*kk*ll))
+                array_c64_4d(ii,jj,kk,ll) = cmplx(ii+jj+kk+ll,-(ii+jj+kk+ll))
                 f_sum = f_sum + array_c64_4d(ii,jj,kk,ll)
               end do
             end do
@@ -1880,9 +1937,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c64_4d'
+          write(*,*)'FAILED F ndarray_c64_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1933,9 +1992,11 @@ module flcl_test_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarry_l_5d'
+          write(*,*)'FAILED F ndarry_l_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -1960,7 +2021,7 @@ module flcl_test_f_mod
             do kk = 1, e2_length
               do ll = 1, e3_length
                 do mm = 1, e4_length
-                  array_i32_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm
+                  array_i32_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
                   f_sum = f_sum + array_i32_5d(ii,jj,kk,ll,mm)
                 end do
               end do
@@ -1982,9 +2043,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i32_5d'
+          write(*,*)'FAILED F ndarray_i32_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2009,7 +2072,7 @@ module flcl_test_f_mod
             do kk = 1, e2_length
               do ll = 1, e3_length
                 do mm = 1, e4_length
-                  array_i64_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm
+                  array_i64_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
                   f_sum = f_sum + array_i64_5d(ii,jj,kk,ll,mm)
                 end do
               end do
@@ -2031,9 +2094,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i64_5d'
+          write(*,*)'FAILED F ndarray_i64_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2058,7 +2123,7 @@ module flcl_test_f_mod
             do kk = 1, e2_length
               do ll = 1, e3_length
                 do mm = 1, e4_length
-                  array_r32_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm
+                  array_r32_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
                   f_sum = f_sum + array_r32_5d(ii,jj,kk,ll,mm)
                 end do
               end do
@@ -2078,13 +2143,16 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_5d'
-          ierr = flcl_test_pass
-        else
-          write(*,*)'FAILED ndarray_r32_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F ndarray_r32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          write(*,*)'abs(f_sum - c_sum ) < (precision_single * c_sum) = ',(abs(f_sum - c_sum ) < (precision_single * c_sum))
           ierr = flcl_test_fail
         end if
       end function test_ndarray_r32_5d
@@ -2107,7 +2175,7 @@ module flcl_test_f_mod
             do kk = 1, e2_length
               do ll = 1, e3_length
                 do mm = 1, e4_length
-                  array_r64_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm
+                  array_r64_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
                   f_sum = f_sum + array_r64_5d(ii,jj,kk,ll,mm)
                 end do
               end do
@@ -2127,11 +2195,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
           write(*,*)'PASSED ndarray_r64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r64_5d'
+          write(*,*)'FAILED F ndarray_r64_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2156,7 +2226,7 @@ module flcl_test_f_mod
             do kk = 1, e2_length
               do ll = 1, e3_length
                 do mm = 1, e4_length
-                  array_c32_5d(ii,jj,kk,ll,mm) = cmplx(ii*jj*kk*ll*mm,-(ii*jj*kk*ll*mm))
+                  array_c32_5d(ii,jj,kk,ll,mm) = cmplx(ii+jj+kk+ll+mm,-(ii+jj+kk+ll+mm))
                   f_sum = f_sum + array_c32_5d(ii,jj,kk,ll,mm)
                 end do
               end do
@@ -2178,9 +2248,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c32_5d'
+          write(*,*)'FAILED F ndarray_c32_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2205,7 +2277,7 @@ module flcl_test_f_mod
             do kk = 1, e2_length
               do ll = 1, e3_length
                 do mm = 1, e4_length
-                  array_c64_5d(ii,jj,kk,ll,mm) = cmplx(ii*jj*kk*ll*mm,-(ii*jj*kk*ll*mm))
+                  array_c64_5d(ii,jj,kk,ll,mm) = cmplx(ii+jj+kk+ll+mm,-(ii+jj+kk+ll+mm))
                   f_sum = f_sum + array_c64_5d(ii,jj,kk,ll,mm)
                 end do
               end do
@@ -2227,9 +2299,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c64_5d'
+          write(*,*)'FAILED F ndarray_c64_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2284,9 +2358,11 @@ module flcl_test_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarry_l_6d'
+          write(*,*)'FAILED F ndarry_l_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2312,7 +2388,7 @@ module flcl_test_f_mod
               do ll = 1, e3_length
                 do mm = 1, e4_length
                   do nn = 1, e5_length
-                    array_i32_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn
+                    array_i32_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
                     f_sum = f_sum + array_i32_6d(ii,jj,kk,ll,mm,nn)
                   end do
                 end do
@@ -2337,9 +2413,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i32_6d'
+          write(*,*)'FAILED F ndarray_i32_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2365,7 +2443,7 @@ module flcl_test_f_mod
               do ll = 1, e3_length
                 do mm = 1, e4_length
                   do nn = 1, e5_length
-                    array_i64_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn
+                    array_i64_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
                     f_sum = f_sum + array_i64_6d(ii,jj,kk,ll,mm,nn)
                   end do
                 end do
@@ -2390,9 +2468,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i64_6d'
+          write(*,*)'FAILED F ndarray_i64_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2418,8 +2498,9 @@ module flcl_test_f_mod
               do ll = 1, e3_length
                 do mm = 1, e4_length
                   do nn = 1, e5_length
-                    array_r32_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn
+                    array_r32_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
                     f_sum = f_sum + array_r32_6d(ii,jj,kk,ll,mm,nn)
+                    ! write(*,*)'f_sum1 ',f_sum
                   end do
                 end do
               end do
@@ -2441,13 +2522,16 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_6d'
-          ierr = flcl_test_pass
-        else
-          write(*,*)'FAILED ndarray_r32_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F ndarray_r32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          write(*,*)'abs(f_sum - c_sum ) < (precision_single * c_sum) = ',(abs(f_sum - c_sum ) < (precision_single * c_sum))
           ierr = flcl_test_fail
         end if
       end function test_ndarray_r32_6d
@@ -2471,7 +2555,7 @@ module flcl_test_f_mod
               do ll = 1, e3_length
                 do mm = 1, e4_length
                   do nn = 1, e5_length
-                    array_r64_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn
+                    array_r64_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
                     f_sum = f_sum + array_r64_6d(ii,jj,kk,ll,mm,nn)
                   end do
                 end do
@@ -2494,11 +2578,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
           write(*,*)'PASSED ndarray_r64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r64_6d'
+          write(*,*)'FAILED F ndarray_r64_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2524,7 +2610,7 @@ module flcl_test_f_mod
               do ll = 1, e3_length
                 do mm = 1, e4_length
                   do nn = 1, e5_length
-                    array_c32_6d(ii,jj,kk,ll,mm,nn) = cmplx(ii*jj*kk*ll*mm*nn,-(ii*jj*kk*ll*mm*nn))
+                    array_c32_6d(ii,jj,kk,ll,mm,nn) = cmplx(ii+jj+kk+ll+mm+nn,-(ii+jj+kk+ll+mm+nn))
                     f_sum = f_sum + array_c32_6d(ii,jj,kk,ll,mm,nn)
                   end do
                 end do
@@ -2549,9 +2635,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c32_6d'
+          write(*,*)'FAILED F ndarray_c32_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2577,7 +2665,7 @@ module flcl_test_f_mod
               do ll = 1, e3_length
                 do mm = 1, e4_length
                   do nn = 1, e5_length
-                    array_c64_6d(ii,jj,kk,ll,mm,nn) = cmplx(ii*jj*kk*ll*mm*nn,-(ii*jj*kk*ll*mm*nn))
+                    array_c64_6d(ii,jj,kk,ll,mm,nn) = cmplx(ii+jj+kk+ll+mm+nn,-(ii+jj+kk+ll+mm+nn))
                     f_sum = f_sum + array_c64_6d(ii,jj,kk,ll,mm,nn)
                   end do
                 end do
@@ -2602,9 +2690,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c64_6d'
+          write(*,*)'FAILED F ndarray_c64_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2663,9 +2753,11 @@ module flcl_test_f_mod
         end do
         if (f_sum == c_sum) then
           write(*,*)'PASSED ndarray_l_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarry_l_7d'
+          write(*,*)'FAILED F ndarry_l_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2692,7 +2784,7 @@ module flcl_test_f_mod
                 do mm = 1, e4_length
                   do nn = 1, e5_length
                     do oo = 1, e6_length
-                      array_i32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      array_i32_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
                       f_sum = f_sum + array_i32_7d(ii,jj,kk,ll,mm,nn,oo)
                     end do
                   end do
@@ -2720,9 +2812,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i32_7d'
+          write(*,*)'FAILED F ndarray_i32_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2749,7 +2843,7 @@ module flcl_test_f_mod
                 do mm = 1, e4_length
                   do nn = 1, e5_length
                     do oo = 1, e6_length
-                      array_i64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      array_i64_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
                       f_sum = f_sum + array_i64_7d(ii,jj,kk,ll,mm,nn,oo)
                     end do
                   end do
@@ -2777,9 +2871,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_i64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_i64_7d'
+          write(*,*)'FAILED F ndarray_i64_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2806,7 +2902,7 @@ module flcl_test_f_mod
                 do mm = 1, e4_length
                   do nn = 1, e5_length
                     do oo = 1, e6_length
-                      array_r32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      array_r32_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
                       f_sum = f_sum + array_r32_7d(ii,jj,kk,ll,mm,nn,oo)
                     end do
                   end do
@@ -2832,11 +2928,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-7 ) then
+        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r32_7d'
+          write(*,*)'FAILED F ndarray_r32_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2863,7 +2961,7 @@ module flcl_test_f_mod
                 do mm = 1, e4_length
                   do nn = 1, e5_length
                     do oo = 1, e6_length
-                      array_r64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo
+                      array_r64_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
                       f_sum = f_sum + array_r64_7d(ii,jj,kk,ll,mm,nn,oo)
                     end do
                   end do
@@ -2889,11 +2987,13 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < 1.0e-14 ) then
+        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
           write(*,*)'PASSED ndarray_r64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_r64_7d'
+          write(*,*)'FAILED F ndarray_r64_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2920,7 +3020,7 @@ module flcl_test_f_mod
                 do mm = 1, e4_length
                   do nn = 1, e5_length
                     do oo = 1, e6_length
-                      array_c32_7d(ii,jj,kk,ll,mm,nn,oo) = cmplx(ii*jj*kk*ll*mm*nn*oo,-(ii*jj*kk*ll*mm*nn*oo))
+                      array_c32_7d(ii,jj,kk,ll,mm,nn,oo) = cmplx(ii+jj+kk+ll+mm+nn+oo,-(ii+jj+kk+ll+mm+nn+oo))
                       f_sum = f_sum + array_c32_7d(ii,jj,kk,ll,mm,nn,oo)
                     end do
                   end do
@@ -2948,9 +3048,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c32_7d'
+          write(*,*)'FAILED F ndarray_c32_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -2977,7 +3079,7 @@ module flcl_test_f_mod
                 do mm = 1, e4_length
                   do nn = 1, e5_length
                     do oo = 1, e6_length
-                      array_c64_7d(ii,jj,kk,ll,mm,nn,oo) = cmplx(ii*jj*kk*ll*mm*nn*oo,-(ii*jj*kk*ll*mm*nn*oo))
+                      array_c64_7d(ii,jj,kk,ll,mm,nn,oo) = cmplx(ii+jj+kk+ll+mm+nn+oo,-(ii+jj+kk+ll+mm+nn+oo))
                       f_sum = f_sum + array_c64_7d(ii,jj,kk,ll,mm,nn,oo)
                     end do
                   end do
@@ -3005,9 +3107,11 @@ module flcl_test_f_mod
         end do
         if ( f_sum .eq. c_sum ) then
           write(*,*)'PASSED ndarray_c64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
-          write(*,*)'FAILED ndarray_c64_7d'
+          write(*,*)'FAILED F ndarray_c64_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -3045,9 +3149,11 @@ module flcl_test_f_mod
   
           if (f_sum == c_sum) then
             write(*,*)'PASSED kokkos_allocate_view_l_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_l_1d'
+            write(*,*)'FAILED F kokkos_allocate_view_l_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3081,9 +3187,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_i32_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_i32_1d'
+            write(*,*)'FAILED F kokkos_allocate_view_i32_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3117,9 +3225,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_i64_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_i64_1d'
+            write(*,*)'FAILED F kokkos_allocate_view_i64_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3153,9 +3263,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_r32_1d'
+            write(*,*)'FAILED F kokkos_allocate_view_r32_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3189,9 +3301,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_r64_1d'
+            write(*,*)'FAILED F kokkos_allocate_view_r64_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3233,9 +3347,11 @@ module flcl_test_f_mod
           end do
           if (f_sum == c_sum) then
             write(*,*)'PASSED kokkos_allocate_view_l_2d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_l_2d'
+            write(*,*)'FAILED F kokkos_allocate_view_l_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3259,7 +3375,7 @@ module flcl_test_f_mod
         call kokkos_allocate_view( array_i32_2d, v_array_i32_2d, 'array_i32_2d', e0_length, e1_length )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_i32_2d(ii,jj) = ii*jj
+            array_i32_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_i32_2d(ii,jj)
           end do
         end do
@@ -3273,9 +3389,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_i32_2d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_i32_2d'
+            write(*,*)'FAILED F kokkos_allocate_view_i32_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3299,7 +3417,7 @@ module flcl_test_f_mod
         call kokkos_allocate_view( array_i64_2d, v_array_i64_2d, 'array_i64_2d', e0_length, e1_length )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_i64_2d(ii,jj) = ii*jj
+            array_i64_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_i64_2d(ii,jj)
           end do
         end do
@@ -3313,9 +3431,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_i64_2d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_i64_2d'
+            write(*,*)'FAILED F kokkos_allocate_view_i64_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3339,7 +3459,7 @@ module flcl_test_f_mod
         call kokkos_allocate_view( array_r32_2d, v_array_r32_2d, 'array_r32_2d', e0_length, e1_length )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_r32_2d(ii,jj) = ii*jj
+            array_r32_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_r32_2d(ii,jj)
           end do
         end do
@@ -3353,9 +3473,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_2d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_r32_2d'
+            write(*,*)'FAILED F kokkos_allocate_view_r32_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3379,7 +3501,7 @@ module flcl_test_f_mod
         call kokkos_allocate_view( array_r64_2d, v_array_r64_2d, 'array_r64_2d', e0_length, e1_length )
         do ii = 1, e0_length
           do jj = 1, e1_length
-            array_r64_2d(ii,jj) = ii*jj
+            array_r64_2d(ii,jj) = ii+jj
             f_sum = f_sum + array_r64_2d(ii,jj)
           end do
         end do
@@ -3393,9 +3515,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_2d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_r64_2d'
+            write(*,*)'FAILED F kokkos_allocate_view_r64_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3441,9 +3565,11 @@ module flcl_test_f_mod
           end do
           if (f_sum == c_sum) then
             write(*,*)'PASSED kokkos_allocate_view_l_3d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_l_3d'
+            write(*,*)'FAILED F kokkos_allocate_view_l_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3468,7 +3594,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_i32_3d(ii,jj,kk) = ii*jj*kk
+              array_i32_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_i32_3d(ii,jj,kk)
             end do
           end do
@@ -3485,9 +3611,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_i32_3d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_i32_3d'
+            write(*,*)'FAILED F kokkos_allocate_view_i32_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3512,7 +3640,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_i64_3d(ii,jj,kk) = ii*jj*kk
+              array_i64_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_i64_3d(ii,jj,kk)
             end do
           end do
@@ -3529,9 +3657,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_i64_3d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_i64_3d'
+            write(*,*)'FAILED F kokkos_allocate_view_i64_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3556,7 +3686,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_r32_3d(ii,jj,kk) = ii*jj*kk
+              array_r32_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_r32_3d(ii,jj,kk)
             end do
           end do
@@ -3573,9 +3703,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_3d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_r32_3d'
+            write(*,*)'FAILED F kokkos_allocate_view_r32_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail
@@ -3600,7 +3732,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           do jj = 1, e1_length
             do kk = 1, e2_length
-              array_r64_3d(ii,jj,kk) = ii*jj*kk
+              array_r64_3d(ii,jj,kk) = ii+jj+kk
               f_sum = f_sum + array_r64_3d(ii,jj,kk)
             end do
           end do
@@ -3617,9 +3749,11 @@ module flcl_test_f_mod
           end do
           if ( f_sum .eq. c_sum ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_3d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_pass
           else
-            write(*,*)'FAILED kokkos_allocate_view_r64_3d'
+            write(*,*)'FAILED F kokkos_allocate_view_r64_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
             ierr = flcl_test_fail

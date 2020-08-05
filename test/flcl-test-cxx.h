@@ -52,13 +52,31 @@ typedef enum _flcl_test_error_t {
 } flcl_test_error_t;
 
 
-size_t e0_length = 10;
-size_t e1_length = 9;
-size_t e2_length = 8;
-size_t e3_length = 7;
-size_t e4_length = 6;
-size_t e5_length = 5;
-size_t e6_length = 4;
+size_t e0_length = 8;
+size_t e1_length = 7;
+size_t e2_length = 6;
+size_t e3_length = 5;
+size_t e4_length = 4;
+size_t e5_length = 3;
+size_t e6_length = 2;
+
+float weak_precision_single = 1.0e-6;
+double weak_precision_double = 1.0e-13;
+float strong_precision_single = 1.0e-7;
+double strong_precision_double = 1.0e-14;
+
+#ifdef __INTEL_COMPILER
+#ifdef NDEBUG
+float precision_single = weak_precision_single;
+double precision_double = weak_precision_double;
+#else
+float precision_single = strong_precision_single;
+double precision_double = strong_precision_double;
+#endif
+#else
+float precision_single = strong_precision_single;
+double precision_double = strong_precision_double;
+#endif
 
 #ifdef __cplusplus
   bool logical_pre = true;

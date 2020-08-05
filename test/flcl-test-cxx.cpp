@@ -55,7 +55,7 @@ extern "C" {
     }
 
     if (c_sum != *f_sum) {
-      std::cout << "FAILED ndarray_l_1d" << std::endl;
+      std::cout << "FAILED C ndarray_l_1d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -75,11 +75,11 @@ extern "C" {
     auto array_i32_1d = view_from_ndarray<int32_t*>(*nd_array_i32_1d);
     
     for (size_t ii = 0; ii < array_i32_1d.extent(0); ii++) {
-      c_sum += array_i32_1d(ii);
+      c_sum = c_sum + array_i32_1d(ii);
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i32_1d" << std::endl;
+      std::cout << "FAILED C ndarray_i32_1d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -88,7 +88,7 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_i32_1d.extent(0); ii++) {
       array_i32_1d(ii) = ii;
-      c_sum += array_i32_1d(ii);
+      c_sum = c_sum + array_i32_1d(ii);
     }
 
     return c_sum;
@@ -101,7 +101,7 @@ extern "C" {
     auto array_i64_1d = view_from_ndarray<int64_t*>(*nd_array_i64_1d);
 
     for (size_t ii = 0; ii < array_i64_1d.extent(0); ii++) {
-      c_sum += array_i64_1d(ii);
+      c_sum = c_sum + array_i64_1d(ii);
     }
 
     if ( c_sum != *f_sum ) {
@@ -114,7 +114,7 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_i64_1d.extent(0); ii++) {
       array_i64_1d(ii) = ii;
-      c_sum += array_i64_1d(ii);
+      c_sum = c_sum + array_i64_1d(ii);
     }
 
     return c_sum;
@@ -127,12 +127,12 @@ extern "C" {
     auto array_r32_1d = view_from_ndarray<float*>(*nd_array_r32_1d);
 
     for (size_t ii = 0; ii < array_r32_1d.extent(0); ii++) {
-      c_sum += array_r32_1d(ii);
+      c_sum = c_sum + array_r32_1d(ii);
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-7 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_single * c_sum) {
       std::cout << std::setprecision(8) << std::fixed;
-      std::cout << "FAILED ndarray_r32_1d" << std::endl;
+      std::cout << "FAILED C ndarray_r32_1d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -142,7 +142,7 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_r32_1d.extent(0); ii++) {
       array_r32_1d(ii) = ii;
-      c_sum += array_r32_1d(ii);
+      c_sum = c_sum + array_r32_1d(ii);
     }
 
     return c_sum;
@@ -155,12 +155,12 @@ extern "C" {
     auto array_r64_1d = view_from_ndarray<double*>(*nd_array_r64_1d);
 
     for (size_t ii = 0; ii < array_r64_1d.extent(0); ii++) {
-      c_sum += array_r64_1d(ii);
+      c_sum = c_sum + array_r64_1d(ii);
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-14 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_double * c_sum) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_r64_1d" << std::endl;
+      std::cout << "FAILED C ndarray_r64_1d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -170,7 +170,7 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_r64_1d.extent(0); ii++) {
       array_r64_1d(ii) = ii;
-      c_sum += array_r64_1d(ii);
+      c_sum = c_sum + array_r64_1d(ii);
     }
 
     return c_sum;
@@ -183,12 +183,12 @@ extern "C" {
 
     auto array_c32_1d = view_from_ndarray<Kokkos::complex<float>*>(*nd_array_c32_1d);
     for (size_t ii = 0; ii < array_c32_1d.extent(0); ii++) {
-      c_sum += array_c32_1d(ii);
+      c_sum = c_sum + array_c32_1d(ii);
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c32_1d" << std::endl;
+      std::cout << "FAILED C ndarray_c32_1d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -202,8 +202,8 @@ extern "C" {
 
     c_sum = Kokkos::complex<float>(0.0,0.0);
     for (size_t ii = 0; ii < array_c32_1d.extent(0); ii++) {
-      array_c32_1d(ii) = Kokkos::complex<float>(1.0*ii,-1.0*ii);
-      c_sum += array_c32_1d(ii);
+      array_c32_1d(ii) = Kokkos::complex<float>(1.0*(ii),-1.0*(ii));
+      c_sum = c_sum + array_c32_1d(ii);
     }
 
     float _Complex c_sum_to_return;
@@ -219,12 +219,12 @@ extern "C" {
 
     auto array_c64_1d = view_from_ndarray<Kokkos::complex<double>*>(*nd_array_c64_1d);
     for (size_t ii = 0; ii < array_c64_1d.extent(0); ii++) {
-      c_sum += array_c64_1d(ii);
+      c_sum = c_sum + array_c64_1d(ii);
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c64_1d" << std::endl;
+      std::cout << "FAILED C ndarray_c64_1d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -238,8 +238,8 @@ extern "C" {
     
     c_sum = Kokkos::complex<double>(0.0,0.0);
     for (size_t ii = 0; ii < array_c64_1d.extent(0); ii++) {
-      array_c64_1d(ii) = Kokkos::complex<double>(1.0*ii,-1.0*ii);
-      c_sum += array_c64_1d(ii);
+      array_c64_1d(ii) = Kokkos::complex<double>(1.0*(ii),-1.0*(ii));
+      c_sum = c_sum + array_c64_1d(ii);
     }
 
     double _Complex c_sum_to_return;
@@ -261,7 +261,7 @@ extern "C" {
     }
 
     if (c_sum != *f_sum) {
-      std::cout << "FAILED ndarray_l_2d" << std::endl;
+      std::cout << "FAILED C ndarray_l_2d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -284,12 +284,12 @@ extern "C" {
 
     for (size_t ii = 0; ii < array_i32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_2d.extent(1); jj++) {
-        c_sum += array_i32_2d(ii,jj);
+        c_sum = c_sum + array_i32_2d(ii,jj);
       }
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i32_2d" << std::endl;
+      std::cout << "FAILED C ndarray_i32_2d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -298,8 +298,8 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_i32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_2d.extent(1); jj++) {
-        array_i32_2d(ii,jj) = ii*jj;
-        c_sum += array_i32_2d(ii,jj);
+        array_i32_2d(ii,jj) = ii+jj;
+        c_sum = c_sum + array_i32_2d(ii,jj);
       }
     }
 
@@ -314,12 +314,12 @@ extern "C" {
 
     for (size_t ii = 0; ii < array_i64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_2d.extent(1); jj++) {
-        c_sum += array_i64_2d(ii,jj);
+        c_sum = c_sum + array_i64_2d(ii,jj);
       }
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i64_2d" << std::endl;
+      std::cout << "FAILED C ndarray_i64_2d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -328,8 +328,8 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_i64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_2d.extent(1); jj++) {
-        array_i64_2d(ii,jj) = ii*jj;
-        c_sum += array_i64_2d(ii,jj);
+        array_i64_2d(ii,jj) = ii+jj;
+        c_sum = c_sum + array_i64_2d(ii,jj);
       }
     }
 
@@ -344,13 +344,13 @@ extern "C" {
 
     for (size_t ii = 0; ii < array_r32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_2d.extent(1); jj++) {
-        c_sum += array_r32_2d(ii,jj);
+        c_sum = c_sum + array_r32_2d(ii,jj);
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-7 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_single * c_sum) {
       std::cout << std::setprecision(8) << std::fixed;
-      std::cout << "FAILED ndarray_r32_2d" << std::endl;
+      std::cout << "FAILED C ndarray_r32_2d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -360,8 +360,8 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_r32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_2d.extent(1); jj++) {
-        array_r32_2d(ii,jj) = ii*jj;
-        c_sum += array_r32_2d(ii,jj);
+        array_r32_2d(ii,jj) = ii+jj;
+        c_sum = c_sum + array_r32_2d(ii,jj);
       }
     }
 
@@ -376,13 +376,13 @@ extern "C" {
 
     for (size_t ii = 0; ii < array_r64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_2d.extent(1); jj++) {
-        c_sum += array_r64_2d(ii,jj);
+        c_sum = c_sum + array_r64_2d(ii,jj);
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-14 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_double * c_sum) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_r64_1d" << std::endl;
+      std::cout << "FAILED C ndarray_r64_1d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -392,8 +392,8 @@ extern "C" {
     c_sum = 0;
     for (size_t ii = 0; ii < array_r64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_2d.extent(1); jj++) {
-        array_r64_2d(ii,jj) = ii*jj;
-        c_sum += array_r64_2d(ii,jj);
+        array_r64_2d(ii,jj) = ii+jj;
+        c_sum = c_sum + array_r64_2d(ii,jj);
       }
     }
 
@@ -408,13 +408,13 @@ extern "C" {
     auto array_c32_2d = view_from_ndarray<Kokkos::complex<float>**>(*nd_array_c32_2d);
     for (size_t ii = 0; ii < array_c32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_2d.extent(1); jj++) {
-        c_sum += array_c32_2d(ii,jj);
+        c_sum = c_sum + array_c32_2d(ii,jj);
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c32_2d" << std::endl;
+      std::cout << "FAILED C ndarray_c32_2d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -429,8 +429,8 @@ extern "C" {
     c_sum = Kokkos::complex<float>(0.0,0.0);
     for (size_t ii = 0; ii < array_c32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_2d.extent(1); jj++) {
-        array_c32_2d(ii,jj) = Kokkos::complex<float>(1.0*ii*jj,-1.0*ii*jj);
-        c_sum += array_c32_2d(ii,jj);
+        array_c32_2d(ii,jj) = Kokkos::complex<float>(1.0*(ii+jj),-1.0*(ii+jj));
+        c_sum = c_sum + array_c32_2d(ii,jj);
       }
     }
 
@@ -456,13 +456,13 @@ extern "C" {
     auto array_c64_2d = view_from_ndarray<Kokkos::complex<double>**>(*nd_array_c64_2d);
     for (size_t ii = 0; ii < array_c64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_2d.extent(1); jj++) {
-        c_sum += array_c64_2d(ii,jj);
+        c_sum = c_sum + array_c64_2d(ii,jj);
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c64_2d" << std::endl;
+      std::cout << "FAILED C ndarray_c64_2d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -477,8 +477,8 @@ extern "C" {
     c_sum = Kokkos::complex<double>(0.0,0.0);
     for (size_t ii = 0; ii < array_c64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_2d.extent(1); jj++) {
-        array_c64_2d(ii,jj) = Kokkos::complex<double>(1.0*ii*jj,-1.0*ii*jj);
-        c_sum += array_c64_2d(ii,jj);
+        array_c64_2d(ii,jj) = Kokkos::complex<double>(1.0*(ii+jj),-1.0*(ii+jj));
+        c_sum = c_sum + array_c64_2d(ii,jj);
       }
     }
 
@@ -502,7 +502,7 @@ extern "C" {
     }
 
     if (c_sum != *f_sum) {
-      std::cout << "FAILED ndarray_l_3d" << std::endl;
+      std::cout << "FAILED C ndarray_l_3d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -528,13 +528,13 @@ extern "C" {
     for (size_t ii = 0; ii < array_i32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_3d.extent(2); kk++) {
-          c_sum += array_i32_3d(ii,jj,kk);
+          c_sum = c_sum + array_i32_3d(ii,jj,kk);
         }
       }
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i32_3d" << std::endl;
+      std::cout << "FAILED C ndarray_i32_3d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -544,8 +544,8 @@ extern "C" {
     for (size_t ii = 0; ii < array_i32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_3d.extent(2); kk++) {
-          array_i32_3d(ii,jj,kk) = ii*jj*kk;
-          c_sum += array_i32_3d(ii,jj,kk);
+          array_i32_3d(ii,jj,kk) = ii+jj+kk;
+          c_sum = c_sum + array_i32_3d(ii,jj,kk);
         }
       }
     }
@@ -562,13 +562,13 @@ extern "C" {
     for (size_t ii = 0; ii < array_i64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_3d.extent(2); kk++) {
-          c_sum += array_i64_3d(ii,jj,kk);
+          c_sum = c_sum + array_i64_3d(ii,jj,kk);
         }
       }
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i64_3d" << std::endl;
+      std::cout << "FAILED C ndarray_i64_3d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -578,8 +578,8 @@ extern "C" {
     for (size_t ii = 0; ii < array_i64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_3d.extent(2); kk++) {
-          array_i64_3d(ii,jj,kk) = ii*jj*kk;
-          c_sum += array_i64_3d(ii,jj,kk);
+          array_i64_3d(ii,jj,kk) = ii+jj+kk;
+          c_sum = c_sum + array_i64_3d(ii,jj,kk);
         }
       }
     }
@@ -596,14 +596,14 @@ extern "C" {
     for (size_t ii = 0; ii < array_r32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_3d.extent(2); kk++) {
-          c_sum += array_r32_3d(ii,jj,kk);
+          c_sum = c_sum + array_r32_3d(ii,jj,kk);
         }
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-7 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_single * c_sum) {
       std::cout << std::setprecision(8) << std::fixed;
-      std::cout << "FAILED ndarray_r32_3d" << std::endl;
+      std::cout << "FAILED C ndarray_r32_3d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -614,8 +614,8 @@ extern "C" {
     for (size_t ii = 0; ii < array_r32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_3d.extent(2); kk++) {
-          array_r32_3d(ii,jj,kk) = ii*jj*kk;
-          c_sum += array_r32_3d(ii,jj,kk);
+          array_r32_3d(ii,jj,kk) = ii+jj+kk;
+          c_sum = c_sum + array_r32_3d(ii,jj,kk);
         }
       }
     }
@@ -632,14 +632,14 @@ extern "C" {
     for (size_t ii = 0; ii < array_r64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_3d.extent(2); kk++) {
-          c_sum += array_r64_3d(ii,jj,kk);
+          c_sum = c_sum + array_r64_3d(ii,jj,kk);
         }
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-14 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_double * c_sum) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_r64_3d" << std::endl;
+      std::cout << "FAILED C ndarray_r64_3d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -650,8 +650,8 @@ extern "C" {
     for (size_t ii = 0; ii < array_r64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_3d.extent(2); kk++) {
-          array_r64_3d(ii,jj,kk) = ii*jj*kk;
-          c_sum += array_r64_3d(ii,jj,kk);
+          array_r64_3d(ii,jj,kk) = ii+jj+kk;
+          c_sum = c_sum + array_r64_3d(ii,jj,kk);
         }
       }
     }
@@ -669,14 +669,14 @@ extern "C" {
     for (size_t ii = 0; ii < array_c32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_3d.extent(2); kk++) {
-          c_sum += array_c32_3d(ii,jj,kk);
+          c_sum = c_sum + array_c32_3d(ii,jj,kk);
         }
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c32_3d" << std::endl;
+      std::cout << "FAILED C ndarray_c32_3d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -692,8 +692,8 @@ extern "C" {
     for (size_t ii = 0; ii < array_c32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_3d.extent(2); kk++) {
-          array_c32_3d(ii,jj,kk) = Kokkos::complex<float>(1.0*ii*jj*kk,-1.0*ii*jj*kk);
-          c_sum += array_c32_3d(ii,jj,kk);
+          array_c32_3d(ii,jj,kk) = Kokkos::complex<float>(1.0*(ii+jj+kk),-1.0*(ii+jj+kk));
+          c_sum = c_sum + array_c32_3d(ii,jj,kk);
         }
       }
     }
@@ -712,14 +712,15 @@ extern "C" {
     for (size_t ii = 0; ii < array_c64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_3d.extent(2); kk++) {
-          c_sum += array_c64_3d(ii,jj,kk);
+          c_sum = c_sum + array_c64_3d(ii,jj,kk);
+          // std::cout << "c ii "<< ii << " jj " << " kk " << kk << " c_sum " << c_sum << std::endl;
         }
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c64_3d" << std::endl;
+      std::cout << "FAILED C ndarray_c64_3d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -735,8 +736,10 @@ extern "C" {
     for (size_t ii = 0; ii < array_c64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_3d.extent(2); kk++) {
-          array_c64_3d(ii,jj,kk) = Kokkos::complex<double>(1.0*ii*jj*kk,-1.0*ii*jj*kk);
-          c_sum += array_c64_3d(ii,jj,kk);
+          array_c64_3d(ii,jj,kk) = Kokkos::complex<double>(1.0*(ii+jj+kk),-1.0*(ii+jj+kk));
+          // c_sum = c_sum + array_c64_3d(ii,jj,kk);
+          c_sum = c_sum + array_c64_3d(ii,jj,kk);
+          // std::cout << "c ii "<< ii << " jj " << " kk " << kk << " c_sum " << c_sum << std::endl;
         }
       }
     }
@@ -763,7 +766,7 @@ extern "C" {
     }
 
     if (c_sum != *f_sum) {
-      std::cout << "FAILED ndarray_l_4d" << std::endl;
+      std::cout << "FAILED C ndarray_l_4d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -792,14 +795,14 @@ extern "C" {
       for (size_t jj = 0; jj < array_i32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_4d.extent(3); ll++) {
-            c_sum += array_i32_4d(ii,jj,kk,ll);
+            c_sum = c_sum + array_i32_4d(ii,jj,kk,ll);
           }
         }
       }
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i32_4d" << std::endl;
+      std::cout << "FAILED C ndarray_i32_4d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -810,8 +813,8 @@ extern "C" {
       for (size_t jj = 0; jj < array_i32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_4d.extent(3); ll++) {
-            array_i32_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
-            c_sum += array_i32_4d(ii,jj,kk,ll);
+            array_i32_4d(ii,jj,kk,ll) = ii+jj+kk+ll;
+            c_sum = c_sum + array_i32_4d(ii,jj,kk,ll);
           }
         }
       }
@@ -830,14 +833,14 @@ extern "C" {
       for (size_t jj = 0; jj < array_i64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_4d.extent(3); ll++) {
-            c_sum += array_i64_4d(ii,jj,kk,ll);
+            c_sum = c_sum + array_i64_4d(ii,jj,kk,ll);
           }
         }
       }
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i64_4d" << std::endl;
+      std::cout << "FAILED C ndarray_i64_4d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -848,8 +851,8 @@ extern "C" {
       for (size_t jj = 0; jj < array_i64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_4d.extent(3); ll++) {
-            array_i64_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
-            c_sum += array_i64_4d(ii,jj,kk,ll);
+            array_i64_4d(ii,jj,kk,ll) = ii+jj+kk+ll;
+            c_sum = c_sum + array_i64_4d(ii,jj,kk,ll);
           }
         }
       }
@@ -868,15 +871,15 @@ extern "C" {
       for (size_t jj = 0; jj < array_r32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_4d.extent(3); ll++) {
-            c_sum += array_r32_4d(ii,jj,kk,ll);
+            c_sum = c_sum + array_r32_4d(ii,jj,kk,ll);
           }
         }
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-7 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_single * c_sum) {
       std::cout << std::setprecision(8) << std::fixed;
-      std::cout << "FAILED ndarray_r32_4d" << std::endl;
+      std::cout << "FAILED C ndarray_r32_4d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -888,8 +891,8 @@ extern "C" {
       for (size_t jj = 0; jj < array_r32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_4d.extent(3); ll++) {
-            array_r32_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
-            c_sum += array_r32_4d(ii,jj,kk,ll);
+            array_r32_4d(ii,jj,kk,ll) = ii+jj+kk+ll;
+            c_sum = c_sum + array_r32_4d(ii,jj,kk,ll);
           }
         }
       }
@@ -908,15 +911,15 @@ extern "C" {
       for (size_t jj = 0; jj < array_r64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_4d.extent(3); ll++) {
-            c_sum += array_r64_4d(ii,jj,kk,ll);
+            c_sum = c_sum + array_r64_4d(ii,jj,kk,ll);
           }
         }
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-14 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_double * c_sum) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_r64_4d" << std::endl;
+      std::cout << "FAILED C ndarray_r64_4d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -928,8 +931,8 @@ extern "C" {
       for (size_t jj = 0; jj < array_r64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_4d.extent(3); ll++) {
-            array_r64_4d(ii,jj,kk,ll) = ii*jj*kk*ll;
-            c_sum += array_r64_4d(ii,jj,kk,ll);
+            array_r64_4d(ii,jj,kk,ll) = ii+jj+kk+ll;
+            c_sum = c_sum + array_r64_4d(ii,jj,kk,ll);
           }
         }
       }
@@ -949,15 +952,15 @@ extern "C" {
       for (size_t jj = 0; jj < array_c32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c32_4d.extent(3); ll++) {
-            c_sum += array_c32_4d(ii,jj,kk,ll);
+            c_sum = c_sum + array_c32_4d(ii,jj,kk,ll);
           }
         }
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c32_4d" << std::endl;
+      std::cout << "FAILED C ndarray_c32_4d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -974,8 +977,8 @@ extern "C" {
       for (size_t jj = 0; jj < array_c32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c32_4d.extent(3); ll++) {
-            array_c32_4d(ii,jj,kk,ll) = Kokkos::complex<float>(1.0*ii*jj*kk*ll,-1.0*ii*jj*kk*ll);
-            c_sum += array_c32_4d(ii,jj,kk,ll);
+            array_c32_4d(ii,jj,kk,ll) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll),-1.0*(ii+jj+kk+ll));
+            c_sum = c_sum + array_c32_4d(ii,jj,kk,ll);
           }
         }
       }
@@ -996,15 +999,15 @@ extern "C" {
       for (size_t jj = 0; jj < array_c64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c64_4d.extent(3); ll++) {
-            c_sum += array_c64_4d(ii,jj,kk,ll);
+            c_sum = c_sum + array_c64_4d(ii,jj,kk,ll);
           }
         }
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c64_4d" << std::endl;
+      std::cout << "FAILED C ndarray_c64_4d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -1021,8 +1024,8 @@ extern "C" {
       for (size_t jj = 0; jj < array_c64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c64_4d.extent(3); ll++) {
-            array_c64_4d(ii,jj,kk,ll) = Kokkos::complex<double>(1.0*ii*jj*kk*ll,-1.0*ii*jj*kk*ll);
-            c_sum += array_c64_4d(ii,jj,kk,ll);
+            array_c64_4d(ii,jj,kk,ll) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll),-1.0*(ii+jj+kk+ll));
+            c_sum = c_sum + array_c64_4d(ii,jj,kk,ll);
           }
         }
       }
@@ -1052,7 +1055,7 @@ extern "C" {
     }
 
     if (c_sum != *f_sum) {
-      std::cout << "FAILED ndarray_l_5d" << std::endl;
+      std::cout << "FAILED C ndarray_l_5d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1084,7 +1087,7 @@ extern "C" {
         for (size_t kk = 0; kk < array_i32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_5d.extent(4); mm++) {
-              c_sum += array_i32_5d(ii,jj,kk,ll,mm);
+              c_sum = c_sum + array_i32_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1092,7 +1095,7 @@ extern "C" {
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i32_5d" << std::endl;
+      std::cout << "FAILED C ndarray_i32_5d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1104,8 +1107,8 @@ extern "C" {
         for (size_t kk = 0; kk < array_i32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_5d.extent(4); mm++) {
-              array_i32_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
-              c_sum += array_i32_5d(ii,jj,kk,ll,mm);
+              array_i32_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm;
+              c_sum = c_sum + array_i32_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1126,7 +1129,7 @@ extern "C" {
         for (size_t kk = 0; kk < array_i64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_5d.extent(4); mm++) {
-              c_sum += array_i64_5d(ii,jj,kk,ll,mm);
+              c_sum = c_sum + array_i64_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1134,7 +1137,7 @@ extern "C" {
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i64_5d" << std::endl;
+      std::cout << "FAILED C ndarray_i64_5d" << std::endl;
       exit(EXIT_FAILURE);    
     }
 
@@ -1144,8 +1147,8 @@ extern "C" {
         for (size_t kk = 0; kk < array_i64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_5d.extent(4); mm++) {
-              array_i64_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
-              c_sum += array_i64_5d(ii,jj,kk,ll,mm);
+              array_i64_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm;
+              c_sum = c_sum + array_i64_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1166,19 +1169,20 @@ extern "C" {
         for (size_t kk = 0; kk < array_r32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_5d.extent(4); mm++) {
-              c_sum += array_r32_5d(ii,jj,kk,ll,mm);
+              c_sum = c_sum + array_r32_5d(ii,jj,kk,ll,mm);
             }
           }
         }
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-7 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > (precision_single * c_sum) ) {
       std::cout << std::setprecision(8) << std::fixed;
-      std::cout << "FAILED ndarray_r32_5d" << std::endl;
+      std::cout << "FAILED C ndarray_r32_5d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
-      std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
+      std::cout << "std::abs(c_sum - *f_sum) = " << std::abs(c_sum - *f_sum) << std::endl;
+      std::cout << "(precision_single * c_sum) = " << (precision_single * c_sum) << std::endl;
       exit(EXIT_FAILURE);    
     }
 
@@ -1188,8 +1192,8 @@ extern "C" {
         for (size_t kk = 0; kk < array_r32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_5d.extent(4); mm++) {
-              array_r32_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
-              c_sum += array_r32_5d(ii,jj,kk,ll,mm);
+              array_r32_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm;
+              c_sum = c_sum + array_r32_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1210,16 +1214,16 @@ extern "C" {
         for (size_t kk = 0; kk < array_r64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_5d.extent(4); mm++) {
-              c_sum += array_r64_5d(ii,jj,kk,ll,mm);
+              c_sum = c_sum + array_r64_5d(ii,jj,kk,ll,mm);
             }
           }
         }
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-14 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_double * c_sum) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_r64_5d" << std::endl;
+      std::cout << "FAILED C ndarray_r64_5d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -1232,8 +1236,8 @@ extern "C" {
         for (size_t kk = 0; kk < array_r64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_5d.extent(4); mm++) {
-              array_r64_5d(ii,jj,kk,ll,mm) = ii*jj*kk*ll*mm;
-              c_sum += array_r64_5d(ii,jj,kk,ll,mm);
+              array_r64_5d(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm;
+              c_sum = c_sum + array_r64_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1255,16 +1259,16 @@ extern "C" {
         for (size_t kk = 0; kk < array_c32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c32_5d.extent(4); mm++) {
-              c_sum += array_c32_5d(ii,jj,kk,ll,mm);
+              c_sum = c_sum + array_c32_5d(ii,jj,kk,ll,mm);
             }
           }
         }
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c32_5d" << std::endl;
+      std::cout << "FAILED C ndarray_c32_5d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -1282,8 +1286,8 @@ extern "C" {
         for (size_t kk = 0; kk < array_c32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c32_5d.extent(4); mm++) {
-              array_c32_5d(ii,jj,kk,ll,mm) = Kokkos::complex<float>(1.0*ii*jj*kk*ll*mm,-1.0*ii*jj*kk*ll*mm);
-              c_sum += array_c32_5d(ii,jj,kk,ll,mm);
+              array_c32_5d(ii,jj,kk,ll,mm) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll+mm),-1.0*(ii+jj+kk+ll+mm));
+              c_sum = c_sum + array_c32_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1306,16 +1310,16 @@ extern "C" {
         for (size_t kk = 0; kk < array_c64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c64_5d.extent(4); mm++) {
-              c_sum += array_c64_5d(ii,jj,kk,ll,mm);
+              c_sum = c_sum + array_c64_5d(ii,jj,kk,ll,mm);
             }
           }
         }
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c64_5d" << std::endl;
+      std::cout << "FAILED C ndarray_c64_5d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -1333,8 +1337,8 @@ extern "C" {
         for (size_t kk = 0; kk < array_c64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c64_5d.extent(4); mm++) {
-              array_c64_5d(ii,jj,kk,ll,mm) = Kokkos::complex<double>(1.0*ii*jj*kk*ll*mm,-1.0*ii*jj*kk*ll*mm);
-              c_sum += array_c64_5d(ii,jj,kk,ll,mm);
+              array_c64_5d(ii,jj,kk,ll,mm) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll+mm),-1.0*(ii+jj+kk+ll+mm));
+              c_sum = c_sum + array_c64_5d(ii,jj,kk,ll,mm);
             }
           }
         }
@@ -1367,7 +1371,7 @@ extern "C" {
     }
 
     if (c_sum != *f_sum) {
-      std::cout << "FAILED ndarray_l_6d" << std::endl;
+      std::cout << "FAILED C ndarray_l_6d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1402,7 +1406,7 @@ extern "C" {
           for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
-                c_sum += array_i32_6d(ii,jj,kk,ll,mm,nn);
+                c_sum = c_sum + array_i32_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1411,7 +1415,7 @@ extern "C" {
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i32_6d" << std::endl;
+      std::cout << "FAILED C ndarray_i32_6d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1424,8 +1428,8 @@ extern "C" {
           for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
-                array_i32_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
-                c_sum += array_i32_6d(ii,jj,kk,ll,mm,nn);
+                array_i32_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                c_sum = c_sum + array_i32_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1448,7 +1452,7 @@ extern "C" {
           for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
-                c_sum += array_i64_6d(ii,jj,kk,ll,mm,nn);
+                c_sum = c_sum + array_i64_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1457,7 +1461,7 @@ extern "C" {
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i64_6d" << std::endl;
+      std::cout << "FAILED C ndarray_i64_6d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1470,8 +1474,8 @@ extern "C" {
           for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
-                array_i64_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
-                c_sum += array_i64_6d(ii,jj,kk,ll,mm,nn);
+                array_i64_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                c_sum = c_sum + array_i64_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1494,7 +1498,7 @@ extern "C" {
           for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
-                c_sum += array_r32_6d(ii,jj,kk,ll,mm,nn);
+                c_sum = c_sum + array_r32_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1502,12 +1506,13 @@ extern "C" {
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-7 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > (precision_single * c_sum) ) {
       std::cout << std::setprecision(8) << std::fixed;
-      std::cout << "FAILED ndarray_r32_6d" << std::endl;
+      std::cout << "FAILED C ndarray_r32_6d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
-      std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
+      std::cout << "std::abs(c_sum - *f_sum) = " << std::abs(c_sum - *f_sum) << std::endl;
+      std::cout << "(precision_single * c_sum) = " << (precision_single * c_sum) << std::endl;
       exit(EXIT_FAILURE);    
     }
 
@@ -1518,8 +1523,8 @@ extern "C" {
           for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
-                array_r32_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
-                c_sum += array_r32_6d(ii,jj,kk,ll,mm,nn);
+                array_r32_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                c_sum = c_sum + array_r32_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1542,7 +1547,7 @@ extern "C" {
           for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
-                c_sum += array_r64_6d(ii,jj,kk,ll,mm,nn);
+                c_sum = c_sum + array_r64_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1550,9 +1555,9 @@ extern "C" {
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-14 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_double * c_sum) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_r64_6d" << std::endl;
+      std::cout << "FAILED C ndarray_r64_6d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -1566,8 +1571,8 @@ extern "C" {
           for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
-                array_r64_6d(ii,jj,kk,ll,mm,nn) = ii*jj*kk*ll*mm*nn;
-                c_sum += array_r64_6d(ii,jj,kk,ll,mm,nn);
+                array_r64_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                c_sum = c_sum + array_r64_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1591,7 +1596,7 @@ extern "C" {
           for (size_t ll = 0; ll < array_c32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c32_6d.extent(5); nn++) {
-                c_sum += array_c32_6d(ii,jj,kk,ll,mm,nn);
+                c_sum = c_sum + array_c32_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1599,9 +1604,9 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c32_6d" << std::endl;
+      std::cout << "FAILED C ndarray_c32_5d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -1620,8 +1625,8 @@ extern "C" {
           for (size_t ll = 0; ll < array_c32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c32_6d.extent(5); nn++) {
-                array_c32_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<float>(1.0*ii*jj*kk*ll*mm*nn,-1.0*ii*jj*kk*ll*mm*nn);
-                c_sum += array_c32_6d(ii,jj,kk,ll,mm,nn);
+                array_c32_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll+mm+nn),-1.0*(ii+jj+kk+ll+mm+nn));
+                c_sum = c_sum + array_c32_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1646,7 +1651,7 @@ extern "C" {
           for (size_t ll = 0; ll < array_c64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c64_6d.extent(5); nn++) {
-                c_sum += array_c64_6d(ii,jj,kk,ll,mm,nn);
+                c_sum = c_sum + array_c64_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1654,9 +1659,9 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c64_6d" << std::endl;
+      std::cout << "FAILED C ndarray_c64_6d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -1675,8 +1680,8 @@ extern "C" {
           for (size_t ll = 0; ll < array_c64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c64_6d.extent(5); nn++) {
-                array_c64_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<double>(1.0*ii*jj*kk*ll*mm*nn,-1.0*ii*jj*kk*ll*mm*nn);
-                c_sum += array_c64_6d(ii,jj,kk,ll,mm,nn);
+                array_c64_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll+mm+nn),-1.0*(ii+jj+kk+ll+mm+nn));
+                c_sum = c_sum + array_c64_6d(ii,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -1712,7 +1717,7 @@ extern "C" {
     }
 
     if (c_sum != *f_sum) {
-      std::cout << "FAILED ndarray_l_7d" << std::endl;
+      std::cout << "FAILED C ndarray_l_7d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1750,7 +1755,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_i32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i32_7d.extent(6); oo++) {
-                  c_sum += array_i32_7d(ii,jj,kk,ll,mm,nn,oo);
+                  c_sum = c_sum + array_i32_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1760,7 +1765,7 @@ extern "C" {
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i32_7d" << std::endl;
+      std::cout << "FAILED C ndarray_i32_7d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1774,8 +1779,8 @@ extern "C" {
             for (size_t mm = 0; mm < array_i32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i32_7d.extent(6); oo++) {
-                  array_i32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
-                  c_sum += array_i32_7d(ii,jj,kk,ll,mm,nn,oo);
+                  array_i32_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo;
+                  c_sum = c_sum + array_i32_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1800,7 +1805,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_i64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i64_7d.extent(6); oo++) {
-                  c_sum += array_i64_7d(ii,jj,kk,ll,mm,nn,oo);
+                  c_sum = c_sum + array_i64_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1810,7 +1815,7 @@ extern "C" {
     }
 
     if ( c_sum != *f_sum ) {
-      std::cout << "FAILED ndarray_i64_7d" << std::endl;
+      std::cout << "FAILED C ndarray_i64_7d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       exit(EXIT_FAILURE);    
@@ -1824,8 +1829,8 @@ extern "C" {
             for (size_t mm = 0; mm < array_i64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i64_7d.extent(6); oo++) {
-                  array_i64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
-                  c_sum += array_i64_7d(ii,jj,kk,ll,mm,nn,oo);
+                  array_i64_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo;
+                  c_sum = c_sum + array_i64_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1850,7 +1855,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_r32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r32_7d.extent(6); oo++) {
-                  c_sum += array_r32_7d(ii,jj,kk,ll,mm,nn,oo);
+                  c_sum = c_sum + array_r32_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1859,9 +1864,9 @@ extern "C" {
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-7 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_single * c_sum) {
       std::cout << std::setprecision(8) << std::fixed;
-      std::cout << "FAILED ndarray_r32_7d" << std::endl;
+      std::cout << "FAILED C ndarray_r32_7d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -1876,8 +1881,8 @@ extern "C" {
             for (size_t mm = 0; mm < array_r32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r32_7d.extent(6); oo++) {
-                  array_r32_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
-                  c_sum += array_r32_7d(ii,jj,kk,ll,mm,nn,oo);
+                  array_r32_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo;
+                  c_sum = c_sum + array_r32_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1902,7 +1907,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_r64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r64_7d.extent(6); oo++) {
-                  c_sum += array_r64_7d(ii,jj,kk,ll,mm,nn,oo);
+                  c_sum = c_sum + array_r64_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1911,9 +1916,9 @@ extern "C" {
       }
     }
 
-    if ( std::abs(c_sum - *f_sum) > 1.0e-14 * c_sum) {
+    if ( std::abs(c_sum - *f_sum) > precision_double * c_sum) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_r64_7d" << std::endl;
+      std::cout << "FAILED C ndarray_r64_7d" << std::endl;
       std::cout << "c_sum = " << c_sum << std::endl;
       std::cout << "f_sum = " << *f_sum << std::endl;
       std::cout << "c_sum - *f_sum = " << c_sum - *f_sum << std::endl;
@@ -1928,8 +1933,8 @@ extern "C" {
             for (size_t mm = 0; mm < array_r64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r64_7d.extent(6); oo++) {
-                  array_r64_7d(ii,jj,kk,ll,mm,nn,oo) = ii*jj*kk*ll*mm*nn*oo;
-                  c_sum += array_r64_7d(ii,jj,kk,ll,mm,nn,oo);
+                  array_r64_7d(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo;
+                  c_sum = c_sum + array_r64_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1955,7 +1960,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_c32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_c32_7d.extent(6); oo++) {
-                  c_sum += array_c32_7d(ii,jj,kk,ll,mm,nn,oo);
+                  c_sum = c_sum + array_c32_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -1964,9 +1969,9 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c32_7d" << std::endl;
+      std::cout << "FAILED C ndarray_c32_7d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -1986,8 +1991,8 @@ extern "C" {
             for (size_t mm = 0; mm < array_c32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_c32_7d.extent(6); oo++) {
-                  array_c32_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<float>(1.0*ii*jj*kk*ll*mm*nn*oo,-1.0*ii*jj*kk*ll*mm*nn*oo);
-                  c_sum += array_c32_7d(ii,jj,kk,ll,mm,nn,oo);
+                  array_c32_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll+mm+nn+oo),-1.0*(ii+jj+kk+ll+mm+nn+oo));
+                  c_sum = c_sum + array_c32_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -2014,7 +2019,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_c64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_c64_7d.extent(6); oo++) {
-                  c_sum += array_c64_7d(ii,jj,kk,ll,mm,nn,oo);
+                  c_sum = c_sum + array_c64_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -2023,9 +2028,9 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > 1.0e-14 * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < 1.0e-14 * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
-      std::cout << "FAILED ndarray_c64_7d" << std::endl;
+      std::cout << "FAILED C ndarray_c64_7d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
       std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
@@ -2045,8 +2050,8 @@ extern "C" {
             for (size_t mm = 0; mm < array_c64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_c64_7d.extent(6); oo++) {
-                  array_c64_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<double>(1.0*ii*jj*kk*ll*mm*nn*oo,-1.0*ii*jj*kk*ll*mm*nn*oo);
-                  c_sum += array_c64_7d(ii,jj,kk,ll,mm,nn,oo);
+                  array_c64_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll+mm+nn+oo),-1.0*(ii+jj+kk+ll+mm+nn+oo));
+                  c_sum = c_sum + array_c64_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -2067,7 +2072,7 @@ extern "C" {
       if ( array_l_1d(ii) ) (*c_sum)++;
     }
     if (*c_sum != *f_sum) {
-      std::cout << "FAILED kokkos_allocate_view_l_1d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_l_1d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     for (size_t ii = 0; ii < array_l_1d.extent(0); ii++) {
@@ -2083,7 +2088,7 @@ extern "C" {
       *c_sum += array_i32_1d(ii);
     }
     if ( *c_sum != *f_sum ) {
-      std::cout << "FAILED kokkos_allocate_view_i32_1d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_i32_1d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
@@ -2118,8 +2123,8 @@ extern "C" {
     for (size_t ii = 0; ii < array_r32_1d.extent(0); ii++) {
       *c_sum += array_r32_1d(ii);
     }
-    if ( std::fabs(*c_sum - *f_sum) > 1.0e-7 ) {
-      std::cout << "FAILED ndarray_r32_1d" << std::endl;
+    if ( std::fabs(*c_sum - *f_sum) > (precision_single * *c_sum) ) {
+      std::cout << "FAILED C ndarray_r32_1d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
@@ -2136,8 +2141,8 @@ extern "C" {
     for (size_t ii = 0; ii < array_r64_1d.extent(0); ii++) {
       *c_sum += array_r64_1d(ii);
     }
-    if ( std::fabs(*c_sum - *f_sum) > 1.0e-14 ) {
-      std::cout << "FAILED ndarray_r64_1d" << std::endl;
+    if ( std::fabs(*c_sum - *f_sum) > (precision_double * *c_sum) ) {
+      std::cout << "FAILED C ndarray_r64_1d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
@@ -2157,7 +2162,7 @@ extern "C" {
       }
     }
     if (*c_sum != *f_sum) {
-      std::cout << "FAILED kokkos_allocate_view_l_2d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_l_2d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     for (size_t ii = 0; ii < array_l_2d.extent(0); ii++) {
@@ -2177,13 +2182,13 @@ extern "C" {
       }
     }
     if ( *c_sum != *f_sum ) {
-      std::cout << "FAILED kokkos_allocate_view_i32_2d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_i32_2d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_i32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_2d.extent(1); jj++) {
-        array_i32_2d(ii,jj) = ii*jj;
+        array_i32_2d(ii,jj) = ii+jj;
         *c_sum += array_i32_2d(ii,jj);
       }
     }
@@ -2199,13 +2204,13 @@ extern "C" {
       }
     }
     if ( *c_sum != *f_sum ) {
-      std::cout << "FAILED kokkos_allocate_view_i64_2d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_i64_2d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_i64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_2d.extent(1); jj++) {
-        array_i64_2d(ii,jj) = ii*jj;
+        array_i64_2d(ii,jj) = ii+jj;
         *c_sum += array_i64_2d(ii,jj);
       }
     }
@@ -2220,14 +2225,14 @@ extern "C" {
         *c_sum += array_r32_2d(ii,jj);
       }
     }
-    if ( std::fabs(*c_sum - *f_sum) > 1.0e-7 ) {
-      std::cout << "FAILED kokkos_allocate_view_r32_2d" << std::endl;
+    if ( std::fabs(*c_sum - *f_sum) > (precision_single * *c_sum) ) {
+      std::cout << "FAILED C kokkos_allocate_view_r32_2d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_r32_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_2d.extent(1); jj++) {
-        array_r32_2d(ii,jj) = ii*jj;
+        array_r32_2d(ii,jj) = ii+jj;
         *c_sum += array_r32_2d(ii,jj);
       }
     }
@@ -2242,14 +2247,14 @@ extern "C" {
         *c_sum += array_r64_2d(ii,jj);
       }
     }
-    if ( std::fabs(*c_sum - *f_sum) > 1.0e-14 ) {
-      std::cout << "FAILED kokkos_allocate_view_r64_2d" << std::endl;
+    if ( std::fabs(*c_sum - *f_sum) > (precision_double * *c_sum) ) {
+      std::cout << "FAILED C kokkos_allocate_view_r64_2d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_r64_2d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_2d.extent(1); jj++) {
-        array_r64_2d(ii,jj) = ii*jj;
+        array_r64_2d(ii,jj) = ii+jj;
         *c_sum += array_r64_2d(ii,jj);
       }
     }
@@ -2267,7 +2272,7 @@ extern "C" {
       }
     }
     if (*c_sum != *f_sum) {
-      std::cout << "FAILED kokkos_allocate_view_l_3d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_l_3d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     for (size_t ii = 0; ii < array_l_3d.extent(0); ii++) {
@@ -2291,14 +2296,14 @@ extern "C" {
       }
     }
     if ( *c_sum != *f_sum ) {
-      std::cout << "FAILED kokkos_allocate_view_i32_3d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_i32_3d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_i32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_3d.extent(2); kk++) {
-          array_i32_3d(ii,jj,kk) = ii*jj*kk;
+          array_i32_3d(ii,jj,kk) = ii+jj+kk;
           *c_sum += array_i32_3d(ii,jj,kk);
         }
       }
@@ -2317,14 +2322,14 @@ extern "C" {
       }
     }
     if ( *c_sum != *f_sum ) {
-      std::cout << "FAILED kokkos_allocate_view_i64_3d" << std::endl;
+      std::cout << "FAILED C kokkos_allocate_view_i64_3d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_i64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_3d.extent(2); kk++) {
-          array_i64_3d(ii,jj,kk) = ii*jj*kk;
+          array_i64_3d(ii,jj,kk) = ii+jj+kk;
           *c_sum += array_i64_3d(ii,jj,kk);
         }
       }
@@ -2342,15 +2347,15 @@ extern "C" {
         }
       }
     }
-    if ( std::fabs(*c_sum - *f_sum) > 1.0e-7 ) {
-      std::cout << "FAILED kokkos_allocate_view_r32_3d" << std::endl;
+    if ( std::fabs(*c_sum - *f_sum) > (precision_single * *c_sum) ) {
+      std::cout << "FAILED C kokkos_allocate_view_r32_3d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_r32_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_3d.extent(2); kk++) {
-          array_r32_3d(ii,jj,kk) = ii*jj*kk;
+          array_r32_3d(ii,jj,kk) = ii+jj+kk;
           *c_sum += array_r32_3d(ii,jj,kk);
         }
       }
@@ -2368,15 +2373,15 @@ extern "C" {
         }
       }
     }
-    if ( std::fabs(*c_sum - *f_sum) > 1.0e-14 ) {
-      std::cout << "FAILED kokkos_allocate_view_r64_3d" << std::endl;
+    if ( std::fabs(*c_sum - *f_sum) > (precision_double * *c_sum) ) {
+      std::cout << "FAILED C kokkos_allocate_view_r64_3d" << std::endl;
       return FLCL_TEST_FAIL;
     }
     *c_sum = 0;
     for (size_t ii = 0; ii < array_r64_3d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_3d.extent(2); kk++) {
-          array_r64_3d(ii,jj,kk) = ii*jj*kk;
+          array_r64_3d(ii,jj,kk) = ii+jj+kk;
           *c_sum += array_r64_3d(ii,jj,kk);
         }
       }
