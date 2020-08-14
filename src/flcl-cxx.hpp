@@ -56,6 +56,15 @@ typedef struct _flcl_nd_array_t {
     void *data;
 } flcl_ndarray_t;
 
+namespace flcl {
+#ifdef KOKKOS_ENABLE_CUDA
+using HostMemorySpace = Kokkos::CudaUVMSpace;
+#else
+using HostMemorySpace = Kokkos::HostSpace;
+#endif
+} // namespace flcl
+
+
 // Design thoughts: view types are intended to be used on host-host codes, or
 //   host-gpu codes with UVM as the default memory space. This allows for an
 //   incremental porting beginning with a Fortran driver, on the host, calling
@@ -65,26 +74,32 @@ typedef struct _flcl_nd_array_t {
 //   necessary memory transfer explicitly over larger compute regions.
 namespace flcl {
     
+  #ifdef KOKKOS_ENABLE_CUDA
+    using HostMemorySpace = Kokkos::CudaUVMSpace;
+  #else
+    using HostMemorySpace = Kokkos::HostSpace;
+  #endif
+
   // 1D fortran-compatible view types
-  typedef Kokkos::View<bool*,Kokkos::LayoutLeft>          view_l_1d_t;
-  typedef Kokkos::View<int32_t*,Kokkos::LayoutLeft>       view_i32_1d_t;
-  typedef Kokkos::View<int64_t*,Kokkos::LayoutLeft>       view_i64_1d_t;
-  typedef Kokkos::View<float*,Kokkos::LayoutLeft>         view_r32_1d_t;
-  typedef Kokkos::View<double*,Kokkos::LayoutLeft>        view_r64_1d_t;
+  typedef Kokkos::View<bool*,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_l_1d_t;
+  typedef Kokkos::View<int32_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_i32_1d_t;
+  typedef Kokkos::View<int64_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_i64_1d_t;
+  typedef Kokkos::View<float*,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_r32_1d_t;
+  typedef Kokkos::View<double*,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_r64_1d_t;
 
   // 2D fortran-compatible view types
-  typedef Kokkos::View<bool**,Kokkos::LayoutLeft>         view_l_2d_t;
-  typedef Kokkos::View<int32_t**,Kokkos::LayoutLeft>      view_i32_2d_t;
-  typedef Kokkos::View<int64_t**,Kokkos::LayoutLeft>      view_i64_2d_t;
-  typedef Kokkos::View<float**,Kokkos::LayoutLeft>        view_r32_2d_t;
-  typedef Kokkos::View<double**,Kokkos::LayoutLeft>       view_r64_2d_t;
+  typedef Kokkos::View<bool**,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_l_2d_t;
+  typedef Kokkos::View<int32_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>      view_i32_2d_t;
+  typedef Kokkos::View<int64_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>      view_i64_2d_t;
+  typedef Kokkos::View<float**,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_r32_2d_t;
+  typedef Kokkos::View<double**,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_r64_2d_t;
 
   // 3D fortran-compatible view types
-  typedef Kokkos::View<bool***,Kokkos::LayoutLeft>        view_l_3d_t;
-  typedef Kokkos::View<int32_t***,Kokkos::LayoutLeft>     view_i32_3d_t;
-  typedef Kokkos::View<int64_t***,Kokkos::LayoutLeft>     view_i64_3d_t;
-  typedef Kokkos::View<float***,Kokkos::LayoutLeft>       view_r32_3d_t;
-  typedef Kokkos::View<double***,Kokkos::LayoutLeft>      view_r64_3d_t;
+  typedef Kokkos::View<bool***,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_l_3d_t;
+  typedef Kokkos::View<int32_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>     view_i32_3d_t;
+  typedef Kokkos::View<int64_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>     view_i64_3d_t;
+  typedef Kokkos::View<float***,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_r32_3d_t;
+  typedef Kokkos::View<double***,Kokkos::LayoutLeft,flcl::HostMemorySpace>      view_r64_3d_t;
 
   // 1D fortran-compatible dualview types
   typedef Kokkos::DualView<bool*,Kokkos::LayoutLeft>      dualview_l_1d_t;
@@ -108,7 +123,7 @@ namespace flcl {
   typedef Kokkos::DualView<double***,Kokkos::LayoutLeft>  dualview_r64_3d_t;
     
   template <typename DataType>
-  Kokkos::View<DataType, Kokkos::LayoutStride, Kokkos::HostSpace, Kokkos::MemoryUnmanaged>
+  Kokkos::View<DataType, Kokkos::LayoutStride, flcl::HostMemorySpace>
   view_from_ndarray(flcl_ndarray_t const &ndarray) {
     size_t dimensions[Kokkos::ARRAY_LAYOUT_MAX_RANK] = {};
     size_t strides[Kokkos::ARRAY_LAYOUT_MAX_RANK] = {};
@@ -139,10 +154,10 @@ namespace flcl {
     };
     // clang-format on
   
-    return Kokkos::View<DataType, Kokkos::LayoutStride, Kokkos::HostSpace, Kokkos::MemoryUnmanaged>(
+    return Kokkos::View<DataType, Kokkos::LayoutStride, flcl::HostMemorySpace, Kokkos::MemoryUnmanaged>(
         reinterpret_cast<value_type *>(ndarray.data), layout);
   }
   
-}
+} // namespace flcl
 
 #endif // FLCL_CXX_HPP

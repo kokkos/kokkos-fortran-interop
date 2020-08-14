@@ -11,3 +11,8 @@
 
 # output files
 *.out
+
+# CI temporary things
+ci/build*
+ci/install*
+ci/output*
