@@ -42,6 +42,7 @@ program example_axpy
   use, intrinsic :: iso_fortran_env
 
   use :: flcl_mod
+  use :: flcl_util_kokkos_mod
   use :: axpy_f_mod
 
   implicit none
