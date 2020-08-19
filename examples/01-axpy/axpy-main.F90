@@ -34,7 +34,9 @@
 ! ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+#ifdef __xlc__
+#define norm2(v) sqrt(sum(v**2))
+#endif
 program example_axpy
   use, intrinsic :: iso_c_binding
   use, intrinsic :: iso_fortran_env

@@ -112,6 +112,6 @@ install(
 
 include(CTest)
 add_subdirectory(test)
-
+add_subdirectory(examples)
 
 

@@ -44,21 +44,6 @@ module axpy_f_mod
     implicit none
   
     public
-      interface
-        subroutine f_kokkos_initialize() &
-          bind(c, name='c_kokkos_initialize')
-          use, intrinsic :: iso_c_binding
-          implicit none
-        end subroutine f_kokkos_initialize
-      end interface
-
-      interface
-        subroutine f_kokkos_finalize() &
-          bind(c, name='c_kokkos_finalize')
-          use, intrinsic :: iso_c_binding
-          implicit none
-        end subroutine f_kokkos_finalize
-      end interface
 
       interface
         subroutine f_axpy( nd_array_y, nd_array_x, alpha ) &
@@ -72,18 +57,6 @@ module axpy_f_mod
       end interface
 
       contains
-        
-        subroutine kokkos_initialize()
-          use, intrinsic :: iso_c_binding
-          implicit none
-          call f_kokkos_initialize()
-        end subroutine kokkos_initialize
-        
-        subroutine kokkos_finalize()
-          use, intrinsic :: iso_c_binding
-          implicit none
-          call f_kokkos_finalize()
-        end subroutine kokkos_finalize
 
         subroutine axpy( y, x, alpha )
           use, intrinsic :: iso_c_binding

@@ -40,14 +40,6 @@
 
 extern "C" {
 
-  void c_kokkos_initialize() {
-    Kokkos::initialize();
-  }
-
-  void c_kokkos_finalize( void ) {
-    Kokkos::finalize();
-  }
-
   void c_axpy( flcl_ndarray_t *nd_array_y, flcl_ndarray_t *nd_array_x, double *alpha ) {
     using flcl::view_from_ndarray;
 
