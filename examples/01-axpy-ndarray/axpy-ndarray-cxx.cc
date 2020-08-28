@@ -40,7 +40,7 @@
 
 extern "C" {
 
-  void c_axpy( flcl_ndarray_t *nd_array_y, flcl_ndarray_t *nd_array_x, double *alpha ) {
+  void c_axpy_ndarray( flcl_ndarray_t *nd_array_y, flcl_ndarray_t *nd_array_x, double *alpha ) {
     using flcl::view_from_ndarray;
 
     auto y = view_from_ndarray<double*>(*nd_array_y);

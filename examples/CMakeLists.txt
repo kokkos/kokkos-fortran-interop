@@ -1,1 +1,1 @@
-add_subdirectory(01-axpy)
+add_subdirectory(01-axpy-ndarray)
