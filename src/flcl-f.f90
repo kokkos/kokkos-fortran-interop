@@ -39,6 +39,7 @@ module flcl_mod
   use, intrinsic :: iso_c_binding
   use, intrinsic :: iso_fortran_env
   use flcl_util_strings_mod, only: char_add_null
+  use flcl_types_mod
   
   implicit none
   private
