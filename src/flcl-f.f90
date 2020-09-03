@@ -38,7 +38,6 @@
 module flcl_mod
   use, intrinsic :: iso_c_binding
   use, intrinsic :: iso_fortran_env
-  use flcl_types_mod
   use flcl_ndarray_mod
   use flcl_view_mod
   use flcl_dualview_mod
