@@ -40,6 +40,10 @@ add_link_options(LINKER:--disable-new-dtags)
 
 add_library(flcl-fortran
     OBJECT
+        src/flcl-ndarray-f.f90
+        src/flcl-view-f.f90
+        src/flcl-dualview-f.f90
+        src/flcl-types-f.f90
         src/flcl-util-strings-f.f90
         src/flcl-f.f90
         src/flcl-util-kokkos-f.f90
