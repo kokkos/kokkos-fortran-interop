@@ -60,16 +60,11 @@ module flcl_dualview_mod
   public dualview_i64_3d_t
   public dualview_r32_3d_t
   public dualview_r64_3d_t
-  public dualview_l_3d_t
-  public dualview_i32_3d_t
-  public dualview_i64_3d_t
-  public dualview_r32_3d_t
-  public dualview_r64_3d_t
   public dualview_l_4d_t
   public dualview_i32_4d_t
   public dualview_i64_4d_t
   public dualview_r32_4d_t
-  public dualview_r64_41d_t
+  public dualview_r64_4d_t
   public dualview_l_5d_t
   public dualview_i32_5d_t
   public dualview_i64_5d_t
@@ -1034,7 +1029,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_l_2d(v_A%handle)
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_l_2d
 
@@ -1046,7 +1041,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_i32_2d(v_A%handle)  
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i32_2d
 
@@ -1058,7 +1053,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_i64_2d(v_A%handle)  
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i64_2d
 
@@ -1070,7 +1065,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_r32_2d(v_A%handle)  
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r32_2d
 
@@ -1082,7 +1077,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_r64_2d(v_A%handle)  
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r64_2d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1096,7 +1091,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_l_3d(v_A%handle)
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_l_3d
 
@@ -1108,7 +1103,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_i32_3d(v_A%handle)
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i32_3d
 
@@ -1120,7 +1115,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_i64_3d(v_A%handle)
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i64_3d
 
@@ -1132,7 +1127,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_r32_3d(v_A%handle)
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r32_3d
 
@@ -1144,7 +1139,7 @@ module flcl_dualview_mod
 
     A => NULL()
     call f_kokkos_deallocate_dv_r64_3d(v_A%handle)
-    v_A = c_null_ptr
+    v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r64_3d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
