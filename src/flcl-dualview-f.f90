@@ -45,7 +45,12 @@ module flcl_dualview_mod
   
   public kokkos_allocate_dualview
   public kokkos_deallocate_dualview
-  
+  public dualview_l_1d_t
+  public dualview_i32_1d_t
+  public dualview_i64_1d_t
+  public dualview_r32_1d_t
+  public dualview_r64_1d_t
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 1D Kokkos DualView types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -305,6 +310,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_allocate_dv_i32_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_i32_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_i32_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(dualview_i32_1d_t), intent(out) :: v_A
@@ -317,6 +323,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_allocate_dv_i64_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_i64_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_i64_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(dualview_i64_1d_t), intent(out) :: v_A
@@ -329,6 +336,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_allocate_dv_r32_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_r32_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_r32_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(dualview_r32_1d_t), intent(out) :: v_A
@@ -341,6 +349,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_allocate_dv_r64_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_r64_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_r64_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(dualview_r64_1d_t), intent(out) :: v_A
@@ -494,6 +503,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_deallocate_dv_l_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_l_1d_t
       implicit none
       type(dualview_l_1d_t), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_1d
@@ -503,6 +513,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_deallocate_dv_i32_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_i32_1d_t
       implicit none
       type(dualview_i32_1d_t), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_1d
@@ -512,6 +523,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_deallocate_dv_i64_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_i64_1d_t
       implicit none
       type(dualview_i64_1d_t), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_1d
@@ -521,6 +533,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_deallocate_dv_r32_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_r32_1d_t
       implicit none
       type(dualview_r32_1d_t), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_1d
@@ -530,6 +543,7 @@ module flcl_dualview_mod
     subroutine f_kokkos_deallocate_dv_r64_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_1d')
       use, intrinsic :: iso_c_binding
+      import dualview_r64_1d_t
       implicit none
       type(dualview_r64_1d_t), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_1d

@@ -51,8 +51,8 @@ program example_axpy_dualview
   real(c_double), dimension(:), allocatable :: f_y
   real(REAL64), pointer, dimension(:)  :: c_y
   real(REAL64), pointer, dimension(:)  :: x
-  type(c_ptr) :: v_c_y
-  type(c_ptr) :: v_x
+  type(dualview_r64_1d_t) :: v_c_y
+  type(dualview_r64_1d_t) :: v_x
   real(c_double) :: alpha
   integer :: mm = 5000
   integer :: ii
@@ -111,8 +111,8 @@ program example_axpy_dualview
 
   ! deallocate dualviews
   write(*,*)'deallocate kokkos dualviews'
-  call kokkos_deallocate_dualview( v_c_y )
-  call kokkos_deallocate_dualview( v_x )
+  call kokkos_deallocate_dualview( c_y, v_c_y )
+  call kokkos_deallocate_dualview( x, v_x )
 
   ! finalize kokkos
   write(*,*)'finalizing kokkos'

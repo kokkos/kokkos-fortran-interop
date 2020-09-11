@@ -39,7 +39,7 @@ module axpy_f_mod
     use, intrinsic :: iso_c_binding
     use, intrinsic :: iso_fortran_env
   
-    use :: flcl_mod
+    use :: flcl_ndarray_mod
   
     implicit none
   
@@ -49,7 +49,7 @@ module axpy_f_mod
         subroutine f_axpy_ndarray( nd_array_y, nd_array_x, alpha ) &
           & bind(c, name='c_axpy_ndarray')
           use, intrinsic :: iso_c_binding
-          use :: flcl_mod
+          use :: flcl_ndarray_mod
           type(nd_array_t) :: nd_array_y
           type(nd_array_t) :: nd_array_x
           real(c_double) :: alpha
@@ -60,7 +60,7 @@ module axpy_f_mod
 
         subroutine axpy_ndarray( y, x, alpha )
           use, intrinsic :: iso_c_binding
-          use :: flcl_mod
+          use :: flcl_ndarray_mod
           implicit none
           real(c_double), dimension(:), intent(inout) :: y
           real(c_double), dimension(:), intent(in) :: x
