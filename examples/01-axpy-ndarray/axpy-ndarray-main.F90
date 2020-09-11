@@ -42,7 +42,6 @@ program example_axpy_ndarray
   use, intrinsic :: iso_c_binding
   use, intrinsic :: iso_fortran_env
 
-  use :: flcl_mod
   use :: flcl_util_kokkos_mod
   use :: axpy_f_mod
 
