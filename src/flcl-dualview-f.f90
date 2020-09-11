@@ -780,7 +780,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       logical(c_bool), pointer, dimension(:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_l_2d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -798,7 +798,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       integer(INT32), pointer, dimension(:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_i32_2d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -816,7 +816,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       integer (INT64), pointer, dimension(:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_i64_2d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -834,7 +834,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       real(REAL32), pointer, dimension(:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_r32_2d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -852,7 +852,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       real(REAL64), pointer, dimension(:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_r64_2d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -872,7 +872,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       logical(c_bool), pointer, dimension(:,:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_l_3d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -891,7 +891,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       integer(INT32), pointer, dimension(:,:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_i32_3d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -910,7 +910,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       integer(INT64), pointer, dimension(:,:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_i64_3d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -929,7 +929,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       real(REAL32), pointer, dimension(:,:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_r32_3d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -948,7 +948,7 @@ module flcl_dualview_mod
       use flcl_util_strings_mod, only: char_add_null
       implicit none
       real(REAL64), pointer, dimension(:,:,:), intent(inout) :: A
-      type(c_ptr), intent(out) :: v_A
+      type(dualview_r64_3d_t), intent(out) :: v_A
       character(len=*), intent(in) :: n_A
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -971,7 +971,7 @@ module flcl_dualview_mod
     type(dualview_l_1d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_l_1d(v_A)
+    call f_kokkos_deallocate_dv_l_1d(v_A%handle)
     v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_l_1d
@@ -983,7 +983,7 @@ module flcl_dualview_mod
     type(dualview_i32_1d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_i32_1d(v_A)
+    call f_kokkos_deallocate_dv_i32_1d(v_A%handle)
     v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i32_1d
@@ -995,7 +995,7 @@ module flcl_dualview_mod
     type(dualview_i64_1d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_i64_1d(v_A)      
+    call f_kokkos_deallocate_dv_i64_1d(v_A%handle)
     v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i64_1d
@@ -1007,7 +1007,7 @@ module flcl_dualview_mod
     type(dualview_r32_1d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_r32_1d(v_A)      
+    call f_kokkos_deallocate_dv_r32_1d(v_A%handle)
     v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r32_1d
@@ -1019,7 +1019,7 @@ module flcl_dualview_mod
     type(dualview_r64_1d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_r64_1d(v_A)      
+    call f_kokkos_deallocate_dv_r64_1d(v_A%handle)
     v_A%handle = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r64_1d
@@ -1030,10 +1030,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     logical(c_bool), pointer, dimension(:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_l_2d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_l_2d(v_A)
+    call f_kokkos_deallocate_dv_l_2d(v_A%handle)
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_l_2d
@@ -1042,10 +1042,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     integer(INT32), pointer, dimension(:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_i32_2d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_i32_2d(v_A)  
+    call f_kokkos_deallocate_dv_i32_2d(v_A%handle)  
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i32_2d
@@ -1054,10 +1054,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     integer(INT64), pointer, dimension(:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_i64_2d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_i64_2d(v_A)  
+    call f_kokkos_deallocate_dv_i64_2d(v_A%handle)  
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i64_2d
@@ -1066,10 +1066,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     real(REAL32), pointer, dimension(:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_r32_2d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_r32_2d(v_A)  
+    call f_kokkos_deallocate_dv_r32_2d(v_A%handle)  
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r32_2d
@@ -1078,10 +1078,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     real(REAL64), pointer, dimension(:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_r64_2d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_r64_2d(v_A)  
+    call f_kokkos_deallocate_dv_r64_2d(v_A%handle)  
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r64_2d
@@ -1092,10 +1092,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     logical(c_bool), pointer, dimension(:,:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_l_3d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_l_3d(v_A)
+    call f_kokkos_deallocate_dv_l_3d(v_A%handle)
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_l_3d
@@ -1104,10 +1104,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     integer(INT32), pointer, dimension(:,:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_i32_3d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_i32_3d(v_A)
+    call f_kokkos_deallocate_dv_i32_3d(v_A%handle)
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i32_3d
@@ -1116,10 +1116,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     integer(INT64), pointer, dimension(:,:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_i64_3d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_i64_3d(v_A)
+    call f_kokkos_deallocate_dv_i64_3d(v_A%handle)
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_i64_3d
@@ -1128,10 +1128,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     real(REAL32), pointer, dimension(:,:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_r32_3d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_r32_3d(v_A)
+    call f_kokkos_deallocate_dv_r32_3d(v_A%handle)
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r32_3d
@@ -1140,10 +1140,10 @@ module flcl_dualview_mod
     use, intrinsic :: iso_c_binding
     implicit none
     real(REAL64), pointer, dimension(:,:,:), intent(inout) :: A
-    type(c_ptr), intent(inout) :: v_A
+    type(dualview_r64_3d_t), intent(inout) :: v_A
 
     A => NULL()
-    call f_kokkos_deallocate_dv_r64_3d(v_A)
+    call f_kokkos_deallocate_dv_r64_3d(v_A%handle)
     v_A = c_null_ptr
 
   end subroutine kokkos_deallocate_dv_r64_3d
