@@ -235,6 +235,8 @@ module flcl_view_mod
     private
       type(c_ptr) :: handle
   end type view_r64_7d_t
+  ! TODO ADD VIEW TESTS
+  ! TODO ADD VIEW METHODS 4D-7D
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_view interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
@@ -292,9 +294,10 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_l_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_v_l_1d')
       use, intrinsic :: iso_c_binding
+      import view_l_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(c_ptr), intent(out) :: v_A
+      type(view_l_1d_t), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0      
     end subroutine f_kokkos_allocate_v_l_1d
