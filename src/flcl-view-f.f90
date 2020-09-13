@@ -376,7 +376,7 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_i32_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_v_i32_2d')
       use, intrinsic :: iso_c_binding
-      import view_i3d_2d_t
+      import view_i32_2d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
       type(view_i3d_2d_t), intent(out) :: v_A
@@ -665,7 +665,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_l_1d(c_A, v_A, f_label, e0)
+      call f_kokkos_allocate_v_l_1d(c_A, v_A%handle, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_l_1d
   
@@ -682,7 +682,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i32_1d(c_A, v_A, f_label, e0)
+      call f_kokkos_allocate_v_i32_1d(c_A, v_A%handle, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_i32_1d
   
@@ -699,7 +699,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i64_1d(c_A, v_A, f_label, e0)
+      call f_kokkos_allocate_v_i64_1d(c_A, v_A%handle, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_i64_1d
   
@@ -716,7 +716,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r32_1d(c_A, v_A, f_label, e0)
+      call f_kokkos_allocate_v_r32_1d(c_A, v_A%handle, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_r32_1d
   
@@ -733,7 +733,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r64_1d(c_A, v_A, f_label, e0)
+      call f_kokkos_allocate_v_r64_1d(c_A, v_A%handle, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_r64_1d
 
@@ -754,7 +754,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_l_2d(c_A, v_A, f_label, e0, e1)
+      call f_kokkos_allocate_v_l_2d(c_A, v_A%handle, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_l_2d
   
@@ -772,7 +772,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i32_2d(c_A, v_A, f_label, e0, e1)
+      call f_kokkos_allocate_v_i32_2d(c_A, v_A%handle, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_i32_2d
   
@@ -790,7 +790,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i64_2d(c_A, v_A, f_label, e0, e1)
+      call f_kokkos_allocate_v_i64_2d(c_A, v_A%handle, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_i64_2d
   
@@ -808,7 +808,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r32_2d(c_A, v_A, f_label, e0, e1)
+      call f_kokkos_allocate_v_r32_2d(c_A, v_A%handle, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_r32_2d
   
@@ -826,7 +826,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r64_2d(c_A, v_A, f_label, e0, e1)
+      call f_kokkos_allocate_v_r64_2d(c_A, v_A%handle, f_label, e0, e1)
       call c_f_pointer(c_A, A, shape=[e0,e1])
     end subroutine kokkos_allocate_v_r64_2d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -847,7 +847,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_l_3d(c_A, v_A, f_label, e0, e1, e2)
+      call f_kokkos_allocate_v_l_3d(c_A, v_A%handle, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_l_3d
   
@@ -866,7 +866,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i32_3d(c_A, v_A, f_label, e0, e1, e2)
+      call f_kokkos_allocate_v_i32_3d(c_A, v_A%handle, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_i32_3d
   
@@ -885,7 +885,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
       
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_i64_3d(c_A, v_A, f_label, e0, e1, e2)
+      call f_kokkos_allocate_v_i64_3d(c_A, v_A%handle, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_i64_3d
   
@@ -904,7 +904,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
   
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r32_3d(c_A, v_A, f_label, e0, e1, e2)
+      call f_kokkos_allocate_v_r32_3d(c_A, v_A%handle, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_r32_3d
   
@@ -923,7 +923,7 @@ module flcl_view_mod
       character(len=:, kind=c_char), allocatable, target :: f_label
 
       call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_v_r64_3d(c_A, v_A, f_label, e0, e1, e2)
+      call f_kokkos_allocate_v_r64_3d(c_A, v_A%handle, f_label, e0, e1, e2)
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_r64_3d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1092,7 +1092,7 @@ module flcl_view_mod
     subroutine kokkos_deallocate_v_r32_3d(A, v_A )
       use, intrinsic :: iso_c_binding
       implicit none
-      real(REAL32), pointer, dimension(:,:,:), intent(inout) :: A
+      real(flcl_view_r32_t), pointer, dimension(:,:,:), intent(inout) :: A
       type(view_r32_3d_t), intent(inout) :: v_A
   
       A => NULL()
