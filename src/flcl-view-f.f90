@@ -195,110 +195,150 @@ module flcl_view_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 4D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  type, bind(c) :: view_l_4d_t
+  type view_l_4d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_4d_t
   end type view_l_4d_t
 
-  type, bind(c) :: view_i32_4d_t
+  type view_i32_4d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_4d_t
   end type view_i32_4d_t
 
-  type, bind(c) :: view_i64_4d_t
+  type view_i64_4d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_4d_t
   end type view_i64_4d_t
 
-  type, bind(c) :: view_r32_4d_t
+  type view_r32_4d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_4d_t
   end type view_r32_4d_t
 
-  type, bind(c) :: view_r64_4d_t
+  type view_r64_4d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r64_4d_t
   end type view_r64_4d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 5D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  type, bind(c) :: view_l_5d_t
+  type view_l_5d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_5d_t
   end type view_l_5d_t
 
-  type, bind(c) :: view_i32_5d_t
+  type view_i32_5d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_5d_t
   end type view_i32_5d_t
 
-  type, bind(c) :: view_i64_5d_t
+  type view_i64_5d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_5d_t
   end type view_i64_5d_t
 
-  type, bind(c) :: view_r32_5d_t
+  type view_r32_5d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_5d_t
   end type view_r32_5d_t
 
-  type, bind(c) :: view_r64_5d_t
+  type view_r64_5d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r64_5d_t
   end type view_r64_5d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 6D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  type, bind(c) :: view_l_6d_t
+  type view_l_6d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_6d_t
   end type view_l_6d_t
 
-  type, bind(c) :: view_i32_6d_t
+  type view_i32_6d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_6d_t
   end type view_i32_6d_t
 
-  type, bind(c) :: view_i64_6d_t
+  type view_i64_6d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_6d_t
   end type view_i64_6d_t
 
-  type, bind(c) :: view_r32_6d_t
+  type view_r32_6d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_6d_t
   end type view_r32_6d_t
 
-  type, bind(c) :: view_r64_6d_t
+  type view_r64_6d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r64_6d_t
   end type view_r64_6d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 7D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  type, bind(c) :: view_l_7d_t
+  type view_l_7d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_7d_t
   end type view_l_7d_t
 
-  type, bind(c) :: view_i32_7d_t
+  type view_i32_7d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_7d_t
   end type view_i32_7d_t
 
-  type, bind(c) :: view_i64_7d_t
+  type view_i64_7d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_7d_t
   end type view_i64_7d_t
 
-  type, bind(c) :: view_r32_7d_t
+  type view_r32_7d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_7d_t
   end type view_r32_7d_t
 
-  type, bind(c) :: view_r64_7d_t
+  type view_r64_7d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r64_7d_t
   end type view_r64_7d_t
   ! TODO ADD VIEW TESTS
   ! TODO ADD VIEW METHODS 4D-7D
