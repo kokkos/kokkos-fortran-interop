@@ -45,87 +45,152 @@ module flcl_view_mod
   
   public kokkos_allocate_view
   public kokkos_deallocate_view
+  public view_l_1d_t
+  public view_i32_1d_t
+  public view_i64_1d_t
+  public view_r32_1d_t
+  public view_r64_1d_t
+  public view_l_2d_t
+  public view_i32_2d_t
+  public view_i64_2d_t
+  public view_r32_2d_t
+  public view_r64_2d_t
+  public view_l_3d_t
+  public view_i32_3d_t
+  public view_i64_3d_t
+  public view_r32_3d_t
+  public view_r64_3d_t
+  public view_l_4d_t
+  public view_i32_4d_t
+  public view_i64_4d_t
+  public view_r32_4d_t
+  public view_r64_4d_t
+  public view_l_5d_t
+  public view_i32_5d_t
+  public view_i64_5d_t
+  public view_r32_5d_t
+  public view_r64_5d_t
+  public view_l_6d_t
+  public view_i32_6d_t
+  public view_i64_6d_t
+  public view_r32_6d_t
+  public view_r64_6d_t
+  public view_l_7d_t
+  public view_i32_7d_t
+  public view_i64_7d_t
+  public view_r32_7d_t
+  public view_r64_7d_t
 
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 1D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  type, bind(c) :: view_l_1d_t
+  type view_l_1d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_1d_t
   end type view_l_1d_t
 
-  type, bind(c) :: view_i32_1d_t
+  type view_i32_1d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_1d_t
   end type view_i32_1d_t
 
-  type, bind(c) :: view_i64_1d_t
+  type view_i64_1d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_1d_t
   end type view_i64_1d_t
 
-  type, bind(c) :: view_r32_1d_t
+  type view_r32_1d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_1d_t
   end type view_r32_1d_t
 
-  type, bind(c) :: view_r64_1d_t
+  type view_r64_1d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r64_1d_t
   end type view_r64_1d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 2D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  type, bind(c) :: view_l_2d_t
+  type view_l_2d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_2d_t
   end type view_l_2d_t
 
-  type, bind(c) :: view_i32_2d_t
+  type view_i32_2d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_2d_t
   end type view_i32_2d_t
 
-  type, bind(c) :: view_i64_2d_t
+  type view_i64_2d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_2d_t
   end type view_i64_2d_t
 
-  type, bind(c) :: view_r32_2d_t
+  type view_r32_2d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_2d_t
   end type view_r32_2d_t
 
-  type, bind(c) :: view_r64_2d_t
+  type view_r64_2d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r64_2d_t
   end type view_r64_2d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 3D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  type, bind(c) :: view_l_3d_t
+  type view_l_3d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_3d_t
   end type view_l_3d_t
 
-  type, bind(c) :: view_i32_3d_t
+  type view_i32_3d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_3d_t
   end type view_i32_3d_t
 
-  type, bind(c) :: view_i64_3d_t
+  type view_i64_3d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_3d_t
   end type view_i64_3d_t
 
-  type, bind(c) :: view_r32_3d_t
+  type view_r32_3d_t
     private
       type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_3d_t
   end type view_r32_3d_t
 
-  type, bind(c) :: view_r64_3d_t
+  type view_r64_3d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r64_3d_t
   end type view_r64_3d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 4D Kokkos View types
@@ -1112,6 +1177,102 @@ module flcl_view_mod
       v_A%handle = c_null_ptr
   
     end subroutine kokkos_deallocate_v_r64_3d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! view_ptr 1d implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    type(c_ptr) function view_ptr_view_l_1d_t( self ) result( result_ptr )
+      class( view_l_1d_t ), intent(in) :: self
+      implicit none
+      result_ptr = self%handle
+    end function view_ptr_view_l_1d_t
+
+    type(c_ptr) function view_ptr_view_i32_1d_t( self ) result( result_ptr )
+      class( view_i32_1d_t ), intent(in) :: self
+      implicit none
+      result_ptr = self%handle
+    end function view_ptr_view_i32_1d_t
+  
+  type(c_ptr) function view_ptr_view_i64_1d_t( self ) result( result_ptr )
+    class( view_i64_1d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_i64_1d_t
+
+  type(c_ptr) function view_ptr_view_r32_1d_t( self ) result( result_ptr )
+    class( view_r32_1d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_r32_1d_t
+
+  type(c_ptr) function view_ptr_view_r64_1d_t( self ) result( result_ptr )
+    class( view_r64_1d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_r64_1d_t
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! view_ptr 2d implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    type(c_ptr) function view_ptr_view_l_2d_t( self ) result( result_ptr )
+      class( view_l_2d_t ), intent(in) :: self
+      implicit none
+      result_ptr = self%handle
+    end function view_ptr_view_l_2d_t
+
+    type(c_ptr) function view_ptr_view_i32_2d_t( self ) result( result_ptr )
+      class( view_i32_2d_t ), intent(in) :: self
+      implicit none
+      result_ptr = self%handle
+    end function view_ptr_view_i32_2d_t
+  
+  type(c_ptr) function view_ptr_view_i64_2d_t( self ) result( result_ptr )
+    class( view_i64_2d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_i64_2d_t
+
+  type(c_ptr) function view_ptr_view_r32_2d_t( self ) result( result_ptr )
+    class( view_r32_2d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_r32_2d_t
+
+  type(c_ptr) function view_ptr_view_r64_2d_t( self ) result( result_ptr )
+    class( view_r64_2d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_r64_2d_t
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! view_ptr 3d implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  type(c_ptr) function view_ptr_view_l_3d_t( self ) result( result_ptr )
+    class( view_l_3d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_l_3d_t
+
+  type(c_ptr) function view_ptr_view_i32_3d_t( self ) result( result_ptr )
+    class( view_i32_3d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_i32_3d_t
+
+  type(c_ptr) function view_ptr_view_i64_3d_t( self ) result( result_ptr )
+    class( view_i64_3d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_i64_3d_t
+
+  type(c_ptr) function view_ptr_view_r32_3d_t( self ) result( result_ptr )
+    class( view_r32_3d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_r32_3d_t
+
+  type(c_ptr) function view_ptr_view_r64_3d_t( self ) result( result_ptr )
+    class( view_r64_3d_t ), intent(in) :: self
+    implicit none
+    result_ptr = self%handle
+  end function view_ptr_view_r64_3d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! fin
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

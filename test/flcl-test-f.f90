@@ -3136,11 +3136,11 @@ module flcl_test_f_mod
         & function test_kokkos_allocate_view_l_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
-        use :: flcl_mod
+        use :: flcl_view_mod
         implicit none
 
         logical(c_bool), pointer, dimension(:)  :: array_l_1d
-        type(c_ptr) :: v_array_l_1d
+        type(view_l_1d_t) :: v_array_l_1d
         integer :: ii
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3152,7 +3152,7 @@ module flcl_test_f_mod
             f_sum = f_sum + 1
           end if
         end do
-        ierr = f_test_kokkos_allocate_view_l_1d( v_array_l_1d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_l_1d( v_array_l_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
