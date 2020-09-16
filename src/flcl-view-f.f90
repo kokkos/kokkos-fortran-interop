@@ -198,36 +198,36 @@ module flcl_view_mod
   type view_l_4d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_l_4d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_l_4d_t
   end type view_l_4d_t
 
   type view_i32_4d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i32_4d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i32_4d_t
   end type view_i32_4d_t
 
   type view_i64_4d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i64_4d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i64_4d_t
   end type view_i64_4d_t
 
   type view_r32_4d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r32_4d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r32_4d_t
   end type view_r32_4d_t
 
   type view_r64_4d_t
     private
     type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r64_4d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r64_4d_t
   end type view_r64_4d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 5D Kokkos View types
@@ -235,36 +235,36 @@ module flcl_view_mod
   type view_l_5d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_l_5d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_l_5d_t
   end type view_l_5d_t
 
   type view_i32_5d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i32_5d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i32_5d_t
   end type view_i32_5d_t
 
   type view_i64_5d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i64_5d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i64_5d_t
   end type view_i64_5d_t
 
   type view_r32_5d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r32_5d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r32_5d_t
   end type view_r32_5d_t
 
   type view_r64_5d_t
     private
     type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r64_5d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r64_5d_t
   end type view_r64_5d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 6D Kokkos View types
@@ -272,36 +272,36 @@ module flcl_view_mod
   type view_l_6d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_l_6d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_l_6d_t
   end type view_l_6d_t
 
   type view_i32_6d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i32_6d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i32_6d_t
   end type view_i32_6d_t
 
   type view_i64_6d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i64_6d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i64_6d_t
   end type view_i64_6d_t
 
   type view_r32_6d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r32_6d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r32_6d_t
   end type view_r32_6d_t
 
   type view_r64_6d_t
     private
     type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r64_6d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r64_6d_t
   end type view_r64_6d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 7D Kokkos View types
@@ -309,36 +309,36 @@ module flcl_view_mod
   type view_l_7d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_l_7d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_l_7d_t
   end type view_l_7d_t
 
   type view_i32_7d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i32_7d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i32_7d_t
   end type view_i32_7d_t
 
   type view_i64_7d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_i64_7d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_i64_7d_t
   end type view_i64_7d_t
 
   type view_r32_7d_t
     private
       type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r32_7d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r32_7d_t
   end type view_r32_7d_t
 
   type view_r64_7d_t
     private
     type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_view_r64_7d_t
+    ! contains
+    !   procedure :: ptr => view_ptr_view_r64_7d_t
   end type view_r64_7d_t
   ! TODO ADD VIEW TESTS
   ! TODO ADD VIEW METHODS 4D-7D
@@ -399,10 +399,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_l_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_v_l_1d')
       use, intrinsic :: iso_c_binding
-      import view_l_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_l_1d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0      
     end subroutine f_kokkos_allocate_v_l_1d
@@ -412,10 +411,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_i32_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_v_i32_1d')
       use, intrinsic :: iso_c_binding
-      import view_i32_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_i32_1d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_i32_1d
@@ -425,10 +423,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_i64_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_v_i64_1d')
       use, intrinsic :: iso_c_binding
-      import view_i64_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_i64_1d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_i64_1d
@@ -438,10 +435,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_r32_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_v_r32_1d')
       use, intrinsic :: iso_c_binding
-      import view_r32_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_r32_1d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_r32_1d
@@ -451,10 +447,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_r64_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_v_r64_1d')
       use, intrinsic :: iso_c_binding
-      import view_r64_1d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_r64_1d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_v_r64_1d
@@ -467,10 +462,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_l_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_v_l_2d')
       use, intrinsic :: iso_c_binding
-      import view_l_2d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_l_2d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -481,10 +475,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_i32_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_v_i32_2d')
       use, intrinsic :: iso_c_binding
-      import view_i32_2d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_i3d_2d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -495,10 +488,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_i64_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_v_i64_2d')
       use, intrinsic :: iso_c_binding
-      import view_i64_2d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_i64_2d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -509,10 +501,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_r32_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_v_r32_2d')
       use, intrinsic :: iso_c_binding
-      import view_r32_2d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_r32_2d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -523,10 +514,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_r64_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_v_r64_2d')
       use, intrinsic :: iso_c_binding
-      import view_r64_2d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_r64_2d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -539,10 +529,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_l_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_v_l_3d')
       use, intrinsic :: iso_c_binding
-      import view_l_3d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_l_3d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -554,10 +543,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_i32_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_v_i32_3d')
       use, intrinsic :: iso_c_binding
-      import view_i32_3d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_i32_3d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -569,10 +557,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_i64_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_v_i64_3d')
       use, intrinsic :: iso_c_binding
-      import view_i64_3d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_i64_3d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -584,10 +571,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_r32_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_v_r32_3d')
       use, intrinsic :: iso_c_binding
-      import view_r32_3d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_r32_3d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -599,10 +585,9 @@ module flcl_view_mod
     subroutine f_kokkos_allocate_v_r64_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_v_r64_3d')
       use, intrinsic :: iso_c_binding
-      import view_r64_3d_t
       implicit none
       type(c_ptr), intent(out) :: c_A
-      type(view_r64_3d_t), intent(out) :: v_A
+      type(c_ptr), intent(out) :: v_A
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
       integer(c_size_t), intent(in) :: e1
@@ -1139,8 +1124,8 @@ module flcl_view_mod
       type(view_r32_2d_t), intent(inout) :: v_A
   
       A => NULL()
-      call f_kokkos_deallocate_v_r32_2d(v_A)
-      v_A = c_null_ptr
+      call f_kokkos_deallocate_v_r32_2d(v_A%handle)
+      v_A%handle = c_null_ptr
   
     end subroutine kokkos_deallocate_v_r32_2d
   
@@ -1197,7 +1182,8 @@ module flcl_view_mod
     subroutine kokkos_deallocate_v_r32_3d(A, v_A )
       use, intrinsic :: iso_c_binding
       implicit none
-      real(flcl_view_r32_t), pointer, dimension(:,:,:), intent(inout) :: A
+      real(REAL32), pointer, dimension(:,:,:), intent(inout) :: A
+      ! TODO       real(flcl_view_r32_t), pointer, dimension(:,:,:), intent(inout) :: A
       type(view_r32_3d_t), intent(inout) :: v_A
   
       A => NULL()
@@ -1221,96 +1207,96 @@ module flcl_view_mod
 !!! view_ptr 1d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     type(c_ptr) function view_ptr_view_l_1d_t( self ) result( result_ptr )
-      class( view_l_1d_t ), intent(in) :: self
       implicit none
+      class( view_l_1d_t ), intent(in) :: self
       result_ptr = self%handle
     end function view_ptr_view_l_1d_t
 
     type(c_ptr) function view_ptr_view_i32_1d_t( self ) result( result_ptr )
-      class( view_i32_1d_t ), intent(in) :: self
       implicit none
+      class( view_i32_1d_t ), intent(in) :: self
       result_ptr = self%handle
     end function view_ptr_view_i32_1d_t
   
   type(c_ptr) function view_ptr_view_i64_1d_t( self ) result( result_ptr )
-    class( view_i64_1d_t ), intent(in) :: self
     implicit none
+    class( view_i64_1d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_i64_1d_t
 
   type(c_ptr) function view_ptr_view_r32_1d_t( self ) result( result_ptr )
+    implicit none  
     class( view_r32_1d_t ), intent(in) :: self
-    implicit none
     result_ptr = self%handle
   end function view_ptr_view_r32_1d_t
 
   type(c_ptr) function view_ptr_view_r64_1d_t( self ) result( result_ptr )
-    class( view_r64_1d_t ), intent(in) :: self
     implicit none
+    class( view_r64_1d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_r64_1d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! view_ptr 2d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     type(c_ptr) function view_ptr_view_l_2d_t( self ) result( result_ptr )
-      class( view_l_2d_t ), intent(in) :: self
       implicit none
+      class( view_l_2d_t ), intent(in) :: self
       result_ptr = self%handle
     end function view_ptr_view_l_2d_t
 
     type(c_ptr) function view_ptr_view_i32_2d_t( self ) result( result_ptr )
-      class( view_i32_2d_t ), intent(in) :: self
       implicit none
+      class( view_i32_2d_t ), intent(in) :: self
       result_ptr = self%handle
     end function view_ptr_view_i32_2d_t
   
   type(c_ptr) function view_ptr_view_i64_2d_t( self ) result( result_ptr )
-    class( view_i64_2d_t ), intent(in) :: self
     implicit none
+    class( view_i64_2d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_i64_2d_t
 
   type(c_ptr) function view_ptr_view_r32_2d_t( self ) result( result_ptr )
-    class( view_r32_2d_t ), intent(in) :: self
     implicit none
+    class( view_r32_2d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_r32_2d_t
 
   type(c_ptr) function view_ptr_view_r64_2d_t( self ) result( result_ptr )
-    class( view_r64_2d_t ), intent(in) :: self
     implicit none
+    class( view_r64_2d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_r64_2d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! view_ptr 3d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type(c_ptr) function view_ptr_view_l_3d_t( self ) result( result_ptr )
-    class( view_l_3d_t ), intent(in) :: self
     implicit none
+    class( view_l_3d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_l_3d_t
 
   type(c_ptr) function view_ptr_view_i32_3d_t( self ) result( result_ptr )
-    class( view_i32_3d_t ), intent(in) :: self
     implicit none
+    class( view_i32_3d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_i32_3d_t
 
   type(c_ptr) function view_ptr_view_i64_3d_t( self ) result( result_ptr )
-    class( view_i64_3d_t ), intent(in) :: self
     implicit none
+    class( view_i64_3d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_i64_3d_t
 
   type(c_ptr) function view_ptr_view_r32_3d_t( self ) result( result_ptr )
-    class( view_r32_3d_t ), intent(in) :: self
     implicit none
+    class( view_r32_3d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_r32_3d_t
 
   type(c_ptr) function view_ptr_view_r64_3d_t( self ) result( result_ptr )
-    class( view_r64_3d_t ), intent(in) :: self
     implicit none
+    class( view_r64_3d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_r64_3d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
