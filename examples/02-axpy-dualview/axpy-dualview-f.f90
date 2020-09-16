@@ -50,8 +50,8 @@ module axpy_f_mod
           & bind(c, name='c_axpy_dualview')
           use, intrinsic :: iso_c_binding
           use :: flcl_mod
-          type(dualview_r64_1d_t), intent(inout) :: y
-          type(dualview_r64_1d_t), intent(in) :: x
+          type(c_ptr), intent(inout) :: y
+          type(c_ptr), intent(in) :: x
           real(c_double), intent(in) :: alpha
         end subroutine f_axpy_dualview
       end interface
@@ -66,7 +66,7 @@ module axpy_f_mod
           type(dualview_r64_1d_t), intent(in) :: x
           real(c_double), intent(in) :: alpha
 
-          call f_axpy_dualview(y, x, alpha)
+          call f_axpy_dualview(y%ptr(), x%ptr(), alpha)
 
         end subroutine axpy_dualview
   

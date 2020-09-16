@@ -1204,7 +1204,7 @@ module flcl_view_mod
   
     end subroutine kokkos_deallocate_v_r64_3d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!! view_ptr 1d implementations
+!!! view_ptr_view 1d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     type(c_ptr) function view_ptr_view_l_1d_t( self ) result( result_ptr )
       implicit none
@@ -1236,7 +1236,7 @@ module flcl_view_mod
     result_ptr = self%handle
   end function view_ptr_view_r64_1d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!! view_ptr 2d implementations
+!!! view_ptr_view 2d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     type(c_ptr) function view_ptr_view_l_2d_t( self ) result( result_ptr )
       implicit none
@@ -1268,7 +1268,7 @@ module flcl_view_mod
     result_ptr = self%handle
   end function view_ptr_view_r64_2d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!! view_ptr 3d implementations
+!!! view_ptr_view 3d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type(c_ptr) function view_ptr_view_l_3d_t( self ) result( result_ptr )
     implicit none
