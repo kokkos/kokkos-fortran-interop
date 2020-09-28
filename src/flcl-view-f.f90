@@ -50,6 +50,8 @@ module flcl_view_mod
   public view_i64_1d_t
   public view_r32_1d_t
   public view_r64_1d_t
+  public view_c32_1d_t
+  public view_c64_1d_t
   public view_l_2d_t
   public view_i32_2d_t
   public view_i64_2d_t
@@ -118,6 +120,20 @@ module flcl_view_mod
     contains
       procedure :: ptr => view_ptr_view_r64_1d_t
   end type view_r64_1d_t
+
+  type view_c32_1d_t
+    private
+      type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_c32_1d_t
+  end type view_c32_1d_t
+
+  type view_c64_1d_t
+    private
+      type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_c64_1d_t
+  end type view_c64_1d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 2D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -352,6 +368,8 @@ module flcl_view_mod
     module procedure kokkos_allocate_v_i64_1d
     module procedure kokkos_allocate_v_r32_1d
     module procedure kokkos_allocate_v_r64_1d
+    module procedure kokkos_allocate_v_c32_1d
+    module procedure kokkos_allocate_v_c64_1d      
 
     ! 2D specializations  
     module procedure kokkos_allocate_v_l_2d
@@ -377,6 +395,8 @@ module flcl_view_mod
     module procedure kokkos_deallocate_v_i64_1d
     module procedure kokkos_deallocate_v_r32_1d
     module procedure kokkos_deallocate_v_r64_1d
+    module procedure kokkos_deallocate_v_c32_1d
+    module procedure kokkos_deallocate_v_c64_1d
 
     ! 2D specializations
     module procedure kokkos_deallocate_v_l_2d
@@ -455,6 +475,29 @@ module flcl_view_mod
     end subroutine f_kokkos_allocate_v_r64_1d
   end interface
 
+  interface 
+    subroutine f_kokkos_allocate_v_c32_1d(c_A, v_A, n_A, e0) &
+      & bind (c, name='c_kokkos_allocate_v_c32_1d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+    end subroutine f_kokkos_allocate_v_c32_1d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_c64_1d(c_A, v_A, n_A, e0) &
+      & bind (c, name='c_kokkos_allocate_v_c64_1d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+    end subroutine f_kokkos_allocate_v_c64_1d
+  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_view 2D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -640,6 +683,24 @@ module flcl_view_mod
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r64_1d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_c32_1d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_c32_1d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_c32_1d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_c64_1d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_c64_1d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_c64_1d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_view 2D interfaces
@@ -827,6 +888,39 @@ module flcl_view_mod
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_v_r64_1d
 
+    subroutine kokkos_allocate_v_c32_1d(A, v_A, n_A, e0)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      complex(c_float_complex), pointer, dimension(:), intent(inout) :: A
+      type(view_c32_1d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      type(c_ptr) :: c_A
+
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_c32_1d(c_A, v_A%handle, f_label, e0)
+      call c_f_pointer(c_A, A, shape=[e0])
+    end subroutine kokkos_allocate_v_c32_1d
+  
+    subroutine kokkos_allocate_v_c64_1d(A, v_A, n_A, e0)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      complex(c_double_complex), pointer, dimension(:), intent(inout) :: A
+      type(view_c64_1d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      type(c_ptr) :: c_A
+
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_c64_1d(c_A, v_A%handle, f_label, e0)
+      call c_f_pointer(c_A, A, shape=[e0])
+    end subroutine kokkos_allocate_v_c64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos allocate view 2D implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1078,6 +1172,30 @@ module flcl_view_mod
       v_A%handle = c_null_ptr
   
     end subroutine kokkos_deallocate_v_r64_1d
+
+    subroutine kokkos_deallocate_v_c32_1d(A, v_A )
+      use, intrinsic :: iso_c_binding
+      implicit none
+      complex(c_float_complex), pointer, dimension(:), intent(inout) :: A
+      type(view_c32_1d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_c32_1d(v_A%handle)      
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_c32_1d
+  
+    subroutine kokkos_deallocate_v_c64_1d(A, v_A )
+      use, intrinsic :: iso_c_binding
+      implicit none
+      complex(c_double_complex), pointer, dimension(:), intent(inout) :: A
+      type(view_c64_1d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_c64_1d(v_A%handle)      
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_c64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos deallocate view 2D implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1235,6 +1353,18 @@ module flcl_view_mod
     class( view_r64_1d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_r64_1d_t
+
+  type(c_ptr) function view_ptr_view_c32_1d_t( self ) result( result_ptr )
+    implicit none  
+    class( view_c32_1d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_c32_1d_t
+
+  type(c_ptr) function view_ptr_view_c64_1d_t( self ) result( result_ptr )
+    implicit none
+    class( view_c64_1d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_c64_1d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! view_ptr_view 2d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
