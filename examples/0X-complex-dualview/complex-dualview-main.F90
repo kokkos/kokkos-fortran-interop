@@ -34,9 +34,6 @@
 ! ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#ifdef __xlc__
-#define norm2(v) sqrt(sum((v)**2))
-#endif
 
 program example_complex_dualview
   use, intrinsic :: iso_c_binding
@@ -48,8 +45,10 @@ program example_complex_dualview
   implicit none
 
   complex(c_double_complex), dimension(:), allocatable :: f_y
-  complex(c_double_complex), dimension(:), allocatable :: c_y
-  complex(c_double_complex), dimension(:), allocatable :: x
+  complex(c_double_complex), pointer, dimension(:) :: c_y
+  complex(c_double_complex), pointer, dimension(:) :: x
+  type(dualview_c64_1d_t) :: v_c_y
+  type(dualview_c64_1d_t) :: v_x
   complex(c_double_complex) :: alpha
   real(c_double), dimension(:,:), allocatable :: temp
   integer :: mm = 5000
@@ -65,13 +64,20 @@ program example_complex_dualview
   write(*,*)'initializing kokkos'
   call kokkos_initialize()
 
+    ! allocate dualviews
+  write(*,*)'allocating kokkos dualviews'
+  call kokkos_allocate_dualview( c_y, v_c_y, 'c_y', int(mm, c_size_t) )
+  call kokkos_allocate_dualview( x, v_x, 'x', int(mm, c_size_t) )
+
   ! put some random numbers in the vectors
   ! so we aren't getting optimized out of existence
   write(*,*)'setting up arrays'
   call random_seed()
   call random_number(temp)
   do ii = 1,mm
+    write(*,*)'f_y(',ii,')'
     f_y(ii) = cmplx(temp(ii,1),temp(ii,2))
+    write(*,*)'c_y(',ii,')'
     c_y(ii) = f_y(ii)
   end do
   call random_number(temp)
@@ -82,6 +88,7 @@ program example_complex_dualview
   alpha = cmplx(temp(1,1),temp(1,2))
 
   ! check to see if arrays are "the same"
+  write(*,*)'check to see if arrays are "the same"'
   if ( abs(sum(f_y-c_y)) < (1.0e-14)*abs(sum(f_y)) ) then
     write(*,*)'PASSED f_y and c_y the same after axpys'
   else
@@ -103,7 +110,7 @@ program example_complex_dualview
 
   ! call the f interface to the c_axpy routine
   write(*,*)'performing an axpy with kokkos'
-  call complex_dualview(c_y, x, alpha)
+  call complex_dualview(v_c_y, v_x, alpha)
 
   ! check to see if arrays are "the same"
   if ( abs(sum(f_y-c_y)) < (1.0e-14)*abs(sum(f_y)) ) then

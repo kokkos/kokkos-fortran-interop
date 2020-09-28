@@ -62,8 +62,8 @@ module complex_dualview_f_mod
           use, intrinsic :: iso_c_binding
           use :: flcl_dualview_mod
           implicit none
-          type(dualview_c64_1d_t), dimension(:), intent(inout) :: y
-          type(dualview_c64_1d_t), dimension(:), intent(in) :: x
+          type(dualview_c64_1d_t), intent(inout) :: y
+          type(dualview_c64_1d_t), intent(in) :: x
           complex(c_double_complex), intent(in) :: alpha
 
           call f_complex_dualview(y%ptr(), x%ptr(), alpha)

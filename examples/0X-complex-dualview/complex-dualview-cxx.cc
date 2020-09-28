@@ -57,12 +57,12 @@ extern "C" {
 
     Kokkos::parallel_for( "complex plus", y.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
-      y(idx) += x(idx);
+      y.d_view(idx) += x.d_view(idx);
     });
   
     Kokkos::parallel_for( "complex multiply", y.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
-      y(idx) *= alpha;
+      y.d_view(idx) *= alpha;
     });
 
     y.template modify<typename view_type::execution_space>();
