@@ -50,8 +50,6 @@ module flcl_dualview_mod
   public dualview_i64_1d_t
   public dualview_r32_1d_t
   public dualview_r64_1d_t
-  public dualview_c32_1d_t
-  public dualview_c64_1d_t
   public dualview_l_2d_t
   public dualview_i32_2d_t
   public dualview_i64_2d_t
@@ -119,20 +117,6 @@ module flcl_dualview_mod
     contains
       procedure :: ptr => view_ptr_dualview_r64_1d_t
   end type dualview_r64_1d_t
-
-  type dualview_c32_1d_t
-    private
-      type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_dualview_c32_1d_t
-  end type dualview_c32_1d_t
-
-  type dualview_c64_1d_t
-    private
-      type(c_ptr) :: handle
-    contains
-      procedure :: ptr => view_ptr_dualview_c64_1d_t
-  end type dualview_c64_1d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 2D Kokkos DualView types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -325,8 +309,6 @@ module flcl_dualview_mod
     module procedure kokkos_allocate_dv_i64_1d
     module procedure kokkos_allocate_dv_r32_1d
     module procedure kokkos_allocate_dv_r64_1d
-    module procedure kokkos_allocate_dv_c32_1d
-    module procedure kokkos_allocate_dv_c64_1d
 
     ! 2D specializations  
     module procedure kokkos_allocate_dv_l_2d
@@ -352,8 +334,6 @@ module flcl_dualview_mod
     module procedure kokkos_deallocate_dv_i64_1d
     module procedure kokkos_deallocate_dv_r32_1d
     module procedure kokkos_deallocate_dv_r64_1d
-    module procedure kokkos_deallocate_dv_c32_1d
-    module procedure kokkos_deallocate_dv_c64_1d
 
     ! 2D specializations
     module procedure kokkos_deallocate_dv_l_2d
@@ -430,30 +410,6 @@ module flcl_dualview_mod
       character(kind=c_char), intent(in) :: n_A(*)
       integer(c_size_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_r64_1d
-  end interface
-
-  interface 
-    subroutine f_kokkos_allocate_dv_c32_1d(c_A, v_A, n_A, e0) &
-      & bind (c, name='c_kokkos_allocate_dv_c32_1d')
-      use, intrinsic :: iso_c_binding
-      implicit none
-      type(c_ptr), intent(out) :: c_A
-      type(c_ptr), intent(out) :: v_A
-      character(kind=c_char), intent(in) :: n_A(*)
-      integer(c_size_t), intent(in) :: e0
-    end subroutine f_kokkos_allocate_dv_c32_1d
-  end interface
-  
-  interface 
-    subroutine f_kokkos_allocate_dv_c64_1d(c_A, v_A, n_A, e0) &
-      & bind (c, name='c_kokkos_allocate_dv_c64_1d')
-      use, intrinsic :: iso_c_binding
-      implicit none
-      type(c_ptr), intent(out) :: c_A
-      type(c_ptr), intent(out) :: v_A
-      character(kind=c_char), intent(in) :: n_A(*)
-      integer(c_size_t), intent(in) :: e0
-    end subroutine f_kokkos_allocate_dv_c64_1d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 2D interfaces
@@ -641,24 +597,6 @@ module flcl_dualview_mod
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_1d
   end interface
-
-  interface 
-    subroutine f_kokkos_deallocate_dv_c32_1d(v_A) &
-      & bind (c, name='c_kokkos_deallocate_dv_c32_1d')
-      use, intrinsic :: iso_c_binding
-      implicit none
-      type(c_ptr), intent(out) :: v_A
-    end subroutine f_kokkos_deallocate_dv_c32_1d
-  end interface
-
-  interface 
-    subroutine f_kokkos_deallocate_dv_c64_1d(v_A) &
-      & bind (c, name='c_kokkos_deallocate_dv_c64_1d')
-      use, intrinsic :: iso_c_binding
-      implicit none
-      type(c_ptr), intent(out) :: v_A
-    end subroutine f_kokkos_deallocate_dv_c64_1d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 2D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -844,40 +782,6 @@ module flcl_dualview_mod
       call f_kokkos_allocate_dv_r64_1d(c_A, v_A%handle, f_label, e0)
       call c_f_pointer(c_A, A, shape=[e0])
     end subroutine kokkos_allocate_dv_r64_1d
-
-    subroutine kokkos_allocate_dv_c32_1d(A, v_A, n_A, e0)
-      use, intrinsic :: iso_c_binding
-      use flcl_util_strings_mod, only: char_add_null
-      implicit none
-      complex(c_float_complex), pointer, dimension(:), intent(inout) :: A
-      type(dualview_c32_1d_t), intent(out) :: v_A
-      character(len=*), intent(in) :: n_A
-      integer(c_size_t), intent(in) :: e0
-      type(c_ptr) :: c_A
-
-      character(len=:, kind=c_char), allocatable, target :: f_label
-      
-      call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_c32_1d(c_A, v_A%handle, f_label, e0)
-      call c_f_pointer(c_A, A, shape=[e0])
-    end subroutine kokkos_allocate_dv_c32_1d
-  
-    subroutine kokkos_allocate_dv_c64_1d(A, v_A, n_A, e0)
-      use, intrinsic :: iso_c_binding
-      use flcl_util_strings_mod, only: char_add_null
-      implicit none
-      complex(c_double_complex), pointer, dimension(:), intent(inout) :: A
-      type(dualview_c64_1d_t), intent(out) :: v_A
-      character(len=*), intent(in) :: n_A
-      integer(c_size_t), intent(in) :: e0
-      type(c_ptr) :: c_A
-
-      character(len=:, kind=c_char), allocatable, target :: f_label
-      
-      call char_add_null( n_A, f_label )
-      call f_kokkos_allocate_dv_c64_1d(c_A, v_A%handle, f_label, e0)
-      call c_f_pointer(c_A, A, shape=[e0])
-    end subroutine kokkos_allocate_dv_c64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos allocate dualview 2D implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1131,30 +1035,6 @@ module flcl_dualview_mod
     ! TODO ADD DUALVIEW TESTS
     ! TODO ADD DUALVIEW METHODS 4D-7D
   end subroutine kokkos_deallocate_dv_r64_1d
-
-  subroutine kokkos_deallocate_dv_c32_1d(A, v_A )
-    use, intrinsic :: iso_c_binding
-    implicit none
-    complex(c_float_complex), pointer, dimension(:), intent(inout) :: A
-    type(dualview_c32_1d_t), intent(inout) :: v_A
-
-    A => NULL()
-    call f_kokkos_deallocate_dv_c32_1d(v_A%handle)
-    v_A%handle = c_null_ptr
-
-  end subroutine kokkos_deallocate_dv_c32_1d
-
-  subroutine kokkos_deallocate_dv_c64_1d(A, v_A )
-    use, intrinsic :: iso_c_binding
-    implicit none
-    complex(c_double_complex), pointer, dimension(:), intent(inout) :: A
-    type(dualview_c64_1d_t), intent(inout) :: v_A
-
-    A => NULL()
-    call f_kokkos_deallocate_dv_c64_1d(v_A%handle)
-    v_A%handle = c_null_ptr
-
-  end subroutine kokkos_deallocate_dv_c64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos deallocate dualview 2D implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1311,18 +1191,6 @@ module flcl_dualview_mod
     class( dualview_r64_1d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_dualview_r64_1d_t
-
-  type(c_ptr) function view_ptr_dualview_c32_1d_t( self ) result( result_ptr )
-    implicit none  
-    class( dualview_c32_1d_t ), intent(in) :: self
-    result_ptr = self%handle
-  end function view_ptr_dualview_c32_1d_t
-
-  type(c_ptr) function view_ptr_dualview_c64_1d_t( self ) result( result_ptr )
-    implicit none
-    class( dualview_c64_1d_t ), intent(in) :: self
-    result_ptr = self%handle
-  end function view_ptr_dualview_c64_1d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! view_ptr_dualview 2d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

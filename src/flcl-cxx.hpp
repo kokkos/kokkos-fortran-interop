@@ -86,8 +86,6 @@ namespace flcl {
   typedef Kokkos::View<int64_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>                         view_i64_1d_t;
   typedef Kokkos::View<float*,Kokkos::LayoutLeft,flcl::HostMemorySpace>                           view_r32_1d_t;
   typedef Kokkos::View<double*,Kokkos::LayoutLeft,flcl::HostMemorySpace>                          view_r64_1d_t;
-  typedef Kokkos::View<Kokkos::complex<float>*,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_c32_1d_t;
-  typedef Kokkos::View<Kokkos::complex<double>*,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_c64_1d_t;
 
   // 2D fortran-compatible view types
   typedef Kokkos::View<bool**,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_l_2d_t;
@@ -109,8 +107,6 @@ namespace flcl {
   typedef Kokkos::DualView<int64_t*,Kokkos::LayoutLeft>                     dualview_i64_1d_t;
   typedef Kokkos::DualView<float*,Kokkos::LayoutLeft>                       dualview_r32_1d_t;
   typedef Kokkos::DualView<double*,Kokkos::LayoutLeft>                      dualview_r64_1d_t;
-  typedef Kokkos::DualView<Kokkos::complex<float>*,Kokkos::LayoutLeft>      dualview_c32_1d_t;
-  typedef Kokkos::DualView<Kokkos::complex<double>*,Kokkos::LayoutLeft>     dualview_c64_1d_t;
 
   // 2D fortran-compatible dualview types
   typedef Kokkos::DualView<bool**,Kokkos::LayoutLeft>     dualview_l_2d_t;

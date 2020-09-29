@@ -79,28 +79,6 @@ extern "C" {
     // std::cout << "allocated view with label: " << ((*v_A)->label()) << std::endl;
   }
 
-  void c_kokkos_allocate_v_c32_1d(float _Complex** A, flcl::view_c32_1d_t** v_A, const char* f_label, const size_t* e0) {
-    const size_t e0t = std::max(*e0, one);
-    std::string c_label( f_label );
-    *v_A = (new flcl::view_c32_1d_t(c_label, e0t));
-    //*A = (*v_A)->data();
-    Kokkos::complex<float>* kc_A = (*v_A)->data();
-    float _Complex* fc_A;
-    *reinterpret_cast<Kokkos::complex<float>*>(&fc_A) = *kc_A;
-    *A = fc_A;
-  }
-
-  void c_kokkos_allocate_v_c64_1d(double _Complex** A, flcl::view_c64_1d_t** v_A, const char* f_label, const size_t* e0) {
-    const size_t e0t = std::max(*e0, one);
-    std::string c_label( f_label );
-    *v_A = (new flcl::view_c64_1d_t(c_label, e0t));
-    // *A = (*v_A)->data();
-    Kokkos::complex<double>* kc_A = (*v_A)->data();
-    double _Complex* fc_A;
-    *reinterpret_cast<Kokkos::complex<double>*>(&fc_A) = *kc_A;
-    *A = fc_A;
-  }
-
   // 2D flcl view allocation routines
   void c_kokkos_allocate_v_l_2d(bool** A, flcl::view_l_2d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1) {
     const size_t e0t = std::max(*e0, one);
@@ -226,28 +204,6 @@ extern "C" {
     // std::cout << "allocated view with label: " << ((*v_A)->h_view.label()) << std::endl;
   }
 
-  void c_kokkos_allocate_dv_c32_1d(float _Complex** A, flcl::dualview_c32_1d_t** v_A, const char* f_label, const size_t* e0) {
-    const size_t e0t = std::max(*e0, one);
-    std::string c_label( f_label );
-    *v_A = (new flcl::dualview_c32_1d_t(c_label, e0t));
-    // *A = (*v_A)->h_view.data();
-    Kokkos::complex<float>* kc_A = (*v_A)->h_view.data();
-    float _Complex* fc_A;
-    *reinterpret_cast<Kokkos::complex<float>*>(&fc_A) = *kc_A;
-    *A = fc_A;
-  }
-
-  void c_kokkos_allocate_dv_c64_1d(double _Complex** A, flcl::dualview_c64_1d_t** v_A, const char* f_label, const size_t* e0) {
-    const size_t e0t = std::max(*e0, one);
-    std::string c_label( f_label );
-    *v_A = (new flcl::dualview_c64_1d_t(c_label, e0t));
-    // *A = (*v_A)->h_view.data();
-    Kokkos::complex<double>* kc_A = (*v_A)->h_view.data();
-    double _Complex* fc_A;
-    *reinterpret_cast<Kokkos::complex<double>*>(&fc_A) = *kc_A;
-    *A = fc_A;
-  }
-
   // 2D flcl dualview allocation routines
   void c_kokkos_allocate_dv_l_2d(bool** A, flcl::dualview_l_2d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1) {
     const size_t e0t = std::max(*e0, one);
@@ -356,14 +312,6 @@ extern "C" {
     delete(*v_A);
   }
 
-  void c_kokkos_deallocate_v_c32_1d(flcl::view_c32_1d_t** v_A) {
-    delete(*v_A);
-  }
-
-  void c_kokkos_deallocate_v_c64_1d(flcl::view_c64_1d_t** v_A) {
-    delete(*v_A);
-  }
-
   // 2D flcl view deallocation routines
   void c_kokkos_deallocate_v_l_2d(flcl::view_l_2d_t** v_A) {
     delete(*v_A);
@@ -424,14 +372,6 @@ extern "C" {
   }
 
   void c_kokkos_deallocate_dv_r64_1d(flcl::dualview_r64_1d_t** v_A) {
-    delete(*v_A);    
-  }
-
-  void c_kokkos_deallocate_dv_c32_1d(flcl::dualview_c32_1d_t** v_A) {
-    delete(*v_A);    
-  }
-
-  void c_kokkos_deallocate_dv_c64_1d(flcl::dualview_c64_1d_t** v_A) {
     delete(*v_A);    
   }
 
