@@ -788,13 +788,23 @@ module flcl_test_f_mod
         & function test_ndarray_l_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
-        use :: flcl_mod
+        use :: flcl_ndarray_mod
         implicit none
 
         logical(c_bool), dimension(:), allocatable :: array_l_1d
         integer :: ii
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = e0_length
+        integer(c_size_t) :: test_state_zero = flcl_test_fail
+        integer(c_size_t) :: test_state_values = flcl_test_fail
+        type(nd_array_t) :: zero_ndarray
+
+        allocate( array_l_1d(0) )
+        zero_ndarray = to_nd_array( array_l_1d )
+        if ( .not.c_associated(zero_ndarray%data) ) then
+          test_state_zero = flcl_test_pass
+        end if
+        deallocate( array_l_1d )
 
         allocate( array_l_1d(e0_length) )
         do ii = 1, e0_length
@@ -811,12 +821,20 @@ module flcl_test_f_mod
           end if
         end do
         if (f_sum == c_sum) then
+          test_state_values = flcl_test_pass
+        end if
+        if (  test_state_zero .eq. flcl_test_pass .and. &
+            & test_state_values .eq. flcl_test_pass ) then
           write(*,*)'PASSED ndarray_l_1d'
+          write(*,*)'test_state_zero = ',test_state_zero
+          write(*,*)'test_state_values = ',test_state_values
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
           write(*,*)'FAILED F ndarry_l_1d'
+          write(*,*)'test_state_zero = ',test_state_zero
+          write(*,*)'test_state_values = ',test_state_values
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
