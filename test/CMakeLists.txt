@@ -69,7 +69,6 @@ foreach(file ${files})
 	set_target_properties(${file_without_ext} PROPERTIES 
 						  BUILD_WITH_INSTALL_RPATH True
 						  INSTALL_RPATH "${RPATHS}")
-    #set_target_properties(${file_without_ext} PROPERTIES INSTALL_RPATH "${RPATHS}" BUILD_WITH_INSTALL_RPATH True)
  	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} FLCL::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
 	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
