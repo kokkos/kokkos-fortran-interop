@@ -54,7 +54,7 @@ set(CTEST_BINARY_DIRECTORY ${PROJECT_BINARY_DIR}/test)
 file(GLOB files "test_*.f90")
 
 # if cmake 3.17 is supported everywhere
-# list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
+list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
 
 foreach(file ${files})
  	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
