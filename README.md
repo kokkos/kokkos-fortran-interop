@@ -13,20 +13,12 @@ features as they move towards release. Then, feature branches as necessary.
 
 # Requirements
 - Compiler suite with both Fortran (F08) and C++ (C++11) support.
-- A build of [Kokkos](https://github.com/kokkos/kokkos) built with the compiler suite above.
+- A build of [Kokkos](https://github.com/kokkos/kokkos) 3.x built with the compiler suite above.
 
 # Build Instructions
 We generally build the library FLCL in-line for our uses.
 
-However, we have included a sample Makefile in the `build` directory of the repository.
-To use the sample Makefile, ensure that the environment variable `KOKKOS_ROOT` exists in
-your shell and points to the root directory of a build of Kokkos that you intend to use
-with FLCL. Then, ensure that the (relatively standard) environment variables `FC` and
-`CXX` exist and are populated by the compilers used to build the Kokkos above. Finally,
-just type `make` in the build directory.
-
-Soon: Cmake support.
-
+However, we provide many examples of how to successfully build FLCL in our 'ci' directory. Please see: [various continuous integration build examples](https://github.com/kokkos/kokkos-fortran-interop/ci).
 
 # Feedback
 Please raise an issue using the [GitHub issues](https://github.com/kokkos/kokkos-fortran-interop/issues)
