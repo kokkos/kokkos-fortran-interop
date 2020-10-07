@@ -16,6 +16,7 @@ include(CheckFortranCompilerFlag)
 include(CheckCXXCompilerFlag)
 include(CheckCCompilerFlag)
 
+include(CTest)
 # use, i.e. don't skip the full RPATH for the build tree
 #set(CMAKE_SKIP_BUILD_RPATH FALSE)
 
@@ -113,8 +114,11 @@ install(
     DESTINATION lib/cmake/flcl
     NAMESPACE FLCL::)
 
-include(CTest)
-add_subdirectory(test)
+
+if(BUILD_TESTING)
+  add_subdirectory(test)
+endif()
+
 add_subdirectory(examples)
 
 
