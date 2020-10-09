@@ -8,7 +8,7 @@ rm -rf $CI_INSTALL_DIR
 mkdir -p $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR
 cd $CI_BUILD_DIR
-module load cmake/3.15.3
+module load cmake/3.17.3
 module load gcc/7.4.0
 module load cuda/10.1
 cmake -DKokkos_DIR=$CI_KOKKOS_PATH \
