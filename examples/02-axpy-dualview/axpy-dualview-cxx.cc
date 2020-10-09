@@ -38,28 +38,33 @@
 #include <Kokkos_Core.hpp>
 #include "flcl-cxx.hpp"
 
+using view_type = flcl::dualview_r64_1d_t;
+
 extern "C" {
 
-  void c_kokkos_initialize() {
-    Kokkos::initialize();
-  }
-
-  void c_kokkos_finalize( void ) {
-    Kokkos::finalize();
-  }
-
-  void c_axpy( flcl_ndarray_t *nd_array_y, flcl_ndarray_t *nd_array_x, double *alpha ) {
+  void c_axpy_dualview( view_type **v_y, view_type **v_x, double *alpha ) {
     using flcl::view_from_ndarray;
 
-    auto y = view_from_ndarray<double*>(*nd_array_y);
-    auto x = view_from_ndarray<double*>(*nd_array_x);
+    view_type y = **v_y;
+    view_type x = **v_x;
+
+    y.template modify<typename view_type::host_mirror_space>();
+    x.template modify<typename view_type::host_mirror_space>();
+    y.template sync<typename view_type::execution_space>();
+    x.template sync<typename view_type::execution_space>();
 
     Kokkos::parallel_for( "axpy", y.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
-      y(idx) += *alpha * x(idx);
+      y.d_view(idx) += *alpha * x.d_view(idx);
     });
   
+    y.template modify<typename view_type::execution_space>();
+    x.template modify<typename view_type::execution_space>();
+    y.template sync<typename view_type::host_mirror_space>();
+    x.template sync<typename view_type::host_mirror_space>();
+
     return;
   }
+
 
 }

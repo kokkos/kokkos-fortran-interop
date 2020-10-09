@@ -788,13 +788,23 @@ module flcl_test_f_mod
         & function test_ndarray_l_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
-        use :: flcl_mod
+        use :: flcl_ndarray_mod
         implicit none
 
         logical(c_bool), dimension(:), allocatable :: array_l_1d
         integer :: ii
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = e0_length
+        integer(c_size_t) :: test_state_zero = flcl_test_fail
+        integer(c_size_t) :: test_state_values = flcl_test_fail
+        type(nd_array_t) :: zero_ndarray
+
+        allocate( array_l_1d(0) )
+        zero_ndarray = to_nd_array( array_l_1d )
+        if ( .not.c_associated(zero_ndarray%data) ) then
+          test_state_zero = flcl_test_pass
+        end if
+        deallocate( array_l_1d )
 
         allocate( array_l_1d(e0_length) )
         do ii = 1, e0_length
@@ -811,12 +821,20 @@ module flcl_test_f_mod
           end if
         end do
         if (f_sum == c_sum) then
+          test_state_values = flcl_test_pass
+        end if
+        if (  test_state_zero .eq. flcl_test_pass .and. &
+            & test_state_values .eq. flcl_test_pass ) then
           write(*,*)'PASSED ndarray_l_1d'
+          write(*,*)'test_state_zero = ',test_state_zero
+          write(*,*)'test_state_values = ',test_state_values
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_pass
         else
           write(*,*)'FAILED F ndarry_l_1d'
+          write(*,*)'test_state_zero = ',test_state_zero
+          write(*,*)'test_state_values = ',test_state_values
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
@@ -3136,11 +3154,11 @@ module flcl_test_f_mod
         & function test_kokkos_allocate_view_l_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
-        use :: flcl_mod
+        use :: flcl_view_mod
         implicit none
 
         logical(c_bool), pointer, dimension(:)  :: array_l_1d
-        type(c_ptr) :: v_array_l_1d
+        type(view_l_1d_t) :: v_array_l_1d
         integer :: ii
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3152,7 +3170,7 @@ module flcl_test_f_mod
             f_sum = f_sum + 1
           end if
         end do
-        ierr = f_test_kokkos_allocate_view_l_1d( v_array_l_1d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_l_1d( v_array_l_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3183,7 +3201,7 @@ module flcl_test_f_mod
         implicit none
 
         integer(c_int32_t), pointer, dimension(:)  :: array_i32_1d
-        type(c_ptr) :: v_array_i32_1d
+        type(view_i32_1d_t) :: v_array_i32_1d
         integer :: ii
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3193,7 +3211,7 @@ module flcl_test_f_mod
           array_i32_1d(ii) = ii
           f_sum = f_sum + array_i32_1d(ii)
         end do
-        ierr = f_test_kokkos_allocate_view_i32_1d( v_array_i32_1d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_i32_1d( v_array_i32_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3221,7 +3239,7 @@ module flcl_test_f_mod
         implicit none
 
         integer(c_int64_t), pointer, dimension(:)  :: array_i64_1d
-        type(c_ptr) :: v_array_i64_1d
+        type(view_i64_1d_t) :: v_array_i64_1d
         integer :: ii
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3231,7 +3249,7 @@ module flcl_test_f_mod
           array_i64_1d(ii) = ii
           f_sum = f_sum + array_i64_1d(ii)
         end do
-        ierr = f_test_kokkos_allocate_view_i64_1d( v_array_i64_1d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_i64_1d( v_array_i64_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3259,7 +3277,7 @@ module flcl_test_f_mod
         implicit none
 
         real(c_float), pointer, dimension(:)  :: array_r32_1d
-        type(c_ptr) :: v_array_r32_1d
+        type(view_r32_1d_t) :: v_array_r32_1d
         integer :: ii
         real(c_float) :: f_sum = 0
         real(c_float) :: c_sum = 0
@@ -3269,7 +3287,7 @@ module flcl_test_f_mod
           array_r32_1d(ii) = ii
           f_sum = f_sum + array_r32_1d(ii)
         end do
-        ierr = f_test_kokkos_allocate_view_r32_1d( v_array_r32_1d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_r32_1d( v_array_r32_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3297,7 +3315,7 @@ module flcl_test_f_mod
         implicit none
 
         real(c_double), pointer, dimension(:)  :: array_r64_1d
-        type(c_ptr) :: v_array_r64_1d
+        type(view_r64_1d_t) :: v_array_r64_1d
         integer :: ii
         real(c_double) :: f_sum = 0
         real(c_double) :: c_sum = 0
@@ -3307,7 +3325,7 @@ module flcl_test_f_mod
           array_r64_1d(ii) = ii
           f_sum = f_sum + array_r64_1d(ii)
         end do
-        ierr = f_test_kokkos_allocate_view_r64_1d( v_array_r64_1d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_r64_1d( v_array_r64_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3335,7 +3353,7 @@ module flcl_test_f_mod
         implicit none
 
         logical(c_bool), pointer, dimension(:,:)  :: array_l_2d
-        type(c_ptr) :: v_array_l_2d
+        type(view_l_2d_t) :: v_array_l_2d
         integer :: ii, jj
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3349,7 +3367,7 @@ module flcl_test_f_mod
             end if
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_l_2d( v_array_l_2d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_l_2d( v_array_l_2d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3381,7 +3399,7 @@ module flcl_test_f_mod
         implicit none
 
         integer(c_int32_t), pointer, dimension(:,:)  :: array_i32_2d
-        type(c_ptr) :: v_array_i32_2d
+        type(view_i32_2d_t) :: v_array_i32_2d
         integer :: ii, jj
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3393,7 +3411,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_i32_2d(ii,jj)
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_i32_2d( v_array_i32_2d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_i32_2d( v_array_i32_2d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3423,7 +3441,7 @@ module flcl_test_f_mod
         implicit none
 
         integer(c_int64_t), pointer, dimension(:,:)  :: array_i64_2d
-        type(c_ptr) :: v_array_i64_2d
+        type(view_i64_2d_t) :: v_array_i64_2d
         integer :: ii, jj
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3435,7 +3453,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_i64_2d(ii,jj)
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_i64_2d( v_array_i64_2d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_i64_2d( v_array_i64_2d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3465,7 +3483,7 @@ module flcl_test_f_mod
         implicit none
 
         real(c_float), pointer, dimension(:,:)  :: array_r32_2d
-        type(c_ptr) :: v_array_r32_2d
+        type(view_r32_2d_t) :: v_array_r32_2d
         integer :: ii, jj
         real(c_float) :: f_sum = 0
         real(c_float) :: c_sum = 0
@@ -3477,7 +3495,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r32_2d(ii,jj)
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_r32_2d( v_array_r32_2d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_r32_2d( v_array_r32_2d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3507,7 +3525,7 @@ module flcl_test_f_mod
         implicit none
 
         real(c_double), pointer, dimension(:,:)  :: array_r64_2d
-        type(c_ptr) :: v_array_r64_2d
+        type(view_r64_2d_t) :: v_array_r64_2d
         integer :: ii, jj
         real(c_double) :: f_sum = 0
         real(c_double) :: c_sum = 0
@@ -3519,7 +3537,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r64_2d(ii,jj)
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_r64_2d( v_array_r64_2d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_r64_2d( v_array_r64_2d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3549,7 +3567,7 @@ module flcl_test_f_mod
         implicit none
 
         logical(c_bool), pointer, dimension(:,:,:)  :: array_l_3d
-        type(c_ptr) :: v_array_l_3d
+        type(view_l_3d_t) :: v_array_l_3d
         integer :: ii, jj, kk
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3565,7 +3583,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_l_3d( v_array_l_3d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_l_3d( v_array_l_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3599,7 +3617,7 @@ module flcl_test_f_mod
         implicit none
 
         integer(c_int32_t), pointer, dimension(:,:,:)  :: array_i32_3d
-        type(c_ptr) :: v_array_i32_3d
+        type(view_i32_3d_t) :: v_array_i32_3d
         integer :: ii, jj, kk
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3613,7 +3631,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_i32_3d( v_array_i32_3d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_i32_3d( v_array_i32_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3645,7 +3663,7 @@ module flcl_test_f_mod
         implicit none
 
         integer(c_int64_t), pointer, dimension(:,:,:)  :: array_i64_3d
-        type(c_ptr) :: v_array_i64_3d
+        type(view_i64_3d_t) :: v_array_i64_3d
         integer :: ii, jj, kk
         integer(c_size_t) :: f_sum = 0
         integer(c_size_t) :: c_sum = 0
@@ -3659,7 +3677,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_i64_3d( v_array_i64_3d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_i64_3d( v_array_i64_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3691,7 +3709,7 @@ module flcl_test_f_mod
         implicit none
 
         real(c_float), pointer, dimension(:,:,:)  :: array_r32_3d
-        type(c_ptr) :: v_array_r32_3d
+        type(view_r32_3d_t) :: v_array_r32_3d
         integer :: ii, jj, kk
         real(c_float) :: f_sum = 0
         real(c_float) :: c_sum = 0
@@ -3705,7 +3723,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_r32_3d( v_array_r32_3d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_r32_3d( v_array_r32_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -3737,7 +3755,7 @@ module flcl_test_f_mod
         implicit none
 
         real(c_double), pointer, dimension(:,:,:)  :: array_r64_3d
-        type(c_ptr) :: v_array_r64_3d
+        type(view_r64_3d_t) :: v_array_r64_3d
         integer :: ii, jj, kk
         real(c_double) :: f_sum = 0
         real(c_double) :: c_sum = 0
@@ -3751,7 +3769,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ierr = f_test_kokkos_allocate_view_r64_3d( v_array_r64_3d, f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_view_r64_3d( v_array_r64_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length

@@ -35,66 +35,39 @@
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-module axpy_f_mod
+module complex_ndarray_f_mod
     use, intrinsic :: iso_c_binding
     use, intrinsic :: iso_fortran_env
   
-    use :: flcl_mod
+    use :: flcl_ndarray_mod
   
     implicit none
   
     public
-      interface
-        subroutine f_kokkos_initialize() &
-          bind(c, name='c_kokkos_initialize')
-          use, intrinsic :: iso_c_binding
-          implicit none
-        end subroutine f_kokkos_initialize
-      end interface
 
       interface
-        subroutine f_kokkos_finalize() &
-          bind(c, name='c_kokkos_finalize')
+        subroutine f_complex_ndarray( nd_array_y, nd_array_x, alpha ) &
+          & bind(c, name='c_complex_ndarray')
           use, intrinsic :: iso_c_binding
-          implicit none
-        end subroutine f_kokkos_finalize
-      end interface
-
-      interface
-        subroutine f_axpy( nd_array_y, nd_array_x, alpha ) &
-          & bind(c, name='c_axpy')
-          use, intrinsic :: iso_c_binding
-          use :: flcl_mod
+          use :: flcl_ndarray_mod
           type(nd_array_t) :: nd_array_y
           type(nd_array_t) :: nd_array_x
-          real(c_double) :: alpha
-        end subroutine f_axpy
+          complex(c_double_complex) :: alpha
+        end subroutine f_complex_ndarray
       end interface
 
       contains
-        
-        subroutine kokkos_initialize()
-          use, intrinsic :: iso_c_binding
-          implicit none
-          call f_kokkos_initialize()
-        end subroutine kokkos_initialize
-        
-        subroutine kokkos_finalize()
-          use, intrinsic :: iso_c_binding
-          implicit none
-          call f_kokkos_finalize()
-        end subroutine kokkos_finalize
 
-        subroutine axpy( y, x, alpha )
+        subroutine complex_ndarray( y, x, alpha )
           use, intrinsic :: iso_c_binding
-          use :: flcl_mod
+          use :: flcl_ndarray_mod
           implicit none
-          real(c_double), dimension(:), intent(inout) :: y
-          real(c_double), dimension(:), intent(in) :: x
-          real(c_double), intent(in) :: alpha
+          complex(c_double_complex), dimension(:), intent(inout) :: y
+          complex(c_double_complex), dimension(:), intent(in) :: x
+          complex(c_double_complex), intent(in) :: alpha
 
-          call f_axpy(to_nd_array(y), to_nd_array(x), alpha)
+          call f_complex_ndarray(to_nd_array(y), to_nd_array(x), alpha)
 
-        end subroutine axpy
+        end subroutine complex_ndarray
   
-end module axpy_f_mod
+end module complex_ndarray_f_mod

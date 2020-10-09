@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.17)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 
-project(FLCL VERSION 0.1.0 LANGUAGES Fortran C CXX)
+project(FLCL VERSION 0.3.0 LANGUAGES Fortran C CXX)
 
 set(default_build_type "RelWithDebInfo")
 set(BUILD_SHARED_LIBS OFF)
@@ -16,6 +16,7 @@ include(CheckFortranCompilerFlag)
 include(CheckCXXCompilerFlag)
 include(CheckCCompilerFlag)
 
+include(CTest)
 # use, i.e. don't skip the full RPATH for the build tree
 #set(CMAKE_SKIP_BUILD_RPATH FALSE)
 
@@ -40,6 +41,9 @@ add_link_options(LINKER:--disable-new-dtags)
 
 add_library(flcl-fortran
     OBJECT
+        src/flcl-ndarray-f.f90
+        src/flcl-view-f.f90
+        src/flcl-dualview-f.f90
         src/flcl-util-strings-f.f90
         src/flcl-f.f90
         src/flcl-util-kokkos-f.f90
@@ -110,8 +114,11 @@ install(
     DESTINATION lib/cmake/flcl
     NAMESPACE FLCL::)
 
-include(CTest)
-add_subdirectory(test)
 
+if(BUILD_TESTING)
+  add_subdirectory(test)
+endif()
+
+add_subdirectory(examples)
 
 

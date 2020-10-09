@@ -34,12 +34,15 @@
 ! ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#ifdef __xlc__
+#define norm2(v) sqrt(sum((v)**2))
+#endif
 
-program example_axpy
+program example_axpy_ndarray
   use, intrinsic :: iso_c_binding
   use, intrinsic :: iso_fortran_env
 
-  use :: flcl_mod
+  use :: flcl_util_kokkos_mod
   use :: axpy_f_mod
 
   implicit none
@@ -73,10 +76,12 @@ program example_axpy
   call random_number(alpha)
 
   ! check to see if arrays are "the same"
-  if ( norm2(f_y-c_y) < (1.0e-14)*mm ) then
+  if ( norm2(f_y-c_y) < (1.0e-14)*norm2(f_y) ) then
     write(*,*)'PASSED f_y and c_y the same before axpys'
   else
     write(*,*)'FAILED f_y and c_y the same before axpys'
+    write(*,*)'norm2(f_y-c_y)',norm2(f_y-c_y)
+    write(*,*)'(1.0e-14)*norm2(f_y)',(1.0e-14)*norm2(f_y)
   end if
 
   ! perform an axpy in fortran
@@ -87,17 +92,19 @@ program example_axpy
 
   ! call the f interface to the c_axpy routine
   write(*,*)'performing an axpy with kokkos'
-  call axpy(c_y, x, alpha)
+  call axpy_ndarray(c_y, x, alpha)
 
   ! check to see if arrays are "the same"
-  if ( norm2(f_y-c_y) < (1.0e-14)*mm ) then
+  if ( norm2(f_y-c_y) < (1.0e-14)*norm2(f_y) ) then
     write(*,*)'PASSED f_y and c_y the same after axpys'
   else
-    write(*,*)'FAILED f_y and c_y the same after axpys'
+    write(*,*)'FAILED f_y and c_y the same before axpys'
+    write(*,*)'norm2(f_y-c_y)',norm2(f_y-c_y)
+    write(*,*)'(1.0e-14)*norm2(f_y)',(1.0e-14)*norm2(f_y)
   end if
 
   ! finalize kokkos
   write(*,*)'finalizing kokkos'
   call kokkos_finalize()
 
-end program example_axpy
+end program example_axpy_ndarray

@@ -54,7 +54,7 @@ set(CTEST_BINARY_DIRECTORY ${PROJECT_BINARY_DIR}/test)
 file(GLOB files "test_*.f90")
 
 # if cmake 3.17 is supported everywhere
-# list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
+list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
 
 foreach(file ${files})
  	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
@@ -68,8 +68,7 @@ foreach(file ${files})
     set(RPATHS "$ENV{LD_LIBRARY_PATH}")
 	set_target_properties(${file_without_ext} PROPERTIES 
 						  BUILD_WITH_INSTALL_RPATH True
-						  INSTALL_RPATH ${RPATHS})
-     set_target_properties(${file_without_ext} PROPERTIES INSTALL_RPATH ${RPATHS} BUILD_WITH_INSTALL_RPATH True)
+						  INSTALL_RPATH "${RPATHS}")
  	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} FLCL::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
 	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
