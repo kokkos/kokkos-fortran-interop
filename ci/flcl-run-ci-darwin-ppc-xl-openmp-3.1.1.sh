@@ -8,7 +8,7 @@ rm -rf $CI_INSTALL_DIR
 mkdir -p $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR
 cd $CI_BUILD_DIR
-module load cmake/3.15.3
+module load cmake/3.17.3
 module load gcc/7.4.0
 module load ibm/xlc-16.1.1.6-xlf-16.1.1.6
 # one of the important library dirs is not added

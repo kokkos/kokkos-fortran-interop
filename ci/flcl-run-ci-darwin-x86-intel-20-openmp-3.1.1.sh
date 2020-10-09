@@ -8,7 +8,7 @@ rm -rf $CI_INSTALL_DIR
 mkdir -p $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR
 cd $CI_BUILD_DIR
-module load cmake/3.15.3
+module load cmake/3.17.3
 module load intel/20.0.1
 setenv OMP_NUM_THREADS 4
 setenv OMP_PROC_BIND false
