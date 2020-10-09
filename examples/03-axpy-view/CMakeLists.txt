@@ -21,5 +21,4 @@ endif()
 set(RPATHS "$ENV{LD_LIBRARY_PATH}")
 set_target_properties(example-axpy-view PROPERTIES 
                       BUILD_WITH_INSTALL_RPATH True
-                      INSTALL_RPATH ${RPATHS})
-set_target_properties(example-axpy-view PROPERTIES INSTALL_RPATH ${RPATHS} BUILD_WITH_INSTALL_RPATH True)
+                      INSTALL_RPATH "${RPATHS}")
