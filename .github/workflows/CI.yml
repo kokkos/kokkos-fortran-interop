@@ -1,0 +1,58 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron:  '0 3 * * *'
+
+jobs:
+  CI:
+    continue-on-error: ${{ matrix.kokkos_ver == 'develop' }} 
+    strategy:
+      matrix:
+        backend: ['OPENMP', 'SERIAL']
+        cmake_build_type: ['Debug', 'Release']
+        kokkos_ver: ['3.0.00', '3.1.01', '3.2.00', 'master', 'develop']
+        gcc_ver: ['8', '9']
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install deps
+        run: sudo apt-get install libhwloc-dev
+      - name: Checkout kokkos
+        uses: actions/checkout@v2.2.0
+        with:
+          repository: kokkos/kokkos
+          ref: 3.0.00
+          path: kokkos
+      - name: Build kokkos
+        working-directory: kokkos
+        run: |
+          cmake -B build \
+            -DCMAKE_INSTALL_PREFIX=$HOME/kokkos \
+            -DKokkos_ENABLE_${{ matrix.backend }}=ON \
+            -DKokkos_ENABLE_HWLOC=ON \
+            -DCMAKE_CXX_COMPILER=g++-${{ matrix.gcc_ver }} \
+            -DCMAKE_BUILD_TYPE=${{ matrix.cmake_build_type }}
+          cmake --build build --parallel 2
+          cmake --install build
+      - name: Checkout FLCL
+        uses: actions/checkout@v2.2.0
+      - name: Build FLCL
+        run: |
+          cmake -B build \
+            -DCMAKE_INSTALL_PREFIX=$HOME/flcl \
+            -DCMAKE_PREFIX_PATH="$HOME/kokkos" \
+            -DCMAKE_CXX_COMPILER=g++-${{ matrix.gcc_ver }} \
+            -DCMAKE_CXX_FLAGS='-Wall -pedantic' \
+            -DCMAKE_C_COMPILER=gcc-${{ matrix.gcc_ver }} \
+            -DCMAKE_C_FLAGS='-Wall -pedantic' \
+            -DCMAKE_Fortran_COMPILER=gfortran-${{ matrix.gcc_ver }} \
+            -DCMAKE_Fortran_FLAGS='-Wall -pedantic' \
+            -DCMAKE_BUILD_TYPE=${{ matrix.cmake_build_type }}
+          cmake --build build --parallel 2
+          cmake --build build --target test
+          cmake --install build
