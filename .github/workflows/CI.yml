@@ -47,12 +47,16 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=$HOME/flcl \
             -DCMAKE_PREFIX_PATH="$HOME/kokkos" \
             -DCMAKE_CXX_COMPILER=g++-${{ matrix.gcc_ver }} \
-            -DCMAKE_CXX_FLAGS='-Wall -pedantic' \
+            -DCMAKE_CXX_FLAGS='-Wall -pedantic --coverage' \
             -DCMAKE_C_COMPILER=gcc-${{ matrix.gcc_ver }} \
-            -DCMAKE_C_FLAGS='-Wall -pedantic' \
+            -DCMAKE_C_FLAGS='-Wall -pedantic --coverage' \
             -DCMAKE_Fortran_COMPILER=gfortran-${{ matrix.gcc_ver }} \
-            -DCMAKE_Fortran_FLAGS='-Wall -pedantic' \
+            -DCMAKE_Fortran_FLAGS='-Wall -pedantic --coverage' \
+            -DCMAKE_EXE_LINKER_FLAGS='--coverage' \
             -DCMAKE_BUILD_TYPE=${{ matrix.cmake_build_type }}
           cmake --build build --parallel 2
           cmake --build build --target test
           cmake --install build
+      - name: Upload Report to codecov.io
+        uses: codecov/codecov-action@v1
+        if: ${{ matrix.gcc_ver == '9' }}
