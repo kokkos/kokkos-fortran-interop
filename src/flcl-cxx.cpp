@@ -217,6 +217,62 @@ extern "C" {
     *A = (*v_A)->data();
   }
 
+  // 5D flcl view allocation routines
+  void c_kokkos_allocate_v_l_5d(bool** A, flcl::view_l_5d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::view_l_5d_t(c_label, e0t, e1t, e2t, e3t, e4t));
+    *A = (*v_A)->data();
+  }
+
+  void c_kokkos_allocate_v_i32_5d(int32_t** A, flcl::view_i32_5d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::view_i32_5d_t(c_label, e0t, e1t, e2t, e3t, e4t));
+    *A = (*v_A)->data();
+  }
+
+  void c_kokkos_allocate_v_i64_5d(int64_t** A, flcl::view_i64_5d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::view_i64_5d_t(c_label, e0t, e1t, e2t, e3t, e4t));
+    *A = (*v_A)->data();
+  }
+
+  void c_kokkos_allocate_v_r32_5d(float** A, flcl::view_r32_5d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::view_r32_5d_t(c_label, e0t, e1t, e2t, e3t, e4t));
+    *A = (*v_A)->data();
+  }
+
+  void c_kokkos_allocate_v_r64_5d(double** A, flcl::view_r64_5d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::view_r64_5d_t(c_label, e0t, e1t, e2t, e3t, e4t));
+    *A = (*v_A)->data();
+  }
+
   // 1D flcl dualview allocation routines
   void c_kokkos_allocate_dv_l_1d(bool** A, flcl::dualview_l_1d_t** v_A, const char* f_label, const size_t* e0) {
     const size_t e0t = std::max(*e0, one);
@@ -423,6 +479,27 @@ extern "C" {
   }
 
   void c_kokkos_deallocate_v_r64_4d(flcl::view_r64_4d_t** v_A) {
+    delete(*v_A);
+  }
+
+  // 5D flcl view deallocation routines
+  void c_kokkos_deallocate_v_l_5d(flcl::view_l_5d_t** v_A) {
+    delete(*v_A);
+  }
+  
+  void c_kokkos_deallocate_v_i32_5d(flcl::view_i32_5d_t** v_A) {
+    delete(*v_A);
+  }
+
+  void c_kokkos_deallocate_v_i64_5d(flcl::view_i64_5d_t** v_A) {
+    delete(*v_A);
+  }
+
+  void c_kokkos_deallocate_v_r32_5d(flcl::view_r32_5d_t** v_A) {
+    delete(*v_A);
+  }
+
+  void c_kokkos_deallocate_v_r64_5d(flcl::view_r64_5d_t** v_A) {
     delete(*v_A);
   }
 
