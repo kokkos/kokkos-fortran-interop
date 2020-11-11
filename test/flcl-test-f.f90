@@ -782,6 +782,66 @@ module flcl_test_f_mod
       end function f_test_kokkos_allocate_view_r64_3d
     end interface
 
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_l_4d( v_array_l_4d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_l_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_l_4d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_l_4d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i32_4d( v_array_i32_4d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i32_4d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i32_4d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_i64_4d( v_array_i64_4d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_i64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i64_4d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_i64_4d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r32_4d( v_array_r32_4d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r32_4d
+        real(c_float), intent(inout) :: f_sum
+        real(c_float), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r32_4d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_view_r64_4d( v_array_r64_4d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_view_r64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r64_4d
+        real(c_double), intent(inout) :: f_sum
+        real(c_double), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_view_r64_4d
+    end interface
+
     contains
 
       integer(c_size_t) &
@@ -3792,5 +3852,259 @@ module flcl_test_f_mod
           end if
         end if
       end function test_kokkos_allocate_view_r64_3d
+
+      integer &
+        & function test_kokkos_allocate_view_l_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(c_bool), pointer, dimension(:,:,:,:)  :: array_l_4d
+        type(view_l_4d_t) :: v_array_l_4d
+        integer :: ii, jj, kk, ll
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        call kokkos_allocate_view( array_l_4d, v_array_l_4d, 'array_l_4d', e0_length, e1_length, e2_length, e3_length )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_l_4d(ii,jj,kk,ll) = logical_pre
+                if (array_l_4d(ii,jj,kk,ll) .eqv. logical_pre) then
+                  f_sum = f_sum + 1
+                end if
+              end do
+            end do
+          end do
+        end do
+        ierr = f_test_kokkos_allocate_view_l_4d( v_array_l_4d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            do jj = 1, e1_length
+              do kk = 1, e2_length
+                do ll = 1, e3_length
+                  if (array_l_4d(ii,jj,kk,ll) .eqv. logical_post) then
+                    f_sum = f_sum + 1
+                  end if
+                end do
+              end do
+            end do
+          end do
+          if (f_sum == c_sum) then
+            write(*,*)'PASSED kokkos_allocate_view_l_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_view_l_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+      end function test_kokkos_allocate_view_l_4d
+
+      integer &
+        & function test_kokkos_allocate_view_i32_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(c_int32_t), pointer, dimension(:,:,:,:)  :: array_i32_4d
+        type(view_i32_4d_t) :: v_array_i32_4d
+        integer :: ii, jj, kk, ll
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        call kokkos_allocate_view( array_i32_4d, v_array_i32_4d, 'array_i32_4d', e0_length, e1_length, e2_length, e3_length )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_i32_4d(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_i32_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        ierr = f_test_kokkos_allocate_view_i32_4d( v_array_i32_4d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            do jj = 1, e1_length
+              do kk = 1, e2_length
+                do ll = 1, e3_length
+                  f_sum = f_sum + array_i32_4d(ii,jj,kk,ll)
+                end do
+              end do
+            end do
+          end do
+          if ( f_sum .eq. c_sum ) then
+            write(*,*)'PASSED kokkos_allocate_view_i32_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_view_i32_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+      end function test_kokkos_allocate_view_i32_4d
+
+      integer &
+        & function test_kokkos_allocate_view_i64_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(c_int64_t), pointer, dimension(:,:,:,:)  :: array_i64_4d
+        type(view_i64_4d_t) :: v_array_i64_4d
+        integer :: ii, jj, kk, ll
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        call kokkos_allocate_view( array_i64_4d, v_array_i64_4d, 'array_i64_4d', e0_length, e1_length, e2_length, e3_length )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_i64_4d(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_i64_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        ierr = f_test_kokkos_allocate_view_i64_4d( v_array_i64_4d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            do jj = 1, e1_length
+              do kk = 1, e2_length
+                do ll = 1, e3_length
+                  f_sum = f_sum + array_i64_4d(ii,jj,kk,ll)
+                end do
+              end do
+            end do
+          end do
+          if ( f_sum .eq. c_sum ) then
+            write(*,*)'PASSED kokkos_allocate_view_i64_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_view_i64_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+      end function test_kokkos_allocate_view_i64_4d
+
+      integer &
+        & function test_kokkos_allocate_view_r32_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_float), pointer, dimension(:,:,:,:)  :: array_r32_4d
+        type(view_r32_4d_t) :: v_array_r32_4d
+        integer :: ii, jj, kk, ll
+        real(c_float) :: f_sum = 0
+        real(c_float) :: c_sum = 0
+
+        call kokkos_allocate_view( array_r32_4d, v_array_r32_4d, 'array_r32_4d', e0_length, e1_length, e2_length, e3_length )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_r32_4d(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_r32_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        ierr = f_test_kokkos_allocate_view_r32_4d( v_array_r32_4d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            do jj = 1, e1_length
+              do kk = 1, e2_length
+                do ll = 1, e3_length
+                  f_sum = f_sum + array_r32_4d(ii,jj,kk,ll)
+                end do
+              end do
+            end do
+          end do
+          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+            write(*,*)'PASSED kokkos_allocate_view_r32_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_view_r32_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+      end function test_kokkos_allocate_view_r32_4d
+
+      integer &
+        & function test_kokkos_allocate_view_r64_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_double), pointer, dimension(:,:,:,:)  :: array_r64_4d
+        type(view_r64_4d_t) :: v_array_r64_4d
+        integer :: ii, jj, kk, ll
+        real(c_double) :: f_sum = 0
+        real(c_double) :: c_sum = 0
+
+        call kokkos_allocate_view( array_r64_4d, v_array_r64_4d, 'array_r64_4d', e0_length, e1_length, e2_length, e3_length )
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_r64_4d(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_r64_4d(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+        ierr = f_test_kokkos_allocate_view_r64_4d( v_array_r64_4d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            do jj = 1, e1_length
+              do kk = 1, e2_length
+                do ll = 1, e3_length
+                  f_sum = f_sum + array_r64_4d(ii,jj,kk,ll)
+                end do
+              end do
+            end do
+          end do
+          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+            write(*,*)'PASSED kokkos_allocate_view_r64_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_view_r64_4d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+      end function test_kokkos_allocate_view_r64_4d
 
 end module flcl_test_f_mod
