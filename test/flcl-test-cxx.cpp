@@ -2708,4 +2708,193 @@ extern "C" {
 
   }
 
+  flcl_test_error_t c_test_kokkos_allocate_view_l_6d( flcl::view_l_6d_t **v_array_l_6d, size_t *f_sum, size_t *c_sum ) {
+    *c_sum = 0;
+    auto array_l_6d = **v_array_l_6d;
+    for (size_t ii = 0; ii < array_l_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_l_6d.extent(5); nn++) {
+                if ( array_l_6d(ii,jj,kk,ll,mm,nn) ) (*c_sum)++;
+              }
+            }
+          }
+        }
+      }
+    }
+    if (*c_sum != *f_sum) {
+      std::cout << "FAILED C kokkos_allocate_view_l_6d" << std::endl;
+      return FLCL_TEST_FAIL;
+    }
+    for (size_t ii = 0; ii < array_l_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_l_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_l_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_l_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_l_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_l_6d.extent(5); nn++) {
+                array_l_6d(ii,jj,kk,ll,mm,nn) = logical_post;
+              }
+            }
+          }
+        }
+      }
+    }
+    return FLCL_TEST_PASS;
+  }
+
+  flcl_test_error_t c_test_kokkos_allocate_view_i32_6d( flcl::view_i32_6d_t **v_array_i32_6d, size_t *f_sum, size_t *c_sum ) {
+    *c_sum = 0;
+    auto array_i32_6d = **v_array_i32_6d;
+    for (size_t ii = 0; ii < array_i32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
+                *c_sum += array_i32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( *c_sum != *f_sum ) {
+      std::cout << "FAILED C kokkos_allocate_view_i32_6d" << std::endl;
+      return FLCL_TEST_FAIL;
+    }
+    *c_sum = 0;
+    for (size_t ii = 0; ii < array_i32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
+                array_i32_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                *c_sum += array_i32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return FLCL_TEST_PASS;
+  }
+
+  flcl_test_error_t c_test_kokkos_allocate_view_i64_6d( flcl::view_i64_6d_t **v_array_i64_6d, size_t *f_sum, size_t *c_sum ) {
+    *c_sum = 0;
+    auto array_i64_6d = **v_array_i64_6d;
+    for (size_t ii = 0; ii < array_i64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
+                *c_sum += array_i64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( *c_sum != *f_sum ) {
+      std::cout << "FAILED C kokkos_allocate_view_i64_6d" << std::endl;
+      return FLCL_TEST_FAIL;
+    }
+    *c_sum = 0;
+    for (size_t ii = 0; ii < array_i64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_i64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_i64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
+                array_i64_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                *c_sum += array_i64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return FLCL_TEST_PASS;
+  }
+
+  flcl_test_error_t c_test_kokkos_allocate_view_r32_6d( flcl::view_r32_6d_t **v_array_r32_6d, float *f_sum, float *c_sum ){
+    *c_sum = 0;
+    auto array_r32_6d = **v_array_r32_6d;
+    for (size_t ii = 0; ii < array_r32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
+                *c_sum += array_r32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(*c_sum - *f_sum) > (precision_single * *c_sum) ) {
+      std::cout << "FAILED C kokkos_allocate_view_r32_6d" << std::endl;
+      return FLCL_TEST_FAIL;
+    }
+    *c_sum = 0;
+    for (size_t ii = 0; ii < array_r32_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r32_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r32_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
+                array_r32_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                *c_sum += array_r32_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return FLCL_TEST_PASS;
+  }
+
+  flcl_test_error_t c_test_kokkos_allocate_view_r64_6d( flcl::view_r64_6d_t **v_array_r64_6d, double *f_sum, double *c_sum ) {
+    *c_sum = 0;
+    auto array_r64_6d = **v_array_r64_6d;
+    for (size_t ii = 0; ii < array_r64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
+                *c_sum += array_r64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    if ( std::fabs(*c_sum - *f_sum) > (precision_double * *c_sum) ) {
+      std::cout << "FAILED C kokkos_allocate_view_r64_6d" << std::endl;
+      return FLCL_TEST_FAIL;
+    }
+    *c_sum = 0;
+    for (size_t ii = 0; ii < array_r64_6d.extent(0); ii++) {
+      for (size_t jj = 0; jj < array_r64_6d.extent(1); jj++) {
+        for (size_t kk = 0; kk < array_r64_6d.extent(2); kk++) {
+          for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
+            for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
+              for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
+                array_r64_6d(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn;
+                *c_sum += array_r64_6d(ii,jj,kk,ll,mm,nn);
+              }
+            }
+          }
+        }
+      }
+    }
+    return FLCL_TEST_PASS;
+
+  }
+
 }
