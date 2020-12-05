@@ -149,7 +149,14 @@ namespace flcl {
   typedef Kokkos::DualView<int64_t***,Kokkos::LayoutLeft> dualview_i64_3d_t;
   typedef Kokkos::DualView<float***,Kokkos::LayoutLeft>   dualview_r32_3d_t;
   typedef Kokkos::DualView<double***,Kokkos::LayoutLeft>  dualview_r64_3d_t;
-    
+
+  // 3D fortran-compatible dualview types
+  typedef Kokkos::DualView<bool****,Kokkos::LayoutLeft>    dualview_l_4d_t;
+  typedef Kokkos::DualView<int32_t****,Kokkos::LayoutLeft> dualview_i32_4d_t;
+  typedef Kokkos::DualView<int64_t****,Kokkos::LayoutLeft> dualview_i64_4d_t;
+  typedef Kokkos::DualView<float****,Kokkos::LayoutLeft>   dualview_r32_4d_t;
+  typedef Kokkos::DualView<double****,Kokkos::LayoutLeft>  dualview_r64_4d_t;
+
   template <typename DataType>
   Kokkos::View<DataType, Kokkos::LayoutStride, flcl::HostMemorySpace>
   view_from_ndarray(flcl_ndarray_t const &ndarray) {
