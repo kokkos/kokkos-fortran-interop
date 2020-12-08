@@ -1024,8 +1024,8 @@ module flcl_test_f_mod
 
     interface
       integer &
-        & function f_test_kokkos_allocate_dualview_l_1d( v_array_l_1d, f_sum, c_sum )! &
-        ! & bind(c, name='c_test_kokkos_allocate_dualview_l_1d')
+        & function f_test_kokkos_allocate_dualview_l_1d( v_array_l_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_l_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_1d
@@ -5384,7 +5384,7 @@ module flcl_test_f_mod
             f_sum = f_sum + 1
           end if
         end do
-        ! ierr = f_test_kokkos_allocate_dualview_l_1d( v_array_l_1d%ptr(), f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_dualview_l_1d( v_array_l_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -5425,7 +5425,7 @@ module flcl_test_f_mod
           array_i32_1d(ii) = ii
           f_sum = f_sum + array_i32_1d(ii)
         end do
-        ! ierr = f_test_kokkos_allocate_dualview_i32_1d( v_array_i32_1d%ptr(), f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_dualview_i32_1d( v_array_i32_1d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
