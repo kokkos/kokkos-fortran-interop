@@ -1144,8 +1144,8 @@ module flcl_test_f_mod
 
     interface
       integer &
-        & function f_test_kokkos_allocate_dualview_l_3d( v_array_l_3d, f_sum, c_sum )! &
-        ! & bind(c, name='c_test_kokkos_allocate_dualview_l_3d')
+        & function f_test_kokkos_allocate_dualview_l_3d( v_array_l_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_l_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_3d
@@ -1156,8 +1156,8 @@ module flcl_test_f_mod
 
     interface
       integer &
-        & function f_test_kokkos_allocate_dualview_i32_3d( v_array_i32_3d, f_sum, c_sum )! &
-        ! & bind(c, name='c_test_kokkos_allocate_dualview_i32_3d')
+        & function f_test_kokkos_allocate_dualview_i32_3d( v_array_i32_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_i32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_3d
@@ -1168,8 +1168,8 @@ module flcl_test_f_mod
 
     interface
       integer &
-        & function f_test_kokkos_allocate_dualview_i64_3d( v_array_i64_3d, f_sum, c_sum )! &
-        ! & bind(c, name='c_test_kokkos_allocate_dualview_i64_3d')
+        & function f_test_kokkos_allocate_dualview_i64_3d( v_array_i64_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_i64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_3d
@@ -1180,8 +1180,8 @@ module flcl_test_f_mod
 
     interface
       integer &
-        & function f_test_kokkos_allocate_dualview_r32_3d( v_array_r32_3d, f_sum, c_sum )! &
-        ! & bind(c, name='c_test_kokkos_allocate_dualview_r32_3d')
+        & function f_test_kokkos_allocate_dualview_r32_3d( v_array_r32_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_r32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_3d
@@ -1192,8 +1192,8 @@ module flcl_test_f_mod
 
     interface
       integer &
-        & function f_test_kokkos_allocate_dualview_r64_3d( v_array_r64_3d, f_sum, c_sum )! &
-        ! & bind(c, name='c_test_kokkos_allocate_dualview_r64_3d')
+        & function f_test_kokkos_allocate_dualview_r64_3d( v_array_r64_3d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_r64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_3d
@@ -5797,7 +5797,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ! ierr = f_test_kokkos_allocate_dualview_l_3d( v_array_l_3d%ptr(), f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_dualview_l_3d( v_array_l_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -5845,7 +5845,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ! ierr = f_test_kokkos_allocate_dualview_i32_3d( v_array_i32_3d%ptr(), f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_dualview_i32_3d( v_array_i32_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -5891,7 +5891,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ! ierr = f_test_kokkos_allocate_dualview_i64_3d( v_array_i64_3d%ptr(), f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_dualview_i64_3d( v_array_i64_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -5937,7 +5937,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ! ierr = f_test_kokkos_allocate_dualview_r32_3d( v_array_r32_3d%ptr(), f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_dualview_r32_3d( v_array_r32_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
@@ -5983,7 +5983,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        ! ierr = f_test_kokkos_allocate_dualview_r64_3d( v_array_r64_3d%ptr(), f_sum, c_sum )
+        ierr = f_test_kokkos_allocate_dualview_r64_3d( v_array_r64_3d%ptr(), f_sum, c_sum )
         if (ierr == flcl_test_pass) then
           f_sum = 0
           do ii = 1, e0_length
