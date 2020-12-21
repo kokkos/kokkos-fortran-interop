@@ -1281,9 +1281,7 @@ module flcl_dualview_mod
     A => NULL()
     call f_kokkos_deallocate_dv_r64_1d(v_A%handle)
     v_A%handle = c_null_ptr
-
-    ! TODO ADD DUALVIEW TESTS
-    ! TODO ADD DUALVIEW METHODS 4D-7D
+    
   end subroutine kokkos_deallocate_dv_r64_1d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos deallocate dualview 2D implementations
