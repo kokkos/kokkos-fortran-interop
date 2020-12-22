@@ -632,6 +632,67 @@ extern "C" {
     *A = (*v_A)->h_view.data();
   }
 
+// 6D flcl dualview allocation routines
+  void c_kokkos_allocate_dv_l_6d(bool** A, flcl::dualview_l_6d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4, const size_t* e5) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    const size_t e5t = std::max(*e5, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::dualview_l_6d_t(c_label, e0t, e1t, e2t, e3t, e4t, e5t));
+    *A = (*v_A)->h_view.data();
+  }
+
+  void c_kokkos_allocate_dv_i32_6d(int32_t** A, flcl::dualview_i32_6d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4, const size_t* e5) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    const size_t e5t = std::max(*e5, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::dualview_i32_6d_t(c_label, e0t, e1t, e2t, e3t, e4t, e5t));
+    *A = (*v_A)->h_view.data();
+  }
+
+  void c_kokkos_allocate_dv_i64_6d(int64_t** A, flcl::dualview_i64_6d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4, const size_t* e5) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    const size_t e5t = std::max(*e5, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::dualview_i64_6d_t(c_label, e0t, e1t, e2t, e3t, e4t, e5t));
+    *A = (*v_A)->h_view.data();
+  }
+
+  void c_kokkos_allocate_dv_r32_6d(float** A, flcl::dualview_r32_6d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4, const size_t* e5) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    const size_t e5t = std::max(*e5, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::dualview_r32_6d_t(c_label, e0t, e1t, e2t, e3t, e4t, e5t));
+    *A = (*v_A)->h_view.data();
+  }
+
+  void c_kokkos_allocate_dv_r64_6d(double** A, flcl::dualview_r64_6d_t** v_A, const char* f_label, const size_t* e0, const size_t* e1, const size_t* e2, const size_t* e3, const size_t* e4, const size_t* e5) {
+    const size_t e0t = std::max(*e0, one);
+    const size_t e1t = std::max(*e1, one);
+    const size_t e2t = std::max(*e2, one);
+    const size_t e3t = std::max(*e3, one);
+    const size_t e4t = std::max(*e4, one);
+    const size_t e5t = std::max(*e5, one);
+    std::string c_label( f_label );
+    *v_A = (new flcl::dualview_r64_6_t(c_label, e0t, e1t, e2t, e3t, e4t, e5t));
+    *A = (*v_A)->h_view.data();
+  }
+
   // 1D flcl view deallocation routines
   void c_kokkos_deallocate_v_l_1d(flcl::view_l_1d_t** v_A) {
     delete(*v_A);
@@ -881,6 +942,27 @@ extern "C" {
   }
 
   void c_kokkos_deallocate_dv_r64_5d(flcl::dualview_r64_5d_t** v_A) {
+    delete(*v_A);    
+  }
+
+  // 6D flcl dualview deallocation routines
+  void c_kokkos_deallocate_dv_l_6d(flcl::dualview_l_6d_t** v_A) {
+    delete(*v_A);    
+  }
+
+  void c_kokkos_deallocate_dv_i32_6d(flcl::dualview_i32_6d_t** v_A) {
+    delete(*v_A);    
+  }
+
+  void c_kokkos_deallocate_dv_i64_6d(flcl::dualview_i64_6d_t** v_A) {
+    delete(*v_A);    
+  }
+
+  void c_kokkos_deallocate_dv_r32_6d(flcl::dualview_r32_6d_t** v_A) {
+    delete(*v_A);    
+  }
+
+  void c_kokkos_deallocate_dv_r64_6d(flcl::dualview_r64_6d_t** v_A) {
     delete(*v_A);    
   }
 
