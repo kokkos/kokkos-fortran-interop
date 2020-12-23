@@ -689,7 +689,7 @@ extern "C" {
     const size_t e4t = std::max(*e4, one);
     const size_t e5t = std::max(*e5, one);
     std::string c_label( f_label );
-    *v_A = (new flcl::dualview_r64_6_t(c_label, e0t, e1t, e2t, e3t, e4t, e5t));
+    *v_A = (new flcl::dualview_r64_6d_t(c_label, e0t, e1t, e2t, e3t, e4t, e5t));
     *A = (*v_A)->h_view.data();
   }
 
