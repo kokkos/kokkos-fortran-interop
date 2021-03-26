@@ -15,7 +15,7 @@ set_target_properties(
         Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
 )
 target_link_libraries(flcl-testlib-fortran
-    FLCL::flcl
+    flcl::flcl
 )
 
 add_library(flcl-testlib-cxx
@@ -28,7 +28,7 @@ target_include_directories(flcl-testlib-cxx
         ${CMAKE_CURRENT_SOURCE_DIR}/../src
 )
 target_link_libraries(flcl-testlib-cxx
-    FLCL::flcl
+    flcl::flcl
 )
 
 add_library(flcl-testlib
@@ -42,7 +42,7 @@ target_include_directories(flcl-testlib
         $<INSTALL_INTERFACE:mod>
 )
 target_link_libraries(flcl-testlib
-    FLCL::flcl
+    flcl::flcl
 )
 
 #set_target_properties(flcl-testlib PROPERTIES INSTALL_RPATH ${RPATHS})
@@ -69,7 +69,7 @@ foreach(file ${files})
 	set_target_properties(${file_without_ext} PROPERTIES 
 						  BUILD_WITH_INSTALL_RPATH True
 						  INSTALL_RPATH "${RPATHS}")
- 	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} FLCL::flcl flcl-testlib)
+ 	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
 	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
  	set_tests_properties(${file_without_ext}

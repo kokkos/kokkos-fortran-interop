@@ -11,7 +11,7 @@ target_include_directories(example-axpy-view
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/../../src
 )
-target_link_libraries(example-axpy-view ${PROJECT_LIBS} FLCL::flcl)
+target_link_libraries(example-axpy-view ${PROJECT_LIBS} flcl::flcl)
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
     target_link_options(example-axpy-view PRIVATE LINKER:-lxlf90_r)
 endif()
