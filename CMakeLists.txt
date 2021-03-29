@@ -1,13 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 
-set(FLCL_MAJOR_VERSION 0)
-set(FLCL_MINOR_VERSION 4)
-set(FLCL_PATCH_VERSION 0)
-set(FLCL_VERSION
-  ${FLCL_MAJOR_VERSION}.${FLCL_MINOR_VERSION}.${FLCL_PATCH_VERSION})
-
-project(flcl VERSION ${FLCLVERSION} LANGUAGES Fortran C CXX)
+project(flcl VERSION 0.4.0 LANGUAGES Fortran C CXX)
 
 set(default_build_type "RelWithDebInfo")
 set(BUILD_SHARED_LIBS OFF)
@@ -26,7 +20,7 @@ include(CTest)
 
 add_link_options(LINKER:--disable-new-dtags)
 
-
+#flcl-fortran library
 add_library(flcl-fortran
     OBJECT
         src/flcl-ndarray-f.f90
@@ -49,11 +43,17 @@ set_target_properties(
         Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
 )
 
+#flcl-cxx library
 add_library(flcl-cxx
     OBJECT
         src/flcl-cxx.cpp
         src/flcl-util-cxx.cpp
 )
+set(flcl-cxx-public-headers
+    ${PROJECT_SOURCE_DIR}/src/flcl-cxx.hpp
+    ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h
+)
+set_target_properties(flcl-cxx PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_link_libraries(flcl-cxx
     PRIVATE
         Kokkos::kokkos
@@ -64,6 +64,7 @@ add_library(flcl
         $<TARGET_OBJECTS:flcl-fortran>
         $<TARGET_OBJECTS:flcl-cxx>
 )
+set_target_properties(flcl PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_include_directories(flcl
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -75,8 +76,9 @@ target_link_libraries(flcl
 )
 add_library(flcl::flcl ALIAS flcl)
 
+#installation section
 include(CMakePackageConfigHelpers)
-
+include(GNUInstallDirs)
 write_basic_package_version_file(
     "${PROJECT_BINARY_DIR}/flclConfigVersion.cmake"
     COMPATIBILITY SameMinorVersion
@@ -85,24 +87,32 @@ write_basic_package_version_file(
 configure_package_config_file(
     "${PROJECT_SOURCE_DIR}/cmake/flclConfig.cmake.in"
     "${PROJECT_BINARY_DIR}/flclConfig.cmake"
-    INSTALL_DESTINATION lib/cmake/flcl
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
+
+#file(GLOB flcl_include_files "${CMAKE_CURRENT_SOURCE_DIR}/*.hxx")
+#install(FILES ${flcl_include_files} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(
     FILES
         "${PROJECT_BINARY_DIR}/flclConfigVersion.cmake"
         "${PROJECT_BINARY_DIR}/flclConfig.cmake"
-        DESTINATION lib/cmake/flcl
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
 
-install(TARGETS flcl EXPORT flclTargets)
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod DESTINATION .)
+install(
+    TARGETS flcl
+    EXPORT flclTargets
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
+install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod" DESTINATION .)
 install(
     EXPORT flclTargets
-    DESTINATION lib/cmake/flcl
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}" 
     NAMESPACE flcl::)
+file(GLOB flcl_mod_files "${CMAKE_CURRENT_BINARY_DIR}/mod/*.mod")
+install(FILES ${flcl_mod_files} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-
+#unit testing section and toggle
 if(BUILD_TESTING)
   add_subdirectory(test)
 endif()
