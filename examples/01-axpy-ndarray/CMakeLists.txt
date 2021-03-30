@@ -1,4 +1,9 @@
 add_executable(example-axpy-ndarray axpy-ndarray-main.F90 axpy-ndarray-f.f90 axpy-ndarray-cxx.cc)
+set_target_properties(
+    example-axpy-ndarray
+    PROPERTIES
+        Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
+)
 target_include_directories(example-axpy-ndarray
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>

@@ -1,4 +1,9 @@
 add_executable(example-axpy-dualview axpy-dualview-main.F90 axpy-dualview-f.f90 axpy-dualview-cxx.cc)
+set_target_properties(
+    example-axpy-dualview
+    PROPERTIES
+        Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
+)
 target_include_directories(example-axpy-dualview
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>

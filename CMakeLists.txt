@@ -66,9 +66,11 @@ add_library(flcl
 )
 set_target_properties(flcl PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_include_directories(flcl
+    PUBLIC
+        $<INSTALL_INTERFACE:"${CMAKE_INSTALL_INCLUDEDIR}">
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
-        $<INSTALL_INTERFACE:mod>
+        #$<INSTALL_INTERFACE:mod>
 )
 target_link_libraries(flcl
     INTERFACE

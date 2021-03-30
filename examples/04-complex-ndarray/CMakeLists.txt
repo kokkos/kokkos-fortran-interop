@@ -1,4 +1,9 @@
 add_executable(example-complex-ndarray complex-ndarray-main.F90 complex-ndarray-f.f90 complex-ndarray-cxx.cc)
+set_target_properties(
+    example-complex-ndarray
+    PROPERTIES
+        Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
+)
 target_include_directories(example-complex-ndarray
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
