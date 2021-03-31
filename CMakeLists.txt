@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
-set(FLCL_VERSION 0.4.0)
-project(flcl VERSION "${FLCL_VERSION}" LANGUAGES Fortran C CXX)
+project(flcl VERSION 0.4.0 LANGUAGES Fortran C CXX)
 
 set(default_build_type "RelWithDebInfo")
 set(BUILD_SHARED_LIBS OFF)
