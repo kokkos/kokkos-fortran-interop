@@ -15,6 +15,8 @@ include(CheckFortranCompilerFlag)
 include(CheckCXXCompilerFlag)
 include(CheckCCompilerFlag)
 
+include(GNUInstallDirs)
+
 include(CTest)
 
 add_link_options(LINKER:--disable-new-dtags)
@@ -34,7 +36,6 @@ target_include_directories(flcl-fortran
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
-        $<INSTALL_INTERFACE:mod>
 )
 set_target_properties(
     flcl-fortran
@@ -65,11 +66,9 @@ add_library(flcl
 )
 set_target_properties(flcl PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_include_directories(flcl
-    PUBLIC
-        $<INSTALL_INTERFACE:"${CMAKE_INSTALL_INCLUDEDIR}">
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
-        #$<INSTALL_INTERFACE:mod>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 target_link_libraries(flcl
     INTERFACE
@@ -79,7 +78,6 @@ add_library(flcl::flcl ALIAS flcl)
 
 #installation section
 include(CMakePackageConfigHelpers)
-include(GNUInstallDirs)
 configure_package_config_file(
     "cmake/flclConfig.cmake.in"
     "${PROJECT_BINARY_DIR}/flclConfig.cmake"
