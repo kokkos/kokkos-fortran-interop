@@ -1,4 +1,9 @@
 add_executable(example-axpy-ndarray axpy-ndarray-main.F90 axpy-ndarray-f.f90 axpy-ndarray-cxx.cc)
+set_target_properties(
+    example-axpy-ndarray
+    PROPERTIES
+        Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
+)
 target_include_directories(example-axpy-ndarray
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -11,7 +16,7 @@ target_include_directories(example-axpy-ndarray
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/../../src
 )
-target_link_libraries(example-axpy-ndarray ${PROJECT_LIBS} FLCL::flcl)
+target_link_libraries(example-axpy-ndarray ${PROJECT_LIBS} flcl::flcl)
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
     target_link_options(example-axpy-ndarray PRIVATE LINKER:-lxlf90_r)
 endif()

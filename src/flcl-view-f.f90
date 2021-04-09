@@ -86,35 +86,35 @@ module flcl_view_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type view_l_1d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_l_1d_t
   end type view_l_1d_t
 
   type view_i32_1d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_i32_1d_t
   end type view_i32_1d_t
 
   type view_i64_1d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_i64_1d_t
   end type view_i64_1d_t
 
   type view_r32_1d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_r32_1d_t
   end type view_r32_1d_t
 
   type view_r64_1d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_r64_1d_t
   end type view_r64_1d_t
@@ -123,28 +123,28 @@ module flcl_view_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type view_l_2d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_l_2d_t
   end type view_l_2d_t
 
   type view_i32_2d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_i32_2d_t
   end type view_i32_2d_t
 
   type view_i64_2d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_i64_2d_t
   end type view_i64_2d_t
 
   type view_r32_2d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_r32_2d_t
   end type view_r32_2d_t
@@ -160,28 +160,28 @@ module flcl_view_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type view_l_3d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_l_3d_t
   end type view_l_3d_t
 
   type view_i32_3d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_i32_3d_t
   end type view_i32_3d_t
 
   type view_i64_3d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_i64_3d_t
   end type view_i64_3d_t
 
   type view_r32_3d_t
     private
-      type(c_ptr) :: handle
+    type(c_ptr) :: handle
     contains
       procedure :: ptr => view_ptr_view_r32_3d_t
   end type view_r32_3d_t
@@ -197,151 +197,149 @@ module flcl_view_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type view_l_4d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_l_4d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_4d_t
   end type view_l_4d_t
 
   type view_i32_4d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i32_4d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_4d_t
   end type view_i32_4d_t
 
   type view_i64_4d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i64_4d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_4d_t
   end type view_i64_4d_t
 
   type view_r32_4d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r32_4d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_4d_t
   end type view_r32_4d_t
 
   type view_r64_4d_t
     private
     type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r64_4d_t
+    contains
+      procedure :: ptr => view_ptr_view_r64_4d_t
   end type view_r64_4d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 5D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type view_l_5d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_l_5d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_5d_t
   end type view_l_5d_t
 
   type view_i32_5d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i32_5d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_5d_t
   end type view_i32_5d_t
 
   type view_i64_5d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i64_5d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_5d_t
   end type view_i64_5d_t
 
   type view_r32_5d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r32_5d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_5d_t
   end type view_r32_5d_t
 
   type view_r64_5d_t
     private
     type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r64_5d_t
+    contains
+      procedure :: ptr => view_ptr_view_r64_5d_t
   end type view_r64_5d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 6D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type view_l_6d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_l_6d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_6d_t
   end type view_l_6d_t
 
   type view_i32_6d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i32_6d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_6d_t
   end type view_i32_6d_t
 
   type view_i64_6d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i64_6d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_6d_t
   end type view_i64_6d_t
 
   type view_r32_6d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r32_6d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_6d_t
   end type view_r32_6d_t
 
   type view_r64_6d_t
     private
     type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r64_6d_t
+    contains
+      procedure :: ptr => view_ptr_view_r64_6d_t
   end type view_r64_6d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! 7D Kokkos View types
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   type view_l_7d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_l_7d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_l_7d_t
   end type view_l_7d_t
 
   type view_i32_7d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i32_7d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i32_7d_t
   end type view_i32_7d_t
 
   type view_i64_7d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_i64_7d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_i64_7d_t
   end type view_i64_7d_t
 
   type view_r32_7d_t
     private
-      type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r32_7d_t
+    type(c_ptr) :: handle
+    contains
+      procedure :: ptr => view_ptr_view_r32_7d_t
   end type view_r32_7d_t
 
   type view_r64_7d_t
     private
     type(c_ptr) :: handle
-    ! contains
-    !   procedure :: ptr => view_ptr_view_r64_7d_t
+    contains
+      procedure :: ptr => view_ptr_view_r64_7d_t
   end type view_r64_7d_t
-  ! TODO ADD VIEW TESTS
-  ! TODO ADD VIEW METHODS 4D-7D
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_view interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  
@@ -366,6 +364,34 @@ module flcl_view_mod
     module procedure kokkos_allocate_v_i64_3d
     module procedure kokkos_allocate_v_r32_3d
     module procedure kokkos_allocate_v_r64_3d
+
+    ! 4D specializations
+    module procedure kokkos_allocate_v_l_4d
+    module procedure kokkos_allocate_v_i32_4d
+    module procedure kokkos_allocate_v_i64_4d
+    module procedure kokkos_allocate_v_r32_4d
+    module procedure kokkos_allocate_v_r64_4d
+
+    ! 5D specializations
+    module procedure kokkos_allocate_v_l_5d
+    module procedure kokkos_allocate_v_i32_5d
+    module procedure kokkos_allocate_v_i64_5d
+    module procedure kokkos_allocate_v_r32_5d
+    module procedure kokkos_allocate_v_r64_5d
+
+    ! 6D specializations
+    module procedure kokkos_allocate_v_l_6d
+    module procedure kokkos_allocate_v_i32_6d
+    module procedure kokkos_allocate_v_i64_6d
+    module procedure kokkos_allocate_v_r32_6d
+    module procedure kokkos_allocate_v_r64_6d
+
+    ! 7D specializations
+    module procedure kokkos_allocate_v_l_7d
+    module procedure kokkos_allocate_v_i32_7d
+    module procedure kokkos_allocate_v_i64_7d
+    module procedure kokkos_allocate_v_r32_7d
+    module procedure kokkos_allocate_v_r64_7d
   end interface kokkos_allocate_view
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_view interface
@@ -391,6 +417,34 @@ module flcl_view_mod
     module procedure kokkos_deallocate_v_i64_3d
     module procedure kokkos_deallocate_v_r32_3d
     module procedure kokkos_deallocate_v_r64_3d
+
+    ! 4D specializations
+    module procedure kokkos_deallocate_v_l_4d  
+    module procedure kokkos_deallocate_v_i32_4d
+    module procedure kokkos_deallocate_v_i64_4d
+    module procedure kokkos_deallocate_v_r32_4d
+    module procedure kokkos_deallocate_v_r64_4d
+
+    ! 5D specializations
+    module procedure kokkos_deallocate_v_l_5d  
+    module procedure kokkos_deallocate_v_i32_5d
+    module procedure kokkos_deallocate_v_i64_5d
+    module procedure kokkos_deallocate_v_r32_5d
+    module procedure kokkos_deallocate_v_r64_5d
+
+    ! 6D specializations
+    module procedure kokkos_deallocate_v_l_6d  
+    module procedure kokkos_deallocate_v_i32_6d
+    module procedure kokkos_deallocate_v_i64_6d
+    module procedure kokkos_deallocate_v_r32_6d
+    module procedure kokkos_deallocate_v_r64_6d
+
+    ! 7D specializations
+    module procedure kokkos_deallocate_v_l_7d  
+    module procedure kokkos_deallocate_v_i32_7d
+    module procedure kokkos_deallocate_v_i64_7d
+    module procedure kokkos_deallocate_v_r32_7d
+    module procedure kokkos_deallocate_v_r64_7d
   end interface kokkos_deallocate_view
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_view 1D interfaces
@@ -594,6 +648,344 @@ module flcl_view_mod
     end subroutine f_kokkos_allocate_v_r64_3d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_allocate_view 4D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface 
+    subroutine f_kokkos_allocate_v_l_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
+      & bind (c, name='c_kokkos_allocate_v_l_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+    end subroutine f_kokkos_allocate_v_l_4d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_i32_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
+      & bind (c, name='c_kokkos_allocate_v_i32_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+    end subroutine f_kokkos_allocate_v_i32_4d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_i64_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
+      & bind (c, name='c_kokkos_allocate_v_i64_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+    end subroutine f_kokkos_allocate_v_i64_4d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_r32_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
+      & bind (c, name='c_kokkos_allocate_v_r32_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+    end subroutine f_kokkos_allocate_v_r32_4d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_r64_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
+      & bind (c, name='c_kokkos_allocate_v_r64_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+    end subroutine f_kokkos_allocate_v_r64_4d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_allocate_view 5D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface 
+    subroutine f_kokkos_allocate_v_l_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
+      & bind (c, name='c_kokkos_allocate_v_l_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+    end subroutine f_kokkos_allocate_v_l_5d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_i32_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
+      & bind (c, name='c_kokkos_allocate_v_i32_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+    end subroutine f_kokkos_allocate_v_i32_5d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_i64_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
+      & bind (c, name='c_kokkos_allocate_v_i64_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+    end subroutine f_kokkos_allocate_v_i64_5d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_r32_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
+      & bind (c, name='c_kokkos_allocate_v_r32_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+    end subroutine f_kokkos_allocate_v_r32_5d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_r64_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
+      & bind (c, name='c_kokkos_allocate_v_r64_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+    end subroutine f_kokkos_allocate_v_r64_5d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_allocate_view 6D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface 
+    subroutine f_kokkos_allocate_v_l_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
+      & bind (c, name='c_kokkos_allocate_v_l_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+    end subroutine f_kokkos_allocate_v_l_6d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_i32_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
+      & bind (c, name='c_kokkos_allocate_v_i32_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+    end subroutine f_kokkos_allocate_v_i32_6d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_i64_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
+      & bind (c, name='c_kokkos_allocate_v_i64_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+    end subroutine f_kokkos_allocate_v_i64_6d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_r32_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
+      & bind (c, name='c_kokkos_allocate_v_r32_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+    end subroutine f_kokkos_allocate_v_r32_6d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_r64_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
+      & bind (c, name='c_kokkos_allocate_v_r64_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+    end subroutine f_kokkos_allocate_v_r64_6d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_allocate_view 7D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface 
+    subroutine f_kokkos_allocate_v_l_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
+      & bind (c, name='c_kokkos_allocate_v_l_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+    end subroutine f_kokkos_allocate_v_l_7d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_i32_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
+      & bind (c, name='c_kokkos_allocate_v_i32_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+    end subroutine f_kokkos_allocate_v_i32_7d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_i64_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
+      & bind (c, name='c_kokkos_allocate_v_i64_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+    end subroutine f_kokkos_allocate_v_i64_7d
+  end interface
+
+  interface 
+    subroutine f_kokkos_allocate_v_r32_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
+      & bind (c, name='c_kokkos_allocate_v_r32_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+    end subroutine f_kokkos_allocate_v_r32_7d
+  end interface
+  
+  interface 
+    subroutine f_kokkos_allocate_v_r64_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
+      & bind (c, name='c_kokkos_allocate_v_r64_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: c_A
+      type(c_ptr), intent(out) :: v_A
+      character(kind=c_char), intent(in) :: n_A(*)
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+    end subroutine f_kokkos_allocate_v_r64_7d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_view 1D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   interface 
@@ -688,7 +1080,7 @@ module flcl_view_mod
     end subroutine f_kokkos_deallocate_v_r64_2d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!! kokkos_deallocate_view 1D interfaces
+!!! kokkos_deallocate_view 3D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   interface 
     subroutine f_kokkos_deallocate_v_l_3d(v_A) &
@@ -733,6 +1125,194 @@ module flcl_view_mod
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_v_r64_3d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_deallocate_view 4D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface 
+    subroutine f_kokkos_deallocate_v_l_4d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_l_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_l_4d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_i32_4d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i32_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i32_4d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_i64_4d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i64_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i64_4d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_r32_4d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r32_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r32_4d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_r64_4d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r64_4d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r64_4d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_deallocate_view 5D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface 
+    subroutine f_kokkos_deallocate_v_l_5d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_l_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_l_5d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_i32_5d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i32_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i32_5d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_i64_5d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i64_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i64_5d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_r32_5d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r32_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r32_5d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_r64_5d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r64_5d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r64_5d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_deallocate_view 6D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface 
+    subroutine f_kokkos_deallocate_v_l_6d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_l_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_l_6d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_i32_6d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i32_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i32_6d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_i64_6d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i64_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i64_6d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_r32_6d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r32_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r32_6d
+  end interface
+
+  interface 
+    subroutine f_kokkos_deallocate_v_r64_6d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r64_6d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r64_6d
+  end interface
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos_deallocate_view 7D interfaces
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  interface
+    subroutine f_kokkos_deallocate_v_l_7d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_l_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_l_7d
+  end interface
+
+  interface
+    subroutine f_kokkos_deallocate_v_i32_7d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i32_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i32_7d
+  end interface
+
+  interface
+    subroutine f_kokkos_deallocate_v_i64_7d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_i64_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_i64_7d
+  end interface
+
+  interface
+    subroutine f_kokkos_deallocate_v_r32_7d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r32_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r32_7d
+  end interface
+
+  interface
+    subroutine f_kokkos_deallocate_v_r64_7d(v_A) &
+      & bind (c, name='c_kokkos_deallocate_v_r64_7d')
+      use, intrinsic :: iso_c_binding
+      implicit none
+      type(c_ptr), intent(out) :: v_A
+    end subroutine f_kokkos_deallocate_v_r64_7d
   end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   contains
@@ -1015,6 +1595,444 @@ module flcl_view_mod
       call c_f_pointer(c_A, A, shape=[e0,e1,e2])
     end subroutine kokkos_allocate_v_r64_3d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos allocate view 4D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_allocate_v_l_4d(A, v_A, n_A, e0, e1, e2, e3)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_l_4d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_l_4d(c_A, v_A%handle, f_label, e0, e1, e2, e3)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3])
+    end subroutine kokkos_allocate_v_l_4d
+  
+    subroutine kokkos_allocate_v_i32_4d(A, v_A, n_A, e0, e1, e2, e3)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_i32_4d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i32_4d(c_A, v_A%handle, f_label, e0, e1, e2, e3)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3])
+    end subroutine kokkos_allocate_v_i32_4d
+  
+    subroutine kokkos_allocate_v_i64_4d(A, v_A, n_A, e0, e1, e2, e3)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_i64_4d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i64_4d(c_A, v_A%handle, f_label, e0, e1, e2, e3)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3])
+    end subroutine kokkos_allocate_v_i64_4d
+  
+    subroutine kokkos_allocate_v_r32_4d(A, v_A, n_A, e0, e1, e2, e3)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_r32_4d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+  
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r32_4d(c_A, v_A%handle, f_label, e0, e1, e2, e3)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3])
+    end subroutine kokkos_allocate_v_r32_4d
+  
+    subroutine kokkos_allocate_v_r64_4d(A, v_A, n_A, e0, e1, e2, e3)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_r64_4d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      type(c_ptr) :: c_A
+
+      character(len=:, kind=c_char), allocatable, target :: f_label
+
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r64_4d(c_A, v_A%handle, f_label, e0, e1, e2, e3)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3])
+    end subroutine kokkos_allocate_v_r64_4d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos allocate view 5D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_allocate_v_l_5d(A, v_A, n_A, e0, e1, e2, e3, e4)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_l_5d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_l_5d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4])
+    end subroutine kokkos_allocate_v_l_5d
+  
+    subroutine kokkos_allocate_v_i32_5d(A, v_A, n_A, e0, e1, e2, e3, e4)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_i32_5d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i32_5d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4])
+    end subroutine kokkos_allocate_v_i32_5d
+  
+    subroutine kokkos_allocate_v_i64_5d(A, v_A, n_A, e0, e1, e2, e3, e4)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_i64_5d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i64_5d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4])
+    end subroutine kokkos_allocate_v_i64_5d
+  
+    subroutine kokkos_allocate_v_r32_5d(A, v_A, n_A, e0, e1, e2, e3, e4)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_r32_5d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+  
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r32_5d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4])
+    end subroutine kokkos_allocate_v_r32_5d
+  
+    subroutine kokkos_allocate_v_r64_5d(A, v_A, n_A, e0, e1, e2, e3, e4)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_r64_5d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      type(c_ptr) :: c_A
+
+      character(len=:, kind=c_char), allocatable, target :: f_label
+
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r64_5d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4])
+    end subroutine kokkos_allocate_v_r64_5d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos allocate view 6D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_allocate_v_l_6d(A, v_A, n_A, e0, e1, e2, e3, e4, e5)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_l_6d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_l_6d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5])
+    end subroutine kokkos_allocate_v_l_6d
+  
+    subroutine kokkos_allocate_v_i32_6d(A, v_A, n_A, e0, e1, e2, e3, e4, e5)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_i32_6d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i32_6d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5])
+    end subroutine kokkos_allocate_v_i32_6d
+  
+    subroutine kokkos_allocate_v_i64_6d(A, v_A, n_A, e0, e1, e2, e3, e4, e5)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_i64_6d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i64_6d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5])
+    end subroutine kokkos_allocate_v_i64_6d
+  
+    subroutine kokkos_allocate_v_r32_6d(A, v_A, n_A, e0, e1, e2, e3, e4, e5)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_r32_6d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+  
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r32_6d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5])
+    end subroutine kokkos_allocate_v_r32_6d
+  
+    subroutine kokkos_allocate_v_r64_6d(A, v_A, n_A, e0, e1, e2, e3, e4, e5)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_r64_6d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      type(c_ptr) :: c_A
+
+      character(len=:, kind=c_char), allocatable, target :: f_label
+
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r64_6d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5])
+    end subroutine kokkos_allocate_v_r64_6d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos allocate view 7D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_allocate_v_l_7d(A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_l_7d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_l_7d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5, e6)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5,e6])
+    end subroutine kokkos_allocate_v_l_7d
+  
+    subroutine kokkos_allocate_v_i32_7d(A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_i32_7d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i32_7d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5, e6)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5,e6])
+    end subroutine kokkos_allocate_v_i32_7d
+  
+    subroutine kokkos_allocate_v_i64_7d(A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_i64_7d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+      
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_i64_7d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5, e6)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5,e6])
+    end subroutine kokkos_allocate_v_i64_7d
+  
+    subroutine kokkos_allocate_v_r32_7d(A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_r32_7d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+      type(c_ptr) :: c_A
+  
+      character(len=:, kind=c_char), allocatable, target :: f_label
+  
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r32_7d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5, e6)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5,e6])
+    end subroutine kokkos_allocate_v_r32_7d
+  
+    subroutine kokkos_allocate_v_r64_7d(A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6)
+      use, intrinsic :: iso_c_binding
+      use flcl_util_strings_mod, only: char_add_null
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_r64_7d_t), intent(out) :: v_A
+      character(len=*), intent(in) :: n_A
+      integer(c_size_t), intent(in) :: e0
+      integer(c_size_t), intent(in) :: e1
+      integer(c_size_t), intent(in) :: e2
+      integer(c_size_t), intent(in) :: e3
+      integer(c_size_t), intent(in) :: e4
+      integer(c_size_t), intent(in) :: e5
+      integer(c_size_t), intent(in) :: e6
+      type(c_ptr) :: c_A
+
+      character(len=:, kind=c_char), allocatable, target :: f_label
+
+      call char_add_null( n_A, f_label )
+      call f_kokkos_allocate_v_r64_7d(c_A, v_A%handle, f_label, e0, e1, e2, e3, e4, e5, e6)
+      call c_f_pointer(c_A, A, shape=[e0,e1,e2,e3,e4,e5,e6])
+    end subroutine kokkos_allocate_v_r64_7d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos deallocate view 1D implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine kokkos_deallocate_v_l_1d(A, v_A )
@@ -1181,7 +2199,6 @@ module flcl_view_mod
       use, intrinsic :: iso_c_binding
       implicit none
       real(REAL32), pointer, dimension(:,:,:), intent(inout) :: A
-      ! TODO       real(flcl_view_r32_t), pointer, dimension(:,:,:), intent(inout) :: A
       type(view_r32_3d_t), intent(inout) :: v_A
   
       A => NULL()
@@ -1201,6 +2218,254 @@ module flcl_view_mod
       v_A%handle = c_null_ptr
   
     end subroutine kokkos_deallocate_v_r64_3d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos deallocate view 4D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_deallocate_v_l_4d(A, v_A )
+      use, intrinsic :: iso_c_binding
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_l_4d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_l_4d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_l_4d
+  
+    subroutine kokkos_deallocate_v_i32_4d(A, v_A )
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_i32_4d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i32_4d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i32_4d
+  
+    subroutine kokkos_deallocate_v_i64_4d(A, v_A )
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_i64_4d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i64_4d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i64_4d
+  
+    subroutine kokkos_deallocate_v_r32_4d(A, v_A )
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_r32_4d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r32_4d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r32_4d
+  
+    subroutine kokkos_deallocate_v_r64_4d(A, v_A )
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:), intent(inout) :: A
+      type(view_r64_4d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r64_4d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r64_4d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos deallocate view 5D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_deallocate_v_l_5d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_l_5d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_l_5d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_l_5d
+  
+    subroutine kokkos_deallocate_v_i32_5d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_i32_5d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i32_5d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i32_5d
+  
+    subroutine kokkos_deallocate_v_i64_5d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_i64_5d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i64_5d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i64_5d
+  
+    subroutine kokkos_deallocate_v_r32_5d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_r32_5d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r32_5d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r32_5d
+  
+    subroutine kokkos_deallocate_v_r64_5d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:,:), intent(inout) :: A
+      type(view_r64_5d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r64_5d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r64_5d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos deallocate view 6D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_deallocate_v_l_6d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_l_6d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_l_6d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_l_6d
+  
+    subroutine kokkos_deallocate_v_i32_6d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_i32_6d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i32_6d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i32_6d
+  
+    subroutine kokkos_deallocate_v_i64_6d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_i64_6d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i64_6d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i64_6d
+  
+    subroutine kokkos_deallocate_v_r32_6d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_r32_6d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r32_6d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r32_6d
+  
+    subroutine kokkos_deallocate_v_r64_6d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:,:,:), intent(inout) :: A
+      type(view_r64_6d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r64_6d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r64_6d
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! kokkos deallocate view 7D implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    subroutine kokkos_deallocate_v_l_7d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      logical(c_bool), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_l_7d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_l_7d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_l_7d
+  
+    subroutine kokkos_deallocate_v_i32_7d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT32), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_i32_7d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i32_7d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i32_7d
+  
+    subroutine kokkos_deallocate_v_i64_7d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      integer(INT64), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_i64_7d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_i64_7d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_i64_7d
+  
+    subroutine kokkos_deallocate_v_r32_7d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL32), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_r32_7d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r32_7d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r32_7d
+  
+    subroutine kokkos_deallocate_v_r64_7d(A, v_A)
+      use, intrinsic :: iso_c_binding
+      implicit none
+      real(REAL64), pointer, dimension(:,:,:,:,:,:,:), intent(inout) :: A
+      type(view_r64_7d_t), intent(inout) :: v_A
+  
+      A => NULL()
+      call f_kokkos_deallocate_v_r64_7d(v_A%handle)
+      v_A%handle = c_null_ptr
+  
+    end subroutine kokkos_deallocate_v_r64_7d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! view_ptr_view 1d implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1297,6 +2562,134 @@ module flcl_view_mod
     class( view_r64_3d_t ), intent(in) :: self
     result_ptr = self%handle
   end function view_ptr_view_r64_3d_t
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! view_ptr_view 4d implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  type(c_ptr) function view_ptr_view_l_4d_t( self ) result( result_ptr )
+    implicit none
+    class( view_l_4d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_l_4d_t
+
+  type(c_ptr) function view_ptr_view_i32_4d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i32_4d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i32_4d_t
+
+  type(c_ptr) function view_ptr_view_i64_4d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i64_4d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i64_4d_t
+
+  type(c_ptr) function view_ptr_view_r32_4d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r32_4d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r32_4d_t
+
+  type(c_ptr) function view_ptr_view_r64_4d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r64_4d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r64_4d_t
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! view_ptr_view 5d implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  type(c_ptr) function view_ptr_view_l_5d_t( self ) result( result_ptr )
+    implicit none
+    class( view_l_5d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_l_5d_t
+
+  type(c_ptr) function view_ptr_view_i32_5d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i32_5d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i32_5d_t
+
+  type(c_ptr) function view_ptr_view_i64_5d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i64_5d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i64_5d_t
+
+  type(c_ptr) function view_ptr_view_r32_5d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r32_5d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r32_5d_t
+
+  type(c_ptr) function view_ptr_view_r64_5d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r64_5d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r64_5d_t
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! view_ptr_view 6d implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  type(c_ptr) function view_ptr_view_l_6d_t( self ) result( result_ptr )
+    implicit none
+    class( view_l_6d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_l_6d_t
+
+  type(c_ptr) function view_ptr_view_i32_6d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i32_6d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i32_6d_t
+
+  type(c_ptr) function view_ptr_view_i64_6d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i64_6d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i64_6d_t
+
+  type(c_ptr) function view_ptr_view_r32_6d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r32_6d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r32_6d_t
+
+  type(c_ptr) function view_ptr_view_r64_6d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r64_6d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r64_6d_t
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!! view_ptr_view 7d implementations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  type(c_ptr) function view_ptr_view_l_7d_t( self ) result( result_ptr )
+    implicit none
+    class( view_l_7d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_l_7d_t
+
+  type(c_ptr) function view_ptr_view_i32_7d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i32_7d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i32_7d_t
+
+  type(c_ptr) function view_ptr_view_i64_7d_t( self ) result( result_ptr )
+    implicit none
+    class( view_i64_7d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_i64_7d_t
+
+  type(c_ptr) function view_ptr_view_r32_7d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r32_7d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r32_7d_t
+
+  type(c_ptr) function view_ptr_view_r64_7d_t( self ) result( result_ptr )
+    implicit none
+    class( view_r64_7d_t ), intent(in) :: self
+    result_ptr = self%handle
+  end function view_ptr_view_r64_7d_t
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! fin
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
