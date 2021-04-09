@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
-
-project(FLCL VERSION 0.3.0 LANGUAGES Fortran C CXX)
+project(flcl VERSION 0.4.0 LANGUAGES Fortran C CXX)
 
 set(default_build_type "RelWithDebInfo")
 set(BUILD_SHARED_LIBS OFF)
@@ -16,29 +15,13 @@ include(CheckFortranCompilerFlag)
 include(CheckCXXCompilerFlag)
 include(CheckCCompilerFlag)
 
+include(GNUInstallDirs)
+
 include(CTest)
-# use, i.e. don't skip the full RPATH for the build tree
-#set(CMAKE_SKIP_BUILD_RPATH FALSE)
-
-# when building, don't use the install RPATH already
-# (but later on when installing)
-#set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-
-#set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-
-# add the automatically determined parts of the RPATH
-# which point to directories outside the build tree to the install RPATH
-#set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-
-# the RPATH to be used when installing, but only if it's not a system directory
-#list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/lib" isSystemDir)
-#if("${isSystemDir}" STREQUAL "-1")
-#    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-#endif("${isSystemDir}" STREQUAL "-1")
 
 add_link_options(LINKER:--disable-new-dtags)
 
-
+#flcl-fortran library
 add_library(flcl-fortran
     OBJECT
         src/flcl-ndarray-f.f90
@@ -53,7 +36,6 @@ target_include_directories(flcl-fortran
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
-        $<INSTALL_INTERFACE:mod>
 )
 set_target_properties(
     flcl-fortran
@@ -61,60 +43,78 @@ set_target_properties(
         Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
 )
 
+#flcl-cxx library
 add_library(flcl-cxx
     OBJECT
         src/flcl-cxx.cpp
         src/flcl-util-cxx.cpp
 )
+set(flcl-cxx-public-headers
+    ${PROJECT_SOURCE_DIR}/src/flcl-cxx.hpp
+    ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h
+)
+set_target_properties(flcl-cxx PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_link_libraries(flcl-cxx
     PRIVATE
         Kokkos::kokkos
 )
 
-add_library(FLCL
+add_library(flcl
     STATIC
         $<TARGET_OBJECTS:flcl-fortran>
         $<TARGET_OBJECTS:flcl-cxx>
 )
-target_include_directories(FLCL
+set_target_properties(flcl PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
+target_include_directories(flcl
     INTERFACE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
-        $<INSTALL_INTERFACE:mod>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
-target_link_libraries(FLCL
+target_link_libraries(flcl
     INTERFACE
     Kokkos::kokkos
 )
-add_library(FLCL::flcl ALIAS FLCL)
+add_library(flcl::flcl ALIAS flcl)
 
+#installation section
 include(CMakePackageConfigHelpers)
+configure_package_config_file(
+    "cmake/flclConfig.cmake.in"
+    "${PROJECT_BINARY_DIR}/flclConfig.cmake"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
+)
 
 write_basic_package_version_file(
     "${PROJECT_BINARY_DIR}/flclConfigVersion.cmake"
+    VERSION "${PROJECT_VERSION}"
     COMPATIBILITY SameMinorVersion
 )
 
-configure_package_config_file(
-    "${PROJECT_SOURCE_DIR}/cmake/flclConfig.cmake.in"
-    "${PROJECT_BINARY_DIR}/flclConfig.cmake"
-    INSTALL_DESTINATION lib/cmake/flcl
-)
-
+# install flcl cmake config files
 install(
     FILES
         "${PROJECT_BINARY_DIR}/flclConfigVersion.cmake"
         "${PROJECT_BINARY_DIR}/flclConfig.cmake"
-        DESTINATION lib/cmake/flcl
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
-
-install(TARGETS FLCL EXPORT flclTargets)
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod DESTINATION .)
+install(TARGETS flcl EXPORT flclTargets)
 install(
     EXPORT flclTargets
-    DESTINATION lib/cmake/flcl
-    NAMESPACE FLCL::)
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
+    NAMESPACE flcl::
+)
 
+# install flcl library and headers
+install(
+    TARGETS flcl
+    ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+    PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+)
 
+# install flcl module files in include directory 
+install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod/" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+#unit testing section and toggle
 if(BUILD_TESTING)
   add_subdirectory(test)
 endif()

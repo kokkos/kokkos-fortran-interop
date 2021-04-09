@@ -1,4 +1,9 @@
 add_executable(example-axpy-dualview axpy-dualview-main.F90 axpy-dualview-f.f90 axpy-dualview-cxx.cc)
+set_target_properties(
+    example-axpy-dualview
+    PROPERTIES
+        Fortran_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod"
+)
 target_include_directories(example-axpy-dualview
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -11,7 +16,7 @@ target_include_directories(example-axpy-dualview
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/../../src
 )
-target_link_libraries(example-axpy-dualview ${PROJECT_LIBS} FLCL::flcl)
+target_link_libraries(example-axpy-dualview ${PROJECT_LIBS} flcl::flcl)
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
     target_link_options(example-axpy-dualview PRIVATE LINKER:-lxlf90_r)
 endif()
