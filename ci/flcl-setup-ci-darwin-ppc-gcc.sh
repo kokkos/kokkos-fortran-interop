@@ -1,26 +1,37 @@
 #!/bin/tcsh
-# salloc -n 1 -p power9-asc -A asc-priority
-echo 'Setting up ppc gcc kokkos 3.0 serial'
-./flcl-setup-ci-darwin-ppc-gcc-serial-3.0.sh
-echo 'Setting up ppc gcc kokkos 3.0 serial debug'
-./flcl-setup-ci-darwin-ppc-gcc-serial-debug-3.0.sh
-echo 'Setting up ppc gcc kokkos 3.0 openmp'
-./flcl-setup-ci-darwin-ppc-gcc-openmp-3.0.sh
-echo 'Setting up ppc gcc kokkos 3.0 openmp debug'
-./flcl-setup-ci-darwin-ppc-gcc-openmp-debug-3.0.sh
-echo 'Setting up ppc gcc kokkos 3.0 cuda'
-./flcl-setup-ci-darwin-ppc-gcc-cuda-3.0.sh
-echo 'Setting up ppc gcc kokkos 3.0 cuda debug'
-./flcl-setup-ci-darwin-ppc-gcc-cuda-debug-3.0.sh
-echo 'Setting up ppc gcc kokkos 3.1.1 serial'
-./flcl-setup-ci-darwin-ppc-gcc-serial-3.1.1.sh
-echo 'Setting up ppc gcc kokkos 3.1.1 serial debug'
-./flcl-setup-ci-darwin-ppc-gcc-serial-debug-3.1.1.sh
-echo 'Setting up ppc gcc kokkos 3.1.1 openmp'
-./flcl-setup-ci-darwin-ppc-gcc-openmp-3.1.1.sh
-echo 'Setting up ppc gcc kokkos 3.1.1 openmp debug'
-./flcl-setup-ci-darwin-ppc-gcc-openmp-debug-3.1.1.sh
-echo 'Setting up ppc gcc kokkos 3.1.1 cuda'
-./flcl-setup-ci-darwin-ppc-gcc-cuda-3.1.1.sh
-echo 'Setting up ppc gcc kokkos 3.1.1 cuda debug'
-./flcl-setup-ci-darwin-ppc-gcc-cuda-debug-3.1.1.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.0.00 serial release'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.0.00-serial-release.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.0.00 serial debug'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.0.00-serial-debug.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.1.01 serial release'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.1.01-serial-release.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.1.01 serial debug'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.1.01-serial-debug.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.0.00 openmp release'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.0.00-openmp-release.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.0.00 openmp debug'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.0.00-openmp-debug.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.1.01 openmp release'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.1.01-openmp-release.sh
+echo 'Setting up ppc gcc 7.4.0 kokkos 3.1.01 openmp debug'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-kokkos-3.1.01-openmp-debug.sh
+echo 'Setting up ppc gcc 7.4.0 cuda 10.1 kokkos 3.0.00 cuda release'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-cuda-10.1-kokkos-3.0.00-cuda-release.sh
+echo 'Setting up ppc gcc 7.4.0 cuda 10.1 kokkos 3.0.00 cuda debug'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-cuda-10.1-kokkos-3.0.00-cuda-debug.sh
+echo 'Setting up ppc gcc 7.4.0 cuda 10.1 kokkos 3.1.01 cuda release'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-cuda-10.1-kokkos-3.1.01-cuda-release.sh
+echo 'Setting up ppc gcc 7.4.0 cuda 10.1 kokkos 3.1.01 cuda debug'
+./flcl-setup-ci-darwin-ppc-gcc-7.4.0-cuda-10.1-kokkos-3.1.01-cuda-debug.sh
+echo 'Setting up ppc gcc 9.3.0 kokkos 3.3.01 serial release'
+./flcl-setup-ci-darwin-ppc-gcc-9.3.0-kokkos-3.3.01-serial-release.sh
+echo 'Setting up ppc gcc 9.3.0 kokkos 3.3.01 serial debug'
+./flcl-setup-ci-darwin-ppc-gcc-9.3.0-kokkos-3.3.01-serial-debug.sh
+echo 'Setting up ppc gcc 9.3.0 kokkos 3.3.01 openmp release'
+./flcl-setup-ci-darwin-ppc-gcc-9.3.0-kokkos-3.3.01-openmp-release.sh
+echo 'Setting up ppc gcc 9.3.0 kokkos 3.3.01 openmp debug'
+./flcl-setup-ci-darwin-ppc-gcc-9.3.0-kokkos-3.3.01-openmp-debug.sh
+echo 'Setting up ppc gcc 9.3.0 cuda 11.0 kokkos 3.3.01 cuda release'
+./flcl-setup-ci-darwin-ppc-gcc-9.3.0-cuda-11.0-kokkos-3.3.01-cuda-release.sh
+echo 'Setting up ppc gcc 9.3.0 cuda 11.0 kokkos 3.3.01 cuda debug'
+./flcl-setup-ci-darwin-ppc-gcc-9.3.0-cuda-11.0-kokkos-3.3.01-cuda-debug.sh
