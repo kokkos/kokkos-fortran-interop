@@ -30,7 +30,8 @@ cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DKokkos_ENABLE_TESTS=ON
 setenv OMP_PROC_BIND spread
 setenv OMP_PLACES threads
-cmake --build .
+cmake --build $CI_BUILD_DIR --parallel
+cmake --install $CI_BUILD_DIR
 ctest
 module purge
 rm -rf $CI_BUILD_DIR

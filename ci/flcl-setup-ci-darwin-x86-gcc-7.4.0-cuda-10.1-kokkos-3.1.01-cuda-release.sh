@@ -33,7 +33,8 @@ cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DKokkos_ENABLE_TESTS=ON
 setenv CUDA_LAUNCH_BLOCKING 1
 setenv CUDA_MANAGED_FORCE_DEVICE_ALLOC 1
-cmake --build .
+cmake --build $CI_BUILD_DIR --parallel
+cmake --install $CI_BUILD_DIR
 ctest
 module purge
 rm -rf $CI_BUILD_DIR

@@ -35,7 +35,8 @@ cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR \
     -DKokkos_ENABLE_SERIAL=ON \
     -DKokkos_ENABLE_TESTS=ON
-cmake --build .
+cmake --build $CI_BUILD_DIR --parallel
+cmake --install $CI_BUILD_DIR
 ctest
 module purge
 rm -rf $CI_BUILD_DIR
