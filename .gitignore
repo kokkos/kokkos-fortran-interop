@@ -16,3 +16,5 @@
 ci/build*
 ci/install*
 ci/output*
+ci/flcl-x86*
+ci/flcl-ppc*
