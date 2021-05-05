@@ -1,7 +1,9 @@
 add_library(flcl-testlib-fortran
     OBJECT
-        flcl-test-f.f90
+        flcl-test-f.f08
 )
+set_source_files_properties(flcl-test-f.f08 PROPERTIES LANGUAGE Fortran)
+
 target_include_directories(flcl-testlib-fortran
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -51,7 +53,7 @@ target_link_libraries(flcl-testlib
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/test)
 set(CTEST_BINARY_DIRECTORY ${PROJECT_BINARY_DIR}/test)
 
-file(GLOB files "test_*.f90")
+file(GLOB files "test_*.f08")
 
 # if cmake 3.17 is supported everywhere
 list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
@@ -59,8 +61,10 @@ list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
 foreach(file ${files})
  	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
     add_executable(${file_without_ext} ${file})
+    set_source_files_properties(${file} PROPERTIES LANGUAGE Fortran)
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
-        target_link_options(${file_without_ext} PRIVATE LINKER:-lxlf90_r)
+        #target_link_options(${file_without_ext} PRIVATE LINKER:-lxlf08_r)
+        #set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
     endif()
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
         set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)

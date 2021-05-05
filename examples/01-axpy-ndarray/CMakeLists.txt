@@ -1,4 +1,6 @@
-add_executable(example-axpy-ndarray axpy-ndarray-main.F90 axpy-ndarray-f.f90 axpy-ndarray-cxx.cc)
+add_executable(example-axpy-ndarray axpy-ndarray-main.F08 axpy-ndarray-f.f08 axpy-ndarray-cxx.cc)
+set_source_files_properties(axpy-ndarray-main.F08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(axpy-ndarray-f.f08 PROPERTIES LANGUAGE Fortran)
 set_target_properties(
     example-axpy-ndarray
     PROPERTIES
@@ -18,7 +20,7 @@ target_include_directories(example-axpy-ndarray
 )
 target_link_libraries(example-axpy-ndarray ${PROJECT_LIBS} flcl::flcl)
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
-    target_link_options(example-axpy-ndarray PRIVATE LINKER:-lxlf90_r)
+    # target_link_options(example-axpy-ndarray PRIVATE LINKER:-lxlf08_r)
 endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
     set_target_properties(example-axpy-ndarray PROPERTIES LINKER_LANGUAGE Fortran)

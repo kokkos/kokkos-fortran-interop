@@ -1,4 +1,6 @@
-add_executable(example-complex-ndarray complex-ndarray-main.F90 complex-ndarray-f.f90 complex-ndarray-cxx.cc)
+add_executable(example-complex-ndarray complex-ndarray-main.F08 complex-ndarray-f.f08 complex-ndarray-cxx.cc)
+set_source_files_properties(complex-ndarray-main.F08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(complex-ndarray-f.f08 PROPERTIES LANGUAGE Fortran)
 set_target_properties(
     example-complex-ndarray
     PROPERTIES
@@ -18,7 +20,7 @@ target_include_directories(example-complex-ndarray
 )
 target_link_libraries(example-complex-ndarray ${PROJECT_LIBS} flcl::flcl)
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
-    target_link_options(example-complex-ndarray PRIVATE LINKER:-lxlf90_r)
+    # target_link_options(example-complex-ndarray PRIVATE LINKER:-lxlf90_r)
 endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
     set_target_properties(example-complex-ndarray PROPERTIES LINKER_LANGUAGE Fortran)

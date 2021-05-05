@@ -1,4 +1,6 @@
-add_executable(example-axpy-view axpy-view-main.F90 axpy-view-f.f90 axpy-view-cxx.cc)
+add_executable(example-axpy-view axpy-view-main.F08 axpy-view-f.f08 axpy-view-cxx.cc)
+set_source_files_properties(axpy-view-main.F08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(axpy-view-f.f08 PROPERTIES LANGUAGE Fortran)
 set_target_properties(
     example-axpy-view
     PROPERTIES
@@ -18,7 +20,7 @@ target_include_directories(example-axpy-view
 )
 target_link_libraries(example-axpy-view ${PROJECT_LIBS} flcl::flcl)
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
-    target_link_options(example-axpy-view PRIVATE LINKER:-lxlf90_r)
+    # target_link_options(example-axpy-view PRIVATE LINKER:-lxlf90_r)
 endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
     set_target_properties(example-axpy-view PROPERTIES LINKER_LANGUAGE Fortran)

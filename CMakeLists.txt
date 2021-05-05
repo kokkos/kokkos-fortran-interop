@@ -24,13 +24,23 @@ add_link_options(LINKER:--disable-new-dtags)
 #flcl-fortran library
 add_library(flcl-fortran
     OBJECT
-        src/flcl-ndarray-f.f90
-        src/flcl-view-f.f90
-        src/flcl-dualview-f.f90
-        src/flcl-util-strings-f.f90
-        src/flcl-f.f90
-        src/flcl-util-kokkos-f.f90
+        src/flcl-ndarray-f.f08
+        src/flcl-view-f.f08
+        src/flcl-dualview-f.f08
+        src/flcl-util-strings-f.f08
+        src/flcl-f.f08
+        src/flcl-util-kokkos-f.f08
 )
+set_source_files_properties(src/flcl-ndarray-f.f08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(src/flcl-view-f.f08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(src/flcl-dualview-f.f08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(src/flcl-util-strings-f.f08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(src/flcl-f.f08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(src/flcl-util-kokkos-f.f08 PROPERTIES LANGUAGE Fortran)
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
+    target_compile_options(flcl-fortran PRIVATE -free)
+    target_compile_options(flcl-fortran PRIVATE -Tf)
+endif()
 target_include_directories(flcl-fortran
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -49,6 +59,7 @@ add_library(flcl-cxx
         src/flcl-cxx.cpp
         src/flcl-util-cxx.cpp
 )
+add_compile_options(-Wall -Wextra -pedantic -Werror)
 set(flcl-cxx-public-headers
     ${PROJECT_SOURCE_DIR}/src/flcl-cxx.hpp
     ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h

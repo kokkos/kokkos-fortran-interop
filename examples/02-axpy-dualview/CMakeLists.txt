@@ -1,4 +1,6 @@
-add_executable(example-axpy-dualview axpy-dualview-main.F90 axpy-dualview-f.f90 axpy-dualview-cxx.cc)
+add_executable(example-axpy-dualview axpy-dualview-main.F08 axpy-dualview-f.f08 axpy-dualview-cxx.cc)
+set_source_files_properties(axpy-dualview-main.F08 PROPERTIES LANGUAGE Fortran)
+set_source_files_properties(axpy-dualview-f.f08 PROPERTIES LANGUAGE Fortran)
 set_target_properties(
     example-axpy-dualview
     PROPERTIES
@@ -18,7 +20,7 @@ target_include_directories(example-axpy-dualview
 )
 target_link_libraries(example-axpy-dualview ${PROJECT_LIBS} flcl::flcl)
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
-    target_link_options(example-axpy-dualview PRIVATE LINKER:-lxlf90_r)
+    # target_link_options(example-axpy-dualview PRIVATE LINKER:-lxlf90_r)
 endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
     set_target_properties(example-axpy-dualview PROPERTIES LINKER_LANGUAGE Fortran)
