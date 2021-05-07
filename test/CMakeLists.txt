@@ -1,6 +1,6 @@
 add_library(flcl-testlib-fortran
     OBJECT
-        flcl-test-f.f90
+        flcl-test-f.F90
 )
 #standards compliance section
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
