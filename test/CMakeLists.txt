@@ -6,10 +6,13 @@ add_library(flcl-testlib-fortran
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
     # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
     # also enable polymorphic feature (-qxlf2003=polymorphic) to support the view/dualview types to enable type disambiguation in generic interfaces
-    target_compile_options(flcl-testlib-fortran PRIVATE -qxlf2003=polymorphic -qlanglvl=2008std -qnodirective -qnoescape -qfloat=nomaf:rndsngl:nofold -qnoswapomp -qstrictieeemod -qsuppress=1501-510 )
+    target_compile_options(flcl-fortran PRIVATE -qxlf2003=polymorphic -qlanglvl=2008std -qnodirective -qnoescape -qfloat=nomaf:rndsngl:nofold -qnoswapomp -qstrictieeemod -qsuppress=1501-510 )
 endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-    target_compile_options(flcl-testlib-fortran PRIVATE -std=f2008)
+    target_compile_options(flcl-fortran PRIVATE -std=f2008)
+endif()
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
+    target_compile_options(flcl-fortran PRIVATE -std08)
 endif()
 target_include_directories(flcl-testlib-fortran
     PUBLIC
