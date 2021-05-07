@@ -1243,8 +1243,8 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_c32_1d(ii)
         end do
-        if (real(f_sum)-real(c_sum) > precision_single * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_single * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_single * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_single * f_sum%IM) then
           write(*,*)'PASSED ndarray_c32_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1279,8 +1279,8 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_c64_1d(ii)
         end do
-        if (real(f_sum)-real(c_sum) > precision_double * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_double * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_double * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_double * f_sum%IM) then
           write(*,*)'PASSED ndarray_c64_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1518,8 +1518,8 @@ module flcl_test_f_mod
             f_sum = f_sum + array_c32_2d(ii,jj)
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_single * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_single * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_single * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_single * f_sum%IM) then
           write(*,*)'PASSED ndarray_c32_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1558,8 +1558,8 @@ module flcl_test_f_mod
             f_sum = f_sum + array_c64_2d(ii,jj)
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_double * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_double * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_double * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_double * f_sum%IM) then
           write(*,*)'PASSED ndarray_c64_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1821,8 +1821,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_single * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_single * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_single * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_single * f_sum%IM) then
           write(*,*)'PASSED ndarray_c32_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1865,8 +1865,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_double * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_double * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_double * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_double * f_sum%IM) then
           write(*,*)'PASSED ndarray_c64_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2152,8 +2152,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_single * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_single * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_single * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_single * f_sum%IM) then
           write(*,*)'PASSED ndarray_c32_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2200,8 +2200,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_double * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_double * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_double * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_double * f_sum%IM) then
           write(*,*)'PASSED ndarray_c64_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2512,8 +2512,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_single * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_single * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_single * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_single * f_sum%IM) then
           write(*,*)'PASSED ndarray_c32_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2564,8 +2564,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_double * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_double * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_double * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_double * f_sum%IM) then
           write(*,*)'PASSED ndarray_c64_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2901,8 +2901,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_single * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_single * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_single * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_single * f_sum%IM) then
           write(*,*)'PASSED ndarray_c32_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2957,8 +2957,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_double * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_double * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_double * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_double * f_sum%IM) then
           write(*,*)'PASSED ndarray_c64_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3316,8 +3316,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_single * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_single * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_single * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_single * f_sum%IM) then
           write(*,*)'PASSED ndarray_c32_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3376,8 +3376,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (real(f_sum)-real(c_sum) > precision_double * real(f_sum) .or. &
-          & imag(f_sum) - imag(c_sum) > precision_double * imag(f_sum)) then
+        if (f_sum%RE-c_sum%RE > precision_double * f_sum%RE .or. &
+          & f_sum%IM - c_sum%IM > precision_double * f_sum%IM) then
           write(*,*)'PASSED ndarray_c64_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum

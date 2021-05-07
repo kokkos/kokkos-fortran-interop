@@ -2,6 +2,15 @@ add_library(flcl-testlib-fortran
     OBJECT
         flcl-test-f.f90
 )
+#standards compliance section
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
+    # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
+    # also enable polymorphic feature (-qxlf2003=polymorphic) to support the view/dualview types to enable type disambiguation in generic interfaces
+    target_compile_options(flcl-testlib-fortran PRIVATE -qxlf2003=polymorphic -qlanglvl=2008std -qnodirective -qnoescape -qfloat=nomaf:rndsngl:nofold -qnoswapomp -qstrictieeemod -qsuppress=1501-510 )
+endif()
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(flcl-testlib-fortran PRIVATE -std=f2008)
+endif()
 target_include_directories(flcl-testlib-fortran
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -59,6 +68,11 @@ list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
 foreach(file ${files})
  	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
     add_executable(${file_without_ext} ${file})
+    if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
+        # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
+        # also enable polymorphic feature (-qxlf2003=polymorphic) to support the view/dualview types to enable type disambiguation in generic interfaces
+        target_compile_options(${file_without_ext} PRIVATE -qxlf2003=polymorphic -qlanglvl=2008std -qnodirective -qnoescape -qfloat=nomaf:rndsngl:nofold -qnoswapomp -qstrictieeemod -qsuppress=1501-510 )
+    endif()
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
         target_link_options(${file_without_ext} PRIVATE LINKER:-lxlf90_r)
     endif()
