@@ -23,6 +23,8 @@ mkdir -p $CI_BUILD_DIR
 module load cmake/3.17.3
 module load gcc/9.3.0
 module load cuda/11.0
+setenv CUDA_LAUNCH_BLOCKING 1
+setenv CUDA_MANAGED_FORCE_DEVICE_ALLOC 1
 cd $CI_BUILD_DIR
 cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DCMAKE_CXX_COMPILER=/home/$USER/kokkos/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER/bin/nvcc_wrapper \
@@ -31,10 +33,8 @@ cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DKokkos_ENABLE_SERIAL=ON -DKokkos_ARCH_VOLTA70=ON \
     -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON \
     -DKokkos_ENABLE_TESTS=ON
-setenv CUDA_LAUNCH_BLOCKING 1
-setenv CUDA_MANAGED_FORCE_DEVICE_ALLOC 1
 cmake --build $CI_BUILD_DIR --parallel
 cmake --install $CI_BUILD_DIR
-ctest
+ctest -V
 module purge
 rm -rf $CI_BUILD_DIR
