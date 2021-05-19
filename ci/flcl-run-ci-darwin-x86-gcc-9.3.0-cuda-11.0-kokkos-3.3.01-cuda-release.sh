@@ -39,10 +39,9 @@ cmake $CI_FLCL_PATH_PREFIX\
     -DCMAKE_CXX_COMPILER=/home/$USER/kokkos/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER/bin/nvcc_wrapper \
     -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
     -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR 
-#cmake --build $CI_FLCL_BUILD_DIR --parallel
-cmake --build $CI_FLCL_BUILD_DIR
-# cmake --install $CI_FLCL_BUILD_DIR
-# ctest
+cmake --build $CI_FLCL_BUILD_DIR --parallel
+cmake --install $CI_FLCL_BUILD_DIR
+ctest
 module purge
 rm -rf $CI_FLCL_BUILD_DIR
 
