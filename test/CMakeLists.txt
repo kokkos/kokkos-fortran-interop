@@ -1,3 +1,11 @@
+macro(remove_link_flag_from_target _target _flag)
+    get_target_property(_target_link_flags ${_target} LINK_OPTIONS)
+    if(_target_link_flags)
+        list(REMOVE_ITEM _target_link_flags ${_flag})
+        set_target_properties(${_target} PROPERTIES LINK_OPTIONS "${_target_link_flags}")
+    endif()
+endmacro()
+
 add_library(flcl-testlib-fortran
     OBJECT
         flcl-test-f.F90
@@ -99,4 +107,5 @@ foreach(file ${files})
  		PROPERTIES
         TIMEOUT 120)
 
+    remove_link_flag_from_target(${file_without_ext} -arch=sm_70)
 endforeach()
