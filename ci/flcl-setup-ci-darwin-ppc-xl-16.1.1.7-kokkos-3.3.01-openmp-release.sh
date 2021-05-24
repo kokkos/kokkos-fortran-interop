@@ -20,7 +20,7 @@ rm -rf $CI_INSTALL_DIR
 rm -rf $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR
 mkdir -p $CI_BUILD_DIR
-module load cmake/3.17.3
+module load cmake/3.19.2
 module load ibm/xlc-16.1.1.7-xlf-16.1.1.7-gcc-9.3.0-cuda-11.0
 setenv CC xlc_r
 setenv CXX xlc++_r

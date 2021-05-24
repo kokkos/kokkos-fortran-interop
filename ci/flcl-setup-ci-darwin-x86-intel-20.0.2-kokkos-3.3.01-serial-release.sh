@@ -20,7 +20,7 @@ rm -rf $CI_INSTALL_DIR
 rm -rf $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR
 mkdir -p $CI_BUILD_DIR
-module load cmake/3.17.3
+module load cmake/3.19.2
 module load gcc/9.3.0
 module load intel/20.0.2
 cd $CI_BUILD_DIR
