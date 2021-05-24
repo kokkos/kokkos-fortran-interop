@@ -35,3 +35,7 @@ echo 'Setting up x86 gcc 9.3.0 cuda 11.0 kokkos 3.3.01 cuda release'
 ./flcl-setup-ci-darwin-x86-gcc-9.3.0-cuda-11.0-kokkos-3.3.01-cuda-release.sh
 echo 'Setting up x86 gcc 9.3.0 cuda 11.0 kokkos 3.3.01 cuda debug'
 ./flcl-setup-ci-darwin-x86-gcc-9.3.0-cuda-11.0-kokkos-3.3.01-cuda-debug.sh
+echo 'Setting up x86 gcc 9.3.0 cuda 11.2 kokkos 3.3.01 cuda release'
+./flcl-setup-ci-darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-release.sh
+echo 'Setting up x86 gcc 9.3.0 cuda 11.2 kokkos 3.3.01 cuda debug'
+./flcl-setup-ci-darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-debug.sh
