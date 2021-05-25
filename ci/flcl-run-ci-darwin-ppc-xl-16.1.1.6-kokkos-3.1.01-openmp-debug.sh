@@ -27,7 +27,7 @@ rm -rf $CI_FLCL_INSTALL_DIR
 rm -rf $CI_FLCL_BUILD_DIR
 mkdir -p $CI_FLCL_INSTALL_DIR
 mkdir -p $CI_FLCL_BUILD_DIR
-module load cmake/3.17.3
+module load cmake/3.19.2
 module load gcc/7.4.0
 module load ibm/xlc-16.1.1.6-xlf-16.1.1.6
 setenv LD_LIBRARY_PATH /projects/opt/ppc64le/ibm/xlf-16.1.1.6/lib:$LD_LIBRARY_PATH

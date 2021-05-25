@@ -1,6 +1,6 @@
 #!/bin/tcsh
 setenv CI_SEP -
-setenv CI_BUILD_TYPE release
+setenv CI_BUILD_TYPE debug
 setenv CI_BUILD_SUFFIX build
 setenv CI_INSTALL_SUFFIX install
 setenv CI_MACHINE_ARCH ppc
@@ -27,7 +27,7 @@ rm -rf $CI_FLCL_INSTALL_DIR
 rm -rf $CI_FLCL_BUILD_DIR
 mkdir -p $CI_FLCL_INSTALL_DIR
 mkdir -p $CI_FLCL_BUILD_DIR
-module load cmake/3.17.3
+module load cmake/3.19.2
 module load gcc/9.3.0
 module load cuda/11.2-beta
 setenv CUDA_LAUNCH_BLOCKING 1
@@ -36,7 +36,7 @@ cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \
     -DCMAKE_CXX_COMPILER=/home/$USER/kokkos/kokkos-3.3.01/bin/nvcc_wrapper \
-    -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
+    -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
     -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR 
 cmake --build $CI_FLCL_BUILD_DIR --parallel
 cmake --install $CI_FLCL_BUILD_DIR

@@ -27,8 +27,7 @@ rm -rf $CI_FLCL_INSTALL_DIR
 rm -rf $CI_FLCL_BUILD_DIR
 mkdir -p $CI_FLCL_INSTALL_DIR
 mkdir -p $CI_FLCL_BUILD_DIR
-module load cmake/3.17.3
-module load gcc/7.4.0
+module load cmake/3.19.2module load gcc/7.4.0
 cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \

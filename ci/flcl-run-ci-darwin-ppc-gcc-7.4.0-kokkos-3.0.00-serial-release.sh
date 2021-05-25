@@ -27,17 +27,15 @@ rm -rf $CI_FLCL_INSTALL_DIR
 rm -rf $CI_FLCL_BUILD_DIR
 mkdir -p $CI_FLCL_INSTALL_DIR
 mkdir -p $CI_FLCL_BUILD_DIR
-module load cmake/3.17.3
+module load cmake/3.19.2
 module load gcc/7.4.0
-setenv VERBOSE
 cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \
     -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
     -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR 
-# cmake --build $CI_FLCL_BUILD_DIR --parallel
-cmake --build $CI_FLCL_BUILD_DIR
-# cmake --install $CI_FLCL_BUILD_DIR
-# ctest
-# module purge
+cmake --build $CI_FLCL_BUILD_DIR --parallel
+cmake --install $CI_FLCL_BUILD_DIR
+ctest
+module purge
 #rm -rf $CI_FLCL_BUILD_DIR
