@@ -41,9 +41,7 @@ cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \
     -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
-    -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR \
-    -DCMAKE_Fortran_COMPILER_ARG1="-F/projects/opt/ppc64le/ibm/xlf-16.1.1.6/xlf/16.1.1/etc/xlf.cfg.rhel.7.7.gcc.7.4.0.cuda.10.1" \
-    -DCMAKE_CXX_COMPILER_ARG1="-F/projects/opt/ppc64le/ibm/xlc-16.1.1.6/xlC/16.1.1/etc/xlc.cfg.rhel.7.7.gcc.7.4.0.cuda.10.1"
+    -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR
 cmake --build $CI_FLCL_BUILD_DIR --parallel
 cmake --install $CI_FLCL_BUILD_DIR
 ctest

@@ -23,15 +23,15 @@ mkdir -p $CI_BUILD_DIR
 module load cmake/3.19.2
 module load gcc/7.4.0
 module load ibm/xlc-16.1.1.6-xlf-16.1.1.6
+setenv CXXFLAGS "-F/projects/opt/ppc64le/ibm/xlc-16.1.1.6/xlC/16.1.1/etc/xlc.cfg.rhel.7.7.gcc.7.4.0.cuda.10.1"
+setenv OMP_PROC_BIND spread
+setenv OMP_PLACES threads
 cd $CI_BUILD_DIR
 cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
-    -DCMAKE_CXX_COMPILER_ARG1=-F/projects/opt/ppc64le/ibm/xlc-16.1.1.6/xlC/16.1.1/etc/xlc.cfg.rhel.7.7.gcc.7.4.0.cuda.10.1 \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR \
     -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_OPENMP=ON \
     -DKokkos_ENABLE_TESTS=ON
-setenv OMP_PROC_BIND spread
-setenv OMP_PLACES threads
 cmake --build $CI_BUILD_DIR --parallel
 cmake --install $CI_BUILD_DIR
 ctest

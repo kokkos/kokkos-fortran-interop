@@ -26,10 +26,10 @@ setenv CC xlc_r
 setenv CXX xlc++_r
 setenv F77 xlf_r
 setenv FC xlf_r
+setenv CXXFLAGS "-qxflag=disable__cplusplusOverride -F/projects/opt/ppc64le/ibm/xlc-16.1.1.7/xlC/16.1.1/etc/xlc.cfg.rhel.7.8.gcc.9.3.0.cuda.11.0"
 cd $CI_BUILD_DIR
 cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
-    -DCMAKE_CXX_COMPILER_ARG1="-qxflag=disable__cplusplusOverride -F/projects/opt/ppc64le/ibm/xlc-16.1.1.7/xlC/16.1.1/etc/xlc.cfg.rhel.7.8.gcc.9.3.0.cuda.11.0" \
     -DKokkos_CXX_STANDARD=14 \
     -DKokkos_ARCH_POWER9=ON \
     -DCMAKE_INSTALL_PREFIX=$CI_INSTALL_DIR \

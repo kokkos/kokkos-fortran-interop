@@ -12,7 +12,7 @@ setenv CI_CUDA_VER
 setenv CI_CUDA_NAME 
 setenv CI_KOKKOS_PREFIX kokkos
 setenv CI_KOKKOS_VER 3.3.01
-setenv CI_KOKKOS_BACKEND serial
+setenv CI_KOKKOS_BACKEND openmp
 setenv CI_KOKKOS_NAME $CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER$CI_SEP$CI_KOKKOS_BACKEND$CI_SEP$CI_BUILD_TYPE
 setenv CI_KOKKOS_PATH_PREFIX /home/$USER/kt
 setenv CI_KOKKOS_INSTALL_DIR $CI_KOKKOS_PATH_PREFIX/$CI_MACHINE_ARCH$CI_SEP$CI_COMPILER_NAME$CI_CUDA_NAME$CI_KOKKOS_NAME
@@ -33,14 +33,14 @@ setenv CC xlc_r
 setenv CXX xlc++_r
 setenv F77 xlf_r
 setenv FC xlf_r
+setenv CXXFLAGS "-qxflag=disable__cplusplusOverride -F/projects/opt/ppc64le/ibm/xlc-16.1.1.7/xlC/16.1.1/etc/xlc.cfg.rhel.7.8.gcc.9.3.0.cuda.11.0"
+setenv FFLAGS "-F/projects/opt/ppc64le/ibm/xlf-16.1.1.7/xlf/16.1.1/etc/xlf.cfg.rhel.7.8.gcc.9.3.0.cuda.11.0"
 setenv OMP_PROC_BIND spread
 setenv OMP_PLACES threads
 cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \
     -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
-    -DCMAKE_CXX_COMPILER_ARG1="-qxflag=disable__cplusplusOverride -F/projects/opt/ppc64le/ibm/xlc-16.1.1.7/xlC/16.1.1/etc/xlc.cfg.rhel.7.8.gcc.9.3.0.cuda.11.0" \
-    -DCMAKE_Fortran_COMPILER_ARG1="-F/projects/opt/ppc64le/ibm/xlf-16.1.1.7/xlf/16.1.1/etc/xlf.cfg.rhel.7.8.gcc.9.3.0.cuda.11.0" \
     -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR 
 cmake --build $CI_FLCL_BUILD_DIR --parallel
 cmake --install $CI_FLCL_BUILD_DIR
