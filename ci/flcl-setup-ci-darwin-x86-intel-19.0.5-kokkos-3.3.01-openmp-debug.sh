@@ -21,6 +21,7 @@ rm -rf $CI_BUILD_DIR
 mkdir -p $CI_INSTALL_DIR
 mkdir -p $CI_BUILD_DIR
 module load cmake/3.19.2
+module load gcc/9.3.0
 module load intel/19.0.5
 cd $CI_BUILD_DIR
 cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
