@@ -1,6 +1,6 @@
 #!/bin/tcsh
 setenv CI_SEP -
-setenv CI_BUILD_TYPE release
+setenv CI_BUILD_TYPE debug
 setenv CI_BUILD_SUFFIX build
 setenv CI_INSTALL_SUFFIX install
 setenv CI_MACHINE_ARCH x86
@@ -33,7 +33,7 @@ module load intel/20.0.2
 cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \
-    -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
+    -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
     -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR 
 cmake --build $CI_FLCL_BUILD_DIR --parallel
 cmake --install $CI_FLCL_BUILD_DIR

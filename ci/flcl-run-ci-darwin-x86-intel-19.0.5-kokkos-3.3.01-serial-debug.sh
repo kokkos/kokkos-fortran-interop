@@ -1,11 +1,11 @@
 #!/bin/tcsh
 setenv CI_SEP -
-setenv CI_BUILD_TYPE release
+setenv CI_BUILD_TYPE debug
 setenv CI_BUILD_SUFFIX build
 setenv CI_INSTALL_SUFFIX install
 setenv CI_MACHINE_ARCH x86
 setenv CI_COMPILER_FAMILY intel
-setenv CI_COMPILER_VER 20.0.2
+setenv CI_COMPILER_VER 19.0.5
 setenv CI_COMPILER_NAME $CI_COMPILER_FAMILY$CI_SEP$CI_COMPILER_VER$CI_SEP
 setenv CI_CUDA_PREFIX cuda
 setenv CI_CUDA_VER 
@@ -29,11 +29,11 @@ mkdir -p $CI_FLCL_INSTALL_DIR
 mkdir -p $CI_FLCL_BUILD_DIR
 module load cmake/3.19.2
 module load gcc/9.3.0
-module load intel/20.0.2
+module load intel/19.0.5
 cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \
-    -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
+    -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON \
     -DCMAKE_INSTALL_PREFIX=$CI_FLCL_INSTALL_DIR 
 cmake --build $CI_FLCL_BUILD_DIR --parallel
 cmake --install $CI_FLCL_BUILD_DIR

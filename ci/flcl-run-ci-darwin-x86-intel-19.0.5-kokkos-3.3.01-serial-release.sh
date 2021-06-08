@@ -5,7 +5,7 @@ setenv CI_BUILD_SUFFIX build
 setenv CI_INSTALL_SUFFIX install
 setenv CI_MACHINE_ARCH x86
 setenv CI_COMPILER_FAMILY intel
-setenv CI_COMPILER_VER 20.0.2
+setenv CI_COMPILER_VER 19.0.5
 setenv CI_COMPILER_NAME $CI_COMPILER_FAMILY$CI_SEP$CI_COMPILER_VER$CI_SEP
 setenv CI_CUDA_PREFIX cuda
 setenv CI_CUDA_VER 
@@ -29,7 +29,7 @@ mkdir -p $CI_FLCL_INSTALL_DIR
 mkdir -p $CI_FLCL_BUILD_DIR
 module load cmake/3.19.2
 module load gcc/9.3.0
-module load intel/20.0.2
+module load intel/19.0.5
 cd $CI_FLCL_BUILD_DIR
 cmake $CI_FLCL_PATH_PREFIX\
     -DKokkos_DIR=$CI_FLCL_KOKKOS_PATH \
