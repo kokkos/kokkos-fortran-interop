@@ -71,11 +71,3 @@ echo 'Now running x86 gcc 9.3.0 cuda 11.0 kokkos 3.3.01 cuda debug'
 ./flcl-run-ci-darwin-x86-gcc-9.3.0-cuda-11.0-kokkos-3.3.01-cuda-debug.sh > output/darwin-x86-gcc-9.3.0-cuda-11.0-kokkos-3.3.01-cuda-debug.txt
 grep "tests failed" output/darwin-x86-gcc-9.3.0-cuda-11.0-kokkos-3.3.01-cuda-debug.txt
 echo 'Finished running x86 gcc 9.3.0 cuda 11.0 kokkos 3.3.01 cuda debug'
-echo 'Now running x86 gcc 9.3.0 cuda 11.2 kokkos 3.3.01 cuda release'
-./flcl-run-ci-darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-release.sh > output/darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-release.txt
-grep "tests failed" output/darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-release.txt
-echo 'Finished running x86 gcc 9.3.0 cuda 11.2 kokkos 3.3.01 cuda release'
-echo 'Now running x86 gcc 9.3.0 cuda 11.2 kokkos 3.3.01 cuda debug'
-./flcl-run-ci-darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-debug.sh > output/darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-debug.txt
-grep "tests failed" output/darwin-x86-gcc-9.3.0-cuda-11.2-kokkos-3.3.01-cuda-debug.txt
-echo 'Finished running x86 gcc 9.3.0 cuda 11.2 kokkos 3.3.01 cuda debug'
