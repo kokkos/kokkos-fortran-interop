@@ -41,13 +41,14 @@
 
 extern "C" {
 
-  void c_complex_ndarray( flcl_ndarray_t *nd_array_y, flcl_ndarray_t *nd_array_x, double _Complex *f_alpha ) {
+  void c_complex_ndarray( flcl_ndarray_t *nd_array_y, flcl_ndarray_t *nd_array_x, std::complex<double> *f_alpha ) {
     using flcl::view_from_ndarray;
 
     auto y = view_from_ndarray<Kokkos::complex<double>*>(*nd_array_y);
     auto x = view_from_ndarray<Kokkos::complex<double>*>(*nd_array_x);
-    Kokkos::complex<float> alpha(creal(*f_alpha), cimag(*f_alpha));
-
+    // Kokkos::complex<double> alpha((*f_alpha).real(), (*f_alpha).imag());
+    Kokkos::complex<double> alpha( *f_alpha );
+    
     Kokkos::parallel_for( "complex plus", y.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
       y(idx) += x(idx);

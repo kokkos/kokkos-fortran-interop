@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.19)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 project(flcl VERSION 0.4.0 LANGUAGES Fortran C CXX)
 
@@ -31,6 +31,18 @@ add_library(flcl-fortran
         src/flcl-f.f90
         src/flcl-util-kokkos-f.f90
 )
+#standards compliance section
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
+    # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
+    # also enable polymorphic feature (-qxlf2003=polymorphic) to support the view/dualview types to enable type disambiguation in generic interfaces
+    target_compile_options(flcl-fortran PRIVATE -qxlf2003=polymorphic -qlanglvl=2008std -qnodirective -qnoescape -qfloat=nomaf:rndsngl:nofold -qnoswapomp -qstrictieeemod -qsuppress=1501-510 )
+endif()
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(flcl-fortran PRIVATE -std=f2008)
+endif()
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
+    target_compile_options(flcl-fortran PRIVATE -std08)
+endif()
 target_include_directories(flcl-fortran
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -53,6 +65,7 @@ set(flcl-cxx-public-headers
     ${PROJECT_SOURCE_DIR}/src/flcl-cxx.hpp
     ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h
 )
+set_property(TARGET flcl-cxx PROPERTY CXX_STANDARD 14)
 set_target_properties(flcl-cxx PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_link_libraries(flcl-cxx
     PRIVATE
@@ -74,6 +87,21 @@ target_link_libraries(flcl
     INTERFACE
     Kokkos::kokkos
 )
+
+# add parallelism library link flags in kokkos > 3.1
+if (Kokkos_VERSION VERSION_GREATER 3.1)
+    if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
+        target_link_options(flcl INTERFACE -qopenmp PUBLIC -qopenmp)
+    endif()
+    if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
+        target_link_options(flcl INTERFACE -fopenmp PUBLIC -fopenmp)
+    endif()
+    if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
+        target_link_options(flcl INTERFACE -qopenmp PUBLIC -qopenmp)
+    endif()
+endif()
+
+#add flcl library
 add_library(flcl::flcl ALIAS flcl)
 
 #installation section
@@ -119,6 +147,6 @@ if(BUILD_TESTING)
   add_subdirectory(test)
 endif()
 
-add_subdirectory(examples)
-
-
+if(BUILD_EXAMPLES)
+  add_subdirectory(examples)
+endif()
