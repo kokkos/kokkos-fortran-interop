@@ -40,7 +40,7 @@
 #include <flcl-cxx.hpp>
 #include <iostream>
 #include <iomanip>
-#include <complex.h>
+#include <complex>
 
 extern "C" {
 
@@ -176,7 +176,7 @@ extern "C" {
     return c_sum;
   }
 
-  float _Complex c_test_ndarray_c32_1d( flcl_ndarray_t *nd_array_c32_1d, float _Complex *f_sum ) {
+  std::complex<float> c_test_ndarray_c32_1d( flcl_ndarray_t *nd_array_c32_1d, std::complex<float> *f_sum ) {
     using flcl::view_from_ndarray;
     
     Kokkos::complex<float> c_sum(0.0,0.0);
@@ -186,17 +186,17 @@ extern "C" {
       c_sum = c_sum + array_c32_1d(ii);
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - (*f_sum).real() ) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag() ) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c32_1d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real() = " << (*f_sum).real() << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimagf(*f_sum) = " << cimagf(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - crealf(*f_sum) = " << c_sum.real() - crealf(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimagf(*f_sum) = " << c_sum.imag() - cimagf(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - crealf(*f_sum)) / c_sum.real() = " << (c_sum.real() - crealf(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag() = " << (*f_sum).imag() << std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real() = " << c_sum.real() - (*f_sum).real() << std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag() = " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
 
@@ -206,13 +206,10 @@ extern "C" {
       c_sum = c_sum + array_c32_1d(ii);
     }
 
-    float _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
-
+    return c_sum;
   }
 
-  double _Complex c_test_ndarray_c64_1d( flcl_ndarray_t *nd_array_c64_1d, double _Complex *f_sum ) {
+  std::complex<double> c_test_ndarray_c64_1d( flcl_ndarray_t *nd_array_c64_1d, std::complex<double> *f_sum ) {
     using flcl::view_from_ndarray;
 
     Kokkos::complex<double> c_sum(0.0,0.0);
@@ -222,17 +219,17 @@ extern "C" {
       c_sum = c_sum + array_c64_1d(ii);
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c64_1d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real()= " << (*f_sum).real()<< std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimag(*f_sum) = " << cimag(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - creal(*f_sum) = " << c_sum.real() - creal(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimag(*f_sum) = " << c_sum.imag() - cimag(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - creal(*f_sum)) / c_sum.real() = " << (c_sum.real() - creal(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimag(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimag(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag()= " << (*f_sum).imag()<< std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real()= " << c_sum.real() - (*f_sum).real()<< std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag()= " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
     
@@ -242,9 +239,7 @@ extern "C" {
       c_sum = c_sum + array_c64_1d(ii);
     }
 
-    double _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
 
   }
 
@@ -400,7 +395,7 @@ extern "C" {
     return c_sum;
   }
 
-  float _Complex c_test_ndarray_c32_2d( flcl_ndarray_t *nd_array_c32_2d, float _Complex *f_sum ) {
+  std::complex<float> c_test_ndarray_c32_2d( flcl_ndarray_t *nd_array_c32_2d, std::complex<float> *f_sum ) {
     using flcl::view_from_ndarray;
     
     Kokkos::complex<float> c_sum(0.0,0.0);
@@ -412,17 +407,17 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c32_2d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real() = " << (*f_sum).real() << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimagf(*f_sum) = " << cimagf(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - crealf(*f_sum) = " << c_sum.real() - crealf(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimagf(*f_sum) = " << c_sum.imag() - cimagf(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - crealf(*f_sum)) / c_sum.real() = " << (c_sum.real() - crealf(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag() = " << (*f_sum).imag() << std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real() = " << c_sum.real() - (*f_sum).real() << std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag() = " << c_sum.imag() - (*f_sum).imag() << std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);
     }
 
@@ -434,21 +429,10 @@ extern "C" {
       }
     }
 
-    // float _Complex c_sum_to_return;
-    // c_sum_to_return = c_sum.real() + c_sum.imag()*I;
-    // return c_sum_to_return;
-
-    // float _Complex c_sum_to_return;
-    // Kokkos::View<Kokkos::complex<float>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged> kvtr = 
-    // Kokkos::View<Kokkos::complex<float>*, Kokkos::LayoutLeft, Kokkos::HostSpace, Kokkos::MemoryUnmanaged>(reinterpret_cast<Kokkos::complex<float> *>(&c_sum_to_return));
-    // kvtr(0) = c_sum;
-    // return c_sum_to_return;
-    float _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
-  double _Complex c_test_ndarray_c64_2d( flcl_ndarray_t *nd_array_c64_2d, double _Complex *f_sum ) {
+  std::complex<double> c_test_ndarray_c64_2d( flcl_ndarray_t *nd_array_c64_2d, std::complex<double> *f_sum ) {
     using flcl::view_from_ndarray;
 
     Kokkos::complex<double> c_sum(0.0,0.0);
@@ -460,17 +444,17 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c64_2d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real()= " << (*f_sum).real()<< std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimag(*f_sum) = " << cimag(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - creal(*f_sum) = " << c_sum.real() - creal(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimag(*f_sum) = " << c_sum.imag() - cimag(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - creal(*f_sum)) / c_sum.real() = " << (c_sum.real() - creal(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimag(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimag(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag()= " << (*f_sum).imag()<< std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real()= " << c_sum.real() - (*f_sum).real()<< std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag()= " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
     
@@ -482,9 +466,7 @@ extern "C" {
       }
     }
 
-    double _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
   size_t c_test_ndarray_l_3d( flcl_ndarray_t *nd_array_l_3d, size_t *f_sum ) {
@@ -660,7 +642,7 @@ extern "C" {
 
   }
 
-  float _Complex c_test_ndarray_c32_3d( flcl_ndarray_t *nd_array_c32_3d, float _Complex *f_sum ) {
+  std::complex<float> c_test_ndarray_c32_3d( flcl_ndarray_t *nd_array_c32_3d, std::complex<float> *f_sum ) {
     using flcl::view_from_ndarray;
     
     Kokkos::complex<float> c_sum(0.0,0.0);
@@ -674,17 +656,17 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c32_3d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real() = " << (*f_sum).real() << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimagf(*f_sum) = " << cimagf(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - crealf(*f_sum) = " << c_sum.real() - crealf(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimagf(*f_sum) = " << c_sum.imag() - cimagf(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - crealf(*f_sum)) / c_sum.real() = " << (c_sum.real() - crealf(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag() = " << (*f_sum).imag() << std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real() = " << c_sum.real() - (*f_sum).real() << std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag() = " << c_sum.imag() - (*f_sum).imag() << std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);
     }
 
@@ -698,12 +680,10 @@ extern "C" {
       }
     }
 
-    float _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
-  double _Complex c_test_ndarray_c64_3d( flcl_ndarray_t *nd_array_c64_3d, double _Complex *f_sum ) {
+  std::complex<double> c_test_ndarray_c64_3d( flcl_ndarray_t *nd_array_c64_3d, std::complex<double> *f_sum ) {
     using flcl::view_from_ndarray;
 
     Kokkos::complex<double> c_sum(0.0,0.0);
@@ -718,17 +698,17 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c64_3d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real()= " << (*f_sum).real()<< std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimag(*f_sum) = " << cimag(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - creal(*f_sum) = " << c_sum.real() - creal(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimag(*f_sum) = " << c_sum.imag() - cimag(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - creal(*f_sum)) / c_sum.real() = " << (c_sum.real() - creal(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimag(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimag(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag()= " << (*f_sum).imag()<< std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real()= " << c_sum.real() - (*f_sum).real()<< std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag()= " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
     
@@ -744,9 +724,7 @@ extern "C" {
       }
     }
 
-    double _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
   size_t c_test_ndarray_l_4d( flcl_ndarray_t *nd_array_l_4d, size_t *f_sum ) {
@@ -942,7 +920,7 @@ extern "C" {
 
   }
 
-  float _Complex c_test_ndarray_c32_4d( flcl_ndarray_t *nd_array_c32_4d, float _Complex *f_sum ) {
+  std::complex<float> c_test_ndarray_c32_4d( flcl_ndarray_t *nd_array_c32_4d, std::complex<float> *f_sum ) {
     using flcl::view_from_ndarray;
     
     Kokkos::complex<float> c_sum(0.0,0.0);
@@ -958,17 +936,17 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c32_4d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real() = " << (*f_sum).real() << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimagf(*f_sum) = " << cimagf(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - crealf(*f_sum) = " << c_sum.real() - crealf(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimagf(*f_sum) = " << c_sum.imag() - cimagf(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - crealf(*f_sum)) / c_sum.real() = " << (c_sum.real() - crealf(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag() = " << (*f_sum).imag() << std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real() = " << c_sum.real() - (*f_sum).real() << std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag() = " << c_sum.imag() - (*f_sum).imag() << std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);
     }
 
@@ -984,12 +962,10 @@ extern "C" {
       }
     }
 
-    float _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
-  double _Complex c_test_ndarray_c64_4d( flcl_ndarray_t *nd_array_c64_4d, double _Complex *f_sum ) {
+  std::complex<double> c_test_ndarray_c64_4d( flcl_ndarray_t *nd_array_c64_4d, std::complex<double> *f_sum ) {
     using flcl::view_from_ndarray;
 
     Kokkos::complex<double> c_sum(0.0,0.0);
@@ -1005,17 +981,17 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c64_4d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real()= " << (*f_sum).real()<< std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimag(*f_sum) = " << cimag(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - creal(*f_sum) = " << c_sum.real() - creal(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimag(*f_sum) = " << c_sum.imag() - cimag(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - creal(*f_sum)) / c_sum.real() = " << (c_sum.real() - creal(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimag(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimag(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag()= " << (*f_sum).imag()<< std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real()= " << c_sum.real() - (*f_sum).real()<< std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag()= " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
     
@@ -1031,9 +1007,7 @@ extern "C" {
       }
     }
 
-    double _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
   size_t c_test_ndarray_l_5d( flcl_ndarray_t *nd_array_l_5d, size_t *f_sum ) {
@@ -1248,7 +1222,7 @@ extern "C" {
 
   }
 
-  float _Complex c_test_ndarray_c32_5d( flcl_ndarray_t *nd_array_c32_5d, float _Complex *f_sum ) {
+  std::complex<float> c_test_ndarray_c32_5d( flcl_ndarray_t *nd_array_c32_5d, std::complex<float> *f_sum ) {
     using flcl::view_from_ndarray;
     
     Kokkos::complex<float> c_sum(0.0,0.0);
@@ -1266,17 +1240,17 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c32_5d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real() = " << (*f_sum).real() << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimagf(*f_sum) = " << cimagf(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - crealf(*f_sum) = " << c_sum.real() - crealf(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimagf(*f_sum) = " << c_sum.imag() - cimagf(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - crealf(*f_sum)) / c_sum.real() = " << (c_sum.real() - crealf(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag() = " << (*f_sum).imag() << std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real() = " << c_sum.real() - (*f_sum).real() << std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag() = " << c_sum.imag() - (*f_sum).imag() << std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);
     }
 
@@ -1294,12 +1268,10 @@ extern "C" {
       }
     }
 
-    float _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
-  double _Complex c_test_ndarray_c64_5d( flcl_ndarray_t *nd_array_c64_5d, double _Complex *f_sum ) {
+  std::complex<double> c_test_ndarray_c64_5d( flcl_ndarray_t *nd_array_c64_5d, std::complex<double> *f_sum ) {
     using flcl::view_from_ndarray;
 
     Kokkos::complex<double> c_sum(0.0,0.0);
@@ -1317,17 +1289,17 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c64_5d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real()= " << (*f_sum).real()<< std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimag(*f_sum) = " << cimag(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - creal(*f_sum) = " << c_sum.real() - creal(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimag(*f_sum) = " << c_sum.imag() - cimag(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - creal(*f_sum)) / c_sum.real() = " << (c_sum.real() - creal(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimag(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimag(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag()= " << (*f_sum).imag()<< std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real()= " << c_sum.real() - (*f_sum).real()<< std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag()= " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
     
@@ -1345,9 +1317,7 @@ extern "C" {
       }
     }
 
-    double _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
   size_t c_test_ndarray_l_6d( flcl_ndarray_t *nd_array_l_6d, size_t *f_sum ) {
@@ -1584,7 +1554,7 @@ extern "C" {
 
   }
 
-  float _Complex c_test_ndarray_c32_6d( flcl_ndarray_t *nd_array_c32_6d, float _Complex *f_sum ) {
+  std::complex<float> c_test_ndarray_c32_6d( flcl_ndarray_t *nd_array_c32_6d, std::complex<float> *f_sum ) {
     using flcl::view_from_ndarray;
     
     Kokkos::complex<float> c_sum(0.0,0.0);
@@ -1604,17 +1574,17 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c32_5d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real() = " << (*f_sum).real() << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimagf(*f_sum) = " << cimagf(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - crealf(*f_sum) = " << c_sum.real() - crealf(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimagf(*f_sum) = " << c_sum.imag() - cimagf(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - crealf(*f_sum)) / c_sum.real() = " << (c_sum.real() - crealf(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag() = " << (*f_sum).imag() << std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real() = " << c_sum.real() - (*f_sum).real() << std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag() = " << c_sum.imag() - (*f_sum).imag() << std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);
     }
 
@@ -1634,12 +1604,10 @@ extern "C" {
       }
     }
 
-    float _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
-  double _Complex c_test_ndarray_c64_6d( flcl_ndarray_t *nd_array_c64_6d, double _Complex *f_sum ) {
+  std::complex<double> c_test_ndarray_c64_6d( flcl_ndarray_t *nd_array_c64_6d, std::complex<double> *f_sum ) {
     using flcl::view_from_ndarray;
 
     Kokkos::complex<double> c_sum(0.0,0.0);
@@ -1659,17 +1627,17 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c64_6d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real()= " << (*f_sum).real()<< std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimag(*f_sum) = " << cimag(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - creal(*f_sum) = " << c_sum.real() - creal(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimag(*f_sum) = " << c_sum.imag() - cimag(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - creal(*f_sum)) / c_sum.real() = " << (c_sum.real() - creal(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimag(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimag(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag()= " << (*f_sum).imag()<< std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real()= " << c_sum.real() - (*f_sum).real()<< std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag()= " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
     
@@ -1689,9 +1657,7 @@ extern "C" {
       }
     }
 
-    double _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
   size_t c_test_ndarray_l_7d( flcl_ndarray_t *nd_array_l_7d, size_t *f_sum ) {
@@ -1947,7 +1913,7 @@ extern "C" {
 
   }
 
-  float _Complex c_test_ndarray_c32_7d( flcl_ndarray_t *nd_array_c32_7d, float _Complex *f_sum ) {
+  std::complex<float> c_test_ndarray_c32_7d( flcl_ndarray_t *nd_array_c32_7d, std::complex<float> *f_sum ) {
     using flcl::view_from_ndarray;
     
     Kokkos::complex<float> c_sum(0.0,0.0);
@@ -1969,17 +1935,17 @@ extern "C" {
       }
     }
 
-     if ( (std::abs(c_sum.real() - crealf(*f_sum)) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - cimagf(*f_sum)) < precision_single * c_sum.imag()) ) {
+     if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_single * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_single * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c32_7d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "crealf(*f_sum) = " << crealf(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real() = " << (*f_sum).real() << std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimagf(*f_sum) = " << cimagf(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - crealf(*f_sum) = " << c_sum.real() - crealf(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimagf(*f_sum) = " << c_sum.imag() - cimagf(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - crealf(*f_sum)) / c_sum.real() = " << (c_sum.real() - crealf(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimagf(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag() = " << (*f_sum).imag() << std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real() = " << c_sum.real() - (*f_sum).real() << std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag() = " << c_sum.imag() - (*f_sum).imag() << std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);
     }
 
@@ -2001,12 +1967,10 @@ extern "C" {
       }
     }
 
-    float _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<float>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
-  double _Complex c_test_ndarray_c64_7d( flcl_ndarray_t *nd_array_c64_7d, double _Complex *f_sum ) {
+  std::complex<double> c_test_ndarray_c64_7d( flcl_ndarray_t *nd_array_c64_7d, std::complex<double> *f_sum ) {
     using flcl::view_from_ndarray;
 
     Kokkos::complex<double> c_sum(0.0,0.0);
@@ -2028,17 +1992,17 @@ extern "C" {
       }
     }
 
-    if ( (std::abs(c_sum.real() - creal(*f_sum)) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - cimag(*f_sum)) < precision_double * c_sum.imag()) ) {
+    if ( (std::abs(c_sum.real() - (*f_sum).real()) > precision_double * c_sum.real()) || (std::abs(c_sum.imag() - (*f_sum).imag()) < precision_double * c_sum.imag()) ) {
       std::cout << std::setprecision(15) << std::fixed;
       std::cout << "FAILED C ndarray_c64_7d" << std::endl;
       std::cout << "c_sum.real() = " << c_sum.real() << std::endl;
-      std::cout << "creal(*f_sum) = " << creal(*f_sum) << std::endl;
+      std::cout << "(*f_sum).real()= " << (*f_sum).real()<< std::endl;
       std::cout << "c_sum.imag() = " << c_sum.imag() << std::endl;
-      std::cout << "cimag(*f_sum) = " << cimag(*f_sum) << std::endl;
-      std::cout << "c_sum.real() - creal(*f_sum) = " << c_sum.real() - creal(*f_sum) << std::endl;
-      std::cout << "c_sum.imag() - cimag(*f_sum) = " << c_sum.imag() - cimag(*f_sum) << std::endl;
-      std::cout << "(c_sum.real() - creal(*f_sum)) / c_sum.real() = " << (c_sum.real() - creal(*f_sum)) / c_sum.real() << std::endl;
-      std::cout << "(c_sum.imag() - cimag(*f_sum)) / c_sum.imag() = " << (c_sum.imag() - cimag(*f_sum)) / c_sum.imag() << std::endl;
+      std::cout << "(*f_sum).imag()= " << (*f_sum).imag()<< std::endl;
+      std::cout << "c_sum.real() - (*f_sum).real()= " << c_sum.real() - (*f_sum).real()<< std::endl;
+      std::cout << "c_sum.imag() - (*f_sum).imag()= " << c_sum.imag() - (*f_sum).imag()<< std::endl;
+      std::cout << "(c_sum.real() - (*f_sum).real()) / c_sum.real() = " << (c_sum.real() - (*f_sum).real()) / c_sum.real() << std::endl;
+      std::cout << "(c_sum.imag() - (*f_sum).imag()) / c_sum.imag() = " << (c_sum.imag() - (*f_sum).imag()) / c_sum.imag() << std::endl;
       exit(EXIT_FAILURE);    
     }
     
@@ -2060,9 +2024,7 @@ extern "C" {
       }
     }
 
-    double _Complex c_sum_to_return;
-    *reinterpret_cast<Kokkos::complex<double>*>(&c_sum_to_return) = c_sum;
-    return c_sum_to_return;
+    return c_sum;
   }
 
   flcl_test_error_t c_test_kokkos_allocate_view_l_1d( flcl::view_l_1d_t **v_array_l_1d, size_t *f_sum, size_t *c_sum ) {
