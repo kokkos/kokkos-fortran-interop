@@ -3444,6 +3444,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_l_1d, v_array_l_1d )
       end function test_kokkos_allocate_view_l_1d
 
       integer &
