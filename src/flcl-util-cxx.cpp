@@ -55,10 +55,10 @@ extern "C" {
     Kokkos::finalize();
   }
 
-  void c_kokkos_print_configuration(const char** prepend_name_in, const char** file_name_in) {
+  void c_kokkos_print_configuration(const char* prepend_name_in, const char* file_name_in) {
 
-    std::string prepend_name( *prepend_name_in );
-    std::string file_name( *file_name_in );
+    std::string prepend_name( prepend_name_in );
+    std::string file_name( file_name_in );
     std::string output_filename = prepend_name + file_name;
     std::ofstream kokkos_output_file ( output_filename );
     if ( kokkos_output_file.is_open()) {

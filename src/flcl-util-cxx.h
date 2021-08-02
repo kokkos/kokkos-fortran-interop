@@ -46,7 +46,7 @@ extern "C"
 void c_kokkos_initialize(int *argc, char **argv);
 void c_kokkos_initialize_without_args(void);
 void c_kokkos_finalize(void);
-void c_kokkos_print_configuration(const char** prepend_name_in, const char** file_name_in);
+void c_kokkos_print_configuration(const char* prepend_name_in, const char* file_name_in);
 
 #ifdef __cplusplus
 bool c_kokkos_is_initialized(void);
