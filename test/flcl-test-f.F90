@@ -3483,6 +3483,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i32_1d, v_array_i32_1d )
       end function test_kokkos_allocate_view_i32_1d
 
       integer &
@@ -3521,6 +3522,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i64_1d, v_array_i64_1d )
       end function test_kokkos_allocate_view_i64_1d
 
       integer &
@@ -3559,6 +3561,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r32_1d, v_array_r32_1d )
       end function test_kokkos_allocate_view_r32_1d
 
       integer &
@@ -3597,6 +3600,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r64_1d, v_array_r64_1d )
       end function test_kokkos_allocate_view_r64_1d
 
       integer &
@@ -3643,6 +3647,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_l_2d, v_array_l_2d )
       end function test_kokkos_allocate_view_l_2d
 
       integer &
@@ -3685,6 +3690,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i32_2d, v_array_i32_2d )
       end function test_kokkos_allocate_view_i32_2d
 
       integer &
@@ -3727,6 +3733,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i64_2d, v_array_i64_2d )
       end function test_kokkos_allocate_view_i64_2d
 
       integer &
@@ -3769,6 +3776,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r32_2d, v_array_r32_2d )
       end function test_kokkos_allocate_view_r32_2d
 
       integer &
@@ -3811,6 +3819,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r64_2d, v_array_r64_2d )
       end function test_kokkos_allocate_view_r64_2d
 
       integer &
@@ -3861,6 +3870,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_l_3d, v_array_l_3d )
       end function test_kokkos_allocate_view_l_3d
 
       integer &
@@ -3907,6 +3917,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i32_3d, v_array_i32_3d )
       end function test_kokkos_allocate_view_i32_3d
 
       integer &
@@ -3953,6 +3964,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i64_3d, v_array_i64_3d )
       end function test_kokkos_allocate_view_i64_3d
 
       integer &
@@ -3999,6 +4011,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r32_3d, v_array_r32_3d )
       end function test_kokkos_allocate_view_r32_3d
 
       integer &
@@ -4045,6 +4058,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r64_3d, v_array_r64_3d )
       end function test_kokkos_allocate_view_r64_3d
 
       integer &
@@ -4099,6 +4113,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_l_4d, v_array_l_4d )
       end function test_kokkos_allocate_view_l_4d
 
       integer &
@@ -4149,6 +4164,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i32_4d, v_array_i32_4d )
       end function test_kokkos_allocate_view_i32_4d
 
       integer &
@@ -4199,6 +4215,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i64_4d, v_array_i64_4d )
       end function test_kokkos_allocate_view_i64_4d
 
       integer &
@@ -4249,6 +4266,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r32_4d, v_array_r32_4d )
       end function test_kokkos_allocate_view_r32_4d
 
       integer &
@@ -4299,6 +4317,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r64_4d, v_array_r64_4d )
       end function test_kokkos_allocate_view_r64_4d
 
       integer &
@@ -4358,6 +4377,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_l_5d, v_array_l_5d )
       end function test_kokkos_allocate_view_l_5d
 
       integer &
@@ -4413,6 +4433,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i32_5d, v_array_i32_5d )
       end function test_kokkos_allocate_view_i32_5d
 
       integer &
@@ -4468,6 +4489,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i64_5d, v_array_i64_5d )
       end function test_kokkos_allocate_view_i64_5d
 
       integer &
@@ -4523,6 +4545,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r32_5d, v_array_r32_5d )
       end function test_kokkos_allocate_view_r32_5d
 
       integer &
@@ -4578,6 +4601,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r64_5d, v_array_r64_5d )
       end function test_kokkos_allocate_view_r64_5d
 
       integer &
@@ -4641,6 +4665,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_l_6d, v_array_l_6d )
       end function test_kokkos_allocate_view_l_6d
 
       integer &
@@ -4700,6 +4725,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i32_6d, v_array_i32_6d )
       end function test_kokkos_allocate_view_i32_6d
 
       integer &
@@ -4759,6 +4785,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i64_6d, v_array_i64_6d )
       end function test_kokkos_allocate_view_i64_6d
 
       integer &
@@ -4818,6 +4845,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r32_6d, v_array_r32_6d )
       end function test_kokkos_allocate_view_r32_6d
 
       integer &
@@ -4877,6 +4905,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r64_6d, v_array_r64_6d )
       end function test_kokkos_allocate_view_r64_6d
 
       integer &
@@ -4944,6 +4973,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_l_7d, v_array_l_7d )
       end function test_kokkos_allocate_view_l_7d
 
       integer &
@@ -5007,6 +5037,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i32_7d, v_array_i32_7d )
       end function test_kokkos_allocate_view_i32_7d
 
       integer &
@@ -5070,6 +5101,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_i64_7d, v_array_i64_7d )
       end function test_kokkos_allocate_view_i64_7d
 
       integer &
@@ -5133,6 +5165,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r32_7d, v_array_r32_7d )
       end function test_kokkos_allocate_view_r32_7d
 
       integer &
@@ -5196,6 +5229,7 @@ module flcl_test_f_mod
             ierr = flcl_test_fail
           end if
         end if
+        call kokkos_deallocate_view( array_r64_7d, v_array_r64_7d )
       end function test_kokkos_allocate_view_r64_7d
 
 end module flcl_test_f_mod
