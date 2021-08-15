@@ -1047,6 +1047,54 @@ module flcl_test_f_mod
       end function f_test_kokkos_allocate_dualview_l_1d
     end interface
 
+    interface
+      integer &
+        & function f_test_kokkos_allocate_dualview_i32_1d( v_array_i32_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_i32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i32_1d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_dualview_i32_1d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_dualview_i64_1d( v_array_i64_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_i64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_i64_1d
+        integer(c_size_t), intent(inout) :: f_sum
+        integer(c_size_t), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_dualview_i64_1d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_dualview_r32_1d( v_array_r32_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_r32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r32_1d
+        real(c_float), intent(inout) :: f_sum
+        real(c_float), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_dualview_r32_1d
+    end interface
+
+    interface
+      integer &
+        & function f_test_kokkos_allocate_dualview_r64_1d( v_array_r64_1d, f_sum, c_sum ) &
+        & bind(c, name='c_test_kokkos_allocate_dualview_r64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(c_ptr), intent(in) :: v_array_r64_1d
+        real(c_double), intent(inout) :: f_sum
+        real(c_double), intent(inout) :: c_sum
+      end function f_test_kokkos_allocate_dualview_r64_1d
+    end interface
+
     contains
 
       integer(c_size_t) &
@@ -5287,5 +5335,162 @@ module flcl_test_f_mod
         end if
         call kokkos_deallocate_dualview( array_l_1d, v_array_l_1d )
       end function test_kokkos_allocate_dualview_l_1d
+
+      integer &
+        & function test_kokkos_allocate_dualview_i32_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_view_mod
+        implicit none
+
+        integer(c_int32_t), pointer, dimension(:)  :: array_i32_1d
+        type(dualview_i32_1d_t) :: v_array_i32_1d
+        integer :: ii
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        call kokkos_allocate_dualview( array_i32_1d, v_array_i32_1d, 'array_i32_1d', e0_length )
+        do ii = 1, e0_length
+          array_i32_1d(ii) = ii
+          f_sum = f_sum + array_i32_1d(ii)
+        end do
+        ierr = f_test_kokkos_allocate_dualview_i32_1d( v_array_i32_1d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            f_sum = f_sum + array_i32_1d(ii)
+          end do
+          if (f_sum == c_sum) then
+            write(*,*)'PASSED kokkos_allocate_dualview_i32_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_dualview_i32_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+        call kokkos_deallocate_dualview( array_i32_1d, v_array_i32_1d )
+      end function test_kokkos_allocate_dualview_i32_1d
+
+      integer &
+        & function test_kokkos_allocate_dualview_i64_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(c_int64_t), pointer, dimension(:)  :: array_i64_1d
+        type(dualview_i64_1d_t) :: v_array_i64_1d
+        integer :: ii
+        integer(c_size_t) :: f_sum = 0
+        integer(c_size_t) :: c_sum = 0
+
+        call kokkos_allocate_dualview( array_i64_1d, v_array_i64_1d, 'array_i64_1d', e0_length )
+        do ii = 1, e0_length
+          array_i64_1d(ii) = ii
+          f_sum = f_sum + array_i64_1d(ii)
+        end do
+        ierr = f_test_kokkos_allocate_dualview_i64_1d( v_array_i64_1d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            f_sum = f_sum + array_i64_1d(ii)
+          end do
+          if ( f_sum .eq. c_sum ) then
+            write(*,*)'PASSED kokkos_allocate_dualview_i64_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_dual_view_i64_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+        call kokkos_deallocate_dualview( array_i64_1d, v_array_i64_1d )
+      end function test_kokkos_allocate_dualview_i64_1d
+
+      integer &
+        & function test_kokkos_allocate_dualview_r32_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_float), pointer, dimension(:)  :: array_r32_1d
+        type(dualview_r32_1d_t) :: v_array_r32_1d
+        integer :: ii
+        real(c_float) :: f_sum = 0
+        real(c_float) :: c_sum = 0
+
+        call kokkos_allocate_dualview( array_r32_1d, v_array_r32_1d, 'array_r32_1d', e0_length )
+        do ii = 1, e0_length
+          array_r32_1d(ii) = ii
+          f_sum = f_sum + array_r32_1d(ii)
+        end do
+        ierr = f_test_kokkos_allocate_dualview_r32_1d( v_array_r32_1d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            f_sum = f_sum + array_r32_1d(ii)
+          end do
+          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+            write(*,*)'PASSED kokkos_allocate_dualview_r32_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_dualview_r32_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+        call kokkos_deallocate_dualview( array_r32_1d, v_array_r32_1d )
+      end function test_kokkos_allocate_dualview_r32_1d
+
+      integer &
+        & function test_kokkos_allocate_dualview_r64_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(c_double), pointer, dimension(:)  :: array_r64_1d
+        type(dualview_r64_1d_t) :: v_array_r64_1d
+        integer :: ii
+        real(c_double) :: f_sum = 0
+        real(c_double) :: c_sum = 0
+
+        call kokkos_allocate_dualview( array_r64_1d, v_array_r64_1d, 'array_r64_1d', e0_length )
+        do ii = 1, e0_length
+          array_r64_1d(ii) = ii
+          f_sum = f_sum + array_r64_1d(ii)
+        end do
+        ierr = f_test_kokkos_allocate_dualview_r64_1d( v_array_r64_1d%ptr(), f_sum, c_sum )
+        if (ierr == flcl_test_pass) then
+          f_sum = 0
+          do ii = 1, e0_length
+            f_sum = f_sum + array_r64_1d(ii)
+          end do
+          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+            write(*,*)'PASSED kokkos_allocate_dualview_r64_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_pass
+          else
+            write(*,*)'FAILED F kokkos_allocate_dualview_r64_1d'
+            write(*,*)'f_sum = ',f_sum
+            write(*,*)'c_sum = ',c_sum
+            ierr = flcl_test_fail
+          end if
+        end if
+        call kokkos_deallocate_dualview( array_r64_1d, v_array_r64_1d )
+      end function test_kokkos_allocate_dualview_r64_1d
+
 
 end module flcl_test_f_mod
