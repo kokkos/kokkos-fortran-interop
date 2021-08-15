@@ -79,8 +79,8 @@ double precision_double = strong_precision_double;
 #endif
 
 #ifdef __cplusplus
-  bool logical_pre = true;
-  bool logical_post = false;
+  constexpr bool logical_pre = true;
+  constexpr bool logical_post = false;
 #else
   _Bool logical_pre = true;
   _Bool logical_post = false;
