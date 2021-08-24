@@ -24,6 +24,7 @@ add_link_options(LINKER:--disable-new-dtags)
 #flcl-fortran library
 add_library(flcl-fortran
     OBJECT
+        src/flcl-types-f.f90
         src/flcl-ndarray-f.f90
         src/flcl-view-f.f90
         src/flcl-dualview-f.f90
