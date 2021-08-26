@@ -64,6 +64,7 @@ add_library(flcl-cxx
 )
 set(flcl-cxx-public-headers
     ${PROJECT_SOURCE_DIR}/src/flcl-cxx.hpp
+    ${PROJECT_SOURCE_DIR}/src/flcl-types-cxx.hpp
     ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h
 )
 set_property(TARGET flcl-cxx PROPERTY CXX_STANDARD 14)
