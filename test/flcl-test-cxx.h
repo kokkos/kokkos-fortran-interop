@@ -40,6 +40,7 @@
 
 #include <stdbool.h>
 #include <stdlib.h>
+#include "flcl-types-cxx.hpp"
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,13 +53,13 @@ typedef enum _flcl_test_error_t {
 } flcl_test_error_t;
 
 
-size_t e0_length = 8;
-size_t e1_length = 7;
-size_t e2_length = 6;
-size_t e3_length = 5;
-size_t e4_length = 4;
-size_t e5_length = 3;
-size_t e6_length = 2;
+flcl::flcl_ndarray_index_c_t e0_length = 8;
+flcl::flcl_ndarray_index_c_t e1_length = 7;
+flcl::flcl_ndarray_index_c_t e2_length = 6;
+flcl::flcl_ndarray_index_c_t e3_length = 5;
+flcl::flcl_ndarray_index_c_t e4_length = 4;
+flcl::flcl_ndarray_index_c_t e5_length = 3;
+flcl::flcl_ndarray_index_c_t e6_length = 2;
 
 float weak_precision_single = 1.0e-6;
 double weak_precision_double = 1.0e-13;

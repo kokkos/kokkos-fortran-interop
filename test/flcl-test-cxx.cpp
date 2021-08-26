@@ -41,6 +41,7 @@
 #include <iostream>
 #include <iomanip>
 #include <complex>
+#include "flcl-types-cxx.hpp"
 
 extern "C" {
 

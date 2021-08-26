@@ -53,18 +53,19 @@ module flcl_test_f_mod
   use, intrinsic :: iso_fortran_env
 
   use :: flcl_mod
+  use :: flcl_types_f_mod
 
   implicit none
   
-  integer(c_size_t), parameter :: e0_length = 8
-  integer(c_size_t), parameter :: e1_length = 7
-  integer(c_size_t), parameter :: e2_length = 6
-  integer(c_size_t), parameter :: e3_length = 5
-  integer(c_size_t), parameter :: e4_length = 4
-  integer(c_size_t), parameter :: e5_length = 3
-  integer(c_size_t), parameter :: e6_length = 2
-  logical(c_bool), parameter :: logical_pre = .true.
-  logical(c_bool), parameter :: logical_post = .false.
+  integer(flcl_ndarray_index_f_t), parameter :: e0_length = 8
+  integer(flcl_ndarray_index_f_t), parameter :: e1_length = 7
+  integer(flcl_ndarray_index_f_t), parameter :: e2_length = 6
+  integer(flcl_ndarray_index_f_t), parameter :: e3_length = 5
+  integer(flcl_ndarray_index_f_t), parameter :: e4_length = 4
+  integer(flcl_ndarray_index_f_t), parameter :: e5_length = 3
+  integer(flcl_ndarray_index_f_t), parameter :: e6_length = 2
+  logical(flcl_ndarray_l_f_t), parameter :: logical_pre = .true.
+  logical(flcl_ndarray_l_f_t), parameter :: logical_post = .false.
 
   enum, bind(c)
     enumerator :: flcl_test_pass = 0
