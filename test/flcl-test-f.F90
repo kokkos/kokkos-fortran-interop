@@ -53,7 +53,6 @@ module flcl_test_f_mod
   use, intrinsic :: iso_fortran_env
 
   use :: flcl_mod
-  use :: flcl_types_f_mod
 
   implicit none
   

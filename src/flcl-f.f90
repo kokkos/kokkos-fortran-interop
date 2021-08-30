@@ -41,6 +41,7 @@ module flcl_mod
   use flcl_ndarray_mod
   use flcl_view_mod
   use flcl_dualview_mod
+  use flcl_types_f_mod
   
   implicit none
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
