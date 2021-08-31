@@ -45,18 +45,20 @@
     // FLCL primary scalar types
     // - modify at this level to change ndarray, view, and dualview simultaneously
     // - ensure compatibility with F side
-    typedef bool                    flcl_l_c_t;
+    typedef bool                                flcl_l_c_t;
 
-    typedef int32_t                 flcl_i32_c_t;
-    typedef int64_t                 flcl_i64_c_t;
+    typedef int32_t                             flcl_i32_c_t;
+    typedef int64_t                             flcl_i64_c_t;
 
-    typedef float                   flcl_r32_c_t;
-    typedef double                  flcl_r64_c_t;
+    typedef float                               flcl_r32_c_t;
+    typedef double                              flcl_r64_c_t;
 
-    typedef std::complex<float>     flcl_c32_c_t;
-    typedef std::complex<double>    flcl_c64_c_t;
+    typedef float                               flcl_c32_scalar_c_t;
+    typedef double                              flcl_c64_scalar_c_t;
+    typedef std::complex<flcl_c32_scalar_c_t>   flcl_c32_c_t;
+    typedef std::complex<flcl_c64_scalar_c_t>   flcl_c64_c_t;
 
-    typedef size_t                  flcl_index_c_t;
+    typedef size_t                              flcl_index_c_t;
 
 // FLCL ndarray scalar types
 // - modify at this level to change ndarray only
@@ -66,6 +68,8 @@
     using flcl_ndarray_i64_c_t = flcl_i64_c_t;
     using flcl_ndarray_r32_c_t = flcl_r32_c_t;
     using flcl_ndarray_r64_c_t = flcl_r64_c_t;
+    using flcl_ndarray_c32_scalar_c_t = flcl_c32_scalar_c_t;
+    using flcl_ndarray_c64_scalar_c_t = flcl_c64_scalar_c_t;
     using flcl_ndarray_c32_c_t = flcl_c32_c_t;
     using flcl_ndarray_c64_c_t = flcl_c64_c_t;
     using flcl_ndarray_index_c_t = flcl_index_c_t;
