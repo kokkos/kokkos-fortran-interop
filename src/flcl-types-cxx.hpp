@@ -61,38 +61,38 @@
 // FLCL ndarray scalar types
 // - modify at this level to change ndarray only
 // - ensure compatibility with F side at this level
-    typedef flcl_l_c_t              flcl_ndarray_l_c_t;
-    typedef flcl_i32_c_t            flcl_ndarray_i32_c_t;
-    typedef flcl_i64_c_t            flcl_ndarray_i64_c_t;
-    typedef flcl_r32_c_t            flcl_ndarray_r32_c_t;
-    typedef flcl_r64_c_t            flcl_ndarray_r64_c_t;
-    typedef flcl_c32_c_t            flcl_ndarray_c32_c_t;
-    typedef flcl_c64_c_t            flcl_ndarray_c64_c_t;
-    typedef flcl_index_c_t          flcl_ndarray_index_c_t;
+    using flcl_ndarray_l_c_t = flcl_l_c_t;
+    using flcl_ndarray_i32_c_t = flcl_i32_c_t;
+    using flcl_ndarray_i64_c_t = flcl_i64_c_t;
+    using flcl_ndarray_r32_c_t = flcl_r32_c_t;
+    using flcl_ndarray_r64_c_t = flcl_r64_c_t;
+    using flcl_ndarray_c32_c_t = flcl_c32_c_t;
+    using flcl_ndarray_c64_c_t = flcl_c64_c_t;
+    using flcl_ndarray_index_c_t = flcl_index_c_t;
 
 // FLCL view scalar types
 // - modify at this level to change view only
 // - ensure compatibility with F side at this level
-    typedef flcl_l_c_t              flcl_view_l_c_t;
-    typedef flcl_i32_c_t            flcl_view_i32_c_t;
-    typedef flcl_i64_c_t            flcl_view_i64_c_t;
-    typedef flcl_r32_c_t            flcl_view_r32_c_t;
-    typedef flcl_r64_c_t            flcl_view_r64_c_t;
-    typedef flcl_c32_c_t            flcl_view_c32_c_t;
-    typedef flcl_c64_c_t            flcl_view_c64_c_t;
-    typedef flcl_index_c_t          flcl_view_index_c_t;
+    using flcl_view_l_c_t = flcl_l_c_t;
+    using flcl_view_i32_c_t = flcl_i32_c_t;
+    using flcl_view_i64_c_t = flcl_i64_c_t;
+    using flcl_view_r32_c_t = flcl_r32_c_t;
+    using flcl_view_r64_c_t = flcl_r64_c_t;
+    using flcl_view_c32_c_t = flcl_c32_c_t;
+    using flcl_view_c64_c_t = flcl_c64_c_t;
+    using flcl_view_index_c_t = flcl_index_c_t;
 
 // FLCL dualview scalar types
 // - modify at this level to change dualview only
 // - ensure compatibility with F side at this level
-    typedef flcl_l_c_t              flcl_dualview_l_c_t;
-    typedef flcl_i32_c_t            flcl_dualview_i32_c_t;
-    typedef flcl_i64_c_t            flcl_dualview_i64_c_t;
-    typedef flcl_r32_c_t            flcl_dualview_r32_c_t;
-    typedef flcl_r64_c_t            flcl_dualview_r64_c_t;
-    typedef flcl_c32_c_t            flcl_dualview_c32_c_t;
-    typedef flcl_c64_c_t            flcl_dualview_c64_c_t;
-    typedef flcl_index_c_t          flcl_dualview_index_c_t;
+    using flcl_dualview_l_c_t = flcl_l_c_t;
+    using flcl_dualview_i32_c_t = flcl_i32_c_t;
+    using flcl_dualview_i64_c_t = flcl_i64_c_t;
+    using flcl_dualview_r32_c_t = flcl_r32_c_t;
+    using flcl_dualview_r64_c_t = flcl_r64_c_t;
+    using flcl_dualview_c32_c_t = flcl_c32_c_t;
+    using flcl_dualview_c64_c_t = flcl_c64_c_t;
+    using flcl_dualview_index_c_t = flcl_index_c_t;
 
   } // namespace flcl
   
