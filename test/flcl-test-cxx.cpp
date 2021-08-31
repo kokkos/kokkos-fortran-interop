@@ -3069,13 +3069,13 @@ extern "C" {
 
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_l_1d( flcl::dualview_l_1d_t **v_array_l_1d, size_t *f_sum, size_t *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_l_1d( flcl::dualview_l_1d_t **v_array_l_1d, flcl::flcl_dualview_index_c_t *f_sum, flcl::flcl_dualview_index_c_t *c_sum ) {
     using view_type = flcl::dualview_l_1d_t;
     *c_sum = 0;
     auto array_l_1d = **v_array_l_1d;
     array_l_1d.template modify<typename view_type::host_mirror_space>();
     array_l_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_l_1d_get", array_l_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_l_1d_get", array_l_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_index_c_t& temp_sum)
     {
       if (array_l_1d.d_view(idx)) temp_sum++;
     }, *c_sum );
@@ -3099,13 +3099,13 @@ extern "C" {
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_i32_1d( flcl::dualview_i32_1d_t **v_array_i32_1d, size_t *f_sum, size_t *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_i32_1d( flcl::dualview_i32_1d_t **v_array_i32_1d, flcl::flcl_dualview_i32_c_t *f_sum, flcl::flcl_dualview_i32_c_t *c_sum ) {
     using view_type = flcl::dualview_i32_1d_t;
     *c_sum = 0;
     auto array_i32_1d = **v_array_i32_1d;
     array_i32_1d.template modify<typename view_type::host_mirror_space>();
     array_i32_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_1d_get", array_i32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_1d_get", array_i32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
       temp_sum += array_i32_1d.d_view(idx);
     }, *c_sum );
@@ -3120,7 +3120,7 @@ extern "C" {
     *c_sum = 0;
     array_i32_1d.template modify<typename view_type::host_mirror_space>();
     array_i32_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_1d_set", array_i32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_1d_set", array_i32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
       array_i32_1d.d_view(idx) = idx;
       temp_sum += array_i32_1d.d_view(idx);
@@ -3131,13 +3131,13 @@ extern "C" {
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_i64_1d( flcl::dualview_i64_1d_t **v_array_i64_1d, size_t *f_sum, size_t *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_i64_1d( flcl::dualview_i64_1d_t **v_array_i64_1d, flcl::flcl_dualview_i64_c_t *f_sum, flcl::flcl_dualview_i64_c_t *c_sum ) {
     using view_type = flcl::dualview_i64_1d_t;
     *c_sum = 0;
     auto array_i64_1d = **v_array_i64_1d;
     array_i64_1d.template modify<typename view_type::host_mirror_space>();
     array_i64_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_1d_get", array_i64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_1d_get", array_i64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
       temp_sum += array_i64_1d.d_view(idx);
     }, *c_sum );
@@ -3152,7 +3152,7 @@ extern "C" {
     *c_sum = 0;
     array_i64_1d.template modify<typename view_type::host_mirror_space>();
     array_i64_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_1d_set", array_i64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_1d_set", array_i64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
       array_i64_1d.d_view(idx) = idx;
       temp_sum += array_i64_1d.d_view(idx);
@@ -3163,13 +3163,13 @@ extern "C" {
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_r32_1d( flcl::dualview_r32_1d_t **v_array_r32_1d, float *f_sum, float *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_r32_1d( flcl::dualview_r32_1d_t **v_array_r32_1d, flcl::flcl_dualview_r32_c_t *f_sum, flcl::flcl_dualview_r32_c_t *c_sum ) {
     using view_type = flcl::dualview_r32_1d_t;
     *c_sum = 0;
     auto array_r32_1d = **v_array_r32_1d;
     array_r32_1d.template modify<typename view_type::host_mirror_space>();
     array_r32_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_1d_get", array_r32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, float& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_1d_get", array_r32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
       temp_sum += array_r32_1d.d_view(idx);
     }, *c_sum );
@@ -3184,7 +3184,7 @@ extern "C" {
     *c_sum = 0;
     array_r32_1d.template modify<typename view_type::host_mirror_space>();
     array_r32_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_1d_set", array_r32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, float& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_1d_set", array_r32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
       array_r32_1d.d_view(idx) = idx;
       temp_sum += array_r32_1d.d_view(idx);
@@ -3195,13 +3195,13 @@ extern "C" {
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_r64_1d( flcl::dualview_r64_1d_t **v_array_r64_1d, double *f_sum, double *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_r64_1d( flcl::dualview_r64_1d_t **v_array_r64_1d, flcl::flcl_dualview_r64_c_t *f_sum, flcl::flcl_dualview_r64_c_t *c_sum ) {
     using view_type = flcl::dualview_r64_1d_t;
     *c_sum = 0;
     auto array_r64_1d = **v_array_r64_1d;
     array_r64_1d.template modify<typename view_type::host_mirror_space>();
     array_r64_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_1d_get", array_r64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, double& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_1d_get", array_r64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
       temp_sum += array_r64_1d.d_view(idx);
     }, *c_sum );
@@ -3216,7 +3216,7 @@ extern "C" {
     *c_sum = 0;
     array_r64_1d.template modify<typename view_type::host_mirror_space>();
     array_r64_1d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_1d_set", array_r64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, double& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_1d_set", array_r64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
       array_r64_1d.d_view(idx) = idx;
       temp_sum += array_r64_1d.d_view(idx);
@@ -3227,13 +3227,13 @@ extern "C" {
     return FLCL_TEST_PASS;
   }
 
-flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **v_array_l_2d, size_t *f_sum, size_t *c_sum ) {
+flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **v_array_l_2d, flcl::flcl_dualview_index_c_t *f_sum, flcl::flcl_dualview_index_c_t *c_sum ) {
     using view_type = flcl::dualview_l_2d_t;
     *c_sum = 0;
     auto array_l_2d = **v_array_l_2d;
     array_l_2d.template modify<typename view_type::host_mirror_space>();
     array_l_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_l_2d_get", array_l_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_l_2d_get", array_l_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_index_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_l_2d.extent(1); jj++) { 
         if (array_l_2d.d_view(idx,jj)) temp_sum++;
@@ -3262,13 +3262,13 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_i32_2d( flcl::dualview_i32_2d_t **v_array_i32_2d, size_t *f_sum, size_t *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_i32_2d( flcl::dualview_i32_2d_t **v_array_i32_2d, flcl::flcl_dualview_i32_c_t *f_sum, flcl::flcl_dualview_i32_c_t *c_sum ) {
     using view_type = flcl::dualview_i32_2d_t;
     *c_sum = 0;
     auto array_i32_2d = **v_array_i32_2d;
     array_i32_2d.template modify<typename view_type::host_mirror_space>();
     array_i32_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_2d_get", array_i32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_2d_get", array_i32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i32_2d.extent(1); jj++) {
         temp_sum += array_i32_2d.d_view(idx,jj);
@@ -3285,7 +3285,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     *c_sum = 0;
     array_i32_2d.template modify<typename view_type::host_mirror_space>();
     array_i32_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_2d_set", array_i32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_2d_set", array_i32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i32_2d.extent(1); jj++) {
         array_i32_2d.d_view(idx,jj) = idx+jj;
@@ -3298,13 +3298,13 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_i64_2d( flcl::dualview_i64_2d_t **v_array_i64_2d, size_t *f_sum, size_t *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_i64_2d( flcl::dualview_i64_2d_t **v_array_i64_2d, flcl::flcl_dualview_i64_c_t *f_sum, flcl::flcl_dualview_i64_c_t *c_sum ) {
     using view_type = flcl::dualview_i64_2d_t;
     *c_sum = 0;
     auto array_i64_2d = **v_array_i64_2d;
     array_i64_2d.template modify<typename view_type::host_mirror_space>();
     array_i64_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_2d_get", array_i64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_2d_get", array_i64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i64_2d.extent(1); jj++) {
         temp_sum += array_i64_2d.d_view(idx,jj);
@@ -3321,7 +3321,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     *c_sum = 0;
     array_i64_2d.template modify<typename view_type::host_mirror_space>();
     array_i64_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_2d_set", array_i64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, size_t& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_2d_set", array_i64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i64_2d.extent(1); jj++) {
         array_i64_2d.d_view(idx,jj) = idx+jj;
@@ -3334,13 +3334,13 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_r32_2d( flcl::dualview_r32_2d_t **v_array_r32_2d, float *f_sum, float *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_r32_2d( flcl::dualview_r32_2d_t **v_array_r32_2d, flcl::flcl_dualview_r32_c_t *f_sum, flcl::flcl_dualview_r32_c_t *c_sum ) {
     using view_type = flcl::dualview_r32_2d_t;
     *c_sum = 0;
     auto array_r32_2d = **v_array_r32_2d;
     array_r32_2d.template modify<typename view_type::host_mirror_space>();
     array_r32_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_2d_get", array_r32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, float& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_2d_get", array_r32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r32_2d.extent(1); jj++) {
         temp_sum += array_r32_2d.d_view(idx,jj);
@@ -3357,7 +3357,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     *c_sum = 0;
     array_r32_2d.template modify<typename view_type::host_mirror_space>();
     array_r32_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_2d_set", array_r32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, float& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_2d_set", array_r32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r32_2d.extent(1); jj++) {
         array_r32_2d.d_view(idx,jj) = idx+jj;
@@ -3370,13 +3370,13 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     return FLCL_TEST_PASS;
   }
 
-  flcl_test_error_t c_test_kokkos_allocate_dualview_r64_2d( flcl::dualview_r64_2d_t **v_array_r64_2d, double *f_sum, double *c_sum ) {
+  flcl_test_error_t c_test_kokkos_allocate_dualview_r64_2d( flcl::dualview_r64_2d_t **v_array_r64_2d, flcl::flcl_dualview_r64_c_t *f_sum, flcl::flcl_dualview_r64_c_t *c_sum ) {
     using view_type = flcl::dualview_r64_2d_t;
     *c_sum = 0;
     auto array_r64_2d = **v_array_r64_2d;
     array_r64_2d.template modify<typename view_type::host_mirror_space>();
     array_r64_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_2d_get", array_r64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, double& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_2d_get", array_r64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r64_2d.extent(1); jj++) {
         temp_sum += array_r64_2d.d_view(idx,jj);
@@ -3393,7 +3393,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     *c_sum = 0;
     array_r64_2d.template modify<typename view_type::host_mirror_space>();
     array_r64_2d.template sync<typename view_type::execution_space>();
-    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_2d_set", array_r64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, double& temp_sum)
+    Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_2d_set", array_r64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r64_2d.extent(1); jj++) {
         array_r64_2d.d_view(idx,jj) = idx+jj;
