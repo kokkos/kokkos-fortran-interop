@@ -45,7 +45,7 @@ program test_ndarray_l_5d_main
   
     implicit none
   
-    integer(c_size_t) :: ierr = 0
+    integer :: ierr = 0
   
     call kokkos_initialize_without_args()
 
