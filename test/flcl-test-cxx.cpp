@@ -728,11 +728,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_l_4d( flcl_ndarray_t *nd_array_l_4d, size_t *f_sum ) {
+  flcl::flcl_ndarray_index_c_t c_test_ndarray_l_4d( flcl_ndarray_t *nd_array_l_4d, flcl::flcl_ndarray_index_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_l_4d = view_from_ndarray<bool****>(*nd_array_l_4d);
+    flcl::flcl_ndarray_index_c_t c_sum = 0;
+    auto array_l_4d = view_from_ndarray<flcl::flcl_ndarray_l_c_t****>(*nd_array_l_4d);
 
     for (size_t ii = 0; ii < array_l_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_l_4d.extent(1); jj++) {
@@ -764,11 +764,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i32_4d( flcl_ndarray_t *nd_array_i32_4d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i32_c_t c_test_ndarray_i32_4d( flcl_ndarray_t *nd_array_i32_4d, flcl::flcl_ndarray_i32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i32_4d = view_from_ndarray<int32_t****>(*nd_array_i32_4d);
+    flcl::flcl_ndarray_i32_c_t c_sum = 0;
+    auto array_i32_4d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t****>(*nd_array_i32_4d);
 
     for (size_t ii = 0; ii < array_i32_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_4d.extent(1); jj++) {
@@ -802,11 +802,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i64_4d( flcl_ndarray_t *nd_array_i64_4d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i64_c_t c_test_ndarray_i64_4d( flcl_ndarray_t *nd_array_i64_4d, flcl::flcl_ndarray_i64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i64_4d = view_from_ndarray<int64_t****>(*nd_array_i64_4d);
+    flcl::flcl_ndarray_i64_c_t c_sum = 0;
+    auto array_i64_4d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t****>(*nd_array_i64_4d);
 
     for (size_t ii = 0; ii < array_i64_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_4d.extent(1); jj++) {
@@ -840,11 +840,11 @@ extern "C" {
     return c_sum;
   }
 
-  float c_test_ndarray_r32_4d( flcl_ndarray_t *nd_array_r32_4d, float *f_sum ) {
+  flcl::flcl_ndarray_r32_c_t c_test_ndarray_r32_4d( flcl_ndarray_t *nd_array_r32_4d, flcl::flcl_ndarray_r32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    float c_sum = 0;
-    auto array_r32_4d = view_from_ndarray<float****>(*nd_array_r32_4d);
+    flcl::flcl_ndarray_r32_c_t c_sum = 0;
+    auto array_r32_4d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t****>(*nd_array_r32_4d);
 
     for (size_t ii = 0; ii < array_r32_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_4d.extent(1); jj++) {
@@ -880,11 +880,11 @@ extern "C" {
     return c_sum;
   }
 
-  double c_test_ndarray_r64_4d( flcl_ndarray_t *nd_array_r64_4d, double *f_sum ) {
+  flcl::flcl_ndarray_r64_c_t c_test_ndarray_r64_4d( flcl_ndarray_t *nd_array_r64_4d, flcl::flcl_ndarray_r64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    double c_sum = 0;
-    auto array_r64_4d = view_from_ndarray<double****>(*nd_array_r64_4d);
+    flcl::flcl_ndarray_r64_c_t c_sum = 0;
+    auto array_r64_4d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t****>(*nd_array_r64_4d);
 
     for (size_t ii = 0; ii < array_r64_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_4d.extent(1); jj++) {
@@ -921,12 +921,12 @@ extern "C" {
 
   }
 
-  std::complex<float> c_test_ndarray_c32_4d( flcl_ndarray_t *nd_array_c32_4d, std::complex<float> *f_sum ) {
+  flcl::flcl_ndarray_c32_c_t c_test_ndarray_c32_4d( flcl_ndarray_t *nd_array_c32_4d, flcl::flcl_ndarray_c32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
     
-    Kokkos::complex<float> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c32_4d = view_from_ndarray<Kokkos::complex<float>****>(*nd_array_c32_4d);
+    auto array_c32_4d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>****>(*nd_array_c32_4d);
     for (size_t ii = 0; ii < array_c32_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_4d.extent(2); kk++) {
@@ -951,12 +951,12 @@ extern "C" {
       exit(EXIT_FAILURE);
     }
 
-    c_sum = Kokkos::complex<float>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c32_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c32_4d.extent(3); ll++) {
-            array_c32_4d(ii,jj,kk,ll) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll),-1.0*(ii+jj+kk+ll));
+            array_c32_4d(ii,jj,kk,ll) = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(1.0*(ii+jj+kk+ll),-1.0*(ii+jj+kk+ll));
             c_sum = c_sum + array_c32_4d(ii,jj,kk,ll);
           }
         }
@@ -966,12 +966,12 @@ extern "C" {
     return c_sum;
   }
 
-  std::complex<double> c_test_ndarray_c64_4d( flcl_ndarray_t *nd_array_c64_4d, std::complex<double> *f_sum ) {
+  flcl::flcl_ndarray_c64_c_t c_test_ndarray_c64_4d( flcl_ndarray_t *nd_array_c64_4d, flcl::flcl_ndarray_c64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    Kokkos::complex<double> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c64_4d = view_from_ndarray<Kokkos::complex<double>****>(*nd_array_c64_4d);
+    auto array_c64_4d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>****>(*nd_array_c64_4d);
     for (size_t ii = 0; ii < array_c64_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_4d.extent(2); kk++) {
@@ -996,12 +996,12 @@ extern "C" {
       exit(EXIT_FAILURE);    
     }
     
-    c_sum = Kokkos::complex<double>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c64_4d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c64_4d.extent(3); ll++) {
-            array_c64_4d(ii,jj,kk,ll) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll),-1.0*(ii+jj+kk+ll));
+            array_c64_4d(ii,jj,kk,ll) = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(1.0*(ii+jj+kk+ll),-1.0*(ii+jj+kk+ll));
             c_sum = c_sum + array_c64_4d(ii,jj,kk,ll);
           }
         }
@@ -1011,11 +1011,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_l_5d( flcl_ndarray_t *nd_array_l_5d, size_t *f_sum ) {
+  flcl::flcl_ndarray_index_c_t c_test_ndarray_l_5d( flcl_ndarray_t *nd_array_l_5d, flcl::flcl_ndarray_index_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_l_5d = view_from_ndarray<bool*****>(*nd_array_l_5d);
+    flcl::flcl_ndarray_index_c_t c_sum = 0;
+    auto array_l_5d = view_from_ndarray<flcl::flcl_ndarray_l_c_t*****>(*nd_array_l_5d);
 
     for (size_t ii = 0; ii < array_l_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_l_5d.extent(1); jj++) {
@@ -1051,11 +1051,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i32_5d( flcl_ndarray_t *nd_array_i32_5d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i32_c_t c_test_ndarray_i32_5d( flcl_ndarray_t *nd_array_i32_5d, flcl::flcl_ndarray_i32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i32_5d = view_from_ndarray<int32_t*****>(*nd_array_i32_5d);
+    flcl::flcl_ndarray_i32_c_t c_sum = 0;
+    auto array_i32_5d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t*****>(*nd_array_i32_5d);
 
     for (size_t ii = 0; ii < array_i32_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_5d.extent(1); jj++) {
@@ -1093,11 +1093,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i64_5d( flcl_ndarray_t *nd_array_i64_5d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i64_c_t c_test_ndarray_i64_5d( flcl_ndarray_t *nd_array_i64_5d, flcl::flcl_ndarray_i64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i64_5d = view_from_ndarray<int64_t*****>(*nd_array_i64_5d);
+    flcl::flcl_ndarray_i64_c_t c_sum = 0;
+    auto array_i64_5d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t*****>(*nd_array_i64_5d);
 
     for (size_t ii = 0; ii < array_i64_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_5d.extent(1); jj++) {
@@ -1133,11 +1133,11 @@ extern "C" {
     return c_sum;
   }
 
-  float c_test_ndarray_r32_5d( flcl_ndarray_t *nd_array_r32_5d, float *f_sum ) {
+  flcl::flcl_ndarray_r32_c_t c_test_ndarray_r32_5d( flcl_ndarray_t *nd_array_r32_5d, flcl::flcl_ndarray_r32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    float c_sum = 0;
-    auto array_r32_5d = view_from_ndarray<float*****>(*nd_array_r32_5d);
+    flcl::flcl_ndarray_r32_c_t c_sum = 0;
+    auto array_r32_5d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t*****>(*nd_array_r32_5d);
 
     for (size_t ii = 0; ii < array_r32_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_5d.extent(1); jj++) {
@@ -1178,11 +1178,11 @@ extern "C" {
     return c_sum;
   }
 
-  double c_test_ndarray_r64_5d( flcl_ndarray_t *nd_array_r64_5d, double *f_sum ) {
+  flcl::flcl_ndarray_r64_c_t c_test_ndarray_r64_5d( flcl_ndarray_t *nd_array_r64_5d, flcl::flcl_ndarray_r64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    double c_sum = 0;
-    auto array_r64_5d = view_from_ndarray<double*****>(*nd_array_r64_5d);
+    flcl::flcl_ndarray_r64_c_t c_sum = 0;
+    auto array_r64_5d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t*****>(*nd_array_r64_5d);
 
     for (size_t ii = 0; ii < array_r64_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_5d.extent(1); jj++) {
@@ -1223,12 +1223,12 @@ extern "C" {
 
   }
 
-  std::complex<float> c_test_ndarray_c32_5d( flcl_ndarray_t *nd_array_c32_5d, std::complex<float> *f_sum ) {
+  flcl::flcl_ndarray_c32_c_t c_test_ndarray_c32_5d( flcl_ndarray_t *nd_array_c32_5d, flcl::flcl_ndarray_c32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
     
-    Kokkos::complex<float> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c32_5d = view_from_ndarray<Kokkos::complex<float>*****>(*nd_array_c32_5d);
+    auto array_c32_5d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>*****>(*nd_array_c32_5d);
     for (size_t ii = 0; ii < array_c32_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_5d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_5d.extent(2); kk++) {
@@ -1255,13 +1255,13 @@ extern "C" {
       exit(EXIT_FAILURE);
     }
 
-    c_sum = Kokkos::complex<float>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c32_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_5d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c32_5d.extent(4); mm++) {
-              array_c32_5d(ii,jj,kk,ll,mm) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll+mm),-1.0*(ii+jj+kk+ll+mm));
+              array_c32_5d(ii,jj,kk,ll,mm) = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(1.0*(ii+jj+kk+ll+mm),-1.0*(ii+jj+kk+ll+mm));
               c_sum = c_sum + array_c32_5d(ii,jj,kk,ll,mm);
             }
           }
@@ -1272,12 +1272,12 @@ extern "C" {
     return c_sum;
   }
 
-  std::complex<double> c_test_ndarray_c64_5d( flcl_ndarray_t *nd_array_c64_5d, std::complex<double> *f_sum ) {
+  flcl::flcl_ndarray_c64_c_t c_test_ndarray_c64_5d( flcl_ndarray_t *nd_array_c64_5d, flcl::flcl_ndarray_c64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    Kokkos::complex<double> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c64_5d = view_from_ndarray<Kokkos::complex<double>*****>(*nd_array_c64_5d);
+    auto array_c64_5d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>*****>(*nd_array_c64_5d);
     for (size_t ii = 0; ii < array_c64_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_5d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_5d.extent(2); kk++) {
@@ -1304,13 +1304,13 @@ extern "C" {
       exit(EXIT_FAILURE);    
     }
     
-    c_sum = Kokkos::complex<double>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c64_5d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_5d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c64_5d.extent(4); mm++) {
-              array_c64_5d(ii,jj,kk,ll,mm) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll+mm),-1.0*(ii+jj+kk+ll+mm));
+              array_c64_5d(ii,jj,kk,ll,mm) = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(1.0*(ii+jj+kk+ll+mm),-1.0*(ii+jj+kk+ll+mm));
               c_sum = c_sum + array_c64_5d(ii,jj,kk,ll,mm);
             }
           }
@@ -1321,11 +1321,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_l_6d( flcl_ndarray_t *nd_array_l_6d, size_t *f_sum ) {
+  flcl::flcl_ndarray_index_c_t c_test_ndarray_l_6d( flcl_ndarray_t *nd_array_l_6d, flcl::flcl_ndarray_index_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_l_6d = view_from_ndarray<bool******>(*nd_array_l_6d);
+    flcl::flcl_ndarray_index_c_t c_sum = 0;
+    auto array_l_6d = view_from_ndarray<flcl::flcl_ndarray_l_c_t******>(*nd_array_l_6d);
 
     for (size_t ii = 0; ii < array_l_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_l_6d.extent(1); jj++) {
@@ -1365,11 +1365,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i32_6d( flcl_ndarray_t *nd_array_i32_6d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i32_c_t c_test_ndarray_i32_6d( flcl_ndarray_t *nd_array_i32_6d, flcl::flcl_ndarray_i32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i32_6d = view_from_ndarray<int32_t******>(*nd_array_i32_6d);
+    flcl::flcl_ndarray_i32_c_t c_sum = 0;
+    auto array_i32_6d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t******>(*nd_array_i32_6d);
 
     for (size_t ii = 0; ii < array_i32_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_6d.extent(1); jj++) {
@@ -1411,11 +1411,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i64_6d( flcl_ndarray_t *nd_array_i64_6d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i64_c_t c_test_ndarray_i64_6d( flcl_ndarray_t *nd_array_i64_6d, flcl::flcl_ndarray_i64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i64_6d = view_from_ndarray<int64_t******>(*nd_array_i64_6d);
+    flcl::flcl_ndarray_i64_c_t c_sum = 0;
+    auto array_i64_6d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t******>(*nd_array_i64_6d);
 
     for (size_t ii = 0; ii < array_i64_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_6d.extent(1); jj++) {
@@ -1457,11 +1457,11 @@ extern "C" {
     return c_sum;
   }
 
-  float c_test_ndarray_r32_6d( flcl_ndarray_t *nd_array_r32_6d, float *f_sum ) {
+  flcl::flcl_ndarray_r32_c_t c_test_ndarray_r32_6d( flcl_ndarray_t *nd_array_r32_6d, flcl::flcl_ndarray_r32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    float c_sum = 0;
-    auto array_r32_6d = view_from_ndarray<float******>(*nd_array_r32_6d);
+    flcl::flcl_ndarray_r32_c_t c_sum = 0;
+    auto array_r32_6d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t******>(*nd_array_r32_6d);
 
     for (size_t ii = 0; ii < array_r32_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_6d.extent(1); jj++) {
@@ -1506,11 +1506,11 @@ extern "C" {
     return c_sum;
   }
 
-  double c_test_ndarray_r64_6d( flcl_ndarray_t *nd_array_r64_6d, double *f_sum ) {
+  flcl::flcl_ndarray_r64_c_t c_test_ndarray_r64_6d( flcl_ndarray_t *nd_array_r64_6d, flcl::flcl_ndarray_r64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    double c_sum = 0;
-    auto array_r64_6d = view_from_ndarray<double******>(*nd_array_r64_6d);
+    flcl::flcl_ndarray_r64_c_t c_sum = 0;
+    auto array_r64_6d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t******>(*nd_array_r64_6d);
 
     for (size_t ii = 0; ii < array_r64_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_6d.extent(1); jj++) {
@@ -1555,12 +1555,12 @@ extern "C" {
 
   }
 
-  std::complex<float> c_test_ndarray_c32_6d( flcl_ndarray_t *nd_array_c32_6d, std::complex<float> *f_sum ) {
+  flcl::flcl_ndarray_c32_c_t c_test_ndarray_c32_6d( flcl_ndarray_t *nd_array_c32_6d, flcl::flcl_ndarray_c32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
     
-    Kokkos::complex<float> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c32_6d = view_from_ndarray<Kokkos::complex<float>******>(*nd_array_c32_6d);
+    auto array_c32_6d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>******>(*nd_array_c32_6d);
     for (size_t ii = 0; ii < array_c32_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_6d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_6d.extent(2); kk++) {
@@ -1589,14 +1589,14 @@ extern "C" {
       exit(EXIT_FAILURE);
     }
 
-    c_sum = Kokkos::complex<float>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c32_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_6d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_6d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c32_6d.extent(5); nn++) {
-                array_c32_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll+mm+nn),-1.0*(ii+jj+kk+ll+mm+nn));
+                array_c32_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(1.0*(ii+jj+kk+ll+mm+nn),-1.0*(ii+jj+kk+ll+mm+nn));
                 c_sum = c_sum + array_c32_6d(ii,jj,kk,ll,mm,nn);
               }
             }
@@ -1608,12 +1608,12 @@ extern "C" {
     return c_sum;
   }
 
-  std::complex<double> c_test_ndarray_c64_6d( flcl_ndarray_t *nd_array_c64_6d, std::complex<double> *f_sum ) {
+  flcl::flcl_ndarray_c64_c_t c_test_ndarray_c64_6d( flcl_ndarray_t *nd_array_c64_6d, flcl::flcl_ndarray_c64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    Kokkos::complex<double> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c64_6d = view_from_ndarray<Kokkos::complex<double>******>(*nd_array_c64_6d);
+    auto array_c64_6d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>******>(*nd_array_c64_6d);
     for (size_t ii = 0; ii < array_c64_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_6d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_6d.extent(2); kk++) {
@@ -1642,14 +1642,14 @@ extern "C" {
       exit(EXIT_FAILURE);    
     }
     
-    c_sum = Kokkos::complex<double>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c64_6d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_6d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_6d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_c64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_c64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c64_6d.extent(5); nn++) {
-                array_c64_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll+mm+nn),-1.0*(ii+jj+kk+ll+mm+nn));
+                array_c64_6d(ii,jj,kk,ll,mm,nn) = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(1.0*(ii+jj+kk+ll+mm+nn),-1.0*(ii+jj+kk+ll+mm+nn));
                 c_sum = c_sum + array_c64_6d(ii,jj,kk,ll,mm,nn);
               }
             }
@@ -1661,11 +1661,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_l_7d( flcl_ndarray_t *nd_array_l_7d, size_t *f_sum ) {
+  flcl::flcl_ndarray_index_c_t c_test_ndarray_l_7d( flcl_ndarray_t *nd_array_l_7d, flcl::flcl_ndarray_index_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_l_7d = view_from_ndarray<bool*******>(*nd_array_l_7d);
+    flcl::flcl_ndarray_index_c_t c_sum = 0;
+    auto array_l_7d = view_from_ndarray<flcl::flcl_ndarray_l_c_t*******>(*nd_array_l_7d);
 
     for (size_t ii = 0; ii < array_l_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_l_7d.extent(1); jj++) {
@@ -1709,11 +1709,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i32_7d( flcl_ndarray_t *nd_array_i32_7d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i32_c_t c_test_ndarray_i32_7d( flcl_ndarray_t *nd_array_i32_7d, flcl::flcl_ndarray_i32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i32_7d = view_from_ndarray<int32_t*******>(*nd_array_i32_7d);
+    flcl::flcl_ndarray_i32_c_t c_sum = 0;
+    auto array_i32_7d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t*******>(*nd_array_i32_7d);
 
     for (size_t ii = 0; ii < array_i32_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i32_7d.extent(1); jj++) {
@@ -1759,11 +1759,11 @@ extern "C" {
     return c_sum;
   }
 
-  size_t c_test_ndarray_i64_7d( flcl_ndarray_t *nd_array_i64_7d, size_t *f_sum ) {
+  flcl::flcl_ndarray_i64_c_t c_test_ndarray_i64_7d( flcl_ndarray_t *nd_array_i64_7d, flcl::flcl_ndarray_i64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    size_t c_sum = 0;
-    auto array_i64_7d = view_from_ndarray<int64_t*******>(*nd_array_i64_7d);
+    flcl::flcl_ndarray_i64_c_t c_sum = 0;
+    auto array_i64_7d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t*******>(*nd_array_i64_7d);
 
     for (size_t ii = 0; ii < array_i64_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_i64_7d.extent(1); jj++) {
@@ -1809,11 +1809,11 @@ extern "C" {
     return c_sum;
   }
 
-  float c_test_ndarray_r32_7d( flcl_ndarray_t *nd_array_r32_7d, float *f_sum ) {
+  flcl::flcl_ndarray_r32_c_t c_test_ndarray_r32_7d( flcl_ndarray_t *nd_array_r32_7d, flcl::flcl_ndarray_r32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    float c_sum = 0;
-    auto array_r32_7d = view_from_ndarray<float*******>(*nd_array_r32_7d);
+    flcl::flcl_ndarray_r32_c_t c_sum = 0;
+    auto array_r32_7d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t*******>(*nd_array_r32_7d);
 
     for (size_t ii = 0; ii < array_r32_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r32_7d.extent(1); jj++) {
@@ -1861,11 +1861,11 @@ extern "C" {
     return c_sum;
   }
 
-  double c_test_ndarray_r64_7d( flcl_ndarray_t *nd_array_r64_7d, double *f_sum ) {
+  flcl::flcl_ndarray_r64_c_t c_test_ndarray_r64_7d( flcl_ndarray_t *nd_array_r64_7d, flcl::flcl_ndarray_r64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    double c_sum = 0;
-    auto array_r64_7d = view_from_ndarray<double*******>(*nd_array_r64_7d);
+    flcl::flcl_ndarray_r64_c_t c_sum = 0;
+    auto array_r64_7d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t*******>(*nd_array_r64_7d);
 
     for (size_t ii = 0; ii < array_r64_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_r64_7d.extent(1); jj++) {
@@ -1914,12 +1914,12 @@ extern "C" {
 
   }
 
-  std::complex<float> c_test_ndarray_c32_7d( flcl_ndarray_t *nd_array_c32_7d, std::complex<float> *f_sum ) {
+  flcl::flcl_ndarray_c32_c_t c_test_ndarray_c32_7d( flcl_ndarray_t *nd_array_c32_7d, flcl::flcl_ndarray_c32_c_t *f_sum ) {
     using flcl::view_from_ndarray;
     
-    Kokkos::complex<float> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c32_7d = view_from_ndarray<Kokkos::complex<float>*******>(*nd_array_c32_7d);
+    auto array_c32_7d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>*******>(*nd_array_c32_7d);
     for (size_t ii = 0; ii < array_c32_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_7d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_7d.extent(2); kk++) {
@@ -1950,7 +1950,7 @@ extern "C" {
       exit(EXIT_FAILURE);
     }
 
-    c_sum = Kokkos::complex<float>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c32_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c32_7d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c32_7d.extent(2); kk++) {
@@ -1958,7 +1958,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_c32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_c32_7d.extent(6); oo++) {
-                  array_c32_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<float>(1.0*(ii+jj+kk+ll+mm+nn+oo),-1.0*(ii+jj+kk+ll+mm+nn+oo));
+                  array_c32_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<flcl::flcl_ndarray_c32_scalar_c_t>(1.0*(ii+jj+kk+ll+mm+nn+oo),-1.0*(ii+jj+kk+ll+mm+nn+oo));
                   c_sum = c_sum + array_c32_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
@@ -1971,12 +1971,12 @@ extern "C" {
     return c_sum;
   }
 
-  std::complex<double> c_test_ndarray_c64_7d( flcl_ndarray_t *nd_array_c64_7d, std::complex<double> *f_sum ) {
+  flcl::flcl_ndarray_c64_c_t c_test_ndarray_c64_7d( flcl_ndarray_t *nd_array_c64_7d, flcl::flcl_ndarray_c64_c_t *f_sum ) {
     using flcl::view_from_ndarray;
 
-    Kokkos::complex<double> c_sum(0.0,0.0);
+    Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t> c_sum(0.0,0.0);
 
-    auto array_c64_7d = view_from_ndarray<Kokkos::complex<double>*******>(*nd_array_c64_7d);
+    auto array_c64_7d = view_from_ndarray<Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>*******>(*nd_array_c64_7d);
     for (size_t ii = 0; ii < array_c64_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_7d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_7d.extent(2); kk++) {
@@ -2007,7 +2007,7 @@ extern "C" {
       exit(EXIT_FAILURE);    
     }
     
-    c_sum = Kokkos::complex<double>(0.0,0.0);
+    c_sum = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(0.0,0.0);
     for (size_t ii = 0; ii < array_c64_7d.extent(0); ii++) {
       for (size_t jj = 0; jj < array_c64_7d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_c64_7d.extent(2); kk++) {
@@ -2015,7 +2015,7 @@ extern "C" {
             for (size_t mm = 0; mm < array_c64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_c64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_c64_7d.extent(6); oo++) {
-                  array_c64_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<double>(1.0*(ii+jj+kk+ll+mm+nn+oo),-1.0*(ii+jj+kk+ll+mm+nn+oo));
+                  array_c64_7d(ii,jj,kk,ll,mm,nn,oo) = Kokkos::complex<flcl::flcl_ndarray_c64_scalar_c_t>(1.0*(ii+jj+kk+ll+mm+nn+oo),-1.0*(ii+jj+kk+ll+mm+nn+oo));
                   c_sum = c_sum + array_c64_7d(ii,jj,kk,ll,mm,nn,oo);
                 }
               }
