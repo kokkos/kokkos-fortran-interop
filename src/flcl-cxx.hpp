@@ -45,14 +45,14 @@
 #include <Kokkos_Core.hpp>
 #include <Kokkos_View.hpp>
 #include <Kokkos_DualView.hpp>
-
+#include "flcl-types-cxx.hpp"
 
 #define FLCL_NDARRAY_MAX_RANK 8
 
 typedef struct _flcl_nd_array_t {
-    size_t rank;
-    size_t dims[FLCL_NDARRAY_MAX_RANK];
-    size_t strides[FLCL_NDARRAY_MAX_RANK];
+    flcl::flcl_ndarray_index_c_t rank;
+    flcl::flcl_ndarray_index_c_t dims[FLCL_NDARRAY_MAX_RANK];
+    flcl::flcl_ndarray_index_c_t strides[FLCL_NDARRAY_MAX_RANK];
     void *data;
 } flcl_ndarray_t;
 
@@ -81,102 +81,102 @@ namespace flcl {
   #endif
 
   // 1D fortran-compatible view types
-  typedef Kokkos::View<bool*,Kokkos::LayoutLeft,flcl::HostMemorySpace>              view_l_1d_t;
-  typedef Kokkos::View<int32_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_i32_1d_t;
-  typedef Kokkos::View<int64_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_i64_1d_t;
-  typedef Kokkos::View<float*,Kokkos::LayoutLeft,flcl::HostMemorySpace>             view_r32_1d_t;
-  typedef Kokkos::View<double*,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_r64_1d_t;
+  typedef Kokkos::View<flcl_view_l_c_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>                 view_l_1d_t;
+  typedef Kokkos::View<flcl_view_i32_c_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>               view_i32_1d_t;
+  typedef Kokkos::View<flcl_view_i64_c_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>               view_i64_1d_t;
+  typedef Kokkos::View<flcl_view_r32_c_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>               view_r32_1d_t;
+  typedef Kokkos::View<flcl_view_r64_c_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>               view_r64_1d_t;
 
   // 2D fortran-compatible view types
-  typedef Kokkos::View<bool**,Kokkos::LayoutLeft,flcl::HostMemorySpace>             view_l_2d_t;
-  typedef Kokkos::View<int32_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_i32_2d_t;
-  typedef Kokkos::View<int64_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_i64_2d_t;
-  typedef Kokkos::View<float**,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_r32_2d_t;
-  typedef Kokkos::View<double**,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_r64_2d_t;
+  typedef Kokkos::View<flcl_view_l_c_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>                view_l_2d_t;
+  typedef Kokkos::View<flcl_view_i32_c_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>              view_i32_2d_t;
+  typedef Kokkos::View<flcl_view_i64_c_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>              view_i64_2d_t;
+  typedef Kokkos::View<flcl_view_r32_c_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>              view_r32_2d_t;
+  typedef Kokkos::View<flcl_view_r64_c_t**,Kokkos::LayoutLeft,flcl::HostMemorySpace>              view_r64_2d_t;
 
   // 3D fortran-compatible view types
-  typedef Kokkos::View<bool***,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_l_3d_t;
-  typedef Kokkos::View<int32_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_i32_3d_t;
-  typedef Kokkos::View<int64_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_i64_3d_t;
-  typedef Kokkos::View<float***,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_r32_3d_t;
-  typedef Kokkos::View<double***,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_r64_3d_t;
+  typedef Kokkos::View<flcl_view_l_c_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>               view_l_3d_t;
+  typedef Kokkos::View<flcl_view_i32_c_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>             view_i32_3d_t;
+  typedef Kokkos::View<flcl_view_i64_c_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>             view_i64_3d_t;
+  typedef Kokkos::View<flcl_view_r32_c_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>             view_r32_3d_t;
+  typedef Kokkos::View<flcl_view_r64_c_t***,Kokkos::LayoutLeft,flcl::HostMemorySpace>             view_r64_3d_t;
 
   // 4D fortran-compatible view types
-  typedef Kokkos::View<bool****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_l_4d_t;
-  typedef Kokkos::View<int32_t****,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_i32_4d_t;
-  typedef Kokkos::View<int64_t****,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_i64_4d_t;
-  typedef Kokkos::View<float****,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_r32_4d_t;
-  typedef Kokkos::View<double****,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_r64_4d_t;
+  typedef Kokkos::View<flcl_view_l_c_t****,Kokkos::LayoutLeft,flcl::HostMemorySpace>              view_l_4d_t;
+  typedef Kokkos::View<flcl_view_i32_c_t****,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_i32_4d_t;
+  typedef Kokkos::View<flcl_view_i64_c_t****,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_i64_4d_t;
+  typedef Kokkos::View<flcl_view_r32_c_t****,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_r32_4d_t;
+  typedef Kokkos::View<flcl_view_r64_c_t****,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_r64_4d_t;
 
   // 5D fortran-compatible view types
-  typedef Kokkos::View<bool*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_l_5d_t;
-  typedef Kokkos::View<int32_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_i32_5d_t;
-  typedef Kokkos::View<int64_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_i64_5d_t;
-  typedef Kokkos::View<float*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_r32_5d_t;
-  typedef Kokkos::View<double*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_r64_5d_t;
+  typedef Kokkos::View<flcl_view_l_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>             view_l_5d_t;
+  typedef Kokkos::View<flcl_view_i32_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_i32_5d_t;
+  typedef Kokkos::View<flcl_view_i64_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_i64_5d_t;
+  typedef Kokkos::View<flcl_view_r32_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_r32_5d_t;
+  typedef Kokkos::View<flcl_view_r64_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_r64_5d_t;
   
   // 6D fortran-compatible view types
-  typedef Kokkos::View<bool******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_l_6d_t;
-  typedef Kokkos::View<int32_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>      view_i32_6d_t;
-  typedef Kokkos::View<int64_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>      view_i64_6d_t;
-  typedef Kokkos::View<float******,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_r32_6d_t;
-  typedef Kokkos::View<double******,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_r64_6d_t;
+  typedef Kokkos::View<flcl_view_l_c_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_l_6d_t;
+  typedef Kokkos::View<flcl_view_i32_c_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_i32_6d_t;
+  typedef Kokkos::View<flcl_view_i64_c_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_i64_6d_t;
+  typedef Kokkos::View<flcl_view_r32_c_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_r32_6d_t;
+  typedef Kokkos::View<flcl_view_r64_c_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_r64_6d_t;
 
   // 7D fortran-compatible view types
-  typedef Kokkos::View<bool*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>        view_l_7d_t;
-  typedef Kokkos::View<int32_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>     view_i32_7d_t;
-  typedef Kokkos::View<int64_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>     view_i64_7d_t;
-  typedef Kokkos::View<float*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>       view_r32_7d_t;
-  typedef Kokkos::View<double*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>      view_r64_7d_t;
+  typedef Kokkos::View<flcl_view_l_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_l_7d_t;
+  typedef Kokkos::View<flcl_view_i32_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_i32_7d_t;
+  typedef Kokkos::View<flcl_view_i64_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_i64_7d_t;
+  typedef Kokkos::View<flcl_view_r32_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_r32_7d_t;
+  typedef Kokkos::View<flcl_view_r64_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_r64_7d_t;
   
   // 1D fortran-compatible dualview types
-  typedef Kokkos::DualView<bool*,Kokkos::LayoutLeft>                                dualview_l_1d_t;
-  typedef Kokkos::DualView<int32_t*,Kokkos::LayoutLeft>                             dualview_i32_1d_t;
-  typedef Kokkos::DualView<int64_t*,Kokkos::LayoutLeft>                             dualview_i64_1d_t;
-  typedef Kokkos::DualView<float*,Kokkos::LayoutLeft>                               dualview_r32_1d_t;
-  typedef Kokkos::DualView<double*,Kokkos::LayoutLeft>                              dualview_r64_1d_t;
+  typedef Kokkos::DualView<flcl_dualview_l_c_t*,Kokkos::LayoutLeft>                               dualview_l_1d_t;
+  typedef Kokkos::DualView<flcl_dualview_i32_c_t*,Kokkos::LayoutLeft>                             dualview_i32_1d_t;
+  typedef Kokkos::DualView<flcl_dualview_i64_c_t*,Kokkos::LayoutLeft>                             dualview_i64_1d_t;
+  typedef Kokkos::DualView<flcl_dualview_r32_c_t*,Kokkos::LayoutLeft>                             dualview_r32_1d_t;
+  typedef Kokkos::DualView<flcl_dualview_r64_c_t*,Kokkos::LayoutLeft>                             dualview_r64_1d_t;
 
   // 2D fortran-compatible dualview types
-  typedef Kokkos::DualView<bool**,Kokkos::LayoutLeft>                               dualview_l_2d_t;
-  typedef Kokkos::DualView<int32_t**,Kokkos::LayoutLeft>                            dualview_i32_2d_t;
-  typedef Kokkos::DualView<int64_t**,Kokkos::LayoutLeft>                            dualview_i64_2d_t;
-  typedef Kokkos::DualView<float**,Kokkos::LayoutLeft>                              dualview_r32_2d_t;
-  typedef Kokkos::DualView<double**,Kokkos::LayoutLeft>                             dualview_r64_2d_t;
+  typedef Kokkos::DualView<flcl_dualview_l_c_t**,Kokkos::LayoutLeft>                              dualview_l_2d_t;
+  typedef Kokkos::DualView<flcl_dualview_i32_c_t**,Kokkos::LayoutLeft>                            dualview_i32_2d_t;
+  typedef Kokkos::DualView<flcl_dualview_i64_c_t**,Kokkos::LayoutLeft>                            dualview_i64_2d_t;
+  typedef Kokkos::DualView<flcl_dualview_r32_c_t**,Kokkos::LayoutLeft>                            dualview_r32_2d_t;
+  typedef Kokkos::DualView<flcl_dualview_r64_c_t**,Kokkos::LayoutLeft>                            dualview_r64_2d_t;
 
   // 3D fortran-compatible dualview types
-  typedef Kokkos::DualView<bool***,Kokkos::LayoutLeft>                              dualview_l_3d_t;
-  typedef Kokkos::DualView<int32_t***,Kokkos::LayoutLeft>                           dualview_i32_3d_t;
-  typedef Kokkos::DualView<int64_t***,Kokkos::LayoutLeft>                           dualview_i64_3d_t;
-  typedef Kokkos::DualView<float***,Kokkos::LayoutLeft>                             dualview_r32_3d_t;
-  typedef Kokkos::DualView<double***,Kokkos::LayoutLeft>                            dualview_r64_3d_t;
+  typedef Kokkos::DualView<flcl_dualview_l_c_t***,Kokkos::LayoutLeft>                             dualview_l_3d_t;
+  typedef Kokkos::DualView<flcl_dualview_i32_c_t***,Kokkos::LayoutLeft>                           dualview_i32_3d_t;
+  typedef Kokkos::DualView<flcl_dualview_i64_c_t***,Kokkos::LayoutLeft>                           dualview_i64_3d_t;
+  typedef Kokkos::DualView<flcl_dualview_r32_c_t***,Kokkos::LayoutLeft>                           dualview_r32_3d_t;
+  typedef Kokkos::DualView<flcl_dualview_r64_c_t***,Kokkos::LayoutLeft>                           dualview_r64_3d_t;
 
   // 4D fortran-compatible dualview types
-  typedef Kokkos::DualView<bool****,Kokkos::LayoutLeft>                             dualview_l_4d_t;
-  typedef Kokkos::DualView<int32_t****,Kokkos::LayoutLeft>                          dualview_i32_4d_t;
-  typedef Kokkos::DualView<int64_t****,Kokkos::LayoutLeft>                          dualview_i64_4d_t;
-  typedef Kokkos::DualView<float****,Kokkos::LayoutLeft>                            dualview_r32_4d_t;
-  typedef Kokkos::DualView<double****,Kokkos::LayoutLeft>                           dualview_r64_4d_t;
+  typedef Kokkos::DualView<flcl_dualview_l_c_t****,Kokkos::LayoutLeft>                            dualview_l_4d_t;
+  typedef Kokkos::DualView<flcl_dualview_i32_c_t****,Kokkos::LayoutLeft>                          dualview_i32_4d_t;
+  typedef Kokkos::DualView<flcl_dualview_i64_c_t****,Kokkos::LayoutLeft>                          dualview_i64_4d_t;
+  typedef Kokkos::DualView<flcl_dualview_r32_c_t****,Kokkos::LayoutLeft>                          dualview_r32_4d_t;
+  typedef Kokkos::DualView<flcl_dualview_r64_c_t****,Kokkos::LayoutLeft>                          dualview_r64_4d_t;
 
   // 5D fortran-compatible dualview types
-  typedef Kokkos::DualView<bool*****,Kokkos::LayoutLeft>                            dualview_l_5d_t;
-  typedef Kokkos::DualView<int32_t*****,Kokkos::LayoutLeft>                         dualview_i32_5d_t;
-  typedef Kokkos::DualView<int64_t*****,Kokkos::LayoutLeft>                         dualview_i64_5d_t;
-  typedef Kokkos::DualView<float*****,Kokkos::LayoutLeft>                           dualview_r32_5d_t;
-  typedef Kokkos::DualView<double*****,Kokkos::LayoutLeft>                          dualview_r64_5d_t;
+  typedef Kokkos::DualView<flcl_dualview_l_c_t*****,Kokkos::LayoutLeft>                           dualview_l_5d_t;
+  typedef Kokkos::DualView<flcl_dualview_i32_c_t*****,Kokkos::LayoutLeft>                         dualview_i32_5d_t;
+  typedef Kokkos::DualView<flcl_dualview_i64_c_t*****,Kokkos::LayoutLeft>                         dualview_i64_5d_t;
+  typedef Kokkos::DualView<flcl_dualview_r32_c_t*****,Kokkos::LayoutLeft>                         dualview_r32_5d_t;
+  typedef Kokkos::DualView<flcl_dualview_r64_c_t*****,Kokkos::LayoutLeft>                         dualview_r64_5d_t;
 
   // 6D fortran-compatible dualview types
-  typedef Kokkos::DualView<bool******,Kokkos::LayoutLeft>                           dualview_l_6d_t;
-  typedef Kokkos::DualView<int32_t******,Kokkos::LayoutLeft>                        dualview_i32_6d_t;
-  typedef Kokkos::DualView<int64_t******,Kokkos::LayoutLeft>                        dualview_i64_6d_t;
-  typedef Kokkos::DualView<float******,Kokkos::LayoutLeft>                          dualview_r32_6d_t;
-  typedef Kokkos::DualView<double******,Kokkos::LayoutLeft>                         dualview_r64_6d_t;
+  typedef Kokkos::DualView<flcl_dualview_l_c_t******,Kokkos::LayoutLeft>                          dualview_l_6d_t;
+  typedef Kokkos::DualView<flcl_dualview_i32_c_t******,Kokkos::LayoutLeft>                        dualview_i32_6d_t;
+  typedef Kokkos::DualView<flcl_dualview_i64_c_t******,Kokkos::LayoutLeft>                        dualview_i64_6d_t;
+  typedef Kokkos::DualView<flcl_dualview_r32_c_t******,Kokkos::LayoutLeft>                        dualview_r32_6d_t;
+  typedef Kokkos::DualView<flcl_dualview_r64_c_t******,Kokkos::LayoutLeft>                        dualview_r64_6d_t;
 
   // 7D fortran-compatible dualview types
-  typedef Kokkos::DualView<bool*******,Kokkos::LayoutLeft>                          dualview_l_7d_t;
-  typedef Kokkos::DualView<int32_t*******,Kokkos::LayoutLeft>                       dualview_i32_7d_t;
-  typedef Kokkos::DualView<int64_t*******,Kokkos::LayoutLeft>                       dualview_i64_7d_t;
-  typedef Kokkos::DualView<float*******,Kokkos::LayoutLeft>                         dualview_r32_7d_t;
-  typedef Kokkos::DualView<double*******,Kokkos::LayoutLeft>                        dualview_r64_7d_t;
+  typedef Kokkos::DualView<flcl_dualview_l_c_t*******,Kokkos::LayoutLeft>                         dualview_l_7d_t;
+  typedef Kokkos::DualView<flcl_dualview_i32_c_t*******,Kokkos::LayoutLeft>                       dualview_i32_7d_t;
+  typedef Kokkos::DualView<flcl_dualview_i64_c_t*******,Kokkos::LayoutLeft>                       dualview_i64_7d_t;
+  typedef Kokkos::DualView<flcl_dualview_r32_c_t*******,Kokkos::LayoutLeft>                       dualview_r32_7d_t;
+  typedef Kokkos::DualView<flcl_dualview_r64_c_t*******,Kokkos::LayoutLeft>                       dualview_r64_7d_t;
 
   template <typename DataType>
   Kokkos::View<DataType, Kokkos::LayoutStride, flcl::HostMemorySpace>

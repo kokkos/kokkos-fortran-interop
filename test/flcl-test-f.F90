@@ -56,562 +56,566 @@ module flcl_test_f_mod
 
   implicit none
   
-  integer(c_size_t), parameter :: e0_length = 8
-  integer(c_size_t), parameter :: e1_length = 7
-  integer(c_size_t), parameter :: e2_length = 6
-  integer(c_size_t), parameter :: e3_length = 5
-  integer(c_size_t), parameter :: e4_length = 4
-  integer(c_size_t), parameter :: e5_length = 3
-  integer(c_size_t), parameter :: e6_length = 2
-  logical(c_bool), parameter :: logical_pre = .true.
-  logical(c_bool), parameter :: logical_post = .false.
+  integer(flcl_ndarray_index_f_t), parameter :: e0_length = 8
+  integer(flcl_ndarray_index_f_t), parameter :: e1_length = 7
+  integer(flcl_ndarray_index_f_t), parameter :: e2_length = 6
+  integer(flcl_ndarray_index_f_t), parameter :: e3_length = 5
+  integer(flcl_ndarray_index_f_t), parameter :: e4_length = 4
+  integer(flcl_ndarray_index_f_t), parameter :: e5_length = 3
+  integer(flcl_ndarray_index_f_t), parameter :: e6_length = 2
+  logical(flcl_ndarray_l_f_t), parameter :: logical_pre = .true.
+  logical(flcl_ndarray_l_f_t), parameter :: logical_post = .false.
 
   enum, bind(c)
     enumerator :: flcl_test_pass = 0
     enumerator :: flcl_test_fail = 1
   end enum
 
-  real(c_float) :: precision_single = 1.0e-7
-  real(c_double) :: precision_double = 1.0e-14
+  real(flcl_ndarray_r32_f_t)  :: ndarray_precision_single = 1.0e-7
+  real(flcl_ndarray_r64_f_t)  :: ndarray_precision_double = 1.0e-14
+  real(flcl_view_r32_f_t)     :: view_precision_single = 1.0e-7
+  real(flcl_view_r64_f_t)     :: view_precision_double = 1.0e-14
+  real(flcl_dualview_r32_f_t) :: dualview_precision_single = 1.0e-7
+  real(flcl_dualview_r64_f_t) :: dualview_precision_double = 1.0e-14
 
   public
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_index_f_t) &
         & function f_test_ndarray_l_1d( nd_array_l_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_1d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_l_1d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i32_f_t) &
         & function f_test_ndarray_i32_1d( nd_array_i32_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_i32_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_1d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i32_1d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i64_f_t) &
         & function f_test_ndarray_i64_1d( nd_array_i64_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_i64_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_1d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i64_1d
     end interface
 
     interface
-      real(c_float) &
+      real(flcl_ndarray_r32_f_t) &
         & function f_test_ndarray_r32_1d( nd_array_r32_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_r32_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_1d
-        real(c_float), intent(inout) :: f_sum
+        real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r32_1d
     end interface
 
     interface
-      real(c_double) &
+      real(flcl_ndarray_r64_f_t) &
         & function f_test_ndarray_r64_1d( nd_array_r64_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_r64_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_1d
-        real(c_double), intent(inout) :: f_sum
+        real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r64_1d
     end interface
 
     interface
-      complex(c_float_complex) &
+      complex(flcl_ndarray_c32_f_t) &
         & function f_test_ndarray_c32_1d( nd_array_c32_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_c32_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_1d
-        complex(c_float_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c32_1d
     end interface
 
     interface
-      complex(c_double_complex) &
+      complex(flcl_ndarray_c64_f_t) &
         & function f_test_ndarray_c64_1d( nd_array_c64_1d, f_sum ) &
         & bind(c, name='c_test_ndarray_c64_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_1d
-        complex(c_double_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c64_1d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_index_f_t) &
         & function f_test_ndarray_l_2d( nd_array_l_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_2d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_l_2d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i32_f_t) &
         & function f_test_ndarray_i32_2d( nd_array_i32_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_i32_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_2d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i32_2d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i64_f_t) &
         & function f_test_ndarray_i64_2d( nd_array_i64_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_i64_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_2d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i64_2d
     end interface
 
     interface
-      real(c_float) &
+      real(flcl_ndarray_r32_f_t) &
         & function f_test_ndarray_r32_2d( nd_array_r32_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_r32_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_2d
-        real(c_float), intent(inout) :: f_sum
+        real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r32_2d
     end interface
 
     interface
-      real(c_double) &
+      real(flcl_ndarray_r64_f_t) &
         & function f_test_ndarray_r64_2d( nd_array_r64_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_r64_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_2d
-        real(c_double), intent(inout) :: f_sum
+        real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r64_2d
     end interface
 
     interface
-      complex(c_float_complex) &
+      complex(flcl_ndarray_c32_f_t) &
         & function f_test_ndarray_c32_2d( nd_array_c32_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_c32_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_2d
-        complex(c_float_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c32_2d
     end interface
 
     interface
-      complex(c_double_complex) &
+      complex(flcl_ndarray_c64_f_t) &
         & function f_test_ndarray_c64_2d( nd_array_c64_2d, f_sum ) &
         & bind(c, name='c_test_ndarray_c64_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_2d
-        complex(c_double_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c64_2d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_index_f_t) &
         & function f_test_ndarray_l_3d( nd_array_l_3d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_3d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_l_3d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i32_f_t) &
         & function f_test_ndarray_i32_3d( nd_array_i32_3d, f_sum ) &
         & bind(c, name='c_test_ndarray_i32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_3d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i32_3d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i64_f_t) &
         & function f_test_ndarray_i64_3d( nd_array_i64_3d, f_sum ) &
         & bind(c, name='c_test_ndarray_i64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_3d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i64_3d
     end interface
 
     interface
-      real(c_float) &
+      real(flcl_ndarray_r32_f_t) &
         & function f_test_ndarray_r32_3d( nd_array_r32_3d, f_sum ) &
         & bind(c, name='c_test_ndarray_r32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_3d
-        real(c_float), intent(inout) :: f_sum
+        real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r32_3d
     end interface
 
     interface
-      real(c_double) &
+      real(flcl_ndarray_r64_f_t) &
         & function f_test_ndarray_r64_3d( nd_array_r64_3d, f_sum ) &
         & bind(c, name='c_test_ndarray_r64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_3d
-        real(c_double), intent(inout) :: f_sum
+        real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r64_3d
     end interface
 
     interface
-      complex(c_float_complex) &
+      complex(flcl_ndarray_c32_f_t) &
         & function f_test_ndarray_c32_3d( nd_array_c32_3d, f_sum ) &
         & bind(c, name='c_test_ndarray_c32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_3d
-        complex(c_float_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c32_3d
     end interface
 
     interface
-      complex(c_double_complex) &
+      complex(flcl_ndarray_c64_f_t) &
         & function f_test_ndarray_c64_3d( nd_array_c64_3d, f_sum ) &
         & bind(c, name='c_test_ndarray_c64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_3d
-        complex(c_double_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c64_3d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_index_f_t) &
         & function f_test_ndarray_l_4d( nd_array_l_4d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_4d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_l_4d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i32_f_t) &
         & function f_test_ndarray_i32_4d( nd_array_i32_4d, f_sum ) &
         & bind(c, name='c_test_ndarray_i32_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_4d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i32_4d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i64_f_t) &
         & function f_test_ndarray_i64_4d( nd_array_i64_4d, f_sum ) &
         & bind(c, name='c_test_ndarray_i64_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_4d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i64_4d
     end interface
 
     interface
-      real(c_float) &
+      real(flcl_ndarray_r32_f_t) &
         & function f_test_ndarray_r32_4d( nd_array_r32_4d, f_sum ) &
         & bind(c, name='c_test_ndarray_r32_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_4d
-        real(c_float), intent(inout) :: f_sum
+        real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r32_4d
     end interface
 
     interface
-      real(c_double) &
+      real(flcl_ndarray_r64_f_t) &
         & function f_test_ndarray_r64_4d( nd_array_r64_4d, f_sum ) &
         & bind(c, name='c_test_ndarray_r64_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_4d
-        real(c_double), intent(inout) :: f_sum
+        real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r64_4d
     end interface
 
     interface
-      complex(c_float_complex) &
+      complex(flcl_ndarray_c32_f_t) &
         & function f_test_ndarray_c32_4d( nd_array_c32_4d, f_sum ) &
         & bind(c, name='c_test_ndarray_c32_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_4d
-        complex(c_float_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c32_4d
     end interface
 
     interface
-      complex(c_double_complex) &
+      complex(flcl_ndarray_c64_f_t) &
         & function f_test_ndarray_c64_4d( nd_array_c64_4d, f_sum ) &
         & bind(c, name='c_test_ndarray_c64_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_4d
-        complex(c_double_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c64_4d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_index_f_t) &
         & function f_test_ndarray_l_5d( nd_array_l_5d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_5d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_l_5d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i32_f_t) &
         & function f_test_ndarray_i32_5d( nd_array_i32_5d, f_sum ) &
         & bind(c, name='c_test_ndarray_i32_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_5d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i32_5d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i64_f_t) &
         & function f_test_ndarray_i64_5d( nd_array_i64_5d, f_sum ) &
         & bind(c, name='c_test_ndarray_i64_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_5d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i64_5d
     end interface
 
     interface
-      real(c_float) &
+      real(flcl_ndarray_r32_f_t) &
         & function f_test_ndarray_r32_5d( nd_array_r32_5d, f_sum ) &
         & bind(c, name='c_test_ndarray_r32_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_5d
-        real(c_float), intent(inout) :: f_sum
+        real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r32_5d
     end interface
 
     interface
-      real(c_double) &
+      real(flcl_ndarray_r64_f_t) &
         & function f_test_ndarray_r64_5d( nd_array_r64_5d, f_sum ) &
         & bind(c, name='c_test_ndarray_r64_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_5d
-        real(c_double), intent(inout) :: f_sum
+        real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r64_5d
     end interface
 
     interface
-      complex(c_float_complex) &
+      complex(flcl_ndarray_c32_f_t) &
         & function f_test_ndarray_c32_5d( nd_array_c32_5d, f_sum ) &
         & bind(c, name='c_test_ndarray_c32_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_5d
-        complex(c_float_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c32_5d
     end interface
 
     interface
-      complex(c_double_complex) &
+      complex(flcl_ndarray_c64_f_t) &
         & function f_test_ndarray_c64_5d( nd_array_c64_5d, f_sum ) &
         & bind(c, name='c_test_ndarray_c64_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_5d
-        complex(c_double_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c64_5d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_index_f_t) &
         & function f_test_ndarray_l_6d( nd_array_l_6d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_6d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_l_6d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i32_f_t) &
         & function f_test_ndarray_i32_6d( nd_array_i32_6d, f_sum ) &
         & bind(c, name='c_test_ndarray_i32_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_6d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i32_6d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i64_f_t) &
         & function f_test_ndarray_i64_6d( nd_array_i64_6d, f_sum ) &
         & bind(c, name='c_test_ndarray_i64_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_6d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i64_6d
     end interface
 
     interface
-      real(c_float) &
+      real(flcl_ndarray_r32_f_t) &
         & function f_test_ndarray_r32_6d( nd_array_r32_6d, f_sum ) &
         & bind(c, name='c_test_ndarray_r32_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_6d
-        real(c_float), intent(inout) :: f_sum
+        real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r32_6d
     end interface
 
     interface
-      real(c_double) &
+      real(flcl_ndarray_r64_f_t) &
         & function f_test_ndarray_r64_6d( nd_array_r64_6d, f_sum ) &
         & bind(c, name='c_test_ndarray_r64_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_6d
-        real(c_double), intent(inout) :: f_sum
+        real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r64_6d
     end interface
 
     interface
-      complex(c_float_complex) &
+      complex(flcl_ndarray_c32_f_t) &
         & function f_test_ndarray_c32_6d( nd_array_c32_6d, f_sum ) &
         & bind(c, name='c_test_ndarray_c32_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_6d
-        complex(c_float_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c32_6d
     end interface
 
     interface
-      complex(c_double_complex) &
+      complex(flcl_ndarray_c64_f_t) &
         & function f_test_ndarray_c64_6d( nd_array_c64_6d, f_sum ) &
         & bind(c, name='c_test_ndarray_c64_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_6d
-        complex(c_double_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c64_6d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_index_f_t) &
         & function f_test_ndarray_l_7d( nd_array_l_7d, f_sum ) &
         & bind(c, name='c_test_ndarray_l_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_7d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_l_7d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i32_f_t) &
         & function f_test_ndarray_i32_7d( nd_array_i32_7d, f_sum ) &
         & bind(c, name='c_test_ndarray_i32_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_7d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i32_7d
     end interface
 
     interface
-      integer(c_size_t) &
+      integer(flcl_ndarray_i64_f_t) &
         & function f_test_ndarray_i64_7d( nd_array_i64_7d, f_sum ) &
         & bind(c, name='c_test_ndarray_i64_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_7d
-        integer(c_size_t), intent(inout) :: f_sum
+        integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_i64_7d
     end interface
 
     interface
-      real(c_float) &
+      real(flcl_ndarray_r32_f_t) &
         & function f_test_ndarray_r32_7d( nd_array_r32_7d, f_sum ) &
         & bind(c, name='c_test_ndarray_r32_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_7d
-        real(c_float), intent(inout) :: f_sum
+        real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r32_7d
     end interface
 
     interface
-      real(c_double) &
+      real(flcl_ndarray_r64_f_t) &
         & function f_test_ndarray_r64_7d( nd_array_r64_7d, f_sum ) &
         & bind(c, name='c_test_ndarray_r64_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_7d
-        real(c_double), intent(inout) :: f_sum
+        real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_r64_7d
     end interface
 
     interface
-      complex(c_float_complex) &
+      complex(flcl_ndarray_c32_f_t) &
         & function f_test_ndarray_c32_7d( nd_array_c32_7d, f_sum ) &
         & bind(c, name='c_test_ndarray_c32_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_7d
-        complex(c_float_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c32_7d
     end interface
 
     interface
-      complex(c_double_complex) &
+      complex(flcl_ndarray_c64_f_t) &
         & function f_test_ndarray_c64_7d( nd_array_c64_7d, f_sum ) &
         & bind(c, name='c_test_ndarray_c64_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_7d
-        complex(c_double_complex), intent(inout) :: f_sum
+        complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
       end function f_test_ndarray_c64_7d
     end interface
 
@@ -622,8 +626,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_1d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_index_f_t), intent(inout) :: f_sum
+        integer(flcl_view_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_l_1d
     end interface
 
@@ -634,8 +638,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_1d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i32_1d
     end interface
 
@@ -646,8 +650,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_1d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i64_1d
     end interface
 
@@ -658,8 +662,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_1d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_view_r32_f_t), intent(inout) :: f_sum
+        real(flcl_view_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r32_1d
     end interface
 
@@ -670,8 +674,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_1d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_view_r64_f_t), intent(inout) :: f_sum
+        real(flcl_view_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r64_1d
     end interface
 
@@ -682,8 +686,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_2d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_index_f_t), intent(inout) :: f_sum
+        integer(flcl_view_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_l_2d
     end interface
 
@@ -694,8 +698,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_2d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i32_2d
     end interface
 
@@ -706,8 +710,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_2d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i64_2d
     end interface
 
@@ -718,8 +722,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_2d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_view_r32_f_t), intent(inout) :: f_sum
+        real(flcl_view_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r32_2d
     end interface
 
@@ -730,8 +734,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_2d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_view_r64_f_t), intent(inout) :: f_sum
+        real(flcl_view_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r64_2d
     end interface
 
@@ -742,8 +746,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_3d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_index_f_t), intent(inout) :: f_sum
+        integer(flcl_view_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_l_3d
     end interface
 
@@ -754,8 +758,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_3d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i32_3d
     end interface
 
@@ -766,8 +770,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_3d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i64_3d
     end interface
 
@@ -778,8 +782,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_3d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_view_r32_f_t), intent(inout) :: f_sum
+        real(flcl_view_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r32_3d
     end interface
 
@@ -790,8 +794,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_3d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_view_r64_f_t), intent(inout) :: f_sum
+        real(flcl_view_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r64_3d
     end interface
 
@@ -802,8 +806,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_4d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_index_f_t), intent(inout) :: f_sum
+        integer(flcl_view_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_l_4d
     end interface
 
@@ -814,8 +818,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_4d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i32_4d
     end interface
 
@@ -826,8 +830,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_4d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i64_4d
     end interface
 
@@ -838,8 +842,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_4d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_view_r32_f_t), intent(inout) :: f_sum
+        real(flcl_view_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r32_4d
     end interface
 
@@ -850,8 +854,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_4d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_view_r64_f_t), intent(inout) :: f_sum
+        real(flcl_view_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r64_4d
     end interface
 
@@ -862,8 +866,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_5d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_index_f_t), intent(inout) :: f_sum
+        integer(flcl_view_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_l_5d
     end interface
 
@@ -874,8 +878,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_5d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i32_5d
     end interface
 
@@ -886,8 +890,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_5d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i64_5d
     end interface
 
@@ -898,8 +902,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_5d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_view_r32_f_t), intent(inout) :: f_sum
+        real(flcl_view_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r32_5d
     end interface
 
@@ -910,8 +914,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_5d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_view_r64_f_t), intent(inout) :: f_sum
+        real(flcl_view_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r64_5d
     end interface
 
@@ -922,8 +926,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_6d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_index_f_t), intent(inout) :: f_sum
+        integer(flcl_view_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_l_6d
     end interface
 
@@ -934,8 +938,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_6d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i32_6d
     end interface
 
@@ -946,8 +950,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_6d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i64_6d
     end interface
 
@@ -958,8 +962,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_6d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_view_r32_f_t), intent(inout) :: f_sum
+        real(flcl_view_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r32_6d
     end interface
 
@@ -970,8 +974,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_6d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_view_r64_f_t), intent(inout) :: f_sum
+        real(flcl_view_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r64_6d
     end interface
 
@@ -982,8 +986,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_7d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_index_f_t), intent(inout) :: f_sum
+        integer(flcl_view_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_l_7d
     end interface
 
@@ -994,8 +998,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_7d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i32_7d
     end interface
 
@@ -1006,8 +1010,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_7d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_view_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_i64_7d
     end interface
 
@@ -1018,8 +1022,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_7d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_view_r32_f_t), intent(inout) :: f_sum
+        real(flcl_view_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r32_7d
     end interface
 
@@ -1030,8 +1034,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_7d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_view_r64_f_t), intent(inout) :: f_sum
+        real(flcl_view_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_view_r64_7d
     end interface
 
@@ -1042,8 +1046,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_1d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_l_1d
     end interface
 
@@ -1054,8 +1058,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_1d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i32_1d
     end interface
 
@@ -1066,8 +1070,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_1d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i64_1d
     end interface
 
@@ -1078,8 +1082,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_1d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r32_1d
     end interface
 
@@ -1090,8 +1094,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_1d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r64_1d
     end interface
 
@@ -1102,8 +1106,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_2d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_l_2d
     end interface
 
@@ -1114,8 +1118,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_2d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i32_2d
     end interface
 
@@ -1126,8 +1130,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_2d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i64_2d
     end interface
 
@@ -1138,8 +1142,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_2d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r32_2d
     end interface
 
@@ -1150,8 +1154,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_2d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r64_2d
     end interface
 
@@ -1162,8 +1166,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_3d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_l_3d
     end interface
 
@@ -1174,8 +1178,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_3d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i32_3d
     end interface
 
@@ -1186,8 +1190,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_3d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i64_3d
     end interface
 
@@ -1198,8 +1202,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_3d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r32_3d
     end interface
 
@@ -1210,8 +1214,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_3d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r64_3d
     end interface
 
@@ -1222,8 +1226,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_4d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_l_4d
     end interface
 
@@ -1234,8 +1238,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_4d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i32_4d
     end interface
 
@@ -1246,8 +1250,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_4d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i64_4d
     end interface
 
@@ -1258,8 +1262,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_4d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r32_4d
     end interface
 
@@ -1270,8 +1274,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_4d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r64_4d
     end interface
 
@@ -1282,8 +1286,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_5d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_l_5d
     end interface
 
@@ -1294,8 +1298,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_5d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i32_5d
     end interface
 
@@ -1306,8 +1310,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_5d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i64_5d
     end interface
 
@@ -1318,8 +1322,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_5d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r32_5d
     end interface
 
@@ -1330,8 +1334,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_5d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r64_5d
     end interface
 
@@ -1342,8 +1346,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_6d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_l_6d
     end interface
 
@@ -1354,8 +1358,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_6d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i32_6d
     end interface
 
@@ -1366,8 +1370,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_6d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i64_6d
     end interface
 
@@ -1378,8 +1382,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_6d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r32_6d
     end interface
 
@@ -1390,8 +1394,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_6d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r64_6d
     end interface
 
@@ -1402,8 +1406,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_l_7d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_index_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_l_7d
     end interface
 
@@ -1414,8 +1418,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i32_7d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i32_7d
     end interface
 
@@ -1426,8 +1430,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_i64_7d
-        integer(c_size_t), intent(inout) :: f_sum
-        integer(c_size_t), intent(inout) :: c_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: f_sum
+        integer(flcl_dualview_i64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_i64_7d
     end interface
 
@@ -1438,8 +1442,8 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r32_7d
-        real(c_float), intent(inout) :: f_sum
-        real(c_float), intent(inout) :: c_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r32_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r32_7d
     end interface
 
@@ -1450,24 +1454,24 @@ module flcl_test_f_mod
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(c_ptr), intent(in) :: v_array_r64_7d
-        real(c_double), intent(inout) :: f_sum
-        real(c_double), intent(inout) :: c_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: f_sum
+        real(flcl_dualview_r64_f_t), intent(inout) :: c_sum
       end function f_test_kokkos_allocate_dualview_r64_7d
     end interface
 
     contains
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_l_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_ndarray_mod
         implicit none
 
-        logical(c_bool), dimension(:), allocatable :: array_l_1d
+        logical(flcl_ndarray_l_f_t), dimension(:), allocatable :: array_l_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = e0_length
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        integer(flcl_ndarray_index_f_t) :: c_sum = e0_length
         integer(c_size_t) :: test_state_zero = flcl_test_fail
         integer(c_size_t) :: test_state_values = flcl_test_fail
         type(nd_array_t) :: zero_ndarray
@@ -1514,17 +1518,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_l_1d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_i32_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), dimension(:), allocatable :: array_i32_1d
+        integer(flcl_ndarray_i32_f_t), dimension(:), allocatable :: array_i32_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = e0_length
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: c_sum = e0_length
 
         allocate( array_i32_1d(e0_length) )
         do ii = 1, e0_length
@@ -1549,17 +1553,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i32_1d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_i64_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), dimension(:), allocatable :: array_i64_1d
+        integer(flcl_ndarray_i64_f_t), dimension(:), allocatable :: array_i64_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = e0_length
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: c_sum = e0_length
 
         allocate( array_i64_1d(e0_length) )
         do ii = 1, e0_length
@@ -1584,7 +1588,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i64_1d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_r32_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1606,7 +1610,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_r32_1d(ii)
         end do
-        if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+        if ( abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum) ) then
           write(*,*)'PASSED ndarray_r32_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1619,7 +1623,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r32_1d
   
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_r64_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1641,7 +1645,7 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_r64_1d(ii)
         end do
-        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
           write(*,*)'PASSED ndarray_r64_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1654,7 +1658,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r64_1d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c32_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1676,8 +1680,8 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_c32_1d(ii)
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_single * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_single * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c32_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1690,7 +1694,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c32_1d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c64_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1712,8 +1716,8 @@ module flcl_test_f_mod
         do ii = 1, e0_length
           f_sum = f_sum + array_c64_1d(ii)
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_double * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_double * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c64_1d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1726,17 +1730,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c64_1d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_l_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), dimension(:,:), allocatable :: array_l_2d
+        logical(flcl_ndarray_l_f_t), dimension(:,:), allocatable :: array_l_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
 
         allocate( array_l_2d(e0_length, e1_length) )
         do ii = 1, e0_length
@@ -1769,17 +1773,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_l_2d
   
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_i32_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), dimension(:,:), allocatable :: array_i32_2d
+        integer(flcl_ndarray_i32_f_t), dimension(:,:), allocatable :: array_i32_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
 
         allocate( array_i32_2d(e0_length, e1_length) )
         do ii = 1, e0_length
@@ -1808,17 +1812,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i32_2d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_i64_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), dimension(:,:), allocatable :: array_i64_2d
+        integer(flcl_ndarray_i64_f_t), dimension(:,:), allocatable :: array_i64_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
 
         allocate( array_i64_2d(e0_length, e1_length) )
         do ii = 1, e0_length
@@ -1847,7 +1851,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i64_2d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_r32_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1873,7 +1877,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r32_2d(ii,jj)
           end do
         end do
-        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
+        if ( abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1886,7 +1890,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r32_2d
   
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_r64_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1912,7 +1916,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r64_2d(ii,jj)
           end do
         end do
-        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
           write(*,*)'PASSED ndarray_r64_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1925,7 +1929,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r64_2d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c32_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1951,8 +1955,8 @@ module flcl_test_f_mod
             f_sum = f_sum + array_c32_2d(ii,jj)
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_single * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_single * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c32_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -1965,7 +1969,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c32_2d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c64_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -1991,8 +1995,8 @@ module flcl_test_f_mod
             f_sum = f_sum + array_c64_2d(ii,jj)
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_double * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_double * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c64_2d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2005,17 +2009,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c64_2d
 
-      integer(c_size_t) & 
+      integer & 
         & function test_ndarray_l_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), dimension(:,:,:), allocatable :: array_l_3d
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:), allocatable :: array_l_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
 
         allocate( array_l_3d(e0_length, e1_length, e2_length) )
         do ii = 1, e0_length
@@ -2052,17 +2056,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_l_3d
   
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_i32_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), dimension(:,:,:), allocatable :: array_i32_3d
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:), allocatable :: array_i32_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
 
         allocate( array_i32_3d(e0_length, e1_length, e2_length) )
         do ii = 1, e0_length
@@ -2095,17 +2099,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i32_3d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_i64_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), dimension(:,:,:), allocatable :: array_i64_3d
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:), allocatable :: array_i64_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
 
         allocate( array_i64_3d(e0_length, e1_length, e2_length) )
         do ii = 1, e0_length
@@ -2138,7 +2142,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i64_3d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_r32_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2168,7 +2172,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
+        if ( abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2181,7 +2185,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r32_3d
   
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_r64_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2211,7 +2215,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
           write(*,*)'PASSED ndarray_r64_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2224,7 +2228,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r64_3d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c32_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2254,8 +2258,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_single * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_single * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c32_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2268,7 +2272,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c32_3d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c64_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2298,8 +2302,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_double * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_double * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c64_3d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2312,17 +2316,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c64_3d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_l_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), dimension(:,:,:,:), allocatable :: array_l_4d
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:), allocatable :: array_l_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
 
         allocate( array_l_4d(e0_length, e1_length, e2_length, e3_length) )
         do ii = 1, e0_length
@@ -2363,17 +2367,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_l_4d
   
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i32_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), dimension(:,:,:,:), allocatable :: array_i32_4d
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:), allocatable :: array_i32_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
 
         allocate( array_i32_4d(e0_length, e1_length, e2_length, e3_length) )
         do ii = 1, e0_length
@@ -2410,17 +2414,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i32_4d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i64_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), dimension(:,:,:,:), allocatable :: array_i64_4d
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:), allocatable :: array_i64_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
 
         allocate( array_i64_4d(e0_length, e1_length, e2_length, e3_length) )
         do ii = 1, e0_length
@@ -2457,7 +2461,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i64_4d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r32_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2491,7 +2495,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
+        if ( abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2504,7 +2508,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r32_4d
   
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r64_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2538,7 +2542,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
           write(*,*)'PASSED ndarray_r64_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2551,7 +2555,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r64_4d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c32_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2585,8 +2589,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_single * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_single * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c32_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2599,7 +2603,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c32_4d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c64_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2633,8 +2637,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_double * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_double * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c64_4d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2647,17 +2651,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c64_4d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_l_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), dimension(:,:,:,:,:), allocatable :: array_l_5d
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:), allocatable :: array_l_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
 
         allocate( array_l_5d(e0_length, e1_length, e2_length, e3_length, e4_length) )
         do ii = 1, e0_length
@@ -2702,17 +2706,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_l_5d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i32_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), dimension(:,:,:,:,:), allocatable :: array_i32_5d
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:), allocatable :: array_i32_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
 
         allocate( array_i32_5d(e0_length, e1_length, e2_length, e3_length, e4_length) )
         do ii = 1, e0_length
@@ -2753,17 +2757,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i32_5d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i64_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), dimension(:,:,:,:,:), allocatable :: array_i64_5d
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:), allocatable :: array_i64_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
 
         allocate( array_i64_5d(e0_length, e1_length, e2_length, e3_length, e4_length) )
         do ii = 1, e0_length
@@ -2804,7 +2808,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i64_5d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r32_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2842,7 +2846,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
+        if ( abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2851,12 +2855,13 @@ module flcl_test_f_mod
           write(*,*)'FAILED F ndarray_r32_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
-          write(*,*)'abs(f_sum - c_sum ) < (precision_single * c_sum) = ',(abs(f_sum - c_sum ) < (precision_single * c_sum))
+          write(*,*)'abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum) = ', &
+            & (abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum))
           ierr = flcl_test_fail
         end if
       end function test_ndarray_r32_5d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r64_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2894,7 +2899,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
           write(*,*)'PASSED ndarray_r64_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2907,7 +2912,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r64_5d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c32_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2945,8 +2950,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_single * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_single * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c32_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -2959,7 +2964,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c32_5d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c64_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -2997,8 +3002,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_double * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_double * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c64_5d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3011,17 +3016,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c64_5d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_l_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), dimension(:,:,:,:,:,:), allocatable :: array_l_6d
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:,:), allocatable :: array_l_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
 
         allocate( array_l_6d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length) )
         do ii = 1, e0_length
@@ -3070,17 +3075,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_l_6d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i32_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), dimension(:,:,:,:,:,:), allocatable :: array_i32_6d
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:,:), allocatable :: array_i32_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
 
         allocate( array_i32_6d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length) )
         do ii = 1, e0_length
@@ -3125,17 +3130,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i32_6d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i64_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), dimension(:,:,:,:,:,:), allocatable :: array_i64_6d
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:,:), allocatable :: array_i64_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
 
         allocate( array_i64_6d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length) )
         do ii = 1, e0_length
@@ -3180,7 +3185,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i64_6d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r32_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3223,7 +3228,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
+        if ( abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3232,12 +3237,13 @@ module flcl_test_f_mod
           write(*,*)'FAILED F ndarray_r32_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
-          write(*,*)'abs(f_sum - c_sum ) < (precision_single * c_sum) = ',(abs(f_sum - c_sum ) < (precision_single * c_sum))
+          write(*,*)'abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum) = ', &
+            & (abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum))
           ierr = flcl_test_fail
         end if
       end function test_ndarray_r32_6d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r64_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3279,7 +3285,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
           write(*,*)'PASSED ndarray_r64_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3292,7 +3298,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r64_6d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c32_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3334,8 +3340,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_single * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_single * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c32_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3348,7 +3354,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c32_6d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c64_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3390,8 +3396,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_double * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_double * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c64_6d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3404,17 +3410,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c64_6d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_l_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), dimension(:,:,:,:,:,:,:), allocatable :: array_l_7d
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_l_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
 
         allocate( array_l_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
         do ii = 1, e0_length
@@ -3467,17 +3473,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_l_7d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i32_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i32_7d
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i32_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
 
         allocate( array_i32_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
         do ii = 1, e0_length
@@ -3526,17 +3532,17 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i32_7d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_i64_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i64_7d
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i64_7d
         integer :: ii, jj, kk, ll, mm, nn,oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
 
         allocate( array_i64_7d(e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length) )
         do ii = 1, e0_length
@@ -3585,7 +3591,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_i64_7d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r32_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3631,7 +3637,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < (precision_single * c_sum)) then
+        if ( abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum)) then
           write(*,*)'PASSED ndarray_r32_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3644,7 +3650,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r32_7d
 
-      integer(c_size_t) &
+      integer &
         & function  test_ndarray_r64_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3690,7 +3696,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if ( abs(f_sum - c_sum ) < precision_double * c_sum ) then
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
           write(*,*)'PASSED ndarray_r64_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3703,7 +3709,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_r64_7d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c32_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3749,8 +3755,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_single * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_single * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c32_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3763,7 +3769,7 @@ module flcl_test_f_mod
         end if
       end function test_ndarray_c32_7d
 
-      integer(c_size_t) &
+      integer &
         & function test_ndarray_c64_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
@@ -3809,8 +3815,8 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > precision_double * FLCL_REALPART(f_sum) .or. &
-          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > precision_double * FLCL_IMAGPART(f_sum) ) then
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
           write(*,*)'PASSED ndarray_c64_7d'
           write(*,*)'f_sum = ',f_sum
           write(*,*)'c_sum = ',c_sum
@@ -3830,11 +3836,11 @@ module flcl_test_f_mod
         use :: flcl_view_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:)  :: array_l_1d
+        logical(flcl_view_l_f_t), pointer, dimension(:)  :: array_l_1d
         type(view_l_1d_t) :: v_array_l_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_index_f_t) :: f_sum = 0
+        integer(flcl_view_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_l_1d, v_array_l_1d, 'array_l_1d', e0_length )
         do ii = 1, e0_length
@@ -3874,11 +3880,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:)  :: array_i32_1d
+        integer(flcl_view_i32_f_t), pointer, dimension(:)  :: array_i32_1d
         type(view_i32_1d_t) :: v_array_i32_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i32_f_t) :: f_sum = 0
+        integer(flcl_view_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i32_1d, v_array_i32_1d, 'array_i32_1d', e0_length )
         do ii = 1, e0_length
@@ -3913,11 +3919,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:)  :: array_i64_1d
+        integer(flcl_view_i64_f_t), pointer, dimension(:)  :: array_i64_1d
         type(view_i64_1d_t) :: v_array_i64_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i64_f_t) :: f_sum = 0
+        integer(flcl_view_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i64_1d, v_array_i64_1d, 'array_i64_1d', e0_length )
         do ii = 1, e0_length
@@ -3952,11 +3958,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:)  :: array_r32_1d
+        real(flcl_view_r32_f_t), pointer, dimension(:)  :: array_r32_1d
         type(view_r32_1d_t) :: v_array_r32_1d
         integer :: ii
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_view_r32_f_t) :: f_sum = 0
+        real(flcl_view_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r32_1d, v_array_r32_1d, 'array_r32_1d', e0_length )
         do ii = 1, e0_length
@@ -3969,7 +3975,7 @@ module flcl_test_f_mod
           do ii = 1, e0_length
             f_sum = f_sum + array_r32_1d(ii)
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -3991,11 +3997,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:)  :: array_r64_1d
+        real(flcl_view_r64_f_t), pointer, dimension(:)  :: array_r64_1d
         type(view_r64_1d_t) :: v_array_r64_1d
         integer :: ii
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_view_r64_f_t) :: f_sum = 0
+        real(flcl_view_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r64_1d, v_array_r64_1d, 'array_r64_1d', e0_length )
         do ii = 1, e0_length
@@ -4008,7 +4014,7 @@ module flcl_test_f_mod
           do ii = 1, e0_length
             f_sum = f_sum + array_r64_1d(ii)
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4030,11 +4036,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:)  :: array_l_2d
+        logical(flcl_view_l_f_t), pointer, dimension(:,:)  :: array_l_2d
         type(view_l_2d_t) :: v_array_l_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_index_f_t) :: f_sum = 0
+        integer(flcl_view_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_l_2d, v_array_l_2d, 'array_l_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -4077,11 +4083,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:)  :: array_i32_2d
+        integer(flcl_view_i32_f_t), pointer, dimension(:,:)  :: array_i32_2d
         type(view_i32_2d_t) :: v_array_i32_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i32_f_t) :: f_sum = 0
+        integer(flcl_view_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i32_2d, v_array_i32_2d, 'array_i32_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -4120,11 +4126,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:)  :: array_i64_2d
+        integer(flcl_view_i64_f_t), pointer, dimension(:,:)  :: array_i64_2d
         type(view_i64_2d_t) :: v_array_i64_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i64_f_t) :: f_sum = 0
+        integer(flcl_view_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i64_2d, v_array_i64_2d, 'array_i64_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -4163,11 +4169,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:)  :: array_r32_2d
+        real(flcl_view_r32_f_t), pointer, dimension(:,:)  :: array_r32_2d
         type(view_r32_2d_t) :: v_array_r32_2d
         integer :: ii, jj
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_view_r32_f_t) :: f_sum = 0
+        real(flcl_view_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r32_2d, v_array_r32_2d, 'array_r32_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -4184,7 +4190,7 @@ module flcl_test_f_mod
               f_sum = f_sum + array_r32_2d(ii,jj)
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4206,11 +4212,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:)  :: array_r64_2d
+        real(flcl_view_r64_f_t), pointer, dimension(:,:)  :: array_r64_2d
         type(view_r64_2d_t) :: v_array_r64_2d
         integer :: ii, jj
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_view_r64_f_t) :: f_sum = 0
+        real(flcl_view_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r64_2d, v_array_r64_2d, 'array_r64_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -4227,7 +4233,7 @@ module flcl_test_f_mod
               f_sum = f_sum + array_r64_2d(ii,jj)
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4249,11 +4255,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:)  :: array_l_3d
+        logical(flcl_view_l_f_t), pointer, dimension(:,:,:)  :: array_l_3d
         type(view_l_3d_t) :: v_array_l_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_index_f_t) :: f_sum = 0
+        integer(flcl_view_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_l_3d, v_array_l_3d, 'array_l_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -4300,11 +4306,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:)  :: array_i32_3d
+        integer(flcl_view_i32_f_t), pointer, dimension(:,:,:)  :: array_i32_3d
         type(view_i32_3d_t) :: v_array_i32_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i32_f_t) :: f_sum = 0
+        integer(flcl_view_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i32_3d, v_array_i32_3d, 'array_i32_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -4347,11 +4353,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:)  :: array_i64_3d
+        integer(flcl_view_i64_f_t), pointer, dimension(:,:,:)  :: array_i64_3d
         type(view_i64_3d_t) :: v_array_i64_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i64_f_t) :: f_sum = 0
+        integer(flcl_view_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i64_3d, v_array_i64_3d, 'array_i64_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -4394,11 +4400,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:)  :: array_r32_3d
+        real(flcl_view_r32_f_t), pointer, dimension(:,:,:)  :: array_r32_3d
         type(view_r32_3d_t) :: v_array_r32_3d
         integer :: ii, jj, kk
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_view_r32_f_t) :: f_sum = 0
+        real(flcl_view_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r32_3d, v_array_r32_3d, 'array_r32_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -4419,7 +4425,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4441,11 +4447,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:)  :: array_r64_3d
+        real(flcl_view_r64_f_t), pointer, dimension(:,:,:)  :: array_r64_3d
         type(view_r64_3d_t) :: v_array_r64_3d
         integer :: ii, jj, kk
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_view_r64_f_t) :: f_sum = 0
+        real(flcl_view_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r64_3d, v_array_r64_3d, 'array_r64_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -4466,7 +4472,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4488,11 +4494,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:)  :: array_l_4d
+        logical(flcl_view_l_f_t), pointer, dimension(:,:,:,:)  :: array_l_4d
         type(view_l_4d_t) :: v_array_l_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_index_f_t) :: f_sum = 0
+        integer(flcl_view_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_l_4d, v_array_l_4d, 'array_l_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -4543,11 +4549,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:)  :: array_i32_4d
+        integer(flcl_view_i32_f_t), pointer, dimension(:,:,:,:)  :: array_i32_4d
         type(view_i32_4d_t) :: v_array_i32_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i32_f_t) :: f_sum = 0
+        integer(flcl_view_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i32_4d, v_array_i32_4d, 'array_i32_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -4594,11 +4600,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:)  :: array_i64_4d
+        integer(flcl_view_i64_f_t), pointer, dimension(:,:,:,:)  :: array_i64_4d
         type(view_i64_4d_t) :: v_array_i64_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i64_f_t) :: f_sum = 0
+        integer(flcl_view_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i64_4d, v_array_i64_4d, 'array_i64_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -4645,11 +4651,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:)  :: array_r32_4d
+        real(flcl_view_r32_f_t), pointer, dimension(:,:,:,:)  :: array_r32_4d
         type(view_r32_4d_t) :: v_array_r32_4d
         integer :: ii, jj, kk, ll
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_view_r32_f_t) :: f_sum = 0
+        real(flcl_view_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r32_4d, v_array_r32_4d, 'array_r32_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -4674,7 +4680,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_4d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4696,11 +4702,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:)  :: array_r64_4d
+        real(flcl_view_r64_f_t), pointer, dimension(:,:,:,:)  :: array_r64_4d
         type(view_r64_4d_t) :: v_array_r64_4d
         integer :: ii, jj, kk, ll
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_view_r64_f_t) :: f_sum = 0
+        real(flcl_view_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r64_4d, v_array_r64_4d, 'array_r64_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -4725,7 +4731,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_4d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4747,11 +4753,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:,:)  :: array_l_5d
+        logical(flcl_view_l_f_t), pointer, dimension(:,:,:,:,:)  :: array_l_5d
         type(view_l_5d_t) :: v_array_l_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_index_f_t) :: f_sum = 0
+        integer(flcl_view_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_l_5d, v_array_l_5d, 'array_l_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -4807,11 +4813,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:,:)  :: array_i32_5d
+        integer(flcl_view_i32_f_t), pointer, dimension(:,:,:,:,:)  :: array_i32_5d
         type(view_i32_5d_t) :: v_array_i32_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i32_f_t) :: f_sum = 0
+        integer(flcl_view_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i32_5d, v_array_i32_5d, 'array_i32_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -4863,11 +4869,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:,:)  :: array_i64_5d
+        integer(flcl_view_i64_f_t), pointer, dimension(:,:,:,:,:)  :: array_i64_5d
         type(view_i64_5d_t) :: v_array_i64_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i64_f_t) :: f_sum = 0
+        integer(flcl_view_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i64_5d, v_array_i64_5d, 'array_i64_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -4919,11 +4925,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:,:)  :: array_r32_5d
+        real(flcl_view_r32_f_t), pointer, dimension(:,:,:,:,:)  :: array_r32_5d
         type(view_r32_5d_t) :: v_array_r32_5d
         integer :: ii, jj, kk, ll, mm
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_view_r32_f_t) :: f_sum = 0
+        real(flcl_view_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r32_5d, v_array_r32_5d, 'array_r32_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -4953,7 +4959,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_5d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -4975,11 +4981,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:,:)  :: array_r64_5d
+        real(flcl_view_r64_f_t), pointer, dimension(:,:,:,:,:)  :: array_r64_5d
         type(view_r64_5d_t) :: v_array_r64_5d
         integer :: ii, jj, kk, ll, mm
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_view_r64_f_t) :: f_sum = 0
+        real(flcl_view_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r64_5d, v_array_r64_5d, 'array_r64_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -5009,7 +5015,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_5d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -5031,11 +5037,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:,:,:)  :: array_l_6d
+        logical(flcl_view_l_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_l_6d
         type(view_l_6d_t) :: v_array_l_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_index_f_t) :: f_sum = 0
+        integer(flcl_view_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_l_6d, v_array_l_6d, 'array_l_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -5095,11 +5101,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:,:,:)  :: array_i32_6d
+        integer(flcl_view_i32_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_i32_6d
         type(view_i32_6d_t) :: v_array_i32_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i32_f_t) :: f_sum = 0
+        integer(flcl_view_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i32_6d, v_array_i32_6d, 'array_i32_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -5155,11 +5161,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:,:,:)  :: array_i64_6d
+        integer(flcl_view_i64_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_i64_6d
         type(view_i64_6d_t) :: v_array_i64_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i64_f_t) :: f_sum = 0
+        integer(flcl_view_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i64_6d, v_array_i64_6d, 'array_i64_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -5215,11 +5221,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:,:,:)  :: array_r32_6d
+        real(flcl_view_r32_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_r32_6d
         type(view_r32_6d_t) :: v_array_r32_6d
         integer :: ii, jj, kk, ll, mm, nn
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_view_r32_f_t) :: f_sum = 0
+        real(flcl_view_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r32_6d, v_array_r32_6d, 'array_r32_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -5253,7 +5259,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_6d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -5275,11 +5281,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:,:,:)  :: array_r64_6d
+        real(flcl_view_r64_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_r64_6d
         type(view_r64_6d_t) :: v_array_r64_6d
         integer :: ii, jj, kk, ll, mm, nn
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_view_r64_f_t) :: f_sum = 0
+        real(flcl_view_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r64_6d, v_array_r64_6d, 'array_r64_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -5313,7 +5319,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_6d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -5335,11 +5341,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:,:,:,:)  :: array_l_7d
+        logical(flcl_view_l_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_l_7d
         type(view_l_7d_t) :: v_array_l_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_index_f_t) :: f_sum = 0
+        integer(flcl_view_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_l_7d, v_array_l_7d, 'array_l_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -5403,11 +5409,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i32_7d
+        integer(flcl_view_i32_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i32_7d
         type(view_i32_7d_t) :: v_array_i32_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i32_f_t) :: f_sum = 0
+        integer(flcl_view_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i32_7d, v_array_i32_7d, 'array_i32_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -5467,11 +5473,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i64_7d
+        integer(flcl_view_i64_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i64_7d
         type(view_i64_7d_t) :: v_array_i64_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_view_i64_f_t) :: f_sum = 0
+        integer(flcl_view_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_i64_7d, v_array_i64_7d, 'array_i64_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -5531,11 +5537,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:,:,:,:)  :: array_r32_7d
+        real(flcl_view_r32_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_r32_7d
         type(view_r32_7d_t) :: v_array_r32_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_view_r32_f_t) :: f_sum = 0
+        real(flcl_view_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r32_7d, v_array_r32_7d, 'array_r32_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -5573,7 +5579,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r32_7d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -5595,11 +5601,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:,:,:,:)  :: array_r64_7d
+        real(flcl_view_r64_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_r64_7d
         type(view_r64_7d_t) :: v_array_r64_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_view_r64_f_t) :: f_sum = 0
+        real(flcl_view_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_view( array_r64_7d, v_array_r64_7d, 'array_r64_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -5637,7 +5643,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (view_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_view_r64_7d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -5659,11 +5665,11 @@ module flcl_test_f_mod
         use :: flcl_view_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:)  :: array_l_1d
+        logical(flcl_dualview_l_f_t), pointer, dimension(:)  :: array_l_1d
         type(dualview_l_1d_t) :: v_array_l_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_index_f_t) :: f_sum = 0
+        integer(flcl_dualview_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_l_1d, v_array_l_1d, 'array_l_1d', e0_length )
         do ii = 1, e0_length
@@ -5703,11 +5709,11 @@ module flcl_test_f_mod
         use :: flcl_view_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:)  :: array_i32_1d
+        integer(flcl_dualview_i32_f_t), pointer, dimension(:)  :: array_i32_1d
         type(dualview_i32_1d_t) :: v_array_i32_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i32_f_t) :: f_sum = 0
+        integer(flcl_dualview_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i32_1d, v_array_i32_1d, 'array_i32_1d', e0_length )
         do ii = 1, e0_length
@@ -5742,11 +5748,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:)  :: array_i64_1d
+        integer(flcl_dualview_i64_f_t), pointer, dimension(:)  :: array_i64_1d
         type(dualview_i64_1d_t) :: v_array_i64_1d
         integer :: ii
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i64_f_t) :: f_sum = 0
+        integer(flcl_dualview_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i64_1d, v_array_i64_1d, 'array_i64_1d', e0_length )
         do ii = 1, e0_length
@@ -5781,11 +5787,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:)  :: array_r32_1d
+        real(flcl_dualview_r32_f_t), pointer, dimension(:)  :: array_r32_1d
         type(dualview_r32_1d_t) :: v_array_r32_1d
         integer :: ii
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_dualview_r32_f_t) :: f_sum = 0
+        real(flcl_dualview_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r32_1d, v_array_r32_1d, 'array_r32_1d', e0_length )
         do ii = 1, e0_length
@@ -5798,7 +5804,7 @@ module flcl_test_f_mod
           do ii = 1, e0_length
             f_sum = f_sum + array_r32_1d(ii)
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r32_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -5820,11 +5826,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:)  :: array_r64_1d
+        real(flcl_dualview_r64_f_t), pointer, dimension(:)  :: array_r64_1d
         type(dualview_r64_1d_t) :: v_array_r64_1d
         integer :: ii
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_dualview_r64_f_t) :: f_sum = 0
+        real(flcl_dualview_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r64_1d, v_array_r64_1d, 'array_r64_1d', e0_length )
         do ii = 1, e0_length
@@ -5837,7 +5843,7 @@ module flcl_test_f_mod
           do ii = 1, e0_length
             f_sum = f_sum + array_r64_1d(ii)
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r64_1d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -5859,11 +5865,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:)  :: array_l_2d
+        logical(flcl_dualview_l_f_t), pointer, dimension(:,:)  :: array_l_2d
         type(dualview_l_2d_t) :: v_array_l_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_index_f_t) :: f_sum = 0
+        integer(flcl_dualview_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_l_2d, v_array_l_2d, 'array_l_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -5906,11 +5912,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:)  :: array_i32_2d
+        integer(flcl_dualview_i32_f_t), pointer, dimension(:,:)  :: array_i32_2d
         type(dualview_i32_2d_t) :: v_array_i32_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i32_f_t) :: f_sum = 0
+        integer(flcl_dualview_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i32_2d, v_array_i32_2d, 'array_i32_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -5949,11 +5955,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:)  :: array_i64_2d
+        integer(flcl_dualview_i64_f_t), pointer, dimension(:,:)  :: array_i64_2d
         type(dualview_i64_2d_t) :: v_array_i64_2d
         integer :: ii, jj
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i64_f_t) :: f_sum = 0
+        integer(flcl_dualview_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i64_2d, v_array_i64_2d, 'array_i64_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -5992,11 +5998,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:)  :: array_r32_2d
+        real(flcl_dualview_r32_f_t), pointer, dimension(:,:)  :: array_r32_2d
         type(dualview_r32_2d_t) :: v_array_r32_2d
         integer :: ii, jj
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_dualview_r32_f_t) :: f_sum = 0
+        real(flcl_dualview_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r32_2d, v_array_r32_2d, 'array_r32_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -6013,7 +6019,7 @@ module flcl_test_f_mod
               f_sum = f_sum + array_r32_2d(ii,jj)
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r32_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6035,11 +6041,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:)  :: array_r64_2d
+        real(flcl_dualview_r64_f_t), pointer, dimension(:,:)  :: array_r64_2d
         type(dualview_r64_2d_t) :: v_array_r64_2d
         integer :: ii, jj
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_dualview_r64_f_t) :: f_sum = 0
+        real(flcl_dualview_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r64_2d, v_array_r64_2d, 'array_r64_2d', e0_length, e1_length )
         do ii = 1, e0_length
@@ -6056,7 +6062,7 @@ module flcl_test_f_mod
               f_sum = f_sum + array_r64_2d(ii,jj)
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r64_2d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6078,11 +6084,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:)  :: array_l_3d
+        logical(flcl_dualview_l_f_t), pointer, dimension(:,:,:)  :: array_l_3d
         type(dualview_l_3d_t) :: v_array_l_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_index_f_t) :: f_sum = 0
+        integer(flcl_dualview_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_l_3d, v_array_l_3d, 'array_l_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -6129,11 +6135,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:)  :: array_i32_3d
+        integer(flcl_dualview_i32_f_t), pointer, dimension(:,:,:)  :: array_i32_3d
         type(dualview_i32_3d_t) :: v_array_i32_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i32_f_t) :: f_sum = 0
+        integer(flcl_dualview_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i32_3d, v_array_i32_3d, 'array_i32_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -6176,11 +6182,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:)  :: array_i64_3d
+        integer(flcl_dualview_i64_f_t), pointer, dimension(:,:,:)  :: array_i64_3d
         type(dualview_i64_3d_t) :: v_array_i64_3d
         integer :: ii, jj, kk
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i64_f_t) :: f_sum = 0
+        integer(flcl_dualview_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i64_3d, v_array_i64_3d, 'array_i64_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -6223,11 +6229,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:)  :: array_r32_3d
+        real(flcl_dualview_r32_f_t), pointer, dimension(:,:,:)  :: array_r32_3d
         type(dualview_r32_3d_t) :: v_array_r32_3d
         integer :: ii, jj, kk
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_dualview_r32_f_t) :: f_sum = 0
+        real(flcl_dualview_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r32_3d, v_array_r32_3d, 'array_r32_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -6248,7 +6254,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r32_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6270,11 +6276,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:)  :: array_r64_3d
+        real(flcl_dualview_r64_f_t), pointer, dimension(:,:,:)  :: array_r64_3d
         type(dualview_r64_3d_t) :: v_array_r64_3d
         integer :: ii, jj, kk
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_dualview_r64_f_t) :: f_sum = 0
+        real(flcl_dualview_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r64_3d, v_array_r64_3d, 'array_r64_3d', e0_length, e1_length, e2_length )
         do ii = 1, e0_length
@@ -6295,7 +6301,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r64_3d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6317,11 +6323,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:)  :: array_l_4d
+        logical(flcl_dualview_l_f_t), pointer, dimension(:,:,:,:)  :: array_l_4d
         type(dualview_l_4d_t) :: v_array_l_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_index_f_t) :: f_sum = 0
+        integer(flcl_dualview_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_l_4d, v_array_l_4d, 'array_l_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -6372,11 +6378,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:)  :: array_i32_4d
+        integer(flcl_dualview_i32_f_t), pointer, dimension(:,:,:,:)  :: array_i32_4d
         type(dualview_i32_4d_t) :: v_array_i32_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i32_f_t) :: f_sum = 0
+        integer(flcl_dualview_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i32_4d, v_array_i32_4d, 'array_i32_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -6423,11 +6429,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:)  :: array_i64_4d
+        integer(flcl_dualview_i64_f_t), pointer, dimension(:,:,:,:)  :: array_i64_4d
         type(dualview_i64_4d_t) :: v_array_i64_4d
         integer :: ii, jj, kk, ll
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i64_f_t) :: f_sum = 0
+        integer(flcl_dualview_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i64_4d, v_array_i64_4d, 'array_i64_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -6474,11 +6480,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:)  :: array_r32_4d
+        real(flcl_dualview_r32_f_t), pointer, dimension(:,:,:,:)  :: array_r32_4d
         type(dualview_r32_4d_t) :: v_array_r32_4d
         integer :: ii, jj, kk, ll
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_dualview_r32_f_t) :: f_sum = 0
+        real(flcl_dualview_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r32_4d, v_array_r32_4d, 'array_r32_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -6503,7 +6509,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r32_4d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6525,11 +6531,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:)  :: array_r64_4d
+        real(flcl_dualview_r64_f_t), pointer, dimension(:,:,:,:)  :: array_r64_4d
         type(dualview_r64_4d_t) :: v_array_r64_4d
         integer :: ii, jj, kk, ll
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_dualview_r64_f_t) :: f_sum = 0
+        real(flcl_dualview_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r64_4d, v_array_r64_4d, 'array_r64_4d', e0_length, e1_length, e2_length, e3_length )
         do ii = 1, e0_length
@@ -6554,7 +6560,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r64_4d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6576,11 +6582,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:,:)  :: array_l_5d
+        logical(flcl_dualview_l_f_t), pointer, dimension(:,:,:,:,:)  :: array_l_5d
         type(dualview_l_5d_t) :: v_array_l_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_index_f_t) :: f_sum = 0
+        integer(flcl_dualview_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_l_5d, v_array_l_5d, 'array_l_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -6636,11 +6642,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:,:)  :: array_i32_5d
+        integer(flcl_dualview_i32_f_t), pointer, dimension(:,:,:,:,:)  :: array_i32_5d
         type(dualview_i32_5d_t) :: v_array_i32_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i32_f_t) :: f_sum = 0
+        integer(flcl_dualview_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i32_5d, v_array_i32_5d, 'array_i32_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -6692,11 +6698,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:,:)  :: array_i64_5d
+        integer(flcl_dualview_i64_f_t), pointer, dimension(:,:,:,:,:)  :: array_i64_5d
         type(dualview_i64_5d_t) :: v_array_i64_5d
         integer :: ii, jj, kk, ll, mm
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i64_f_t) :: f_sum = 0
+        integer(flcl_dualview_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i64_5d, v_array_i64_5d, 'array_i64_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -6748,11 +6754,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:,:)  :: array_r32_5d
+        real(flcl_dualview_r32_f_t), pointer, dimension(:,:,:,:,:)  :: array_r32_5d
         type(dualview_r32_5d_t) :: v_array_r32_5d
         integer :: ii, jj, kk, ll, mm
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_dualview_r32_f_t) :: f_sum = 0
+        real(flcl_dualview_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r32_5d, v_array_r32_5d, 'array_r32_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -6782,7 +6788,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r32_5d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6804,11 +6810,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:,:)  :: array_r64_5d
+        real(flcl_dualview_r64_f_t), pointer, dimension(:,:,:,:,:)  :: array_r64_5d
         type(dualview_r64_5d_t) :: v_array_r64_5d
         integer :: ii, jj, kk, ll, mm
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_dualview_r64_f_t) :: f_sum = 0
+        real(flcl_dualview_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r64_5d, v_array_r64_5d, 'array_r64_5d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length )
@@ -6838,7 +6844,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r64_5d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -6860,11 +6866,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:,:,:)  :: array_l_6d
+        logical(flcl_dualview_l_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_l_6d
         type(dualview_l_6d_t) :: v_array_l_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_index_f_t) :: f_sum = 0
+        integer(flcl_dualview_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_l_6d, v_array_l_6d, 'array_l_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -6924,11 +6930,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:,:,:)  :: array_i32_6d
+        integer(flcl_dualview_i32_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_i32_6d
         type(dualview_i32_6d_t) :: v_array_i32_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i32_f_t) :: f_sum = 0
+        integer(flcl_dualview_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i32_6d, v_array_i32_6d, 'array_i32_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -6984,11 +6990,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:,:,:)  :: array_i64_6d
+        integer(flcl_dualview_i64_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_i64_6d
         type(dualview_i64_6d_t) :: v_array_i64_6d
         integer :: ii, jj, kk, ll, mm, nn
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i64_f_t) :: f_sum = 0
+        integer(flcl_dualview_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i64_6d, v_array_i64_6d, 'array_i64_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -7044,11 +7050,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:,:,:)  :: array_r32_6d
+        real(flcl_dualview_r32_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_r32_6d
         type(dualview_r32_6d_t) :: v_array_r32_6d
         integer :: ii, jj, kk, ll, mm, nn
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_dualview_r32_f_t) :: f_sum = 0
+        real(flcl_dualview_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r32_6d, v_array_r32_6d, 'array_r32_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -7082,7 +7088,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r32_6d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -7104,11 +7110,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:,:,:)  :: array_r64_6d
+        real(flcl_dualview_r64_f_t), pointer, dimension(:,:,:,:,:,:)  :: array_r64_6d
         type(dualview_r64_6d_t) :: v_array_r64_6d
         integer :: ii, jj, kk, ll, mm, nn
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_dualview_r64_f_t) :: f_sum = 0
+        real(flcl_dualview_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r64_6d, v_array_r64_6d, 'array_r64_6d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length )
@@ -7142,7 +7148,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r64_6d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -7164,11 +7170,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        logical(c_bool), pointer, dimension(:,:,:,:,:,:,:)  :: array_l_7d
+        logical(flcl_dualview_l_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_l_7d
         type(dualview_l_7d_t) :: v_array_l_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_index_f_t) :: f_sum = 0
+        integer(flcl_dualview_index_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_l_7d, v_array_l_7d, 'array_l_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -7232,11 +7238,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int32_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i32_7d
+        integer(flcl_dualview_i32_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i32_7d
         type(dualview_i32_7d_t) :: v_array_i32_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i32_f_t) :: f_sum = 0
+        integer(flcl_dualview_i32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i32_7d, v_array_i32_7d, 'array_i32_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -7296,11 +7302,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        integer(c_int64_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i64_7d
+        integer(flcl_dualview_i64_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_i64_7d
         type(dualview_i64_7d_t) :: v_array_i64_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        integer(c_size_t) :: f_sum = 0
-        integer(c_size_t) :: c_sum = 0
+        integer(flcl_dualview_i64_f_t) :: f_sum = 0
+        integer(flcl_dualview_i64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_i64_7d, v_array_i64_7d, 'array_i64_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -7360,11 +7366,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_float), pointer, dimension(:,:,:,:,:,:,:)  :: array_r32_7d
+        real(flcl_dualview_r32_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_r32_7d
         type(dualview_r32_7d_t) :: v_array_r32_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        real(c_float) :: f_sum = 0
-        real(c_float) :: c_sum = 0
+        real(flcl_dualview_r32_f_t) :: f_sum = 0
+        real(flcl_dualview_r32_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r32_7d, v_array_r32_7d, 'array_r32_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -7402,7 +7408,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_single * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r32_7d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum
@@ -7424,11 +7430,11 @@ module flcl_test_f_mod
         use :: flcl_mod
         implicit none
 
-        real(c_double), pointer, dimension(:,:,:,:,:,:,:)  :: array_r64_7d
+        real(flcl_dualview_r64_f_t), pointer, dimension(:,:,:,:,:,:,:)  :: array_r64_7d
         type(dualview_r64_7d_t) :: v_array_r64_7d
         integer :: ii, jj, kk, ll, mm, nn, oo
-        real(c_double) :: f_sum = 0
-        real(c_double) :: c_sum = 0
+        real(flcl_dualview_r64_f_t) :: f_sum = 0
+        real(flcl_dualview_r64_f_t) :: c_sum = 0
 
         call kokkos_allocate_dualview( array_r64_7d, v_array_r64_7d, 'array_r64_7d', &
           & e0_length, e1_length, e2_length, e3_length, e4_length, e5_length, e6_length )
@@ -7466,7 +7472,7 @@ module flcl_test_f_mod
               end do
             end do
           end do
-          if ( abs(f_sum - c_sum ) < (precision_double * c_sum) ) then
+          if ( abs(f_sum - c_sum ) < (dualview_precision_single * c_sum) ) then
             write(*,*)'PASSED kokkos_allocate_dualview_r64_7d'
             write(*,*)'f_sum = ',f_sum
             write(*,*)'c_sum = ',c_sum

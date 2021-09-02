@@ -24,6 +24,7 @@ add_link_options(LINKER:--disable-new-dtags)
 #flcl-fortran library
 add_library(flcl-fortran
     OBJECT
+        src/flcl-types-f.f90
         src/flcl-ndarray-f.f90
         src/flcl-view-f.f90
         src/flcl-dualview-f.f90
@@ -63,6 +64,7 @@ add_library(flcl-cxx
 )
 set(flcl-cxx-public-headers
     ${PROJECT_SOURCE_DIR}/src/flcl-cxx.hpp
+    ${PROJECT_SOURCE_DIR}/src/flcl-types-cxx.hpp
     ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h
 )
 set_property(TARGET flcl-cxx PROPERTY CXX_STANDARD 14)
