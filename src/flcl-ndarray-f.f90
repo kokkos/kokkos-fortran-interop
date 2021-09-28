@@ -129,6 +129,10 @@ module flcl_ndarray_mod
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   
     interface from_nd_array
       ! 1D specializations
+      module procedure from_nd_array_l_1d
+      module procedure from_nd_array_i32_1d
+      module procedure from_nd_array_i64_1d
+      module procedure from_nd_array_r32_1d
       module procedure from_nd_array_r64_1d
     end interface
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -2667,6 +2671,42 @@ module flcl_ndarray_mod
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   !!! from_nd_array 1D implementations
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_l_1d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        logical(flcl_ndarray_l_f_t), pointer, intent(out) :: array(:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
+      end subroutine from_nd_array_l_1d
+
+      subroutine from_nd_array_i32_1d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i32_f_t), pointer, intent(out) :: array(:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
+      end subroutine from_nd_array_i32_1d
+
+      subroutine from_nd_array_i64_1d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i64_f_t), pointer, intent(out) :: array(:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
+      end subroutine from_nd_array_i64_1d
+
+      subroutine from_nd_array_r32_1d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r32_f_t), pointer, intent(out) :: array(:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
+      end subroutine from_nd_array_r32_1d
+
       subroutine from_nd_array_r64_1d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
         real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:)
