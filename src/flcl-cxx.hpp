@@ -213,6 +213,25 @@ namespace flcl {
     return Kokkos::View<DataType, Kokkos::LayoutStride, flcl::HostMemorySpace, Kokkos::MemoryUnmanaged>(
         reinterpret_cast<value_type *>(ndarray.data), layout);
   }
+
+  template <typename View>
+  flcl_ndarray_t ViewToNdarray(View const &view) {
+    flcl_ndarray_t ndarray{};
+
+    using const_data_type = typename View::const_data_type;
+    using memory_space = typename View::memory_space;
+
+    Kokkos::View<const_data_type, Kokkos::LayoutStride, memory_space> view_stride = view;
+
+    Kokkos::LayoutStride layout = view_stride.layout();
+
+    ndarray.rank = view_stride.rank;
+    std::copy(layout.dimension, layout.dimension + view_stride.rank, ndarray.dims);
+    std::copy(layout.stride, layout.stride + view_stride.rank, ndarray.strides);
+    ndarray.data = const_cast<void *>(static_cast<void const *>(view_stride.data()));
+
+    return ndarray;
+  }
   
 } // namespace flcl
 
