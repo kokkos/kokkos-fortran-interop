@@ -45,6 +45,8 @@ module flcl_ndarray_mod
     
     public nd_array_t
     public to_nd_array
+    public from_nd_array
+    public check_nd_array_layout
     public ND_ARRAY_MAX_RANK
   
     integer, parameter :: ND_ARRAY_MAX_RANK = 8
@@ -123,9 +125,32 @@ module flcl_ndarray_mod
       module procedure to_nd_array_c64_7d
     end interface
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array interface
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   
+    interface from_nd_array
+      ! 1D specializations
+      module procedure from_nd_array_r64_1d
+    end interface
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     contains
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! check_nd_array_layout (check before assigning an nd_array to an array)
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine check_nd_array_layout(ndarray)
+        type(nd_array_t), intent(in) :: ndarray
+    
+        integer(flcl_ndarray_index_f_t) :: n
+        integer(flcl_ndarray_index_f_t) :: current
+    
+        current = 1
+        do n = 1,ndarray%rank
+          if (current .ne. ndarray%strides(n)) then
+            stop "Can only convert unstrided column-major nd_array layouts!"
+          end if
+          current = current * ndarray%dims(n)
+        end do
+      end subroutine check_nd_array_layout
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   !!! to_nd_array 1D implementations
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -2639,6 +2664,17 @@ module flcl_ndarray_mod
           ndarray%data = c_loc(array(1,1,1,1,1,1,1))
         end if
       end function to_nd_array_c64_7d
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array 1D implementations
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_r64_1d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
+      end subroutine from_nd_array_r64_1d
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   !!! fin
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
