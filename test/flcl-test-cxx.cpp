@@ -2028,6 +2028,15 @@ extern "C" {
     return c_sum;
   }
 
+  flcl_ndarray_t c_test_from_ndarray_r64_1d( flcl_ndarray_t *nd_array_r64_1d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r64_1d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t*>(*nd_array_r64_1d);
+
+    return view_to_ndarray(array_r64_1d);
+  }
+
   flcl_test_error_t c_test_kokkos_allocate_view_l_1d( flcl::view_l_1d_t **v_array_l_1d, flcl::flcl_view_index_c_t *f_sum, flcl::flcl_view_index_c_t *c_sum ) {
     *c_sum = 0;
     auto array_l_1d = **v_array_l_1d;

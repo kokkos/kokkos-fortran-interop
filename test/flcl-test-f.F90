@@ -620,6 +620,16 @@ module flcl_test_f_mod
     end interface
 
     interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_1d( nd_array_r64_1d ) &
+        & bind(c, name='c_test_from_ndarray_r64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_1d
+      end function f_test_from_ndarray_r64_1d
+    end interface
+
+    interface
       integer &
         & function f_test_kokkos_allocate_view_l_1d( v_array_l_1d, f_sum, c_sum ) &
         & bind(c, name='c_test_kokkos_allocate_view_l_1d')
@@ -3828,6 +3838,49 @@ module flcl_test_f_mod
           ierr = flcl_test_fail
         end if
       end function test_ndarray_c64_7d
+
+      integer &
+        & function test_from_ndarray_r64_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:), allocatable :: array_r64_1d_in
+        real(flcl_ndarray_r64_f_t), dimension(:), pointer :: array_r64_1d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_r64_1d_in(e0_length) )
+        allocate( array_r64_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_r64_1d_in(ii) = ii
+          f_sum = f_sum + array_r64_1d_in(ii)
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_1d( to_nd_array(array_r64_1d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_1d_out )
+
+        do ii = 1, e0_length
+          c_sum = c_sum + array_r64_1d_out(ii)
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_1d
 
       integer &
         & function test_kokkos_allocate_view_l_1d() &

@@ -215,7 +215,7 @@ namespace flcl {
   }
 
   template <typename View>
-  flcl_ndarray_t ViewToNdarray(View const &view) {
+  flcl_ndarray_t view_to_ndarray(View const &view) {
     flcl_ndarray_t ndarray{};
 
     using const_data_type = typename View::const_data_type;
