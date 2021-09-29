@@ -2073,6 +2073,402 @@ extern "C" {
     return view_to_ndarray(array_r64_1d);
   }
 
+  flcl_ndarray_t c_test_from_ndarray_c32_1d( flcl_ndarray_t *nd_array_c32_1d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c32_1d = view_from_ndarray<flcl::flcl_ndarray_c32_c_t*>(*nd_array_c32_1d);
+
+    return view_to_ndarray(array_c32_1d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c64_1d( flcl_ndarray_t *nd_array_c64_1d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c64_1d = view_from_ndarray<flcl::flcl_ndarray_c64_c_t*>(*nd_array_c64_1d);
+
+    return view_to_ndarray(array_c64_1d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_l_2d( flcl_ndarray_t *nd_array_l_2d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_l_2d = view_from_ndarray<flcl::flcl_ndarray_l_c_t**>(*nd_array_l_2d);
+
+    return view_to_ndarray(array_l_2d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i32_2d( flcl_ndarray_t *nd_array_i32_2d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i32_2d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t**>(*nd_array_i32_2d);
+
+    return view_to_ndarray(array_i32_2d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i64_2d( flcl_ndarray_t *nd_array_i64_2d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i64_2d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t**>(*nd_array_i64_2d);
+
+    return view_to_ndarray(array_i64_2d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r32_2d( flcl_ndarray_t *nd_array_r32_2d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r32_2d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t**>(*nd_array_r32_2d);
+
+    return view_to_ndarray(array_r32_2d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r64_2d( flcl_ndarray_t *nd_array_r64_2d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r64_2d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t**>(*nd_array_r64_2d);
+
+    return view_to_ndarray(array_r64_2d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c32_2d( flcl_ndarray_t *nd_array_c32_2d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c32_2d = view_from_ndarray<flcl::flcl_ndarray_c32_c_t**>(*nd_array_c32_2d);
+
+    return view_to_ndarray(array_c32_2d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c64_2d( flcl_ndarray_t *nd_array_c64_2d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c64_2d = view_from_ndarray<flcl::flcl_ndarray_c64_c_t**>(*nd_array_c64_2d);
+
+    return view_to_ndarray(array_c64_2d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_l_3d( flcl_ndarray_t *nd_array_l_3d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_l_3d = view_from_ndarray<flcl::flcl_ndarray_l_c_t***>(*nd_array_l_3d);
+
+    return view_to_ndarray(array_l_3d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i32_3d( flcl_ndarray_t *nd_array_i32_3d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i32_3d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t***>(*nd_array_i32_3d);
+
+    return view_to_ndarray(array_i32_3d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i64_3d( flcl_ndarray_t *nd_array_i64_3d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i64_3d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t***>(*nd_array_i64_3d);
+
+    return view_to_ndarray(array_i64_3d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r32_3d( flcl_ndarray_t *nd_array_r32_3d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r32_3d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t***>(*nd_array_r32_3d);
+
+    return view_to_ndarray(array_r32_3d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r64_3d( flcl_ndarray_t *nd_array_r64_3d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r64_3d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t***>(*nd_array_r64_3d);
+
+    return view_to_ndarray(array_r64_3d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c32_3d( flcl_ndarray_t *nd_array_c32_3d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c32_3d = view_from_ndarray<flcl::flcl_ndarray_c32_c_t***>(*nd_array_c32_3d);
+
+    return view_to_ndarray(array_c32_3d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c64_3d( flcl_ndarray_t *nd_array_c64_3d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c64_3d = view_from_ndarray<flcl::flcl_ndarray_c64_c_t***>(*nd_array_c64_3d);
+
+    return view_to_ndarray(array_c64_3d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_l_4d( flcl_ndarray_t *nd_array_l_4d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_l_4d = view_from_ndarray<flcl::flcl_ndarray_l_c_t****>(*nd_array_l_4d);
+
+    return view_to_ndarray(array_l_4d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i32_4d( flcl_ndarray_t *nd_array_i32_4d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i32_4d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t****>(*nd_array_i32_4d);
+
+    return view_to_ndarray(array_i32_4d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i64_4d( flcl_ndarray_t *nd_array_i64_4d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i64_4d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t****>(*nd_array_i64_4d);
+
+    return view_to_ndarray(array_i64_4d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r32_4d( flcl_ndarray_t *nd_array_r32_4d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r32_4d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t****>(*nd_array_r32_4d);
+
+    return view_to_ndarray(array_r32_4d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r64_4d( flcl_ndarray_t *nd_array_r64_4d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r64_4d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t****>(*nd_array_r64_4d);
+
+    return view_to_ndarray(array_r64_4d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c32_4d( flcl_ndarray_t *nd_array_c32_4d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c32_4d = view_from_ndarray<flcl::flcl_ndarray_c32_c_t****>(*nd_array_c32_4d);
+
+    return view_to_ndarray(array_c32_4d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c64_4d( flcl_ndarray_t *nd_array_c64_4d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c64_4d = view_from_ndarray<flcl::flcl_ndarray_c64_c_t****>(*nd_array_c64_4d);
+
+    return view_to_ndarray(array_c64_4d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_l_5d( flcl_ndarray_t *nd_array_l_5d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_l_5d = view_from_ndarray<flcl::flcl_ndarray_l_c_t*****>(*nd_array_l_5d);
+
+    return view_to_ndarray(array_l_5d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i32_5d( flcl_ndarray_t *nd_array_i32_5d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i32_5d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t*****>(*nd_array_i32_5d);
+
+    return view_to_ndarray(array_i32_5d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i64_5d( flcl_ndarray_t *nd_array_i64_5d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i64_5d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t*****>(*nd_array_i64_5d);
+
+    return view_to_ndarray(array_i64_5d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r32_5d( flcl_ndarray_t *nd_array_r32_5d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r32_5d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t*****>(*nd_array_r32_5d);
+
+    return view_to_ndarray(array_r32_5d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r64_5d( flcl_ndarray_t *nd_array_r64_5d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r64_5d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t*****>(*nd_array_r64_5d);
+
+    return view_to_ndarray(array_r64_5d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c32_5d( flcl_ndarray_t *nd_array_c32_5d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c32_5d = view_from_ndarray<flcl::flcl_ndarray_c32_c_t*****>(*nd_array_c32_5d);
+
+    return view_to_ndarray(array_c32_5d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c64_5d( flcl_ndarray_t *nd_array_c64_5d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c64_5d = view_from_ndarray<flcl::flcl_ndarray_c64_c_t*****>(*nd_array_c64_5d);
+
+    return view_to_ndarray(array_c64_5d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_l_6d( flcl_ndarray_t *nd_array_l_6d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_l_6d = view_from_ndarray<flcl::flcl_ndarray_l_c_t******>(*nd_array_l_6d);
+
+    return view_to_ndarray(array_l_6d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i32_6d( flcl_ndarray_t *nd_array_i32_6d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i32_6d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t******>(*nd_array_i32_6d);
+
+    return view_to_ndarray(array_i32_6d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i64_6d( flcl_ndarray_t *nd_array_i64_6d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i64_6d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t******>(*nd_array_i64_6d);
+
+    return view_to_ndarray(array_i64_6d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r32_6d( flcl_ndarray_t *nd_array_r32_6d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r32_6d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t******>(*nd_array_r32_6d);
+
+    return view_to_ndarray(array_r32_6d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r64_6d( flcl_ndarray_t *nd_array_r64_6d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r64_6d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t******>(*nd_array_r64_6d);
+
+    return view_to_ndarray(array_r64_6d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c32_6d( flcl_ndarray_t *nd_array_c32_6d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c32_6d = view_from_ndarray<flcl::flcl_ndarray_c32_c_t******>(*nd_array_c32_6d);
+
+    return view_to_ndarray(array_c32_6d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c64_6d( flcl_ndarray_t *nd_array_c64_6d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c64_6d = view_from_ndarray<flcl::flcl_ndarray_c64_c_t******>(*nd_array_c64_6d);
+
+    return view_to_ndarray(array_c64_6d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_l_7d( flcl_ndarray_t *nd_array_l_7d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_l_7d = view_from_ndarray<flcl::flcl_ndarray_l_c_t*******>(*nd_array_l_7d);
+
+    return view_to_ndarray(array_l_7d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i32_7d( flcl_ndarray_t *nd_array_i32_7d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i32_7d = view_from_ndarray<flcl::flcl_ndarray_i32_c_t*******>(*nd_array_i32_7d);
+
+    return view_to_ndarray(array_i32_7d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_i64_7d( flcl_ndarray_t *nd_array_i64_7d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_i64_7d = view_from_ndarray<flcl::flcl_ndarray_i64_c_t*******>(*nd_array_i64_7d);
+
+    return view_to_ndarray(array_i64_7d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r32_7d( flcl_ndarray_t *nd_array_r32_7d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r32_7d = view_from_ndarray<flcl::flcl_ndarray_r32_c_t*******>(*nd_array_r32_7d);
+
+    return view_to_ndarray(array_r32_7d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_r64_7d( flcl_ndarray_t *nd_array_r64_7d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_r64_7d = view_from_ndarray<flcl::flcl_ndarray_r64_c_t*******>(*nd_array_r64_7d);
+
+    return view_to_ndarray(array_r64_7d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c32_7d( flcl_ndarray_t *nd_array_c32_7d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c32_7d = view_from_ndarray<flcl::flcl_ndarray_c32_c_t*******>(*nd_array_c32_7d);
+
+    return view_to_ndarray(array_c32_7d);
+  }
+
+  flcl_ndarray_t c_test_from_ndarray_c64_7d( flcl_ndarray_t *nd_array_c64_7d ) {
+    using flcl::view_from_ndarray;
+    using flcl::view_to_ndarray;
+
+    auto array_c64_7d = view_from_ndarray<flcl::flcl_ndarray_c64_c_t*******>(*nd_array_c64_7d);
+
+    return view_to_ndarray(array_c64_7d);
+  }
+
   flcl_test_error_t c_test_kokkos_allocate_view_l_1d( flcl::view_l_1d_t **v_array_l_1d, flcl::flcl_view_index_c_t *f_sum, flcl::flcl_view_index_c_t *c_sum ) {
     *c_sum = 0;
     auto array_l_1d = **v_array_l_1d;
