@@ -649,25 +649,465 @@ module flcl_test_f_mod
       end function f_test_from_ndarray_i64_1d
     end interface
 
-  interface
-    type(nd_array_t) &
-      & function f_test_from_ndarray_r32_1d( nd_array_r32_1d ) &
-      & bind(c, name='c_test_from_ndarray_r32_1d')
-      use, intrinsic :: iso_c_binding
-      use :: flcl_mod
-      type(nd_array_t), intent(in) :: nd_array_r32_1d
-    end function f_test_from_ndarray_r32_1d
-  end interface
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_1d( nd_array_r32_1d ) &
+        & bind(c, name='c_test_from_ndarray_r32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_1d
+      end function f_test_from_ndarray_r32_1d
+    end interface
 
-  interface
-    type(nd_array_t) &
-      & function f_test_from_ndarray_r64_1d( nd_array_r64_1d ) &
-      & bind(c, name='c_test_from_ndarray_r64_1d')
-      use, intrinsic :: iso_c_binding
-      use :: flcl_mod
-      type(nd_array_t), intent(in) :: nd_array_r64_1d
-    end function f_test_from_ndarray_r64_1d
-  end interface
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_1d( nd_array_r64_1d ) &
+        & bind(c, name='c_test_from_ndarray_r64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_1d
+      end function f_test_from_ndarray_r64_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_1d( nd_array_c32_1d ) &
+        & bind(c, name='c_test_from_ndarray_c32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_1d
+      end function f_test_from_ndarray_c32_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_1d( nd_array_c64_1d ) &
+        & bind(c, name='c_test_from_ndarray_c64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_1d
+      end function f_test_from_ndarray_c64_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_2d( nd_array_l_2d ) &
+        & bind(c, name='c_test_from_ndarray_l_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_2d
+      end function f_test_from_ndarray_l_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_2d( nd_array_i32_2d ) &
+        & bind(c, name='c_test_from_ndarray_i32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_2d
+      end function f_test_from_ndarray_i32_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_2d( nd_array_i64_2d ) &
+        & bind(c, name='c_test_from_ndarray_i64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_2d
+      end function f_test_from_ndarray_i64_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_2d( nd_array_r32_2d ) &
+        & bind(c, name='c_test_from_ndarray_r32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_2d
+      end function f_test_from_ndarray_r32_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_2d( nd_array_r64_2d ) &
+        & bind(c, name='c_test_from_ndarray_r64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_2d
+      end function f_test_from_ndarray_r64_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_2d( nd_array_c32_2d ) &
+        & bind(c, name='c_test_from_ndarray_c32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_2d
+      end function f_test_from_ndarray_c32_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_2d( nd_array_c64_2d ) &
+        & bind(c, name='c_test_from_ndarray_c64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_2d
+      end function f_test_from_ndarray_c64_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_3d( nd_array_l_3d ) &
+        & bind(c, name='c_test_from_ndarray_l_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_3d
+      end function f_test_from_ndarray_l_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_3d( nd_array_i32_3d ) &
+        & bind(c, name='c_test_from_ndarray_i32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_3d
+      end function f_test_from_ndarray_i32_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_3d( nd_array_i64_3d ) &
+        & bind(c, name='c_test_from_ndarray_i64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_3d
+      end function f_test_from_ndarray_i64_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_3d( nd_array_r32_3d ) &
+        & bind(c, name='c_test_from_ndarray_r32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_3d
+      end function f_test_from_ndarray_r32_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_3d( nd_array_r64_3d ) &
+        & bind(c, name='c_test_from_ndarray_r64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_3d
+      end function f_test_from_ndarray_r64_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_3d( nd_array_c32_3d ) &
+        & bind(c, name='c_test_from_ndarray_c32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_3d
+      end function f_test_from_ndarray_c32_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_3d( nd_array_c64_3d ) &
+        & bind(c, name='c_test_from_ndarray_c64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_3d
+      end function f_test_from_ndarray_c64_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_4d( nd_array_l_4d ) &
+        & bind(c, name='c_test_from_ndarray_l_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_4d
+      end function f_test_from_ndarray_l_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_4d( nd_array_i32_4d ) &
+        & bind(c, name='c_test_from_ndarray_i32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_4d
+      end function f_test_from_ndarray_i32_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_4d( nd_array_i64_4d ) &
+        & bind(c, name='c_test_from_ndarray_i64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_4d
+      end function f_test_from_ndarray_i64_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_4d( nd_array_r32_4d ) &
+        & bind(c, name='c_test_from_ndarray_r32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_4d
+      end function f_test_from_ndarray_r32_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_4d( nd_array_r64_4d ) &
+        & bind(c, name='c_test_from_ndarray_r64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_4d
+      end function f_test_from_ndarray_r64_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_4d( nd_array_c32_4d ) &
+        & bind(c, name='c_test_from_ndarray_c32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_4d
+      end function f_test_from_ndarray_c32_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_4d( nd_array_c64_4d ) &
+        & bind(c, name='c_test_from_ndarray_c64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_4d
+      end function f_test_from_ndarray_c64_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_5d( nd_array_l_5d ) &
+        & bind(c, name='c_test_from_ndarray_l_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_5d
+      end function f_test_from_ndarray_l_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_5d( nd_array_i32_5d ) &
+        & bind(c, name='c_test_from_ndarray_i32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_5d
+      end function f_test_from_ndarray_i32_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_5d( nd_array_i64_5d ) &
+        & bind(c, name='c_test_from_ndarray_i64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_5d
+      end function f_test_from_ndarray_i64_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_5d( nd_array_r32_5d ) &
+        & bind(c, name='c_test_from_ndarray_r32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_5d
+      end function f_test_from_ndarray_r32_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_5d( nd_array_r64_5d ) &
+        & bind(c, name='c_test_from_ndarray_r64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_5d
+      end function f_test_from_ndarray_r64_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_5d( nd_array_c32_5d ) &
+        & bind(c, name='c_test_from_ndarray_c32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_5d
+      end function f_test_from_ndarray_c32_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_5d( nd_array_c64_5d ) &
+        & bind(c, name='c_test_from_ndarray_c64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_5d
+      end function f_test_from_ndarray_c64_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_6d( nd_array_l_6d ) &
+        & bind(c, name='c_test_from_ndarray_l_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_6d
+      end function f_test_from_ndarray_l_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_6d( nd_array_i32_6d ) &
+        & bind(c, name='c_test_from_ndarray_i32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_6d
+      end function f_test_from_ndarray_i32_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_6d( nd_array_i64_6d ) &
+        & bind(c, name='c_test_from_ndarray_i64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_6d
+      end function f_test_from_ndarray_i64_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_6d( nd_array_r32_6d ) &
+        & bind(c, name='c_test_from_ndarray_r32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_6d
+      end function f_test_from_ndarray_r32_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_6d( nd_array_r64_6d ) &
+        & bind(c, name='c_test_from_ndarray_r64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_6d
+      end function f_test_from_ndarray_r64_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_6d( nd_array_c32_6d ) &
+        & bind(c, name='c_test_from_ndarray_c32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_6d
+      end function f_test_from_ndarray_c32_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_6d( nd_array_c64_6d ) &
+        & bind(c, name='c_test_from_ndarray_c64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_6d
+      end function f_test_from_ndarray_c64_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_7d( nd_array_l_7d ) &
+        & bind(c, name='c_test_from_ndarray_l_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_7d
+      end function f_test_from_ndarray_l_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_7d( nd_array_i32_7d ) &
+        & bind(c, name='c_test_from_ndarray_i32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_7d
+      end function f_test_from_ndarray_i32_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_7d( nd_array_i64_7d ) &
+        & bind(c, name='c_test_from_ndarray_i64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_7d
+      end function f_test_from_ndarray_i64_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_7d( nd_array_r32_7d ) &
+        & bind(c, name='c_test_from_ndarray_r32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_7d
+      end function f_test_from_ndarray_r32_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_7d( nd_array_r64_7d ) &
+        & bind(c, name='c_test_from_ndarray_r64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_7d
+      end function f_test_from_ndarray_r64_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_7d( nd_array_c32_7d ) &
+        & bind(c, name='c_test_from_ndarray_c32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_7d
+      end function f_test_from_ndarray_c32_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_7d( nd_array_c64_7d ) &
+        & bind(c, name='c_test_from_ndarray_c64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_7d
+      end function f_test_from_ndarray_c64_7d
+    end interface
 
     interface
       integer &
