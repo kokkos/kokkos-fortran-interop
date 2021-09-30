@@ -2715,6 +2715,414 @@ module flcl_ndarray_mod
     
         call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
       end subroutine from_nd_array_r64_1d
+
+      subroutine from_nd_array_c32_1d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
+      end subroutine from_nd_array_c32_1d
+
+      subroutine from_nd_array_c64_1d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:1))
+      end subroutine from_nd_array_c64_1d
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array 2D implementations
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_l_2d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        logical(flcl_ndarray_l_f_t), pointer, intent(out) :: array(:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:2))
+      end subroutine from_nd_array_l_2d
+
+      subroutine from_nd_array_i32_2d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i32_f_t), pointer, intent(out) :: array(:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:2))
+      end subroutine from_nd_array_i32_2d
+
+      subroutine from_nd_array_i64_2d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i64_f_t), pointer, intent(out) :: array(:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:2))
+      end subroutine from_nd_array_i64_2d
+
+      subroutine from_nd_array_r32_2d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r32_f_t), pointer, intent(out) :: array(:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:2))
+      end subroutine from_nd_array_r32_2d
+
+      subroutine from_nd_array_r64_2d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:2))
+      end subroutine from_nd_array_r64_2d
+
+      subroutine from_nd_array_c32_2d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:2))
+      end subroutine from_nd_array_c32_2d
+
+      subroutine from_nd_array_c64_2d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:2))
+      end subroutine from_nd_array_c64_2d
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array 3D implementations
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_l_3d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        logical(flcl_ndarray_l_f_t), pointer, intent(out) :: array(:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:3))
+      end subroutine from_nd_array_l_3d
+
+      subroutine from_nd_array_i32_3d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i32_f_t), pointer, intent(out) :: array(:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:3))
+      end subroutine from_nd_array_i32_3d
+
+      subroutine from_nd_array_i64_3d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i64_f_t), pointer, intent(out) :: array(:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:3))
+      end subroutine from_nd_array_i64_3d
+
+      subroutine from_nd_array_r32_3d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r32_f_t), pointer, intent(out) :: array(:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:3))
+      end subroutine from_nd_array_r32_3d
+
+      subroutine from_nd_array_r64_3d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:3))
+      end subroutine from_nd_array_r64_3d
+
+      subroutine from_nd_array_c32_3d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:3))
+      end subroutine from_nd_array_c32_3d
+
+      subroutine from_nd_array_c64_3d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:3))
+      end subroutine from_nd_array_c64_3d
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array 4D implementations
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_l_4d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        logical(flcl_ndarray_l_f_t), pointer, intent(out) :: array(:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:4))
+      end subroutine from_nd_array_l_4d
+
+      subroutine from_nd_array_i32_4d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i32_f_t), pointer, intent(out) :: array(:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:4))
+      end subroutine from_nd_array_i32_4d
+
+      subroutine from_nd_array_i64_4d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i64_f_t), pointer, intent(out) :: array(:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:4))
+      end subroutine from_nd_array_i64_4d
+
+      subroutine from_nd_array_r32_4d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r32_f_t), pointer, intent(out) :: array(:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:4))
+      end subroutine from_nd_array_r32_4d
+
+      subroutine from_nd_array_r64_4d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:4))
+      end subroutine from_nd_array_r64_4d
+
+      subroutine from_nd_array_c32_4d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:4))
+      end subroutine from_nd_array_c32_4d
+
+      subroutine from_nd_array_c64_4d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:4))
+      end subroutine from_nd_array_c64_4d
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array 5D implementations
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_l_5d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        logical(flcl_ndarray_l_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:5))
+      end subroutine from_nd_array_l_5d
+
+      subroutine from_nd_array_i32_5d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i32_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:5))
+      end subroutine from_nd_array_i32_5d
+
+      subroutine from_nd_array_i64_5d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i64_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:5))
+      end subroutine from_nd_array_i64_5d
+
+      subroutine from_nd_array_r32_5d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r32_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:5))
+      end subroutine from_nd_array_r32_5d
+
+      subroutine from_nd_array_r64_5d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:5))
+      end subroutine from_nd_array_r64_5d
+
+      subroutine from_nd_array_c32_5d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:5))
+      end subroutine from_nd_array_c32_5d
+
+      subroutine from_nd_array_c64_5d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:5))
+      end subroutine from_nd_array_c64_5d
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array 6D implementations
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_l_6d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        logical(flcl_ndarray_l_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:6))
+      end subroutine from_nd_array_l_6d
+
+      subroutine from_nd_array_i32_6d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:6))
+      end subroutine from_nd_array_i32_6d
+
+      subroutine from_nd_array_i64_6d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:6))
+      end subroutine from_nd_array_i64_6d
+
+      subroutine from_nd_array_r32_6d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:6))
+      end subroutine from_nd_array_r32_6d
+
+      subroutine from_nd_array_r64_6d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:6))
+      end subroutine from_nd_array_r64_6d
+
+      subroutine from_nd_array_c32_6d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:6))
+      end subroutine from_nd_array_c32_6d
+
+      subroutine from_nd_array_c64_6d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:6))
+      end subroutine from_nd_array_c64_6d
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !!! from_nd_array 7D implementations
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      subroutine from_nd_array_l_7d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        logical(flcl_ndarray_l_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:7))
+      end subroutine from_nd_array_l_7d
+
+      subroutine from_nd_array_i32_7d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:7))
+      end subroutine from_nd_array_i32_7d
+
+      subroutine from_nd_array_i64_7d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        integer(flcl_ndarray_i64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:7))
+      end subroutine from_nd_array_i64_7d
+
+      subroutine from_nd_array_r32_7d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:7))
+      end subroutine from_nd_array_r32_7d
+
+      subroutine from_nd_array_r64_7d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_r64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:7))
+      end subroutine from_nd_array_r64_7d
+
+      subroutine from_nd_array_c32_7d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:7))
+      end subroutine from_nd_array_c32_7d
+
+      subroutine from_nd_array_c64_7d(ndarray, array)
+        type(nd_array_t), intent(in) :: ndarray
+        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+    
+        call check_nd_array_layout(ndarray)
+    
+        call c_f_pointer(ndarray%data, array, ndarray%dims(1:7))
+      end subroutine from_nd_array_c64_7d
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   !!! fin
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
