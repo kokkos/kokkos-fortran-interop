@@ -134,6 +134,8 @@ module flcl_ndarray_mod
       module procedure from_nd_array_i64_1d
       module procedure from_nd_array_r32_1d
       module procedure from_nd_array_r64_1d
+      module procedure from_nd_array_c32_1d
+      module procedure from_nd_array_c64_1d
     end interface
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     contains
@@ -2718,7 +2720,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c32_1d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:)
+        complex(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2727,7 +2729,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c64_1d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:)
+        complex(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2783,7 +2785,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c32_2d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:)
+        complex(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2792,7 +2794,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c64_2d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:)
+        complex(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2848,7 +2850,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c32_3d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:)
+        complex(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2857,7 +2859,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c64_3d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:)
+        complex(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2913,7 +2915,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c32_4d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:)
+        complex(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2922,7 +2924,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c64_4d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:)
+        complex(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2978,7 +2980,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c32_5d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+        complex(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -2987,7 +2989,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c64_5d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:)
+        complex(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -3043,7 +3045,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c32_6d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+        complex(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -3052,7 +3054,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c64_6d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
+        complex(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -3108,7 +3110,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c32_7d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+        complex(flcl_ndarray_c32_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
@@ -3117,7 +3119,7 @@ module flcl_ndarray_mod
 
       subroutine from_nd_array_c64_7d(ndarray, array)
         type(nd_array_t), intent(in) :: ndarray
-        real(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
+        complex(flcl_ndarray_c64_f_t), pointer, intent(out) :: array(:,:,:,:,:,:,:)
     
         call check_nd_array_layout(ndarray)
     
