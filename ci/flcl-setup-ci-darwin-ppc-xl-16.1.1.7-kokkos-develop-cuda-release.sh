@@ -29,6 +29,8 @@ setenv F77 xlf_r
 setenv FC xlf_r
 setenv CUDA_LAUNCH_BLOCKING 1
 setenv CUDA_MANAGED_FORCE_DEVICE_ALLOC 1
+setenv NVCC_WRAPPER_DEFAULT_COMPILER xlc++_r
+setenv CXXFLAGS "-qxflag=disable__cplusplusOverride -F/projects/opt/ppc64le/ibm/xlc-16.1.1.7/xlC/16.1.1/etc/xlc.cfg.rhel.7.8.gcc.7.4.0.cuda.11.0"
 cd $CI_BUILD_DIR
 cmake /home/$USER/$CI_KOKKOS_PREFIX/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER \
     -DCMAKE_CXX_COMPILER=/home/$USER/kokkos/$CI_KOKKOS_PREFIX$CI_SEP$CI_KOKKOS_VER/bin/nvcc_wrapper \
