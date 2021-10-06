@@ -154,6 +154,15 @@ module flcl_ndarray_mod
       module procedure from_nd_array_r64_3d
       module procedure from_nd_array_c32_3d
       module procedure from_nd_array_c64_3d
+
+      ! 4D specializations
+      module procedure from_nd_array_l_4d
+      module procedure from_nd_array_i32_4d
+      module procedure from_nd_array_i64_4d
+      module procedure from_nd_array_r32_4d
+      module procedure from_nd_array_r64_4d
+      module procedure from_nd_array_c32_4d
+      module procedure from_nd_array_c64_4d
     end interface
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     contains
