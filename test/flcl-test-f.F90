@@ -4962,6 +4962,369 @@ module flcl_test_f_mod
       end function test_from_ndarray_c64_2d
 
       integer &
+        & function test_from_ndarray_l_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:), allocatable :: array_l_3d_in
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:), pointer :: array_l_3d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_l_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_l_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj =1 , e1_length
+            do kk = 1, e2_length
+              array_l_3d_in(ii,jj,kk) = logical_pre
+              if (array_l_3d_in(ii,jj,kk) .eqv. logical_pre) then
+                f_sum = f_sum + 1
+              end if
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_3d( to_nd_array(array_l_3d_in) )
+
+        call from_nd_array( nd_array_out, array_l_3d_out )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            do kk = 1, e2_length
+              if (array_l_3d_out(ii,jj,kk) .eqv. logical_pre) then
+                c_sum = c_sum + 1
+              end if
+            end do
+          end do
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_3d
+
+      integer &
+        & function test_from_ndarray_i32_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:), allocatable :: array_i32_3d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:), pointer :: array_i32_3d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_i32_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_i32_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_i32_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_i32_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_3d( to_nd_array(array_i32_3d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_i32_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_3d
+
+      integer &
+        & function test_from_ndarray_i64_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:), allocatable :: array_i64_3d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:), pointer :: array_i64_3d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_i64_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_i64_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_i64_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_i64_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_3d( to_nd_array(array_i64_3d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_i64_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_3d
+
+      integer &
+        & function test_from_ndarray_r32_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:), allocatable :: array_r32_3d_in
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:), pointer :: array_r32_3d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_r32_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_r32_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_r32_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_r32_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_3d( to_nd_array(array_r32_3d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_r32_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_3d
+
+      integer &
+        & function test_from_ndarray_r64_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:), allocatable :: array_r64_3d_in
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:), pointer :: array_r64_3d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_r64_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_r64_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_r64_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_r64_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_3d( to_nd_array(array_r64_3d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_r64_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_3d
+
+      integer &
+        & function test_from_ndarray_c32_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:), allocatable :: array_c32_3d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:), pointer :: array_c32_3d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_c32_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_c32_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_c32_3d_in(ii,jj,kk) = cmplx(ii+jj+kk,-(ii+jj+kk))
+              f_sum = f_sum + array_c32_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_3d( to_nd_array(array_c32_3d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_c32_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_3d
+
+      integer &
+        & function test_from_ndarray_c64_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:), allocatable :: array_c64_3d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:), pointer :: array_c64_3d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_c64_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_c64_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_c64_3d_in(ii,jj,kk) = cmplx(ii+jj+kk,-(ii+jj+kk))
+              f_sum = f_sum + array_c64_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_3d( to_nd_array(array_c64_3d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_c64_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_3d
+
+      integer &
         & function test_kokkos_allocate_view_l_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
