@@ -35,7 +35,7 @@
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-program test_ndarray_l_1d_main
+program test_to_ndarray_l_1d_main
     use, intrinsic :: iso_c_binding
     use, intrinsic :: iso_fortran_env
   
@@ -53,7 +53,7 @@ program test_ndarray_l_1d_main
       
       ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
   
-      ierr = test_ndarray_l_1d()
+      ierr = test_to_ndarray_l_1d()
   
       call kokkos_finalize()
   
@@ -61,4 +61,4 @@ program test_ndarray_l_1d_main
 
     end if
     
-  end program test_ndarray_l_1d_main
+  end program test_to_ndarray_l_1d_main
