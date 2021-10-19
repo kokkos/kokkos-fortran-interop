@@ -181,6 +181,15 @@ module flcl_ndarray_mod
       module procedure from_nd_array_r64_6d
       module procedure from_nd_array_c32_6d
       module procedure from_nd_array_c64_6d
+
+      ! 7D specializations
+      module procedure from_nd_array_l_7d
+      module procedure from_nd_array_i32_7d
+      module procedure from_nd_array_i64_7d
+      module procedure from_nd_array_r32_7d
+      module procedure from_nd_array_r64_7d
+      module procedure from_nd_array_c32_7d
+      module procedure from_nd_array_c64_7d
     end interface
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     contains
