@@ -82,541 +82,1031 @@ module flcl_test_f_mod
 
     interface
       integer(flcl_ndarray_index_f_t) &
-        & function f_test_ndarray_l_1d( nd_array_l_1d, f_sum ) &
-        & bind(c, name='c_test_ndarray_l_1d')
+        & function f_test_to_ndarray_l_1d( nd_array_l_1d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_l_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_1d
         integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_l_1d
+      end function f_test_to_ndarray_l_1d
     end interface
 
     interface
       integer(flcl_ndarray_i32_f_t) &
-        & function f_test_ndarray_i32_1d( nd_array_i32_1d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i32_1d')
+        & function f_test_to_ndarray_i32_1d( nd_array_i32_1d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i32_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_1d
         integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i32_1d
+      end function f_test_to_ndarray_i32_1d
     end interface
 
     interface
       integer(flcl_ndarray_i64_f_t) &
-        & function f_test_ndarray_i64_1d( nd_array_i64_1d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i64_1d')
+        & function f_test_to_ndarray_i64_1d( nd_array_i64_1d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i64_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_1d
         integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i64_1d
+      end function f_test_to_ndarray_i64_1d
     end interface
 
     interface
       real(flcl_ndarray_r32_f_t) &
-        & function f_test_ndarray_r32_1d( nd_array_r32_1d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r32_1d')
+        & function f_test_to_ndarray_r32_1d( nd_array_r32_1d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r32_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_1d
         real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r32_1d
+      end function f_test_to_ndarray_r32_1d
     end interface
 
     interface
       real(flcl_ndarray_r64_f_t) &
-        & function f_test_ndarray_r64_1d( nd_array_r64_1d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r64_1d')
+        & function f_test_to_ndarray_r64_1d( nd_array_r64_1d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r64_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_1d
         real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r64_1d
+      end function f_test_to_ndarray_r64_1d
     end interface
 
     interface
       complex(flcl_ndarray_c32_f_t) &
-        & function f_test_ndarray_c32_1d( nd_array_c32_1d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c32_1d')
+        & function f_test_to_ndarray_c32_1d( nd_array_c32_1d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c32_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_1d
         complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c32_1d
+      end function f_test_to_ndarray_c32_1d
     end interface
 
     interface
       complex(flcl_ndarray_c64_f_t) &
-        & function f_test_ndarray_c64_1d( nd_array_c64_1d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c64_1d')
+        & function f_test_to_ndarray_c64_1d( nd_array_c64_1d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c64_1d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_1d
         complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c64_1d
+      end function f_test_to_ndarray_c64_1d
     end interface
 
     interface
       integer(flcl_ndarray_index_f_t) &
-        & function f_test_ndarray_l_2d( nd_array_l_2d, f_sum ) &
-        & bind(c, name='c_test_ndarray_l_2d')
+        & function f_test_to_ndarray_l_2d( nd_array_l_2d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_l_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_2d
         integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_l_2d
+      end function f_test_to_ndarray_l_2d
     end interface
 
     interface
       integer(flcl_ndarray_i32_f_t) &
-        & function f_test_ndarray_i32_2d( nd_array_i32_2d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i32_2d')
+        & function f_test_to_ndarray_i32_2d( nd_array_i32_2d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i32_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_2d
         integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i32_2d
+      end function f_test_to_ndarray_i32_2d
     end interface
 
     interface
       integer(flcl_ndarray_i64_f_t) &
-        & function f_test_ndarray_i64_2d( nd_array_i64_2d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i64_2d')
+        & function f_test_to_ndarray_i64_2d( nd_array_i64_2d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i64_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_2d
         integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i64_2d
+      end function f_test_to_ndarray_i64_2d
     end interface
 
     interface
       real(flcl_ndarray_r32_f_t) &
-        & function f_test_ndarray_r32_2d( nd_array_r32_2d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r32_2d')
+        & function f_test_to_ndarray_r32_2d( nd_array_r32_2d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r32_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_2d
         real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r32_2d
+      end function f_test_to_ndarray_r32_2d
     end interface
 
     interface
       real(flcl_ndarray_r64_f_t) &
-        & function f_test_ndarray_r64_2d( nd_array_r64_2d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r64_2d')
+        & function f_test_to_ndarray_r64_2d( nd_array_r64_2d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r64_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_2d
         real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r64_2d
+      end function f_test_to_ndarray_r64_2d
     end interface
 
     interface
       complex(flcl_ndarray_c32_f_t) &
-        & function f_test_ndarray_c32_2d( nd_array_c32_2d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c32_2d')
+        & function f_test_to_ndarray_c32_2d( nd_array_c32_2d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c32_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_2d
         complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c32_2d
+      end function f_test_to_ndarray_c32_2d
     end interface
 
     interface
       complex(flcl_ndarray_c64_f_t) &
-        & function f_test_ndarray_c64_2d( nd_array_c64_2d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c64_2d')
+        & function f_test_to_ndarray_c64_2d( nd_array_c64_2d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c64_2d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_2d
         complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c64_2d
+      end function f_test_to_ndarray_c64_2d
     end interface
 
     interface
       integer(flcl_ndarray_index_f_t) &
-        & function f_test_ndarray_l_3d( nd_array_l_3d, f_sum ) &
-        & bind(c, name='c_test_ndarray_l_3d')
+        & function f_test_to_ndarray_l_3d( nd_array_l_3d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_l_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_3d
         integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_l_3d
+      end function f_test_to_ndarray_l_3d
     end interface
 
     interface
       integer(flcl_ndarray_i32_f_t) &
-        & function f_test_ndarray_i32_3d( nd_array_i32_3d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i32_3d')
+        & function f_test_to_ndarray_i32_3d( nd_array_i32_3d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_3d
         integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i32_3d
+      end function f_test_to_ndarray_i32_3d
     end interface
 
     interface
       integer(flcl_ndarray_i64_f_t) &
-        & function f_test_ndarray_i64_3d( nd_array_i64_3d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i64_3d')
+        & function f_test_to_ndarray_i64_3d( nd_array_i64_3d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_3d
         integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i64_3d
+      end function f_test_to_ndarray_i64_3d
     end interface
 
     interface
       real(flcl_ndarray_r32_f_t) &
-        & function f_test_ndarray_r32_3d( nd_array_r32_3d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r32_3d')
+        & function f_test_to_ndarray_r32_3d( nd_array_r32_3d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_3d
         real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r32_3d
+      end function f_test_to_ndarray_r32_3d
     end interface
 
     interface
       real(flcl_ndarray_r64_f_t) &
-        & function f_test_ndarray_r64_3d( nd_array_r64_3d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r64_3d')
+        & function f_test_to_ndarray_r64_3d( nd_array_r64_3d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_3d
         real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r64_3d
+      end function f_test_to_ndarray_r64_3d
     end interface
 
     interface
       complex(flcl_ndarray_c32_f_t) &
-        & function f_test_ndarray_c32_3d( nd_array_c32_3d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c32_3d')
+        & function f_test_to_ndarray_c32_3d( nd_array_c32_3d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c32_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_3d
         complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c32_3d
+      end function f_test_to_ndarray_c32_3d
     end interface
 
     interface
       complex(flcl_ndarray_c64_f_t) &
-        & function f_test_ndarray_c64_3d( nd_array_c64_3d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c64_3d')
+        & function f_test_to_ndarray_c64_3d( nd_array_c64_3d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c64_3d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_3d
         complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c64_3d
+      end function f_test_to_ndarray_c64_3d
     end interface
 
     interface
       integer(flcl_ndarray_index_f_t) &
-        & function f_test_ndarray_l_4d( nd_array_l_4d, f_sum ) &
-        & bind(c, name='c_test_ndarray_l_4d')
+        & function f_test_to_ndarray_l_4d( nd_array_l_4d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_l_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_4d
         integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_l_4d
+      end function f_test_to_ndarray_l_4d
     end interface
 
     interface
       integer(flcl_ndarray_i32_f_t) &
-        & function f_test_ndarray_i32_4d( nd_array_i32_4d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i32_4d')
+        & function f_test_to_ndarray_i32_4d( nd_array_i32_4d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i32_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_4d
         integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i32_4d
+      end function f_test_to_ndarray_i32_4d
     end interface
 
     interface
       integer(flcl_ndarray_i64_f_t) &
-        & function f_test_ndarray_i64_4d( nd_array_i64_4d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i64_4d')
+        & function f_test_to_ndarray_i64_4d( nd_array_i64_4d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i64_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_4d
         integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i64_4d
+      end function f_test_to_ndarray_i64_4d
     end interface
 
     interface
       real(flcl_ndarray_r32_f_t) &
-        & function f_test_ndarray_r32_4d( nd_array_r32_4d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r32_4d')
+        & function f_test_to_ndarray_r32_4d( nd_array_r32_4d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r32_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_4d
         real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r32_4d
+      end function f_test_to_ndarray_r32_4d
     end interface
 
     interface
       real(flcl_ndarray_r64_f_t) &
-        & function f_test_ndarray_r64_4d( nd_array_r64_4d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r64_4d')
+        & function f_test_to_ndarray_r64_4d( nd_array_r64_4d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r64_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_4d
         real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r64_4d
+      end function f_test_to_ndarray_r64_4d
     end interface
 
     interface
       complex(flcl_ndarray_c32_f_t) &
-        & function f_test_ndarray_c32_4d( nd_array_c32_4d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c32_4d')
+        & function f_test_to_ndarray_c32_4d( nd_array_c32_4d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c32_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_4d
         complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c32_4d
+      end function f_test_to_ndarray_c32_4d
     end interface
 
     interface
       complex(flcl_ndarray_c64_f_t) &
-        & function f_test_ndarray_c64_4d( nd_array_c64_4d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c64_4d')
+        & function f_test_to_ndarray_c64_4d( nd_array_c64_4d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c64_4d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_4d
         complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c64_4d
+      end function f_test_to_ndarray_c64_4d
     end interface
 
     interface
       integer(flcl_ndarray_index_f_t) &
-        & function f_test_ndarray_l_5d( nd_array_l_5d, f_sum ) &
-        & bind(c, name='c_test_ndarray_l_5d')
+        & function f_test_to_ndarray_l_5d( nd_array_l_5d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_l_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_5d
         integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_l_5d
+      end function f_test_to_ndarray_l_5d
     end interface
 
     interface
       integer(flcl_ndarray_i32_f_t) &
-        & function f_test_ndarray_i32_5d( nd_array_i32_5d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i32_5d')
+        & function f_test_to_ndarray_i32_5d( nd_array_i32_5d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i32_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_5d
         integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i32_5d
+      end function f_test_to_ndarray_i32_5d
     end interface
 
     interface
       integer(flcl_ndarray_i64_f_t) &
-        & function f_test_ndarray_i64_5d( nd_array_i64_5d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i64_5d')
+        & function f_test_to_ndarray_i64_5d( nd_array_i64_5d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i64_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_5d
         integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i64_5d
+      end function f_test_to_ndarray_i64_5d
     end interface
 
     interface
       real(flcl_ndarray_r32_f_t) &
-        & function f_test_ndarray_r32_5d( nd_array_r32_5d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r32_5d')
+        & function f_test_to_ndarray_r32_5d( nd_array_r32_5d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r32_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_5d
         real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r32_5d
+      end function f_test_to_ndarray_r32_5d
     end interface
 
     interface
       real(flcl_ndarray_r64_f_t) &
-        & function f_test_ndarray_r64_5d( nd_array_r64_5d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r64_5d')
+        & function f_test_to_ndarray_r64_5d( nd_array_r64_5d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r64_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_5d
         real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r64_5d
+      end function f_test_to_ndarray_r64_5d
     end interface
 
     interface
       complex(flcl_ndarray_c32_f_t) &
-        & function f_test_ndarray_c32_5d( nd_array_c32_5d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c32_5d')
+        & function f_test_to_ndarray_c32_5d( nd_array_c32_5d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c32_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_5d
         complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c32_5d
+      end function f_test_to_ndarray_c32_5d
     end interface
 
     interface
       complex(flcl_ndarray_c64_f_t) &
-        & function f_test_ndarray_c64_5d( nd_array_c64_5d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c64_5d')
+        & function f_test_to_ndarray_c64_5d( nd_array_c64_5d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c64_5d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_5d
         complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c64_5d
+      end function f_test_to_ndarray_c64_5d
     end interface
 
     interface
       integer(flcl_ndarray_index_f_t) &
-        & function f_test_ndarray_l_6d( nd_array_l_6d, f_sum ) &
-        & bind(c, name='c_test_ndarray_l_6d')
+        & function f_test_to_ndarray_l_6d( nd_array_l_6d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_l_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_6d
         integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_l_6d
+      end function f_test_to_ndarray_l_6d
     end interface
 
     interface
       integer(flcl_ndarray_i32_f_t) &
-        & function f_test_ndarray_i32_6d( nd_array_i32_6d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i32_6d')
+        & function f_test_to_ndarray_i32_6d( nd_array_i32_6d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i32_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_6d
         integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i32_6d
+      end function f_test_to_ndarray_i32_6d
     end interface
 
     interface
       integer(flcl_ndarray_i64_f_t) &
-        & function f_test_ndarray_i64_6d( nd_array_i64_6d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i64_6d')
+        & function f_test_to_ndarray_i64_6d( nd_array_i64_6d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i64_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_6d
         integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i64_6d
+      end function f_test_to_ndarray_i64_6d
     end interface
 
     interface
       real(flcl_ndarray_r32_f_t) &
-        & function f_test_ndarray_r32_6d( nd_array_r32_6d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r32_6d')
+        & function f_test_to_ndarray_r32_6d( nd_array_r32_6d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r32_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_6d
         real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r32_6d
+      end function f_test_to_ndarray_r32_6d
     end interface
 
     interface
       real(flcl_ndarray_r64_f_t) &
-        & function f_test_ndarray_r64_6d( nd_array_r64_6d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r64_6d')
+        & function f_test_to_ndarray_r64_6d( nd_array_r64_6d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r64_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_6d
         real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r64_6d
+      end function f_test_to_ndarray_r64_6d
     end interface
 
     interface
       complex(flcl_ndarray_c32_f_t) &
-        & function f_test_ndarray_c32_6d( nd_array_c32_6d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c32_6d')
+        & function f_test_to_ndarray_c32_6d( nd_array_c32_6d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c32_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_6d
         complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c32_6d
+      end function f_test_to_ndarray_c32_6d
     end interface
 
     interface
       complex(flcl_ndarray_c64_f_t) &
-        & function f_test_ndarray_c64_6d( nd_array_c64_6d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c64_6d')
+        & function f_test_to_ndarray_c64_6d( nd_array_c64_6d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c64_6d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_6d
         complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c64_6d
+      end function f_test_to_ndarray_c64_6d
     end interface
 
     interface
       integer(flcl_ndarray_index_f_t) &
-        & function f_test_ndarray_l_7d( nd_array_l_7d, f_sum ) &
-        & bind(c, name='c_test_ndarray_l_7d')
+        & function f_test_to_ndarray_l_7d( nd_array_l_7d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_l_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_l_7d
         integer(flcl_ndarray_index_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_l_7d
+      end function f_test_to_ndarray_l_7d
     end interface
 
     interface
       integer(flcl_ndarray_i32_f_t) &
-        & function f_test_ndarray_i32_7d( nd_array_i32_7d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i32_7d')
+        & function f_test_to_ndarray_i32_7d( nd_array_i32_7d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i32_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i32_7d
         integer(flcl_ndarray_i32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i32_7d
+      end function f_test_to_ndarray_i32_7d
     end interface
 
     interface
       integer(flcl_ndarray_i64_f_t) &
-        & function f_test_ndarray_i64_7d( nd_array_i64_7d, f_sum ) &
-        & bind(c, name='c_test_ndarray_i64_7d')
+        & function f_test_to_ndarray_i64_7d( nd_array_i64_7d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_i64_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_i64_7d
         integer(flcl_ndarray_i64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_i64_7d
+      end function f_test_to_ndarray_i64_7d
     end interface
 
     interface
       real(flcl_ndarray_r32_f_t) &
-        & function f_test_ndarray_r32_7d( nd_array_r32_7d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r32_7d')
+        & function f_test_to_ndarray_r32_7d( nd_array_r32_7d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r32_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r32_7d
         real(flcl_ndarray_r32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r32_7d
+      end function f_test_to_ndarray_r32_7d
     end interface
 
     interface
       real(flcl_ndarray_r64_f_t) &
-        & function f_test_ndarray_r64_7d( nd_array_r64_7d, f_sum ) &
-        & bind(c, name='c_test_ndarray_r64_7d')
+        & function f_test_to_ndarray_r64_7d( nd_array_r64_7d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_r64_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_r64_7d
         real(flcl_ndarray_r64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_r64_7d
+      end function f_test_to_ndarray_r64_7d
     end interface
 
     interface
       complex(flcl_ndarray_c32_f_t) &
-        & function f_test_ndarray_c32_7d( nd_array_c32_7d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c32_7d')
+        & function f_test_to_ndarray_c32_7d( nd_array_c32_7d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c32_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c32_7d
         complex(flcl_ndarray_c32_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c32_7d
+      end function f_test_to_ndarray_c32_7d
     end interface
 
     interface
       complex(flcl_ndarray_c64_f_t) &
-        & function f_test_ndarray_c64_7d( nd_array_c64_7d, f_sum ) &
-        & bind(c, name='c_test_ndarray_c64_7d')
+        & function f_test_to_ndarray_c64_7d( nd_array_c64_7d, f_sum ) &
+        & bind(c, name='c_test_to_ndarray_c64_7d')
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
         type(nd_array_t), intent(in) :: nd_array_c64_7d
         complex(flcl_ndarray_c64_f_t), intent(inout) :: f_sum
-      end function f_test_ndarray_c64_7d
+      end function f_test_to_ndarray_c64_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_1d( nd_array_l_1d ) &
+        & bind(c, name='c_test_from_ndarray_l_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_1d
+      end function f_test_from_ndarray_l_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_1d( nd_array_i32_1d ) &
+        & bind(c, name='c_test_from_ndarray_i32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_1d
+      end function f_test_from_ndarray_i32_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_1d( nd_array_i64_1d ) &
+        & bind(c, name='c_test_from_ndarray_i64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_1d
+      end function f_test_from_ndarray_i64_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_1d( nd_array_r32_1d ) &
+        & bind(c, name='c_test_from_ndarray_r32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_1d
+      end function f_test_from_ndarray_r32_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_1d( nd_array_r64_1d ) &
+        & bind(c, name='c_test_from_ndarray_r64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_1d
+      end function f_test_from_ndarray_r64_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_1d( nd_array_c32_1d ) &
+        & bind(c, name='c_test_from_ndarray_c32_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_1d
+      end function f_test_from_ndarray_c32_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_1d( nd_array_c64_1d ) &
+        & bind(c, name='c_test_from_ndarray_c64_1d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_1d
+      end function f_test_from_ndarray_c64_1d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_2d( nd_array_l_2d ) &
+        & bind(c, name='c_test_from_ndarray_l_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_2d
+      end function f_test_from_ndarray_l_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_2d( nd_array_i32_2d ) &
+        & bind(c, name='c_test_from_ndarray_i32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_2d
+      end function f_test_from_ndarray_i32_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_2d( nd_array_i64_2d ) &
+        & bind(c, name='c_test_from_ndarray_i64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_2d
+      end function f_test_from_ndarray_i64_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_2d( nd_array_r32_2d ) &
+        & bind(c, name='c_test_from_ndarray_r32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_2d
+      end function f_test_from_ndarray_r32_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_2d( nd_array_r64_2d ) &
+        & bind(c, name='c_test_from_ndarray_r64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_2d
+      end function f_test_from_ndarray_r64_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_2d( nd_array_c32_2d ) &
+        & bind(c, name='c_test_from_ndarray_c32_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_2d
+      end function f_test_from_ndarray_c32_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_2d( nd_array_c64_2d ) &
+        & bind(c, name='c_test_from_ndarray_c64_2d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_2d
+      end function f_test_from_ndarray_c64_2d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_3d( nd_array_l_3d ) &
+        & bind(c, name='c_test_from_ndarray_l_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_3d
+      end function f_test_from_ndarray_l_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_3d( nd_array_i32_3d ) &
+        & bind(c, name='c_test_from_ndarray_i32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_3d
+      end function f_test_from_ndarray_i32_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_3d( nd_array_i64_3d ) &
+        & bind(c, name='c_test_from_ndarray_i64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_3d
+      end function f_test_from_ndarray_i64_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_3d( nd_array_r32_3d ) &
+        & bind(c, name='c_test_from_ndarray_r32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_3d
+      end function f_test_from_ndarray_r32_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_3d( nd_array_r64_3d ) &
+        & bind(c, name='c_test_from_ndarray_r64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_3d
+      end function f_test_from_ndarray_r64_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_3d( nd_array_c32_3d ) &
+        & bind(c, name='c_test_from_ndarray_c32_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_3d
+      end function f_test_from_ndarray_c32_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_3d( nd_array_c64_3d ) &
+        & bind(c, name='c_test_from_ndarray_c64_3d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_3d
+      end function f_test_from_ndarray_c64_3d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_4d( nd_array_l_4d ) &
+        & bind(c, name='c_test_from_ndarray_l_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_4d
+      end function f_test_from_ndarray_l_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_4d( nd_array_i32_4d ) &
+        & bind(c, name='c_test_from_ndarray_i32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_4d
+      end function f_test_from_ndarray_i32_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_4d( nd_array_i64_4d ) &
+        & bind(c, name='c_test_from_ndarray_i64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_4d
+      end function f_test_from_ndarray_i64_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_4d( nd_array_r32_4d ) &
+        & bind(c, name='c_test_from_ndarray_r32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_4d
+      end function f_test_from_ndarray_r32_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_4d( nd_array_r64_4d ) &
+        & bind(c, name='c_test_from_ndarray_r64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_4d
+      end function f_test_from_ndarray_r64_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_4d( nd_array_c32_4d ) &
+        & bind(c, name='c_test_from_ndarray_c32_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_4d
+      end function f_test_from_ndarray_c32_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_4d( nd_array_c64_4d ) &
+        & bind(c, name='c_test_from_ndarray_c64_4d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_4d
+      end function f_test_from_ndarray_c64_4d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_5d( nd_array_l_5d ) &
+        & bind(c, name='c_test_from_ndarray_l_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_5d
+      end function f_test_from_ndarray_l_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_5d( nd_array_i32_5d ) &
+        & bind(c, name='c_test_from_ndarray_i32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_5d
+      end function f_test_from_ndarray_i32_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_5d( nd_array_i64_5d ) &
+        & bind(c, name='c_test_from_ndarray_i64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_5d
+      end function f_test_from_ndarray_i64_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_5d( nd_array_r32_5d ) &
+        & bind(c, name='c_test_from_ndarray_r32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_5d
+      end function f_test_from_ndarray_r32_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_5d( nd_array_r64_5d ) &
+        & bind(c, name='c_test_from_ndarray_r64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_5d
+      end function f_test_from_ndarray_r64_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_5d( nd_array_c32_5d ) &
+        & bind(c, name='c_test_from_ndarray_c32_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_5d
+      end function f_test_from_ndarray_c32_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_5d( nd_array_c64_5d ) &
+        & bind(c, name='c_test_from_ndarray_c64_5d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_5d
+      end function f_test_from_ndarray_c64_5d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_6d( nd_array_l_6d ) &
+        & bind(c, name='c_test_from_ndarray_l_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_6d
+      end function f_test_from_ndarray_l_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_6d( nd_array_i32_6d ) &
+        & bind(c, name='c_test_from_ndarray_i32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_6d
+      end function f_test_from_ndarray_i32_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_6d( nd_array_i64_6d ) &
+        & bind(c, name='c_test_from_ndarray_i64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_6d
+      end function f_test_from_ndarray_i64_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_6d( nd_array_r32_6d ) &
+        & bind(c, name='c_test_from_ndarray_r32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_6d
+      end function f_test_from_ndarray_r32_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_6d( nd_array_r64_6d ) &
+        & bind(c, name='c_test_from_ndarray_r64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_6d
+      end function f_test_from_ndarray_r64_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_6d( nd_array_c32_6d ) &
+        & bind(c, name='c_test_from_ndarray_c32_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_6d
+      end function f_test_from_ndarray_c32_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_6d( nd_array_c64_6d ) &
+        & bind(c, name='c_test_from_ndarray_c64_6d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_6d
+      end function f_test_from_ndarray_c64_6d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_l_7d( nd_array_l_7d ) &
+        & bind(c, name='c_test_from_ndarray_l_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_l_7d
+      end function f_test_from_ndarray_l_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i32_7d( nd_array_i32_7d ) &
+        & bind(c, name='c_test_from_ndarray_i32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i32_7d
+      end function f_test_from_ndarray_i32_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_i64_7d( nd_array_i64_7d ) &
+        & bind(c, name='c_test_from_ndarray_i64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_i64_7d
+      end function f_test_from_ndarray_i64_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r32_7d( nd_array_r32_7d ) &
+        & bind(c, name='c_test_from_ndarray_r32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r32_7d
+      end function f_test_from_ndarray_r32_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_r64_7d( nd_array_r64_7d ) &
+        & bind(c, name='c_test_from_ndarray_r64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_r64_7d
+      end function f_test_from_ndarray_r64_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c32_7d( nd_array_c32_7d ) &
+        & bind(c, name='c_test_from_ndarray_c32_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c32_7d
+      end function f_test_from_ndarray_c32_7d
+    end interface
+
+    interface
+      type(nd_array_t) &
+        & function f_test_from_ndarray_c64_7d( nd_array_c64_7d ) &
+        & bind(c, name='c_test_from_ndarray_c64_7d')
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        type(nd_array_t), intent(in) :: nd_array_c64_7d
+      end function f_test_from_ndarray_c64_7d
     end interface
 
     interface
@@ -1462,7 +1952,7 @@ module flcl_test_f_mod
     contains
 
       integer &
-        & function test_ndarray_l_1d() &
+        & function test_to_ndarray_l_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_ndarray_mod
@@ -1490,7 +1980,7 @@ module flcl_test_f_mod
             f_sum = f_sum + 1
           end if
         end do
-        c_sum = f_test_ndarray_l_1d( to_nd_array(array_l_1d), f_sum )
+        c_sum = f_test_to_ndarray_l_1d( to_nd_array(array_l_1d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           if (array_l_1d(ii) .eqv. logical_post) then
@@ -1516,10 +2006,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_l_1d
+      end function test_to_ndarray_l_1d
 
       integer &
-        & function test_ndarray_i32_1d() &
+        & function test_to_ndarray_i32_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1535,7 +2025,7 @@ module flcl_test_f_mod
           array_i32_1d(ii) = ii
           f_sum = f_sum + array_i32_1d(ii)
         end do
-        c_sum = f_test_ndarray_i32_1d( to_nd_array(array_i32_1d), f_sum )
+        c_sum = f_test_to_ndarray_i32_1d( to_nd_array(array_i32_1d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           f_sum = f_sum + array_i32_1d(ii)
@@ -1551,10 +2041,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i32_1d
+      end function test_to_ndarray_i32_1d
 
       integer &
-        & function test_ndarray_i64_1d() &
+        & function test_to_ndarray_i64_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1570,7 +2060,7 @@ module flcl_test_f_mod
           array_i64_1d(ii) = ii
           f_sum = f_sum + array_i64_1d(ii)
         end do
-        c_sum = f_test_ndarray_i64_1d( to_nd_array(array_i64_1d), f_sum )
+        c_sum = f_test_to_ndarray_i64_1d( to_nd_array(array_i64_1d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           f_sum = f_sum + array_i64_1d(ii)
@@ -1586,10 +2076,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i64_1d
+      end function test_to_ndarray_i64_1d
 
       integer &
-        & function test_ndarray_r32_1d() &
+        & function test_to_ndarray_r32_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1605,7 +2095,7 @@ module flcl_test_f_mod
           array_r32_1d(ii) = ii
           f_sum = f_sum + array_r32_1d(ii)
         end do
-        c_sum = f_test_ndarray_r32_1d( to_nd_array(array_r32_1d), f_sum )
+        c_sum = f_test_to_ndarray_r32_1d( to_nd_array(array_r32_1d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           f_sum = f_sum + array_r32_1d(ii)
@@ -1621,10 +2111,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r32_1d
+      end function test_to_ndarray_r32_1d
   
       integer &
-        & function test_ndarray_r64_1d() &
+        & function test_to_ndarray_r64_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1640,7 +2130,7 @@ module flcl_test_f_mod
           array_r64_1d(ii) = ii
           f_sum = f_sum + array_r64_1d(ii)
         end do
-        c_sum = f_test_ndarray_r64_1d( to_nd_array(array_r64_1d), f_sum )
+        c_sum = f_test_to_ndarray_r64_1d( to_nd_array(array_r64_1d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           f_sum = f_sum + array_r64_1d(ii)
@@ -1656,10 +2146,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r64_1d
+      end function test_to_ndarray_r64_1d
 
       integer &
-        & function test_ndarray_c32_1d() &
+        & function test_to_ndarray_c32_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1675,7 +2165,7 @@ module flcl_test_f_mod
           array_c32_1d(ii) = cmplx(ii,-ii)
           f_sum = f_sum + array_c32_1d(ii)
         end do
-        c_sum = f_test_ndarray_c32_1d( to_nd_array(array_c32_1d), f_sum )
+        c_sum = f_test_to_ndarray_c32_1d( to_nd_array(array_c32_1d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           f_sum = f_sum + array_c32_1d(ii)
@@ -1692,10 +2182,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c32_1d
+      end function test_to_ndarray_c32_1d
 
       integer &
-        & function test_ndarray_c64_1d() &
+        & function test_to_ndarray_c64_1d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1711,7 +2201,7 @@ module flcl_test_f_mod
           array_c64_1d(ii) = cmplx(ii,-ii)
           f_sum = f_sum + array_c64_1d(ii)
         end do
-        c_sum = f_test_ndarray_c64_1d( to_nd_array(array_c64_1d), f_sum )
+        c_sum = f_test_to_ndarray_c64_1d( to_nd_array(array_c64_1d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           f_sum = f_sum + array_c64_1d(ii)
@@ -1728,10 +2218,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c64_1d
+      end function test_to_ndarray_c64_1d
 
       integer &
-        & function test_ndarray_l_2d() &
+        & function test_to_ndarray_l_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1751,7 +2241,7 @@ module flcl_test_f_mod
             end if
           end do
         end do
-        c_sum = f_test_ndarray_l_2d( to_nd_array(array_l_2d), f_sum )
+        c_sum = f_test_to_ndarray_l_2d( to_nd_array(array_l_2d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -1771,10 +2261,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_l_2d
+      end function test_to_ndarray_l_2d
   
       integer &
-        & function test_ndarray_i32_2d() &
+        & function test_to_ndarray_i32_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1792,7 +2282,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_i32_2d(ii,jj)
           end do
         end do
-        c_sum = f_test_ndarray_i32_2d( to_nd_array(array_i32_2d), f_sum )
+        c_sum = f_test_to_ndarray_i32_2d( to_nd_array(array_i32_2d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -1810,10 +2300,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i32_2d
+      end function test_to_ndarray_i32_2d
 
       integer &
-        & function test_ndarray_i64_2d() &
+        & function test_to_ndarray_i64_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1831,7 +2321,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_i64_2d(ii,jj)
           end do
         end do
-        c_sum = f_test_ndarray_i64_2d( to_nd_array(array_i64_2d), f_sum )
+        c_sum = f_test_to_ndarray_i64_2d( to_nd_array(array_i64_2d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -1849,10 +2339,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i64_2d
+      end function test_to_ndarray_i64_2d
 
       integer &
-        & function test_ndarray_r32_2d() &
+        & function test_to_ndarray_r32_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1870,7 +2360,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r32_2d(ii,jj)
           end do
         end do
-        c_sum = f_test_ndarray_r32_2d( to_nd_array(array_r32_2d), f_sum )
+        c_sum = f_test_to_ndarray_r32_2d( to_nd_array(array_r32_2d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -1888,10 +2378,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r32_2d
+      end function test_to_ndarray_r32_2d
   
       integer &
-        & function test_ndarray_r64_2d() &
+        & function test_to_ndarray_r64_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1909,7 +2399,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_r64_2d(ii,jj)
           end do
         end do
-        c_sum = f_test_ndarray_r64_2d( to_nd_array(array_r64_2d), f_sum )
+        c_sum = f_test_to_ndarray_r64_2d( to_nd_array(array_r64_2d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -1927,10 +2417,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r64_2d
+      end function test_to_ndarray_r64_2d
 
       integer &
-        & function test_ndarray_c32_2d() &
+        & function test_to_ndarray_c32_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1948,7 +2438,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_c32_2d(ii,jj)
           end do
         end do
-        c_sum = f_test_ndarray_c32_2d( to_nd_array(array_c32_2d), f_sum )
+        c_sum = f_test_to_ndarray_c32_2d( to_nd_array(array_c32_2d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -1967,10 +2457,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c32_2d
+      end function test_to_ndarray_c32_2d
 
       integer &
-        & function test_ndarray_c64_2d() &
+        & function test_to_ndarray_c64_2d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -1988,7 +2478,7 @@ module flcl_test_f_mod
             f_sum = f_sum + array_c64_2d(ii,jj)
           end do
         end do
-        c_sum = f_test_ndarray_c64_2d( to_nd_array(array_c64_2d), f_sum )
+        c_sum = f_test_to_ndarray_c64_2d( to_nd_array(array_c64_2d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2007,10 +2497,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c64_2d
+      end function test_to_ndarray_c64_2d
 
       integer & 
-        & function test_ndarray_l_3d() &
+        & function test_to_ndarray_l_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2032,7 +2522,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_l_3d( to_nd_array(array_l_3d), f_sum )
+        c_sum = f_test_to_ndarray_l_3d( to_nd_array(array_l_3d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2054,10 +2544,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_l_3d
+      end function test_to_ndarray_l_3d
   
       integer &
-        & function test_ndarray_i32_3d() &
+        & function test_to_ndarray_i32_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2077,7 +2567,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i32_3d( to_nd_array(array_i32_3d), f_sum )
+        c_sum = f_test_to_ndarray_i32_3d( to_nd_array(array_i32_3d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2097,10 +2587,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i32_3d
+      end function test_to_ndarray_i32_3d
 
       integer &
-        & function test_ndarray_i64_3d() &
+        & function test_to_ndarray_i64_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2120,7 +2610,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i64_3d( to_nd_array(array_i64_3d), f_sum )
+        c_sum = f_test_to_ndarray_i64_3d( to_nd_array(array_i64_3d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2140,10 +2630,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i64_3d
+      end function test_to_ndarray_i64_3d
 
       integer &
-        & function test_ndarray_r32_3d() &
+        & function test_to_ndarray_r32_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2163,7 +2653,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r32_3d( to_nd_array(array_r32_3d), f_sum )
+        c_sum = f_test_to_ndarray_r32_3d( to_nd_array(array_r32_3d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2183,10 +2673,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r32_3d
+      end function test_to_ndarray_r32_3d
   
       integer &
-        & function test_ndarray_r64_3d() &
+        & function test_to_ndarray_r64_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2206,7 +2696,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r64_3d( to_nd_array(array_r64_3d), f_sum )
+        c_sum = f_test_to_ndarray_r64_3d( to_nd_array(array_r64_3d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2226,10 +2716,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r64_3d
+      end function test_to_ndarray_r64_3d
 
       integer &
-        & function test_ndarray_c32_3d() &
+        & function test_to_ndarray_c32_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2249,7 +2739,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c32_3d( to_nd_array(array_c32_3d), f_sum )
+        c_sum = f_test_to_ndarray_c32_3d( to_nd_array(array_c32_3d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2270,10 +2760,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c32_3d
+      end function test_to_ndarray_c32_3d
 
       integer &
-        & function test_ndarray_c64_3d() &
+        & function test_to_ndarray_c64_3d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2293,7 +2783,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c64_3d( to_nd_array(array_c64_3d), f_sum )
+        c_sum = f_test_to_ndarray_c64_3d( to_nd_array(array_c64_3d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2314,10 +2804,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c64_3d
+      end function test_to_ndarray_c64_3d
 
       integer &
-        & function  test_ndarray_l_4d() &
+        & function  test_to_ndarray_l_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2341,7 +2831,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_l_4d( to_nd_array(array_l_4d), f_sum )
+        c_sum = f_test_to_ndarray_l_4d( to_nd_array(array_l_4d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2365,10 +2855,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_l_4d
+      end function test_to_ndarray_l_4d
   
       integer &
-        & function  test_ndarray_i32_4d() &
+        & function  test_to_ndarray_i32_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2390,7 +2880,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i32_4d( to_nd_array(array_i32_4d), f_sum )
+        c_sum = f_test_to_ndarray_i32_4d( to_nd_array(array_i32_4d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2412,10 +2902,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i32_4d
+      end function test_to_ndarray_i32_4d
 
       integer &
-        & function  test_ndarray_i64_4d() &
+        & function  test_to_ndarray_i64_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2437,7 +2927,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i64_4d( to_nd_array(array_i64_4d), f_sum )
+        c_sum = f_test_to_ndarray_i64_4d( to_nd_array(array_i64_4d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2459,10 +2949,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i64_4d
+      end function test_to_ndarray_i64_4d
 
       integer &
-        & function  test_ndarray_r32_4d() &
+        & function  test_to_ndarray_r32_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2484,7 +2974,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r32_4d( to_nd_array(array_r32_4d), f_sum )
+        c_sum = f_test_to_ndarray_r32_4d( to_nd_array(array_r32_4d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2506,10 +2996,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r32_4d
+      end function test_to_ndarray_r32_4d
   
       integer &
-        & function  test_ndarray_r64_4d() &
+        & function  test_to_ndarray_r64_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2531,7 +3021,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r64_4d( to_nd_array(array_r64_4d), f_sum )
+        c_sum = f_test_to_ndarray_r64_4d( to_nd_array(array_r64_4d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2553,10 +3043,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r64_4d
+      end function test_to_ndarray_r64_4d
 
       integer &
-        & function test_ndarray_c32_4d() &
+        & function test_to_ndarray_c32_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2578,7 +3068,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c32_4d( to_nd_array(array_c32_4d), f_sum )
+        c_sum = f_test_to_ndarray_c32_4d( to_nd_array(array_c32_4d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2601,10 +3091,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c32_4d
+      end function test_to_ndarray_c32_4d
 
       integer &
-        & function test_ndarray_c64_4d() &
+        & function test_to_ndarray_c64_4d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2626,7 +3116,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c64_4d( to_nd_array(array_c64_4d), f_sum )
+        c_sum = f_test_to_ndarray_c64_4d( to_nd_array(array_c64_4d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2649,10 +3139,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c64_4d
+      end function test_to_ndarray_c64_4d
 
       integer &
-        & function  test_ndarray_l_5d() &
+        & function  test_to_ndarray_l_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2678,7 +3168,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_l_5d( to_nd_array(array_l_5d), f_sum )
+        c_sum = f_test_to_ndarray_l_5d( to_nd_array(array_l_5d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2704,10 +3194,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_l_5d
+      end function test_to_ndarray_l_5d
 
       integer &
-        & function  test_ndarray_i32_5d() &
+        & function  test_to_ndarray_i32_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2731,7 +3221,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i32_5d( to_nd_array(array_i32_5d), f_sum )
+        c_sum = f_test_to_ndarray_i32_5d( to_nd_array(array_i32_5d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2755,10 +3245,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i32_5d
+      end function test_to_ndarray_i32_5d
 
       integer &
-        & function  test_ndarray_i64_5d() &
+        & function  test_to_ndarray_i64_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2782,7 +3272,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i64_5d( to_nd_array(array_i64_5d), f_sum )
+        c_sum = f_test_to_ndarray_i64_5d( to_nd_array(array_i64_5d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2806,10 +3296,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i64_5d
+      end function test_to_ndarray_i64_5d
 
       integer &
-        & function  test_ndarray_r32_5d() &
+        & function  test_to_ndarray_r32_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2833,7 +3323,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r32_5d( to_nd_array(array_r32_5d), f_sum )
+        c_sum = f_test_to_ndarray_r32_5d( to_nd_array(array_r32_5d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2859,10 +3349,10 @@ module flcl_test_f_mod
             & (abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum))
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r32_5d
+      end function test_to_ndarray_r32_5d
 
       integer &
-        & function  test_ndarray_r64_5d() &
+        & function  test_to_ndarray_r64_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2886,7 +3376,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r64_5d( to_nd_array(array_r64_5d), f_sum )
+        c_sum = f_test_to_ndarray_r64_5d( to_nd_array(array_r64_5d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2910,10 +3400,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r64_5d
+      end function test_to_ndarray_r64_5d
 
       integer &
-        & function test_ndarray_c32_5d() &
+        & function test_to_ndarray_c32_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2937,7 +3427,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c32_5d( to_nd_array(array_c32_5d), f_sum )
+        c_sum = f_test_to_ndarray_c32_5d( to_nd_array(array_c32_5d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -2962,10 +3452,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c32_5d
+      end function test_to_ndarray_c32_5d
 
       integer &
-        & function test_ndarray_c64_5d() &
+        & function test_to_ndarray_c64_5d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -2989,7 +3479,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c64_5d( to_nd_array(array_c64_5d), f_sum )
+        c_sum = f_test_to_ndarray_c64_5d( to_nd_array(array_c64_5d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3014,10 +3504,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c64_5d
+      end function test_to_ndarray_c64_5d
 
       integer &
-        & function  test_ndarray_l_6d() &
+        & function  test_to_ndarray_l_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3045,7 +3535,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_l_6d( to_nd_array(array_l_6d), f_sum )
+        c_sum = f_test_to_ndarray_l_6d( to_nd_array(array_l_6d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3073,10 +3563,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_l_6d
+      end function test_to_ndarray_l_6d
 
       integer &
-        & function  test_ndarray_i32_6d() &
+        & function  test_to_ndarray_i32_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3102,7 +3592,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i32_6d( to_nd_array(array_i32_6d), f_sum )
+        c_sum = f_test_to_ndarray_i32_6d( to_nd_array(array_i32_6d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3128,10 +3618,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i32_6d
+      end function test_to_ndarray_i32_6d
 
       integer &
-        & function  test_ndarray_i64_6d() &
+        & function  test_to_ndarray_i64_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3157,7 +3647,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i64_6d( to_nd_array(array_i64_6d), f_sum )
+        c_sum = f_test_to_ndarray_i64_6d( to_nd_array(array_i64_6d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3183,10 +3673,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i64_6d
+      end function test_to_ndarray_i64_6d
 
       integer &
-        & function  test_ndarray_r32_6d() &
+        & function  test_to_ndarray_r32_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3213,7 +3703,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r32_6d( to_nd_array(array_r32_6d), f_sum )
+        c_sum = f_test_to_ndarray_r32_6d( to_nd_array(array_r32_6d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3241,10 +3731,10 @@ module flcl_test_f_mod
             & (abs(f_sum - c_sum ) < (ndarray_precision_single * c_sum))
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r32_6d
+      end function test_to_ndarray_r32_6d
 
       integer &
-        & function  test_ndarray_r64_6d() &
+        & function  test_to_ndarray_r64_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3270,7 +3760,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r64_6d( to_nd_array(array_r64_6d), f_sum )
+        c_sum = f_test_to_ndarray_r64_6d( to_nd_array(array_r64_6d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3296,10 +3786,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r64_6d
+      end function test_to_ndarray_r64_6d
 
       integer &
-        & function test_ndarray_c32_6d() &
+        & function test_to_ndarray_c32_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3325,7 +3815,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c32_6d( to_nd_array(array_c32_6d), f_sum )
+        c_sum = f_test_to_ndarray_c32_6d( to_nd_array(array_c32_6d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3352,10 +3842,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c32_6d
+      end function test_to_ndarray_c32_6d
 
       integer &
-        & function test_ndarray_c64_6d() &
+        & function test_to_ndarray_c64_6d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3381,7 +3871,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c64_6d( to_nd_array(array_c64_6d), f_sum )
+        c_sum = f_test_to_ndarray_c64_6d( to_nd_array(array_c64_6d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3408,10 +3898,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c64_6d
+      end function test_to_ndarray_c64_6d
 
       integer &
-        & function  test_ndarray_l_7d() &
+        & function  test_to_ndarray_l_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3441,7 +3931,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_l_7d( to_nd_array(array_l_7d), f_sum )
+        c_sum = f_test_to_ndarray_l_7d( to_nd_array(array_l_7d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3471,10 +3961,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_l_7d
+      end function test_to_ndarray_l_7d
 
       integer &
-        & function  test_ndarray_i32_7d() &
+        & function  test_to_ndarray_i32_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3502,7 +3992,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i32_7d( to_nd_array(array_i32_7d), f_sum )
+        c_sum = f_test_to_ndarray_i32_7d( to_nd_array(array_i32_7d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3530,10 +4020,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i32_7d
+      end function test_to_ndarray_i32_7d
 
       integer &
-        & function  test_ndarray_i64_7d() &
+        & function  test_to_ndarray_i64_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3561,7 +4051,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_i64_7d( to_nd_array(array_i64_7d), f_sum )
+        c_sum = f_test_to_ndarray_i64_7d( to_nd_array(array_i64_7d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3589,10 +4079,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_i64_7d
+      end function test_to_ndarray_i64_7d
 
       integer &
-        & function  test_ndarray_r32_7d() &
+        & function  test_to_ndarray_r32_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3620,7 +4110,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r32_7d( to_nd_array(array_r32_7d), f_sum )
+        c_sum = f_test_to_ndarray_r32_7d( to_nd_array(array_r32_7d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3648,10 +4138,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r32_7d
+      end function test_to_ndarray_r32_7d
 
       integer &
-        & function  test_ndarray_r64_7d() &
+        & function  test_to_ndarray_r64_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3679,7 +4169,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_r64_7d( to_nd_array(array_r64_7d), f_sum )
+        c_sum = f_test_to_ndarray_r64_7d( to_nd_array(array_r64_7d), f_sum )
         f_sum = 0
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3707,10 +4197,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_r64_7d
+      end function test_to_ndarray_r64_7d
 
       integer &
-        & function test_ndarray_c32_7d() &
+        & function test_to_ndarray_c32_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3738,7 +4228,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c32_7d( to_nd_array(array_c32_7d), f_sum )
+        c_sum = f_test_to_ndarray_c32_7d( to_nd_array(array_c32_7d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3767,10 +4257,10 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c32_7d
+      end function test_to_ndarray_c32_7d
 
       integer &
-        & function test_ndarray_c64_7d() &
+        & function test_to_ndarray_c64_7d() &
         & result(ierr)
         use, intrinsic :: iso_c_binding
         use :: flcl_mod
@@ -3798,7 +4288,7 @@ module flcl_test_f_mod
             end do
           end do
         end do
-        c_sum = f_test_ndarray_c64_7d( to_nd_array(array_c64_7d), f_sum )
+        c_sum = f_test_to_ndarray_c64_7d( to_nd_array(array_c64_7d), f_sum )
         f_sum = (0,0)
         do ii = 1, e0_length
           do jj = 1, e1_length
@@ -3827,7 +4317,2786 @@ module flcl_test_f_mod
           write(*,*)'c_sum = ',c_sum
           ierr = flcl_test_fail
         end if
-      end function test_ndarray_c64_7d
+      end function test_to_ndarray_c64_7d
+
+      integer &
+        & function test_from_ndarray_l_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:), allocatable :: array_l_1d_in
+        logical(flcl_ndarray_l_f_t), dimension(:), pointer :: array_l_1d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_l_1d_in(e0_length) )
+        allocate( array_l_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_l_1d_in(ii) = logical_pre
+          if (array_l_1d_in(ii) .eqv. logical_pre) then
+            f_sum = f_sum + 1
+          end if
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_1d( to_nd_array(array_l_1d_in) )
+
+        call from_nd_array( nd_array_out, array_l_1d_out )
+
+        do ii = 1, e0_length
+          if (array_l_1d_out(ii) .eqv. logical_pre) then
+            c_sum = c_sum + 1
+          end if
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_1d
+
+      integer &
+        & function test_from_ndarray_i32_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:), allocatable :: array_i32_1d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:), pointer :: array_i32_1d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_i32_1d_in(e0_length) )
+        allocate( array_i32_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_i32_1d_in(ii) = ii
+          f_sum = f_sum + array_i32_1d_in(ii)
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_1d( to_nd_array(array_i32_1d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_1d_out )
+
+        do ii = 1, e0_length
+          c_sum = c_sum + array_i32_1d_out(ii)
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_1d
+
+      integer &
+        & function test_from_ndarray_i64_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:), allocatable :: array_i64_1d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:), pointer :: array_i64_1d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_i64_1d_in(e0_length) )
+        allocate( array_i64_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_i64_1d_in(ii) = ii
+          f_sum = f_sum + array_i64_1d_in(ii)
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_1d( to_nd_array(array_i64_1d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_1d_out )
+
+        do ii = 1, e0_length
+          c_sum = c_sum + array_i64_1d_out(ii)
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_1d
+
+      integer &
+        & function test_from_ndarray_r32_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:), allocatable :: array_r32_1d_in
+        real(flcl_ndarray_r32_f_t), dimension(:), pointer :: array_r32_1d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_r32_1d_in(e0_length) )
+        allocate( array_r32_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_r32_1d_in(ii) = ii
+          f_sum = f_sum + array_r32_1d_in(ii)
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_1d( to_nd_array(array_r32_1d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_1d_out )
+
+        do ii = 1, e0_length
+          c_sum = c_sum + array_r32_1d_out(ii)
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_1d
+
+      integer &
+        & function test_from_ndarray_r64_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:), allocatable :: array_r64_1d_in
+        real(flcl_ndarray_r64_f_t), dimension(:), pointer :: array_r64_1d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_r64_1d_in(e0_length) )
+        allocate( array_r64_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_r64_1d_in(ii) = ii
+          f_sum = f_sum + array_r64_1d_in(ii)
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_1d( to_nd_array(array_r64_1d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_1d_out )
+
+        do ii = 1, e0_length
+          c_sum = c_sum + array_r64_1d_out(ii)
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_1d
+
+      integer &
+        & function test_from_ndarray_c32_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:), allocatable :: array_c32_1d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:), pointer :: array_c32_1d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_c32_1d_in(e0_length) )
+        allocate( array_c32_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_c32_1d_in(ii) = cmplx(ii,-ii)
+          f_sum = f_sum + array_c32_1d_in(ii)
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_1d( to_nd_array(array_c32_1d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_1d_out )
+
+        do ii = 1, e0_length
+          c_sum = c_sum + array_c32_1d_out(ii)
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_1d
+
+      integer &
+        & function test_from_ndarray_c64_1d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:), allocatable :: array_c64_1d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:), pointer :: array_c64_1d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii
+
+        allocate( array_c64_1d_in(e0_length) )
+        allocate( array_c64_1d_out(e0_length) )
+
+        do ii = 1, e0_length
+          array_c64_1d_in(ii) = cmplx(ii,-ii)
+          f_sum = f_sum + array_c64_1d_in(ii)
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_1d( to_nd_array(array_c64_1d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_1d_out )
+
+        do ii = 1, e0_length
+          c_sum = c_sum + array_c64_1d_out(ii)
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_1d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_1d
+
+      integer &
+        & function test_from_ndarray_l_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:,:), allocatable :: array_l_2d_in
+        logical(flcl_ndarray_l_f_t), dimension(:,:), pointer :: array_l_2d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj
+
+        allocate( array_l_2d_in(e0_length, e1_length) )
+        allocate( array_l_2d_out(e0_length, e1_length) )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            array_l_2d_in(ii,jj) = logical_pre
+            if (array_l_2d_in(ii,jj) .eqv. logical_pre) then
+              f_sum = f_sum + 1
+            end if
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_2d( to_nd_array(array_l_2d_in) )
+
+        call from_nd_array( nd_array_out, array_l_2d_out )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            if (array_l_2d_out(ii,jj) .eqv. logical_pre) then
+              c_sum = c_sum + 1
+            end if
+          end do
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_2d
+
+      integer &
+        & function test_from_ndarray_i32_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:,:), allocatable :: array_i32_2d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:,:), pointer :: array_i32_2d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj
+
+        allocate( array_i32_2d_in(e0_length, e1_length) )
+        allocate( array_i32_2d_out(e0_length, e1_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_i32_2d_in(ii,jj) = ii+jj
+            f_sum = f_sum + array_i32_2d_in(ii,jj)
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_2d( to_nd_array(array_i32_2d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_2d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            c_sum = c_sum + array_i32_2d_out(ii,jj)
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_2d
+
+      integer &
+        & function test_from_ndarray_i64_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:,:), allocatable :: array_i64_2d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:,:), pointer :: array_i64_2d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj
+
+        allocate( array_i64_2d_in(e0_length, e1_length) )
+        allocate( array_i64_2d_out(e0_length, e1_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_i64_2d_in(ii,jj) = ii+jj
+            f_sum = f_sum + array_i64_2d_in(ii,jj)
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_2d( to_nd_array(array_i64_2d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_2d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            c_sum = c_sum + array_i64_2d_out(ii,jj)
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_2d
+
+      integer &
+        & function test_from_ndarray_r32_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:,:), allocatable :: array_r32_2d_in
+        real(flcl_ndarray_r32_f_t), dimension(:,:), pointer :: array_r32_2d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj
+
+        allocate( array_r32_2d_in(e0_length, e1_length) )
+        allocate( array_r32_2d_out(e0_length, e1_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_r32_2d_in(ii,jj) = ii+jj
+            f_sum = f_sum + array_r32_2d_in(ii,jj)
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_2d( to_nd_array(array_r32_2d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_2d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            c_sum = c_sum + array_r32_2d_out(ii,jj)
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_2d
+
+      integer &
+        & function test_from_ndarray_r64_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:,:), allocatable :: array_r64_2d_in
+        real(flcl_ndarray_r64_f_t), dimension(:,:), pointer :: array_r64_2d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj
+
+        allocate( array_r64_2d_in(e0_length, e1_length) )
+        allocate( array_r64_2d_out(e0_length, e1_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_r64_2d_in(ii,jj) = ii+jj
+            f_sum = f_sum + array_r64_2d_in(ii,jj)
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_2d( to_nd_array(array_r64_2d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_2d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            c_sum = c_sum + array_r64_2d_out(ii,jj)
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_2d
+
+      integer &
+        & function test_from_ndarray_c32_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:,:), allocatable :: array_c32_2d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:,:), pointer :: array_c32_2d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj
+
+        allocate( array_c32_2d_in(e0_length, e1_length) )
+        allocate( array_c32_2d_out(e0_length, e1_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_c32_2d_in(ii,jj) = cmplx(ii+jj,-(ii+jj))
+            f_sum = f_sum + array_c32_2d_in(ii,jj)
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_2d( to_nd_array(array_c32_2d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_2d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            c_sum = c_sum + array_c32_2d_out(ii,jj)
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_2d
+
+      integer &
+        & function test_from_ndarray_c64_2d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:,:), allocatable :: array_c64_2d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:,:), pointer :: array_c64_2d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj
+
+        allocate( array_c64_2d_in(e0_length, e1_length) )
+        allocate( array_c64_2d_out(e0_length, e1_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            array_c64_2d_in(ii,jj) = cmplx(ii+jj,-(ii+jj))
+            f_sum = f_sum + array_c64_2d_in(ii,jj)
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_2d( to_nd_array(array_c64_2d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_2d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            c_sum = c_sum + array_c64_2d_out(ii,jj)
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_2d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_2d
+
+      integer &
+        & function test_from_ndarray_l_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:), allocatable :: array_l_3d_in
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:), pointer :: array_l_3d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_l_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_l_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj =1 , e1_length
+            do kk = 1, e2_length
+              array_l_3d_in(ii,jj,kk) = logical_pre
+              if (array_l_3d_in(ii,jj,kk) .eqv. logical_pre) then
+                f_sum = f_sum + 1
+              end if
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_3d( to_nd_array(array_l_3d_in) )
+
+        call from_nd_array( nd_array_out, array_l_3d_out )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            do kk = 1, e2_length
+              if (array_l_3d_out(ii,jj,kk) .eqv. logical_pre) then
+                c_sum = c_sum + 1
+              end if
+            end do
+          end do
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_3d
+
+      integer &
+        & function test_from_ndarray_i32_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:), allocatable :: array_i32_3d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:), pointer :: array_i32_3d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_i32_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_i32_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_i32_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_i32_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_3d( to_nd_array(array_i32_3d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_i32_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_3d
+
+      integer &
+        & function test_from_ndarray_i64_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:), allocatable :: array_i64_3d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:), pointer :: array_i64_3d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_i64_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_i64_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_i64_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_i64_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_3d( to_nd_array(array_i64_3d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_i64_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_3d
+
+      integer &
+        & function test_from_ndarray_r32_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:), allocatable :: array_r32_3d_in
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:), pointer :: array_r32_3d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_r32_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_r32_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_r32_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_r32_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_3d( to_nd_array(array_r32_3d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_r32_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_3d
+
+      integer &
+        & function test_from_ndarray_r64_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:), allocatable :: array_r64_3d_in
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:), pointer :: array_r64_3d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_r64_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_r64_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_r64_3d_in(ii,jj,kk) = ii+jj+kk
+              f_sum = f_sum + array_r64_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_3d( to_nd_array(array_r64_3d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_r64_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_3d
+
+      integer &
+        & function test_from_ndarray_c32_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:), allocatable :: array_c32_3d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:), pointer :: array_c32_3d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_c32_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_c32_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_c32_3d_in(ii,jj,kk) = cmplx(ii+jj+kk,-(ii+jj+kk))
+              f_sum = f_sum + array_c32_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_3d( to_nd_array(array_c32_3d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_c32_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_3d
+
+      integer &
+        & function test_from_ndarray_c64_3d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:), allocatable :: array_c64_3d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:), pointer :: array_c64_3d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk
+
+        allocate( array_c64_3d_in(e0_length, e1_length, e2_length) )
+        allocate( array_c64_3d_out(e0_length, e1_length, e2_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              array_c64_3d_in(ii,jj,kk) = cmplx(ii+jj+kk,-(ii+jj+kk))
+              f_sum = f_sum + array_c64_3d_in(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_3d( to_nd_array(array_c64_3d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_3d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              c_sum = c_sum + array_c64_3d_out(ii,jj,kk)
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_3d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_3d
+
+      integer &
+        & function test_from_ndarray_l_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:), allocatable :: array_l_4d_in
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:), pointer :: array_l_4d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll
+
+        allocate( array_l_4d_in(e0_length, e1_length, e2_length, e3_length) )
+        allocate( array_l_4d_out(e0_length, e1_length, e2_length, e3_length) )
+
+        do ii = 1, e0_length
+          do jj =1 , e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_l_4d_in(ii,jj,kk,ll) = logical_pre
+                if (array_l_4d_in(ii,jj,kk,ll) .eqv. logical_pre) then
+                  f_sum = f_sum + 1
+                end if
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_4d( to_nd_array(array_l_4d_in) )
+
+        call from_nd_array( nd_array_out, array_l_4d_out )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                if (array_l_4d_out(ii,jj,kk,ll) .eqv. logical_pre) then
+                  c_sum = c_sum + 1
+                end if
+              end do
+            end do
+          end do
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_4d
+
+      integer &
+        & function test_from_ndarray_i32_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:), allocatable :: array_i32_4d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:), pointer :: array_i32_4d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll
+
+        allocate( array_i32_4d_in(e0_length, e1_length, e2_length, e3_length) )
+        allocate( array_i32_4d_out(e0_length, e1_length, e2_length, e3_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_i32_4d_in(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_i32_4d_in(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_4d( to_nd_array(array_i32_4d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_4d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                c_sum = c_sum + array_i32_4d_out(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_4d
+
+      integer &
+        & function test_from_ndarray_i64_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:), allocatable :: array_i64_4d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:), pointer :: array_i64_4d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll
+
+        allocate( array_i64_4d_in(e0_length, e1_length, e2_length, e3_length) )
+        allocate( array_i64_4d_out(e0_length, e1_length, e2_length, e3_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_i64_4d_in(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_i64_4d_in(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_4d( to_nd_array(array_i64_4d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_4d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                c_sum = c_sum + array_i64_4d_out(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_4d
+
+      integer &
+        & function test_from_ndarray_r32_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:), allocatable :: array_r32_4d_in
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:), pointer :: array_r32_4d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll
+
+        allocate( array_r32_4d_in(e0_length, e1_length, e2_length, e3_length) )
+        allocate( array_r32_4d_out(e0_length, e1_length, e2_length, e3_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_r32_4d_in(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_r32_4d_in(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_4d( to_nd_array(array_r32_4d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_4d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                c_sum = c_sum + array_r32_4d_out(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_4d
+
+      integer &
+        & function test_from_ndarray_r64_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:), allocatable :: array_r64_4d_in
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:), pointer :: array_r64_4d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll
+
+        allocate( array_r64_4d_in(e0_length, e1_length, e2_length, e3_length) )
+        allocate( array_r64_4d_out(e0_length, e1_length, e2_length, e3_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_r64_4d_in(ii,jj,kk,ll) = ii+jj+kk+ll
+                f_sum = f_sum + array_r64_4d_in(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_4d( to_nd_array(array_r64_4d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_4d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                c_sum = c_sum + array_r64_4d_out(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_4d
+
+      integer &
+        & function test_from_ndarray_c32_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:), allocatable :: array_c32_4d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:), pointer :: array_c32_4d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll
+
+        allocate( array_c32_4d_in(e0_length, e1_length, e2_length, e3_length) )
+        allocate( array_c32_4d_out(e0_length, e1_length, e2_length, e3_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_c32_4d_in(ii,jj,kk,ll) = cmplx(ii+jj+kk+ll,-(ii+jj+kk+ll))
+                f_sum = f_sum + array_c32_4d_in(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_4d( to_nd_array(array_c32_4d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_4d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                c_sum = c_sum + array_c32_4d_out(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_4d
+
+      integer &
+        & function test_from_ndarray_c64_4d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:), allocatable :: array_c64_4d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:), pointer :: array_c64_4d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll
+
+        allocate( array_c64_4d_in(e0_length, e1_length, e2_length, e3_length) )
+        allocate( array_c64_4d_out(e0_length, e1_length, e2_length, e3_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                array_c64_4d_in(ii,jj,kk,ll) = cmplx(ii+jj+kk+ll,-(ii+jj+kk+ll))
+                f_sum = f_sum + array_c64_4d_in(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_4d( to_nd_array(array_c64_4d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_4d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                c_sum = c_sum + array_c64_4d_out(ii,jj,kk,ll)
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_4d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_4d
+
+      integer &
+        & function test_from_ndarray_l_5d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:), allocatable :: array_l_5d_in
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:), pointer :: array_l_5d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm
+
+        allocate( array_l_5d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+        allocate( array_l_5d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+
+        do ii = 1, e0_length
+          do jj = 1 , e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  array_l_5d_in(ii,jj,kk,ll,mm) = logical_pre
+                  if (array_l_5d_in(ii,jj,kk,ll,mm) .eqv. logical_pre) then
+                    f_sum = f_sum + 1
+                  end if
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_5d( to_nd_array(array_l_5d_in) )
+
+        call from_nd_array( nd_array_out, array_l_5d_out )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  if (array_l_5d_out(ii,jj,kk,ll,mm) .eqv. logical_pre) then
+                    c_sum = c_sum + 1
+                  end if
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_5d
+
+      integer &
+        & function test_from_ndarray_i32_5d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:), allocatable :: array_i32_5d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:), pointer :: array_i32_5d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm
+
+        allocate( array_i32_5d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+        allocate( array_i32_5d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  array_i32_5d_in(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
+                  f_sum = f_sum + array_i32_5d_in(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_5d( to_nd_array(array_i32_5d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_5d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  c_sum = c_sum + array_i32_5d_out(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_5d
+
+      integer &
+        & function test_from_ndarray_i64_5d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:), allocatable :: array_i64_5d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:), pointer :: array_i64_5d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm
+
+        allocate( array_i64_5d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+        allocate( array_i64_5d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  array_i64_5d_in(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
+                  f_sum = f_sum + array_i64_5d_in(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_5d( to_nd_array(array_i64_5d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_5d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  c_sum = c_sum + array_i64_5d_out(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_5d
+
+      integer &
+        & function test_from_ndarray_r32_5d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:,:), allocatable :: array_r32_5d_in
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:,:), pointer :: array_r32_5d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm
+
+        allocate( array_r32_5d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+        allocate( array_r32_5d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  array_r32_5d_in(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
+                  f_sum = f_sum + array_r32_5d_in(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_5d( to_nd_array(array_r32_5d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_5d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  c_sum = c_sum + array_r32_5d_out(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_5d
+
+      integer &
+        & function test_from_ndarray_r64_5d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:,:), allocatable :: array_r64_5d_in
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:,:), pointer :: array_r64_5d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm
+
+        allocate( array_r64_5d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+        allocate( array_r64_5d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  array_r64_5d_in(ii,jj,kk,ll,mm) = ii+jj+kk+ll+mm
+                  f_sum = f_sum + array_r64_5d_in(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_5d( to_nd_array(array_r64_5d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_5d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  c_sum = c_sum + array_r64_5d_out(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_5d
+
+      integer &
+        & function test_from_ndarray_c32_5d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:,:), allocatable :: array_c32_5d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:,:), pointer :: array_c32_5d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm
+
+        allocate( array_c32_5d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+        allocate( array_c32_5d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  array_c32_5d_in(ii,jj,kk,ll,mm) = cmplx(ii+jj+kk+ll+mm,-(ii+jj+kk+ll+mm))
+                  f_sum = f_sum + array_c32_5d_in(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_5d( to_nd_array(array_c32_5d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_5d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  c_sum = c_sum + array_c32_5d_out(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_5d
+
+      integer &
+        & function test_from_ndarray_c64_5d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:,:), allocatable :: array_c64_5d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:,:), pointer :: array_c64_5d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm
+
+        allocate( array_c64_5d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+        allocate( array_c64_5d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  array_c64_5d_in(ii,jj,kk,ll,mm) = cmplx(ii+jj+kk+ll+mm,-(ii+jj+kk+ll+mm))
+                  f_sum = f_sum + array_c64_5d_in(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_5d( to_nd_array(array_c64_5d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_5d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  c_sum = c_sum + array_c64_5d_out(ii,jj,kk,ll,mm)
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_5d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_5d
+
+      integer &
+        & function test_from_ndarray_l_6d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:,:), allocatable :: array_l_6d_in
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:,:), pointer :: array_l_6d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn
+
+        allocate( array_l_6d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+        allocate( array_l_6d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+
+        do ii = 1, e0_length
+          do jj = 1 , e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    array_l_6d_in(ii,jj,kk,ll,mm,nn) = logical_pre
+                    if (array_l_6d_in(ii,jj,kk,ll,mm,nn) .eqv. logical_pre) then
+                      f_sum = f_sum + 1
+                    end if
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_6d( to_nd_array(array_l_6d_in) )
+
+        call from_nd_array( nd_array_out, array_l_6d_out )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    if (array_l_6d_out(ii,jj,kk,ll,mm,nn) .eqv. logical_pre) then
+                      c_sum = c_sum + 1
+                    end if
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_6d
+
+      integer &
+        & function test_from_ndarray_i32_6d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:,:), allocatable :: array_i32_6d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:,:), pointer :: array_i32_6d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn
+
+        allocate( array_i32_6d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+        allocate( array_i32_6d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    array_i32_6d_in(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
+                    f_sum = f_sum + array_i32_6d_in(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_6d( to_nd_array(array_i32_6d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_6d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    c_sum = c_sum + array_i32_6d_out(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_6d
+
+      integer &
+        & function test_from_ndarray_i64_6d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:,:), allocatable :: array_i64_6d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:,:), pointer :: array_i64_6d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn
+
+        allocate( array_i64_6d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+        allocate( array_i64_6d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    array_i64_6d_in(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
+                    f_sum = f_sum + array_i64_6d_in(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_6d( to_nd_array(array_i64_6d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_6d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    c_sum = c_sum + array_i64_6d_out(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_6d
+
+      integer &
+        & function test_from_ndarray_r32_6d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:,:,:), allocatable :: array_r32_6d_in
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:,:,:), pointer :: array_r32_6d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn
+
+        allocate( array_r32_6d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+        allocate( array_r32_6d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    array_r32_6d_in(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
+                    f_sum = f_sum + array_r32_6d_in(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_6d( to_nd_array(array_r32_6d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_6d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    c_sum = c_sum + array_r32_6d_out(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_6d
+
+      integer &
+        & function test_from_ndarray_r64_6d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:,:,:), allocatable :: array_r64_6d_in
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:,:,:), pointer :: array_r64_6d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn
+
+        allocate( array_r64_6d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+        allocate( array_r64_6d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    array_r64_6d_in(ii,jj,kk,ll,mm,nn) = ii+jj+kk+ll+mm+nn
+                    f_sum = f_sum + array_r64_6d_in(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_6d( to_nd_array(array_r64_6d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_6d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    c_sum = c_sum + array_r64_6d_out(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_6d
+
+      integer &
+        & function test_from_ndarray_c32_6d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:,:,:), allocatable :: array_c32_6d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:,:,:), pointer :: array_c32_6d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn
+
+        allocate( array_c32_6d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+        allocate( array_c32_6d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    array_c32_6d_in(ii,jj,kk,ll,mm,nn) = cmplx(ii+jj+kk+ll+mm+nn,-(ii+jj+kk+ll+mm+nn))
+                    f_sum = f_sum + array_c32_6d_in(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_6d( to_nd_array(array_c32_6d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_6d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    c_sum = c_sum + array_c32_6d_out(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_6d
+
+      integer &
+        & function test_from_ndarray_c64_6d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:,:,:), allocatable :: array_c64_6d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:,:,:), pointer :: array_c64_6d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn
+
+        allocate( array_c64_6d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+        allocate( array_c64_6d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    array_c64_6d_in(ii,jj,kk,ll,mm,nn) = cmplx(ii+jj+kk+ll+mm+nn,-(ii+jj+kk+ll+mm+nn))
+                    f_sum = f_sum + array_c64_6d_in(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_6d( to_nd_array(array_c64_6d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_6d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    c_sum = c_sum + array_c64_6d_out(ii,jj,kk,ll,mm,nn)
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_6d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_6d
+
+      integer &
+        & function test_from_ndarray_l_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_l_7d_in
+        logical(flcl_ndarray_l_f_t), dimension(:,:,:,:,:,:,:), pointer :: array_l_7d_out
+        integer(flcl_ndarray_index_f_t) :: c_sum = 0
+        integer(flcl_ndarray_index_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn, oo
+
+        allocate( array_l_7d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+        allocate( array_l_7d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+
+        do ii = 1, e0_length
+          do jj = 1 , e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_l_7d_in(ii,jj,kk,ll,mm,nn,oo) = logical_pre
+                      if (array_l_7d_in(ii,jj,kk,ll,mm,nn,oo) .eqv. logical_pre) then
+                        f_sum = f_sum + 1
+                      end if
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_l_7d( to_nd_array(array_l_7d_in) )
+
+        call from_nd_array( nd_array_out, array_l_7d_out )
+
+        do ii = 1, e0_length
+          do jj =1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      if (array_l_7d_out(ii,jj,kk,ll,mm,nn,oo) .eqv. logical_pre) then
+                        c_sum = c_sum + 1
+                      end if
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( f_sum == c_sum ) then
+          write(*,*)'PASSED from_ndarray_l_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_l_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_l_7d
+
+      integer &
+        & function test_from_ndarray_i32_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i32_7d_in
+        integer(flcl_ndarray_i32_f_t), dimension(:,:,:,:,:,:,:), pointer :: array_i32_7d_out
+        integer(flcl_ndarray_i32_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn, oo
+
+        allocate( array_i32_7d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+        allocate( array_i32_7d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_i32_7d_in(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
+                      f_sum = f_sum + array_i32_7d_in(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i32_7d( to_nd_array(array_i32_7d_in) )
+
+        call from_nd_array( nd_array_out, array_i32_7d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      c_sum = c_sum + array_i32_7d_out(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i32_7d
+
+      integer &
+        & function test_from_ndarray_i64_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_i64_7d_in
+        integer(flcl_ndarray_i64_f_t), dimension(:,:,:,:,:,:,:), pointer :: array_i64_7d_out
+        integer(flcl_ndarray_i64_f_t) :: c_sum = 0
+        integer(flcl_ndarray_i64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn, oo
+
+        allocate( array_i64_7d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+        allocate( array_i64_7d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_i64_7d_in(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
+                      f_sum = f_sum + array_i64_7d_in(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_i64_7d( to_nd_array(array_i64_7d_in) )
+
+        call from_nd_array( nd_array_out, array_i64_7d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      c_sum = c_sum + array_i64_7d_out(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_i64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_i64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_i64_7d
+
+      integer &
+        & function test_from_ndarray_r32_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_r32_7d_in
+        real(flcl_ndarray_r32_f_t), dimension(:,:,:,:,:,:,:), pointer :: array_r32_7d_out
+        real(flcl_ndarray_r32_f_t) :: c_sum = 0
+        real(flcl_ndarray_r32_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn, oo
+
+        allocate( array_r32_7d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+        allocate( array_r32_7d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_r32_7d_in(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
+                      f_sum = f_sum + array_r32_7d_in(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r32_7d( to_nd_array(array_r32_7d_in) )
+
+        call from_nd_array( nd_array_out, array_r32_7d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      c_sum = c_sum + array_r32_7d_out(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r32_7d
+
+      integer &
+        & function test_from_ndarray_r64_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_r64_7d_in
+        real(flcl_ndarray_r64_f_t), dimension(:,:,:,:,:,:,:), pointer :: array_r64_7d_out
+        real(flcl_ndarray_r64_f_t) :: c_sum = 0
+        real(flcl_ndarray_r64_f_t) :: f_sum = 0
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn, oo
+
+        allocate( array_r64_7d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+        allocate( array_r64_7d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_r64_7d_in(ii,jj,kk,ll,mm,nn,oo) = ii+jj+kk+ll+mm+nn+oo
+                      f_sum = f_sum + array_r64_7d_in(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_r64_7d( to_nd_array(array_r64_7d_in) )
+
+        call from_nd_array( nd_array_out, array_r64_7d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      c_sum = c_sum + array_r64_7d_out(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if ( abs(f_sum - c_sum ) < ndarray_precision_single * c_sum ) then
+          write(*,*)'PASSED from_ndarray_r64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_r64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_r64_7d
+
+      integer &
+        & function test_from_ndarray_c32_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_c32_7d_in
+        complex(flcl_ndarray_c32_f_t), dimension(:,:,:,:,:,:,:), pointer :: array_c32_7d_out
+        complex(flcl_ndarray_c32_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c32_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn, oo
+
+        allocate( array_c32_7d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+        allocate( array_c32_7d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_c32_7d_in(ii,jj,kk,ll,mm,nn,oo) = cmplx(ii+jj+kk+ll+mm+nn+oo,-(ii+jj+kk+ll+mm+nn+oo))
+                      f_sum = f_sum + array_c32_7d_in(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c32_7d( to_nd_array(array_c32_7d_in) )
+
+        call from_nd_array( nd_array_out, array_c32_7d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      c_sum = c_sum + array_c32_7d_out(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c32_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c32_7d
+
+      integer &
+        & function test_from_ndarray_c64_7d() &
+        & result(ierr)
+        use, intrinsic :: iso_c_binding
+        use :: flcl_mod
+        implicit none
+
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:,:,:,:), allocatable :: array_c64_7d_in
+        complex(flcl_ndarray_c64_f_t), dimension(:,:,:,:,:,:,:), pointer :: array_c64_7d_out
+        complex(flcl_ndarray_c64_f_t) :: c_sum = (0,0)
+        complex(flcl_ndarray_c64_f_t) :: f_sum = (0,0)
+        type(nd_array_t) :: nd_array_out
+        integer :: ii, jj, kk, ll, mm, nn, oo
+
+        allocate( array_c64_7d_in(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+        allocate( array_c64_7d_out(e0_length, e1_length, e2_length, e3_length, &
+                  & e4_length, e5_length, e6_length) )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      array_c64_7d_in(ii,jj,kk,ll,mm,nn,oo) = cmplx(ii+jj+kk+ll+mm+nn+oo,-(ii+jj+kk+ll+mm+nn+oo))
+                      f_sum = f_sum + array_c64_7d_in(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        nd_array_out = f_test_from_ndarray_c64_7d( to_nd_array(array_c64_7d_in) )
+
+        call from_nd_array( nd_array_out, array_c64_7d_out )
+
+        do ii = 1, e0_length
+          do jj = 1, e1_length
+            do kk = 1, e2_length
+              do ll = 1, e3_length
+                do mm = 1, e4_length
+                  do nn = 1, e5_length
+                    do oo = 1, e6_length
+                      c_sum = c_sum + array_c64_7d_out(ii,jj,kk,ll,mm,nn,oo)
+                    end do
+                  end do
+                end do
+              end do
+            end do
+          end do
+        end do
+
+        if (FLCL_REALPART(f_sum) - FLCL_REALPART(c_sum) > ndarray_precision_single * FLCL_REALPART(f_sum) .or. &
+          & FLCL_IMAGPART(f_sum) - FLCL_IMAGPART(c_sum) > ndarray_precision_single * FLCL_IMAGPART(f_sum) ) then
+          write(*,*)'PASSED from_ndarray_c64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_pass
+        else
+          write(*,*)'FAILED F from_ndarray_c64_7d'
+          write(*,*)'f_sum = ',f_sum
+          write(*,*)'c_sum = ',c_sum
+          ierr = flcl_test_fail
+        end if
+      end function test_from_ndarray_c64_7d
 
       integer &
         & function test_kokkos_allocate_view_l_1d() &
