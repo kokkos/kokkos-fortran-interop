@@ -144,6 +144,19 @@ install(
 # install flcl module files in include directory 
 install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod/" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
+# add rdc stuff if building tests or examples
+if(BUILD_TESTING OR BUILD_EXAMPLES)
+  # get kokkos flags from kokkos package
+  get_target_property(Kokkos_FLAGS Kokkos::kokkoscore INTERFACE_COMPILE_OPTIONS)
+  # set the USE_RDC variable if kokkos has set it
+  string(REGEX MATCH "relocatable-device-code=true"
+         USE_RDC "${Kokkos_FLAGS}")
+  mark_as_advanced(USE_RDC)
+  if(USE_RDC)
+    enable_language(CUDA)
+  endif()
+endif()
+
 #unit testing section and toggle
 if(BUILD_TESTING)
   add_subdirectory(test)
