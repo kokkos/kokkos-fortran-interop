@@ -53,11 +53,12 @@ extern "C" {
     y.template sync<typename view_type::execution_space>();
     x.template sync<typename view_type::execution_space>();
 
+    double d_alpha = *alpha;
     Kokkos::parallel_for( "axpy", y.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
-      y.d_view(idx) += *alpha * x.d_view(idx);
+      y.d_view(idx) += d_alpha * x.d_view(idx);
     });
-  
+
     y.template modify<typename view_type::execution_space>();
     x.template modify<typename view_type::execution_space>();
     y.template sync<typename view_type::host_mirror_space>();
