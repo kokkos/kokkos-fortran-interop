@@ -48,10 +48,14 @@ extern "C" {
     view_type y = **v_y;
     view_type x = **v_x;
 
+    double d_alpha = *alpha;
     Kokkos::parallel_for( "axpy", y.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
-      y(idx) += *alpha * x(idx);
+      y(idx) += d_alpha * x(idx);
     });
+
+    // make sure data can be reused on host
+    Kokkos::fence();
 
     return;
   }
