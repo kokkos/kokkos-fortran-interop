@@ -2,8 +2,18 @@ cmake_minimum_required(VERSION 3.19)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 project(flcl VERSION 0.5.0 LANGUAGES Fortran C CXX)
 
-set(default_build_type "RelWithDebInfo")
+if (NOT CMAKE_BUILD_TYPE)
+  set(DEFAULT_BUILD_TYPE "RelWithDebInfo")
+  message(STATUS "Setting build type to '${DEFAULT_BUILD_TYPE}' as none was specified.")
+  set(CMAKE_BUILD_TYPE "${DEFAULT_BUILD_TYPE}" CACHE STRING
+    "Choose the type of build, options are: Debug, Release, RelWithDebInfo and MinSizeRel."
+    FORCE)
+endif()
+
+
 set(BUILD_SHARED_LIBS OFF)
+option(FLCL_BUILD_EXAMPLES "Build examples" ON)
+option(FLCL_BUILD_TESTS "Build tests" ON)
 
 include(CMakeDetermineFortranCompiler)
 include(CMakeDetermineCCompiler)
@@ -17,7 +27,9 @@ include(CheckCCompilerFlag)
 
 include(GNUInstallDirs)
 
-include(CTest)
+if (FLCL_BUILD_TESTS)
+  include(CTest)
+endif()
 
 add_link_options(LINKER:--disable-new-dtags)
 
@@ -141,14 +153,14 @@ install(
     PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
 
-# install flcl module files in include directory 
+# install flcl module files in include directory
 install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod/" DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
 
 #unit testing section and toggle
-if(BUILD_TESTING)
+if(FLCL_BUILD_TESTS)
   add_subdirectory(test)
 endif()
 
-if(BUILD_EXAMPLES)
+if(FLCL_BUILD_EXAMPLES)
   add_subdirectory(examples)
 endif()
