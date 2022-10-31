@@ -43,7 +43,6 @@
 #include <iostream>
 #include <type_traits>
 #include <Kokkos_Core.hpp>
-#include <Kokkos_View.hpp>
 #include <Kokkos_DualView.hpp>
 #include "flcl-types-cxx.hpp"
 
@@ -73,7 +72,7 @@ using HostMemorySpace = Kokkos::HostSpace;
 //   an optimization, one could switch to using dualview types and manage the
 //   necessary memory transfer explicitly over larger compute regions.
 namespace flcl {
-    
+
   #ifdef KOKKOS_ENABLE_CUDA
     using HostMemorySpace = Kokkos::CudaUVMSpace;
   #else
@@ -114,7 +113,7 @@ namespace flcl {
   typedef Kokkos::View<flcl_view_i64_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_i64_5d_t;
   typedef Kokkos::View<flcl_view_r32_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_r32_5d_t;
   typedef Kokkos::View<flcl_view_r64_c_t*****,Kokkos::LayoutLeft,flcl::HostMemorySpace>           view_r64_5d_t;
-  
+
   // 6D fortran-compatible view types
   typedef Kokkos::View<flcl_view_l_c_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>            view_l_6d_t;
   typedef Kokkos::View<flcl_view_i32_c_t******,Kokkos::LayoutLeft,flcl::HostMemorySpace>          view_i32_6d_t;
@@ -128,7 +127,7 @@ namespace flcl {
   typedef Kokkos::View<flcl_view_i64_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_i64_7d_t;
   typedef Kokkos::View<flcl_view_r32_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_r32_7d_t;
   typedef Kokkos::View<flcl_view_r64_c_t*******,Kokkos::LayoutLeft,flcl::HostMemorySpace>         view_r64_7d_t;
-  
+
   // 1D fortran-compatible dualview types
   typedef Kokkos::DualView<flcl_dualview_l_c_t*,Kokkos::LayoutLeft>                               dualview_l_1d_t;
   typedef Kokkos::DualView<flcl_dualview_i32_c_t*,Kokkos::LayoutLeft>                             dualview_i32_1d_t;
@@ -183,7 +182,7 @@ namespace flcl {
   view_from_ndarray(flcl_ndarray_t const &ndarray) {
     size_t dimensions[Kokkos::ARRAY_LAYOUT_MAX_RANK] = {};
     size_t strides[Kokkos::ARRAY_LAYOUT_MAX_RANK] = {};
-  
+
     using traits = Kokkos::ViewTraits<DataType>;
     using value_type = typename traits::value_type;
     constexpr auto rank = Kokkos::ViewTraits<DataType>::rank;
@@ -193,7 +192,7 @@ namespace flcl {
                   << ndarray.rank << "." << std::endl;
         std::exit(EXIT_FAILURE);
     }
-  
+
     std::copy(ndarray.dims, ndarray.dims + ndarray.rank, dimensions);
     std::copy(ndarray.strides, ndarray.strides + ndarray.rank, strides);
 
@@ -209,7 +208,7 @@ namespace flcl {
         dimensions[7], strides[7]
     };
     // clang-format on
-  
+
     return Kokkos::View<DataType, Kokkos::LayoutStride, flcl::HostMemorySpace, Kokkos::MemoryUnmanaged>(
         reinterpret_cast<value_type *>(ndarray.data), layout);
   }
@@ -232,7 +231,7 @@ namespace flcl {
 
     return ndarray;
   }
-  
+
 } // namespace flcl
 
 #endif // FLCL_CXX_HPP
