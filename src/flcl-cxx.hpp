@@ -58,6 +58,8 @@ typedef struct _flcl_nd_array_t {
 namespace flcl {
 #ifdef KOKKOS_ENABLE_CUDA
 using HostMemorySpace = Kokkos::CudaUVMSpace;
+#elif defined KOKKOS_ENABLE_HIP
+using HostMemorySpace = Kokkos::Experimental::HIPManagedSpace;
 #else
 using HostMemorySpace = Kokkos::HostSpace;
 #endif
@@ -75,6 +77,8 @@ namespace flcl {
 
   #ifdef KOKKOS_ENABLE_CUDA
     using HostMemorySpace = Kokkos::CudaUVMSpace;
+  #elif defined KOKKOS_ENABLE_HIP
+    using HostMemorySpace = Kokkos::Experimental::HIPManagedSpace;
   #else
     using HostMemorySpace = Kokkos::HostSpace;
   #endif
