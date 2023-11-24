@@ -136,6 +136,10 @@ module flcl_util_kokkos_mod
     else
        call f_kokkos_initialize(cli_count, c_loc(c_strs(0)))
     endif
+    
+    deallocate(strs_array)
+    deallocate(c_strs)
+    deallocate(str)
        
   end subroutine kokkos_initialize
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
