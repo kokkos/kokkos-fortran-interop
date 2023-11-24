@@ -38,7 +38,7 @@
 module flcl_util_kokkos_mod
     use, intrinsic :: iso_c_binding
     use, intrinsic :: iso_fortran_env
-    
+
     implicit none
     private
 
@@ -73,7 +73,7 @@ module flcl_util_kokkos_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   interface
     subroutine f_kokkos_finalize() &
-      & bind(c, name="c_kokkos_finalize")  
+      & bind(c, name="c_kokkos_finalize")
     end subroutine f_kokkos_finalize
   end interface
 
@@ -136,11 +136,11 @@ module flcl_util_kokkos_mod
     else
        call f_kokkos_initialize(cli_count, c_loc(c_strs(0)))
     endif
-    
+
     deallocate(strs_array)
     deallocate(c_strs)
     deallocate(str)
-       
+
   end subroutine kokkos_initialize
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   subroutine kokkos_initialize_without_args()
