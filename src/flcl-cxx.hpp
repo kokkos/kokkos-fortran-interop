@@ -35,6 +35,10 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#ifndef KOKKOS_IMPL_PUBLIC_INCLUDE
+#define KOKKOS_IMPL_PUBLIC_INCLUDE
+#endif
+
 #ifndef FLCL_CXX_HPP
 #define FLCL_CXX_HPP
 
@@ -58,6 +62,8 @@ typedef struct _flcl_nd_array_t {
 namespace flcl {
 #ifdef KOKKOS_ENABLE_CUDA
 using HostMemorySpace = Kokkos::CudaUVMSpace;
+#elif defined KOKKOS_ENABLE_HIP
+using HostMemorySpace = Kokkos::Experimental::HIPManagedSpace;
 #else
 using HostMemorySpace = Kokkos::HostSpace;
 #endif
@@ -75,6 +81,8 @@ namespace flcl {
 
   #ifdef KOKKOS_ENABLE_CUDA
     using HostMemorySpace = Kokkos::CudaUVMSpace;
+  #elif defined KOKKOS_ENABLE_HIP
+    using HostMemorySpace = Kokkos::Experimental::HIPManagedSpace;
   #else
     using HostMemorySpace = Kokkos::HostSpace;
   #endif
