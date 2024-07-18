@@ -60,6 +60,8 @@ namespace flcl {
 using HostMemorySpace = Kokkos::CudaUVMSpace;
 #elif defined(KOKKOS_ENABLE_HIP)
 using HostMemorySpace = Kokkos::HIPManagedSpace;
+#elif defined(KOKKOS_ENABLE_SYCL)
+using HostMemorySpace = Kokkos::Experimental::SYCLSharedUSMSpace;
 #else
 using HostMemorySpace = Kokkos::HostSpace;
 #endif
@@ -79,6 +81,8 @@ namespace flcl {
     using HostMemorySpace = Kokkos::CudaUVMSpace;
   #elif defined(KOKKOS_ENABLE_HIP)
     using HostMemorySpace = Kokkos::HIPManagedSpace;
+  #elif defined(KOKKOS_ENABLE_SYCL)
+    using HostMemorySpace = Kokkos::Experimental::SYCLSharedUSMSpace;
   #else
     using HostMemorySpace = Kokkos::HostSpace;
   #endif
