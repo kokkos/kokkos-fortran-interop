@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
-project(flcl VERSION 0.5.0 LANGUAGES Fortran C CXX)
+project(flcl VERSION 0.99.99 LANGUAGES Fortran C CXX)
 
 if (NOT CMAKE_BUILD_TYPE)
   set(DEFAULT_BUILD_TYPE "RelWithDebInfo")
