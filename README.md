@@ -18,7 +18,7 @@ features as they move towards release. Then, feature branches as necessary.
 # Build Instructions
 We generally build the library FLCL in-line for our uses.
 
-However, we provide many examples of how to successfully build FLCL in our 'ci' directory. Please see: [various continuous integration build examples](https://github.com/kokkos/kokkos-fortran-interop/ci).
+However, we provide many examples of how to successfully build FLCL in our 'ci' directory. Please see: [various continuous integration build examples](https://github.com/kokkos/kokkos-fortran-interop/tree/develop/ci).
 
 # Feedback
 Please raise an issue using the [GitHub issues](https://github.com/kokkos/kokkos-fortran-interop/issues)
