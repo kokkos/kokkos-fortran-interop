@@ -11,9 +11,19 @@ if (NOT CMAKE_BUILD_TYPE)
 endif()
 
 
+# FIXME This was set in a XL-related commit:
+# https://github.com/kokkos/kokkos-fortran-interop/commit/f232302284400a90410a36edb14f538c20b8a71b
+# We need to check if it is still necessary
 set(BUILD_SHARED_LIBS OFF)
 option(FLCL_BUILD_EXAMPLES "Build examples" ON)
 option(FLCL_BUILD_TESTS "Build tests" ON)
+
+# The tests and the examples need to be built with PIE because they link against GLICXX
+if (${FLCL_BUILD_TESTS} OR ${FLCL_BUILD_TESTS})
+  if (NOT DEFINED CMAKE_POSITION_INDEPENDENT_CODE OR NOT ${CMAKE_POSITION_INDEPENDENT_CODE})
+    message(FATAL_ERROR "Enabling the tests or the examples require configuring with -DCMAKE_POSITION_INDEPENDENT_CODE=ON")
+  endif()
+endif()
 
 include(CMakeDetermineFortranCompiler)
 include(CMakeDetermineCCompiler)
