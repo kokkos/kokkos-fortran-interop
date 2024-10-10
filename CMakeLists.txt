@@ -19,7 +19,7 @@ option(FLCL_BUILD_EXAMPLES "Build examples" ON)
 option(FLCL_BUILD_TESTS "Build tests" ON)
 
 # The tests and the examples need to be built with PIE because they link against GLICXX
-if (${FLCL_BUILD_EXAMPLES} OR ${FLCL_BUILD_TESTS})
+if (FLCL_BUILD_EXAMPLES OR FLCL_BUILD_TESTS)
   if (NOT CMAKE_POSITION_INDEPENDENT_CODE)
     message(FATAL_ERROR "Enabling the tests or the examples require configuring with -DCMAKE_POSITION_INDEPENDENT_CODE=ON")
   endif()
