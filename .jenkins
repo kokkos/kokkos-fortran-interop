@@ -24,7 +24,7 @@ pipeline {
           }
           steps {
             sh '''rm -rf kokkos &&
-                  git clone https://github.com/kokkos/kokkos.git && \
+                  git clone --branch 4.4.01 --single-branch https://github.com/kokkos/kokkos.git && \
                   cd kokkos && \
                   mkdir build && cd build && \
                   cmake \
@@ -55,7 +55,7 @@ pipeline {
           }
           steps {
             sh '''rm -rf kokkos &&
-                  git clone https://github.com/kokkos/kokkos.git && \
+                  git clone --branch 4.4.01 --single-branch https://github.com/kokkos/kokkos.git && \
                   cd kokkos && \
                   mkdir build && cd build && \
                   cmake \
@@ -91,7 +91,7 @@ pipeline {
           }
           steps {
             sh '''rm -rf kokkos &&
-                  git clone https://github.com/kokkos/kokkos.git && \
+                  git clone --branch 4.4.01 --single-branch https://github.com/kokkos/kokkos.git && \
                   cd kokkos && \
                   mkdir build && cd build && \
                   cmake \
