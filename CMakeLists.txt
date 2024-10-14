@@ -25,15 +25,7 @@ if (FLCL_BUILD_EXAMPLES OR FLCL_BUILD_TESTS)
   endif()
 endif()
 
-include(CMakeDetermineFortranCompiler)
-include(CMakeDetermineCCompiler)
-include(CMakeDetermineCXXCompiler)
-
 find_package(Kokkos REQUIRED)
-
-include(CheckFortranCompilerFlag)
-include(CheckCXXCompilerFlag)
-include(CheckCCompilerFlag)
 
 include(GNUInstallDirs)
 
