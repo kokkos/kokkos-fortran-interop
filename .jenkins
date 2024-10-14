@@ -1,0 +1,114 @@
+pipeline {
+  agent none
+
+  options {
+    disableConcurrentBuilds(abortPrevious: true)
+    timeout(time: 6, unit: 'HOURS')
+  }
+
+  triggers {
+    issueCommentTrigger('.*test this please.*')
+  }
+
+  stages {
+    stage('Build') {
+      parallel {
+        stage('CUDA-12.6-NVCC') {
+          agent {
+              dockerfile {
+                  filename 'Dockerfile.nvcc'
+                  dir 'scripts'
+                  label 'nvidia-docker'
+                  args '--env NVIDIA_VISIBLE_DEVICES=$NVIDIA_VISIBLE_DEVICES'
+              }
+          }
+          steps {
+            sh '''rm -rf kokkos &&
+                  git clone --branch 4.4.01 --depth 1 https://github.com/kokkos/kokkos.git && \
+                  cd kokkos && \
+                  cmake -B build_kokkos \
+                    -DCMAKE_CXX_COMPILER=$WORKSPACE/kokkos/bin/nvcc_wrapper \
+                    -DCMAKE_CXX_EXTENSIONS=OFF \
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+                    -DKokkos_ENABLE_CUDA=ON \
+                    -DCMAKE_INSTALL_PREFIX=/opt/kokkos && \
+                  cmake --build build_kokkos -j8 && \
+                  cmake --install build_kokkos'''
+            sh '''rm -rf build && \
+                  cmake -B build_interop \
+                    -DCMAKE_CXX_COMPILER=/opt/kokkos/bin/nvcc_wrapper \
+                    -DCMAKE_CXX_EXTENSIONS=OFF \
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
+                  cmake --build build_interop -j8 && \
+                  ctest --test-dir build_interop --verbose'''
+          }
+        }
+
+        stage('HIP-ROCm-6.2') {
+          agent {
+            dockerfile {
+              filename 'Dockerfile.hipcc'
+              dir 'scripts'
+              label 'rocm-docker'
+              args '--device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video --env HIP_VISIBLE_DEVICES=$HIP_VISIBLE_DEVICES'
+            }
+          }
+          steps {
+            sh '''rm -rf kokkos &&
+                  git clone --branch 4.4.01 --depth 1 https://github.com/kokkos/kokkos.git && \
+                  cd kokkos && \
+                  cmake -B build_kokkos \
+                    -DCMAKE_CXX_COMPILER=hipcc \
+                    -DCMAKE_CXX_EXTENSIONS=OFF \
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+                    -DKokkos_ENABLE_HIP=ON \
+                    -DCMAKE_INSTALL_PREFIX=/opt/kokkos && \
+                  cmake --build build_kokkos -j8 && \
+                  cmake --install build_kokkos'''
+            sh '''rm -rf build && \
+                  cmake -B build_interop \
+                    -DCMAKE_CXX_COMPILER=hipcc \
+                    -DCMAKE_CXX_EXTENSIONS=OFF \
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
+                  cmake --build build_interop -j8 && \
+                  ctest --test-dir build_interop --verbose'''
+          }
+        }
+
+        stage('GCC-14.2') {
+          agent {
+            dockerfile {
+              filename 'Dockerfile.gcc'
+              dir 'scripts'
+              label 'docker'
+            }
+          }
+          environment {
+            OMP_NUM_THREADS = 8
+            OMP_NESTED = 'true'
+            OMP_MAX_ACTIVE_LEVELS = 3
+            OMP_PROC_BIND = 'true'
+          }
+          steps {
+            sh '''rm -rf kokkos &&
+                  git clone --branch 4.4.01 --depth 1 https://github.com/kokkos/kokkos.git && \
+                  cd kokkos && \
+                  cmake -B build_kokkos \
+                    -DCMAKE_CXX_EXTENSIONS=OFF \
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+                    -DKokkos_ENABLE_OPENMP=ON \
+                    -DCMAKE_INSTALL_PREFIX=/opt/kokkos && \
+                  cmake --build build_kokkos -j8 && \
+                  cmake --install build_kokkos'''
+            sh '''rm -rf build && \
+                  cmake -B build_interop \
+                    -DCMAKE_CXX_EXTENSIONS=OFF \
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
+                  cmake --build build_interop -j8 && \
+                  ctest --test-dir build_interop --verbose'''
+          }
+        }
+      }
+    }
+  }
+}
