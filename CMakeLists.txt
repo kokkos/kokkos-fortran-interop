@@ -29,10 +29,6 @@ find_package(Kokkos REQUIRED)
 
 include(GNUInstallDirs)
 
-if (FLCL_BUILD_TESTS)
-  include(CTest)
-endif()
-
 add_link_options(LINKER:--disable-new-dtags)
 
 #flcl-fortran library
@@ -160,6 +156,7 @@ install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod/" DESTINATION "${CMAKE_INSTAL
 
 #unit testing section and toggle
 if(FLCL_BUILD_TESTS)
+  include(CTest)
   add_subdirectory(test)
 endif()
 
