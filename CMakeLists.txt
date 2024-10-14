@@ -42,7 +42,9 @@ add_library(flcl-fortran
         src/flcl-f.f90
         src/flcl-util-kokkos-f.f90
 )
-#standards compliance section
+# standards compliance section
+# There is no CMake function to enforce the language standard in Fortran.
+# See https://gitlab.kitware.com/cmake/cmake/-/issues/22235
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
     # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
     # also enable polymorphic feature (-qxlf2003=polymorphic) to support the view/dualview types to enable type disambiguation in generic interfaces
