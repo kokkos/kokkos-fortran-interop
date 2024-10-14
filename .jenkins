@@ -26,21 +26,21 @@ pipeline {
             sh '''rm -rf kokkos &&
                   git clone --branch 4.4.01 --depth 1 https://github.com/kokkos/kokkos.git && \
                   cd kokkos && \
-                  mkdir build && cd build && \
-                  cmake \
+                  cmake -B build_kokkos \
                     -DCMAKE_CXX_COMPILER=$WORKSPACE/kokkos/bin/nvcc_wrapper \
                     -DCMAKE_CXX_EXTENSIONS=OFF \
                     -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
                     -DKokkos_ENABLE_CUDA=ON \
-                  .. && \
-                  make -j8 && make install'''
-            sh '''rm -rf build && mkdir -p build && cd build && \
-                  cmake \
-                    -DCMAKE_CXX_COMPILER=$WORKSPACE/kokkos/bin/nvcc_wrapper \
+                    -DCMAKE_INSTALL_PREFIX=/opt/kokkos && \
+                  cmake --build build_kokkos -j8 && \
+                  cmake --install build_kokkos'''
+            sh '''rm -rf build && \
+                  cmake -B build_interop \
+                    -DCMAKE_CXX_COMPILER=/opt/kokkos/bin/nvcc_wrapper \
                     -DCMAKE_CXX_EXTENSIONS=OFF \
-                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-                  .. && \
-                  make -j8 && ctest --verbose'''
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
+                  cmake --build build_interop -j8 && \
+                  ctest --test-dir build_interop --verbose'''
           }
         }
 
@@ -57,21 +57,21 @@ pipeline {
             sh '''rm -rf kokkos &&
                   git clone --branch 4.4.01 --depth 1 https://github.com/kokkos/kokkos.git && \
                   cd kokkos && \
-                  mkdir build && cd build && \
-                  cmake \
+                  cmake -B build_kokkos \
                     -DCMAKE_CXX_COMPILER=hipcc \
                     -DCMAKE_CXX_EXTENSIONS=OFF \
                     -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
                     -DKokkos_ENABLE_HIP=ON \
-                  .. && \
-                  make -j8 && make install'''
-            sh '''rm -rf build && mkdir -p build && cd build && \
-                  cmake \
+                    -DCMAKE_INSTALL_PREFIX=/opt/kokkos && \
+                  cmake --build build_kokkos -j8 && \
+                  cmake --install build_kokkos'''
+            sh '''rm -rf build && \
+                  cmake -B build_interop \
                     -DCMAKE_CXX_COMPILER=hipcc \
                     -DCMAKE_CXX_EXTENSIONS=OFF \
-                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-                  .. && \
-                  make -j8 && ctest --verbose'''
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
+                  cmake --build build_interop -j8 && \
+                  ctest --test-dir build_interop --verbose'''
           }
         }
 
@@ -93,19 +93,19 @@ pipeline {
             sh '''rm -rf kokkos &&
                   git clone --branch 4.4.01 --depth 1 https://github.com/kokkos/kokkos.git && \
                   cd kokkos && \
-                  mkdir build && cd build && \
-                  cmake \
+                  cmake -B build_kokkos \
                     -DCMAKE_CXX_EXTENSIONS=OFF \
                     -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
                     -DKokkos_ENABLE_OPENMP=ON \
-                  .. && \
-                  make -j8 && make install'''
-            sh '''rm -rf build && mkdir -p build && cd build && \
-                  cmake \
+                    -DCMAKE_INSTALL_PREFIX=/opt/kokkos && \
+                  cmake --build build_kokkos -j8 && \
+                  cmake --install build_kokkos'''
+            sh '''rm -rf build && \
+                  cmake -B build_interop \
                     -DCMAKE_CXX_EXTENSIONS=OFF \
-                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-                  .. && \
-                  make -j8 && ctest --verbose'''
+                    -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
+                  cmake --build build_interop -j8 && \
+                  ctest --test-dir build_interop --verbose'''
           }
         }
       }
