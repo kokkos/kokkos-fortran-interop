@@ -7,18 +7,10 @@ To check out the source code for FLCL,
 ```bash
     git clone https://github.com/kokkos/kokkos-fortran-interop.git
 ```
-## Branches
-Consider `master` to be the stable branch. The branch `develop` will contain integrated
-features as they move towards release. Then, feature branches as necessary.
 
 # Requirements
 - Compiler suite with both Fortran (F08) and C++ (C++11) support.
 - A build of [Kokkos](https://github.com/kokkos/kokkos) 3.x built with the compiler suite above.
-
-# Build Instructions
-We generally build the library FLCL in-line for our uses.
-
-However, we provide many examples of how to successfully build FLCL in our 'ci' directory. Please see: [various continuous integration build examples](https://github.com/kokkos/kokkos-fortran-interop/tree/develop/ci).
 
 # Feedback
 Please raise an issue using the [GitHub issues](https://github.com/kokkos/kokkos-fortran-interop/issues)
