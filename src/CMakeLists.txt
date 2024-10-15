@@ -46,7 +46,7 @@ set(flcl-cxx-public-headers
     ${PROJECT_SOURCE_DIR}/src/flcl-types-cxx.hpp
     ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h
 )
-set_property(TARGET flcl-cxx PROPERTY CXX_STANDARD 14)
+set_property(TARGET flcl-cxx PROPERTY CXX_STANDARD 17)
 set_target_properties(flcl-cxx PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_link_libraries(flcl-cxx
     PRIVATE
