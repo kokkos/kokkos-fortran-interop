@@ -52,7 +52,6 @@ target_link_libraries(flcl-testlib-cxx
 )
 
 add_library(flcl-testlib
-    #STATIC
         $<TARGET_OBJECTS:flcl-testlib-fortran>
         $<TARGET_OBJECTS:flcl-testlib-cxx>
 )
@@ -90,10 +89,6 @@ foreach(file ${files})
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
         set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
     endif()
-    set(RPATHS "$ENV{LD_LIBRARY_PATH}")
-	set_target_properties(${file_without_ext} PROPERTIES 
-						  BUILD_WITH_INSTALL_RPATH True
-						  INSTALL_RPATH "${RPATHS}")
  	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
 	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 

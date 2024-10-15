@@ -54,7 +54,6 @@ target_link_libraries(flcl-cxx
 )
 
 add_library(flcl
-    STATIC
         $<TARGET_OBJECTS:flcl-fortran>
         $<TARGET_OBJECTS:flcl-cxx>
 )

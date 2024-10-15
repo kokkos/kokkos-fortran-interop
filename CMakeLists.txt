@@ -11,25 +11,18 @@ if (NOT CMAKE_BUILD_TYPE)
 endif()
 
 
-# FIXME This was set in a XL-related commit:
-# https://github.com/kokkos/kokkos-fortran-interop/commit/f232302284400a90410a36edb14f538c20b8a71b
-# We need to check if it is still necessary
-set(BUILD_SHARED_LIBS OFF)
 option(FLCL_BUILD_EXAMPLES "Build examples" ON)
 option(FLCL_BUILD_TESTS "Build tests" ON)
 
-# The tests and the examples need to be built with PIE because they link against GLICXX
-if (FLCL_BUILD_EXAMPLES OR FLCL_BUILD_TESTS)
-  if (NOT CMAKE_POSITION_INDEPENDENT_CODE)
-    message(FATAL_ERROR "Enabling the tests or the examples require configuring with -DCMAKE_POSITION_INDEPENDENT_CODE=ON")
-  endif()
-endif()
+# We need to set CMAKE_POSITION_INDEPENDENT_CODE. Otherwise there is an issue
+# when linking flcl.cxx.cpp.o into libflcl. This is necessary even when
+# building a shared library
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 
 find_package(Kokkos 4.0 REQUIRED)
 
 include(GNUInstallDirs)
-
-add_link_options(LINKER:--disable-new-dtags)
 
 add_subdirectory(src)
 
