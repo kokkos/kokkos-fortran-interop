@@ -69,18 +69,5 @@ target_link_libraries(flcl
     Kokkos::kokkos
 )
 
-# add parallelism library link flags in kokkos > 3.1
-if (Kokkos_VERSION VERSION_GREATER 3.1)
-    if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
-        target_link_options(flcl INTERFACE -qopenmp PUBLIC -qopenmp)
-    endif()
-    if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-        target_link_options(flcl INTERFACE -fopenmp PUBLIC -fopenmp)
-    endif()
-    if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
-        target_link_options(flcl INTERFACE -qopenmp PUBLIC -qopenmp)
-    endif()
-endif()
-
 #add flcl library
 add_library(flcl::flcl ALIAS flcl)
