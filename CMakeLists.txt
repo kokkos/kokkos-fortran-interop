@@ -25,21 +25,9 @@ if (FLCL_BUILD_EXAMPLES OR FLCL_BUILD_TESTS)
   endif()
 endif()
 
-include(CMakeDetermineFortranCompiler)
-include(CMakeDetermineCCompiler)
-include(CMakeDetermineCXXCompiler)
-
 find_package(Kokkos REQUIRED)
 
-include(CheckFortranCompilerFlag)
-include(CheckCXXCompilerFlag)
-include(CheckCCompilerFlag)
-
 include(GNUInstallDirs)
-
-if (FLCL_BUILD_TESTS)
-  include(CTest)
-endif()
 
 add_link_options(LINKER:--disable-new-dtags)
 
@@ -54,7 +42,9 @@ add_library(flcl-fortran
         src/flcl-f.f90
         src/flcl-util-kokkos-f.f90
 )
-#standards compliance section
+# standards compliance section
+# There is no CMake function to enforce the language standard in Fortran.
+# See https://gitlab.kitware.com/cmake/cmake/-/issues/22235
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
     # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
     # also enable polymorphic feature (-qxlf2003=polymorphic) to support the view/dualview types to enable type disambiguation in generic interfaces
@@ -168,6 +158,7 @@ install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/mod/" DESTINATION "${CMAKE_INSTAL
 
 #unit testing section and toggle
 if(FLCL_BUILD_TESTS)
+  include(CTest)
   add_subdirectory(test)
 endif()
 
