@@ -25,7 +25,7 @@ if (FLCL_BUILD_EXAMPLES OR FLCL_BUILD_TESTS)
   endif()
 endif()
 
-find_package(Kokkos REQUIRED)
+find_package(Kokkos 4.0 REQUIRED)
 
 include(GNUInstallDirs)
 
