@@ -81,11 +81,10 @@ module flcl_util_kokkos_mod
 !!! kokkos library helper routine interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   interface
-    subroutine f_kokkos_print_configuration( prepend_name_in, file_name_in ) &
+    subroutine f_kokkos_print_configuration( file_name_in ) &
       & bind(c, name='c_kokkos_print_configuration')
       use, intrinsic :: iso_c_binding
       implicit none
-      character(kind=c_char), intent(in) :: prepend_name_in(*)
       character(kind=c_char), intent(in) :: file_name_in(*)
     end subroutine f_kokkos_print_configuration
   end interface
@@ -159,20 +158,17 @@ module flcl_util_kokkos_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos library helper routine implementations
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  subroutine kokkos_print_configuration( prepend_name_in, file_name_in )
+  subroutine kokkos_print_configuration( file_name_in )
     use, intrinsic :: iso_c_binding
     use flcl_util_strings_mod, only: char_add_null
     implicit none
 
-    character(len=*), intent(in) :: prepend_name_in
     character(len=*), intent(in) :: file_name_in
-    character(len=:, kind=c_char), allocatable, target :: prepend_name_out
     character(len=:, kind=c_char), allocatable, target :: file_name_out
 
-    call char_add_null( prepend_name_in, prepend_name_out )
     call char_add_null( file_name_in, file_name_out )
 
-    call f_kokkos_print_configuration( prepend_name_out, file_name_out )
+    call f_kokkos_print_configuration( file_name_out )
 
   end subroutine kokkos_print_configuration
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

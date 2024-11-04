@@ -51,7 +51,7 @@ program test_from_ndarray_l_3d_main
 
     if ( kokkos_is_initialized() ) then
       
-      ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
+      ! call kokkos_print_configuration('flcl-test-kokkos.out')
   
       ierr = test_from_ndarray_l_3d()
   
