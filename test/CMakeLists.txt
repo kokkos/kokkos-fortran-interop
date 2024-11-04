@@ -1,11 +1,3 @@
-macro(remove_link_flag_from_target _target _flag)
-    get_target_property(_target_link_flags ${_target} LINK_OPTIONS)
-    if(_target_link_flags)
-        list(REMOVE_ITEM _target_link_flags ${_flag})
-        set_target_properties(${_target} PROPERTIES LINK_OPTIONS "${_target_link_flags}")
-    endif()
-endmacro()
-
 add_library(flcl-testlib-fortran
     OBJECT
         flcl-test-f.F90
@@ -52,7 +44,6 @@ target_link_libraries(flcl-testlib-cxx
 )
 
 add_library(flcl-testlib
-    #STATIC
         $<TARGET_OBJECTS:flcl-testlib-fortran>
         $<TARGET_OBJECTS:flcl-testlib-cxx>
 )
@@ -90,10 +81,6 @@ foreach(file ${files})
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
         set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
     endif()
-    set(RPATHS "$ENV{LD_LIBRARY_PATH}")
-	set_target_properties(${file_without_ext} PROPERTIES 
-						  BUILD_WITH_INSTALL_RPATH True
-						  INSTALL_RPATH "${RPATHS}")
  	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
 	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
@@ -106,6 +93,4 @@ foreach(file ${files})
  	set_tests_properties(${file_without_ext}
  		PROPERTIES
         TIMEOUT 120)
-
-    remove_link_flag_from_target(${file_without_ext} -arch=sm_70)
 endforeach()

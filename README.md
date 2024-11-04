@@ -10,7 +10,7 @@ To check out the source code for FLCL,
 
 # Requirements
 - Compiler suite with both Fortran (F08) and C++ (C++11) support.
-- A build of [Kokkos](https://github.com/kokkos/kokkos) 3.x built with the compiler suite above.
+- A build of [Kokkos](https://github.com/kokkos/kokkos) 4.x built with the compiler suite above.
 
 # Feedback
 Please raise an issue using the [GitHub issues](https://github.com/kokkos/kokkos-fortran-interop/issues)

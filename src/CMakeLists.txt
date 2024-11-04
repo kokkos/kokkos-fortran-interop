@@ -46,7 +46,7 @@ set(flcl-cxx-public-headers
     ${PROJECT_SOURCE_DIR}/src/flcl-types-cxx.hpp
     ${PROJECT_SOURCE_DIR}/src/flcl-util-cxx.h
 )
-set_property(TARGET flcl-cxx PROPERTY CXX_STANDARD 14)
+set_property(TARGET flcl-cxx PROPERTY CXX_STANDARD 17)
 set_target_properties(flcl-cxx PROPERTIES PUBLIC_HEADER "${flcl-cxx-public-headers}")
 target_link_libraries(flcl-cxx
     PRIVATE
@@ -54,7 +54,6 @@ target_link_libraries(flcl-cxx
 )
 
 add_library(flcl
-    STATIC
         $<TARGET_OBJECTS:flcl-fortran>
         $<TARGET_OBJECTS:flcl-cxx>
 )
@@ -68,19 +67,6 @@ target_link_libraries(flcl
     INTERFACE
     Kokkos::kokkos
 )
-
-# add parallelism library link flags in kokkos > 3.1
-if (Kokkos_VERSION VERSION_GREATER 3.1)
-    if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
-        target_link_options(flcl INTERFACE -qopenmp PUBLIC -qopenmp)
-    endif()
-    if (CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
-        target_link_options(flcl INTERFACE -fopenmp PUBLIC -fopenmp)
-    endif()
-    if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
-        target_link_options(flcl INTERFACE -qopenmp PUBLIC -qopenmp)
-    endif()
-endif()
 
 #add flcl library
 add_library(flcl::flcl ALIAS flcl)
