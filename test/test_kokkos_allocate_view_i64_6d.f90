@@ -53,8 +53,6 @@ program test_kokkos_allocate_view_i64_6d_main
 
     if ( kokkos_is_initialized() ) then
       
-      ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
-  
       ierr = test_kokkos_allocate_view_i64_6d()
       write(*,*)'ierr ',ierr
   
