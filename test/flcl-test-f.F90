@@ -35,18 +35,8 @@
 ! (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 ! SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#if defined(__INTEL_COMPILER)
 #define FLCL_REALPART(X) X%RE
 #define FLCL_IMAGPART(X) X%IM
-#elif defined(__xlc__)
-#define FLCL_REALPART(X) X%RE
-#define FLCL_IMAGPART(X) X%IM
-#elif defined(__GNUC__)
-#define FLCL_REALPART(X) real(real(X))
-#define FLCL_IMAGPART(X) real(aimag(X))
-#else
-#error "Untested compiler, please raise an issue at: https://github.com/kokkos/kokkos-fortran-interop/issues"
-#endif
 
 module flcl_test_f_mod
   use, intrinsic :: iso_c_binding
