@@ -446,10 +446,10 @@ module flcl_dualview_mod
     module procedure kokkos_deallocate_dv_r32_7d
     module procedure kokkos_deallocate_dv_r64_7d
   end interface kokkos_deallocate_dualview
+  interface 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 1D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_allocate_dv_l_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_l_1d')
       import :: c_ptr, c_char
@@ -460,9 +460,7 @@ module flcl_dualview_mod
       character(kind=c_char), intent(in) :: n_A(*)
       integer(flcl_dualview_index_f_t), intent(in) :: e0      
     end subroutine f_kokkos_allocate_dv_l_1d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_i32_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_i32_1d')
       import :: c_ptr, c_char
@@ -473,9 +471,7 @@ module flcl_dualview_mod
       character(kind=c_char), intent(in) :: n_A(*)
       integer(flcl_dualview_index_f_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_i32_1d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_i64_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_i64_1d')
       import :: c_ptr, c_char
@@ -486,9 +482,7 @@ module flcl_dualview_mod
       character(kind=c_char), intent(in) :: n_A(*)
       integer(flcl_dualview_index_f_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_i64_1d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_r32_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_r32_1d')
       import :: c_ptr, c_char
@@ -499,9 +493,7 @@ module flcl_dualview_mod
       character(kind=c_char), intent(in) :: n_A(*)
       integer(flcl_dualview_index_f_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_r32_1d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_r64_1d(c_A, v_A, n_A, e0) &
       & bind (c, name='c_kokkos_allocate_dv_r64_1d')
       import :: c_ptr, c_char
@@ -512,11 +504,9 @@ module flcl_dualview_mod
       character(kind=c_char), intent(in) :: n_A(*)
       integer(flcl_dualview_index_f_t), intent(in) :: e0
     end subroutine f_kokkos_allocate_dv_r64_1d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 2D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_allocate_dv_l_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_dv_l_2d')
       import :: c_ptr, c_char
@@ -528,9 +518,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e0
       integer(flcl_dualview_index_f_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_l_2d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_i32_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_dv_i32_2d')
       import :: c_ptr, c_char
@@ -542,9 +530,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e0
       integer(flcl_dualview_index_f_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_i32_2d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_i64_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_dv_i64_2d')
       import :: c_ptr, c_char
@@ -556,9 +542,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e0
       integer(flcl_dualview_index_f_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_i64_2d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_r32_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_dv_r32_2d')
       import :: c_ptr, c_char
@@ -570,9 +554,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e0
       integer(flcl_dualview_index_f_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_r32_2d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_r64_2d(c_A, v_A, n_A, e0, e1) &
       & bind (c, name='c_kokkos_allocate_dv_r64_2d')
       import :: c_ptr, c_char
@@ -584,11 +566,9 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e0
       integer(flcl_dualview_index_f_t), intent(in) :: e1
     end subroutine f_kokkos_allocate_dv_r64_2d
-  end interface  
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 3D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_allocate_dv_l_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_dv_l_3d')
       import :: c_ptr, c_char
@@ -601,9 +581,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e1
       integer(flcl_dualview_index_f_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_l_3d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_i32_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_dv_i32_3d')
       import :: c_ptr, c_char
@@ -616,9 +594,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e1
       integer(flcl_dualview_index_f_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_i32_3d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_i64_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_dv_i64_3d')
       import :: c_ptr, c_char
@@ -631,9 +607,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e1
       integer(flcl_dualview_index_f_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_i64_3d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_r32_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_dv_r32_3d')
       import :: c_ptr, c_char
@@ -646,9 +620,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e1
       integer(flcl_dualview_index_f_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_r32_3d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_r64_3d(c_A, v_A, n_A, e0, e1, e2) &
       & bind (c, name='c_kokkos_allocate_dv_r64_3d')
       import :: c_ptr, c_char
@@ -661,11 +633,9 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e1
       integer(flcl_dualview_index_f_t), intent(in) :: e2
     end subroutine f_kokkos_allocate_dv_r64_3d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 4D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_allocate_dv_l_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
       & bind (c, name='c_kokkos_allocate_dv_l_4d')
       import :: c_ptr, c_char
@@ -679,9 +649,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e2
       integer(flcl_dualview_index_f_t), intent(in) :: e3
     end subroutine f_kokkos_allocate_dv_l_4d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_i32_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
       & bind (c, name='c_kokkos_allocate_dv_i32_4d')
       import :: c_ptr, c_char
@@ -695,9 +663,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e2
       integer(flcl_dualview_index_f_t), intent(in) :: e3
     end subroutine f_kokkos_allocate_dv_i32_4d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_i64_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
       & bind (c, name='c_kokkos_allocate_dv_i64_4d')
       import :: c_ptr, c_char
@@ -711,9 +677,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e2
       integer(flcl_dualview_index_f_t), intent(in) :: e3
     end subroutine f_kokkos_allocate_dv_i64_4d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_r32_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
       & bind (c, name='c_kokkos_allocate_dv_r32_4d')
       import :: c_ptr, c_char
@@ -727,9 +691,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e2
       integer(flcl_dualview_index_f_t), intent(in) :: e3
     end subroutine f_kokkos_allocate_dv_r32_4d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_r64_4d(c_A, v_A, n_A, e0, e1, e2, e3) &
       & bind (c, name='c_kokkos_allocate_dv_r64_4d')
       import :: c_ptr, c_char
@@ -743,11 +705,9 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e2
       integer(flcl_dualview_index_f_t), intent(in) :: e3
     end subroutine f_kokkos_allocate_dv_r64_4d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 5D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_allocate_dv_l_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
       & bind (c, name='c_kokkos_allocate_dv_l_5d')
       import :: c_ptr, c_char
@@ -762,9 +722,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e3
       integer(flcl_dualview_index_f_t), intent(in) :: e4
     end subroutine f_kokkos_allocate_dv_l_5d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_i32_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
       & bind (c, name='c_kokkos_allocate_dv_i32_5d')
       import :: c_ptr, c_char
@@ -779,9 +737,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e3
       integer(flcl_dualview_index_f_t), intent(in) :: e4
     end subroutine f_kokkos_allocate_dv_i32_5d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_i64_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
       & bind (c, name='c_kokkos_allocate_dv_i64_5d')
       import :: c_ptr, c_char
@@ -796,9 +752,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e3
       integer(flcl_dualview_index_f_t), intent(in) :: e4
     end subroutine f_kokkos_allocate_dv_i64_5d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_r32_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
       & bind (c, name='c_kokkos_allocate_dv_r32_5d')
       import :: c_ptr, c_char
@@ -813,9 +767,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e3
       integer(flcl_dualview_index_f_t), intent(in) :: e4
     end subroutine f_kokkos_allocate_dv_r32_5d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_r64_5d(c_A, v_A, n_A, e0, e1, e2, e3, e4) &
       & bind (c, name='c_kokkos_allocate_dv_r64_5d')
       import :: c_ptr, c_char
@@ -830,11 +782,9 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e3
       integer(flcl_dualview_index_f_t), intent(in) :: e4
     end subroutine f_kokkos_allocate_dv_r64_5d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 6D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_allocate_dv_l_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
       & bind (c, name='c_kokkos_allocate_dv_l_6d')
       import :: c_ptr, c_char
@@ -850,9 +800,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e4
       integer(flcl_dualview_index_f_t), intent(in) :: e5
     end subroutine f_kokkos_allocate_dv_l_6d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_i32_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
       & bind (c, name='c_kokkos_allocate_dv_i32_6d')
       import :: c_ptr, c_char
@@ -868,9 +816,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e4
       integer(flcl_dualview_index_f_t), intent(in) :: e5
     end subroutine f_kokkos_allocate_dv_i32_6d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_i64_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
       & bind (c, name='c_kokkos_allocate_dv_i64_6d')
       import :: c_ptr, c_char
@@ -886,9 +832,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e4
       integer(flcl_dualview_index_f_t), intent(in) :: e5
     end subroutine f_kokkos_allocate_dv_i64_6d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_r32_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
       & bind (c, name='c_kokkos_allocate_dv_r32_6d')
       import :: c_ptr, c_char
@@ -904,9 +848,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e4
       integer(flcl_dualview_index_f_t), intent(in) :: e5
     end subroutine f_kokkos_allocate_dv_r32_6d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_r64_6d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5) &
       & bind (c, name='c_kokkos_allocate_dv_r64_6d')
       import :: c_ptr, c_char
@@ -922,11 +864,9 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e4
       integer(flcl_dualview_index_f_t), intent(in) :: e5
     end subroutine f_kokkos_allocate_dv_r64_6d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_allocate_dualview 7D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_allocate_dv_l_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
       & bind (c, name='c_kokkos_allocate_dv_l_7d')
       import :: c_ptr, c_char
@@ -943,9 +883,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e5
       integer(flcl_dualview_index_f_t), intent(in) :: e6
     end subroutine f_kokkos_allocate_dv_l_7d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_i32_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
       & bind (c, name='c_kokkos_allocate_dv_i32_7d')
       import :: c_ptr, c_char
@@ -962,9 +900,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e5
       integer(flcl_dualview_index_f_t), intent(in) :: e6
     end subroutine f_kokkos_allocate_dv_i32_7d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_i64_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
       & bind (c, name='c_kokkos_allocate_dv_i64_7d')
       import :: c_ptr, c_char
@@ -981,9 +917,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e5
       integer(flcl_dualview_index_f_t), intent(in) :: e6
     end subroutine f_kokkos_allocate_dv_i64_7d
-  end interface
 
-  interface 
     subroutine f_kokkos_allocate_dv_r32_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
       & bind (c, name='c_kokkos_allocate_dv_r32_7d')
       import :: c_ptr, c_char
@@ -1000,9 +934,7 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e5
       integer(flcl_dualview_index_f_t), intent(in) :: e6
     end subroutine f_kokkos_allocate_dv_r32_7d
-  end interface
   
-  interface 
     subroutine f_kokkos_allocate_dv_r64_7d(c_A, v_A, n_A, e0, e1, e2, e3, e4, e5, e6) &
       & bind (c, name='c_kokkos_allocate_dv_r64_7d')
       import :: c_ptr, c_char
@@ -1019,337 +951,267 @@ module flcl_dualview_mod
       integer(flcl_dualview_index_f_t), intent(in) :: e5
       integer(flcl_dualview_index_f_t), intent(in) :: e6
     end subroutine f_kokkos_allocate_dv_r64_7d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 1D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_deallocate_dv_l_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_1d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_1d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i32_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_1d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_1d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i64_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_1d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_1d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r32_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_1d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_1d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r64_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_1d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_1d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 2D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_deallocate_dv_l_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_2d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_2d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i32_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_2d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_2d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i64_2d(v_A) &
     & bind (c, name='c_kokkos_deallocate_dv_i64_2d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_2d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r32_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_2d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_2d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r64_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_2d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_2d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 3D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_deallocate_dv_l_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_3d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_3d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i32_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_3d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_3d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i64_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_3d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_3d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r32_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_3d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_3d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r64_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_3d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_3d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 4D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_deallocate_dv_l_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_4d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_4d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i32_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_4d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_4d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i64_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_4d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_4d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r32_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_4d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_4d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r64_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_4d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_4d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 5D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_deallocate_dv_l_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_5d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_5d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i32_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_5d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_5d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i64_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_5d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_5d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r32_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_5d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_5d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r64_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_5d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_5d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 6D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_deallocate_dv_l_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_6d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_6d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i32_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_6d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_6d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i64_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_6d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_6d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r32_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_6d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_6d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r64_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_6d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_6d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos_deallocate_dualview 7D interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface 
     subroutine f_kokkos_deallocate_dv_l_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_7d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_7d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i32_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_7d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_7d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_i64_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_7d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_7d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r32_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_7d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_7d
-  end interface
 
-  interface 
     subroutine f_kokkos_deallocate_dv_r64_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_7d')
       import :: c_ptr, c_char
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_7d
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  end interface
   contains
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

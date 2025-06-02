@@ -49,10 +49,10 @@ module flcl_util_kokkos_mod
       & kokkos_print_configuration, &
       & kokkos_is_initialized
 
+  interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos library initialization interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface
     subroutine f_kokkos_initialize(argc, argv) &
       & bind(c, name="c_kokkos_initialize")
         import :: c_int, c_ptr
@@ -60,44 +60,35 @@ module flcl_util_kokkos_mod
         integer(c_int), intent(inout) :: argc
         type(c_ptr), value :: argv
     end subroutine f_kokkos_initialize
-  end interface
 
-  interface
     subroutine f_kokkos_initialize_without_args() &
       bind(c, name='c_kokkos_initialize_without_args')
       implicit none
     end subroutine f_kokkos_initialize_without_args
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos library finalization interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface
     subroutine f_kokkos_finalize() &
       & bind(c, name="c_kokkos_finalize")
     end subroutine f_kokkos_finalize
-  end interface
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos library helper routine interfaces
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  interface
     subroutine f_kokkos_print_configuration( file_name_in ) &
       & bind(c, name='c_kokkos_print_configuration')
       import :: c_char
       implicit none
       character(kind=c_char), intent(in) :: file_name_in(*)
     end subroutine f_kokkos_print_configuration
-  end interface
 
-  interface
     function f_kokkos_is_initialized() result(is_init) &
       & bind(c, name='c_kokkos_is_initialized')
       import :: c_bool
       implicit none
       logical(c_bool) :: is_init
     end function f_kokkos_is_initialized
-  end interface
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  end interface
   contains
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!! kokkos library initialization implementations
