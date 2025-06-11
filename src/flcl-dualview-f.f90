@@ -956,35 +956,35 @@ module flcl_dualview_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_deallocate_dv_l_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_1d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_1d
 
     subroutine f_kokkos_deallocate_dv_i32_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_1d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_1d
 
     subroutine f_kokkos_deallocate_dv_i64_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_1d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_1d
 
     subroutine f_kokkos_deallocate_dv_r32_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_1d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_1d
 
     subroutine f_kokkos_deallocate_dv_r64_1d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_1d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_1d
@@ -993,35 +993,35 @@ module flcl_dualview_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_deallocate_dv_l_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_2d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_2d
 
     subroutine f_kokkos_deallocate_dv_i32_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_2d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_2d
 
     subroutine f_kokkos_deallocate_dv_i64_2d(v_A) &
     & bind (c, name='c_kokkos_deallocate_dv_i64_2d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_2d
 
     subroutine f_kokkos_deallocate_dv_r32_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_2d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_2d
 
     subroutine f_kokkos_deallocate_dv_r64_2d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_2d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_2d
@@ -1030,35 +1030,35 @@ module flcl_dualview_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_deallocate_dv_l_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_3d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_3d
 
     subroutine f_kokkos_deallocate_dv_i32_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_3d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_3d
 
     subroutine f_kokkos_deallocate_dv_i64_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_3d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_3d
 
     subroutine f_kokkos_deallocate_dv_r32_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_3d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_3d
 
     subroutine f_kokkos_deallocate_dv_r64_3d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_3d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_3d
@@ -1067,35 +1067,35 @@ module flcl_dualview_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_deallocate_dv_l_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_4d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_4d
 
     subroutine f_kokkos_deallocate_dv_i32_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_4d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_4d
 
     subroutine f_kokkos_deallocate_dv_i64_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_4d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_4d
 
     subroutine f_kokkos_deallocate_dv_r32_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_4d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_4d
 
     subroutine f_kokkos_deallocate_dv_r64_4d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_4d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_4d
@@ -1104,35 +1104,35 @@ module flcl_dualview_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_deallocate_dv_l_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_5d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_5d
 
     subroutine f_kokkos_deallocate_dv_i32_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_5d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_5d
 
     subroutine f_kokkos_deallocate_dv_i64_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_5d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_5d
 
     subroutine f_kokkos_deallocate_dv_r32_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_5d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_5d
 
     subroutine f_kokkos_deallocate_dv_r64_5d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_5d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_5d
@@ -1141,35 +1141,35 @@ module flcl_dualview_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_deallocate_dv_l_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_6d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_6d
 
     subroutine f_kokkos_deallocate_dv_i32_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_6d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_6d
 
     subroutine f_kokkos_deallocate_dv_i64_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_6d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_6d
 
     subroutine f_kokkos_deallocate_dv_r32_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_6d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_6d
 
     subroutine f_kokkos_deallocate_dv_r64_6d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_6d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_6d
@@ -1178,35 +1178,35 @@ module flcl_dualview_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_deallocate_dv_l_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_l_7d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_l_7d
 
     subroutine f_kokkos_deallocate_dv_i32_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i32_7d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i32_7d
 
     subroutine f_kokkos_deallocate_dv_i64_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_i64_7d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_i64_7d
 
     subroutine f_kokkos_deallocate_dv_r32_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r32_7d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r32_7d
 
     subroutine f_kokkos_deallocate_dv_r64_7d(v_A) &
       & bind (c, name='c_kokkos_deallocate_dv_r64_7d')
-      import :: c_ptr, c_char
+      import :: c_ptr
       implicit none
       type(c_ptr), intent(out) :: v_A
     end subroutine f_kokkos_deallocate_dv_r64_7d
