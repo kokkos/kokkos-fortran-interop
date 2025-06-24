@@ -53,7 +53,7 @@ program test_kokkos_allocate_dualview_r32_5d_main
 
     if ( kokkos_is_initialized() ) then
       
-      call kokkos_print_configuration('flcl-test-kokkos.out')
+      call kokkos_print_configuration
   
       ierr = test_kokkos_allocate_dualview_r32_5d()
       write(*,*)'ierr ',ierr

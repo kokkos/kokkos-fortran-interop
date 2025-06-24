@@ -90,6 +90,13 @@ module flcl_util_kokkos_mod
   end interface
 
   interface
+    subroutine f_kokkos_print_configuration_screen() &
+      & bind(c, name='c_kokkos_print_configuration_screen')
+      implicit none
+    end subroutine f_kokkos_print_configuration_screen
+  end interface
+
+  interface
     function f_kokkos_is_initialized() result(is_init) &
       & bind(c, name='c_kokkos_is_initialized')
       use, intrinsic :: iso_c_binding
@@ -163,12 +170,16 @@ module flcl_util_kokkos_mod
     use flcl_util_strings_mod, only: char_add_null
     implicit none
 
-    character(len=*), intent(in) :: file_name_in
+    character(len=*), intent(in), optional :: file_name_in
     character(len=:, kind=c_char), allocatable, target :: file_name_out
 
-    call char_add_null( file_name_in, file_name_out )
+    if (present(file_name_in)) then
+        call char_add_null( file_name_in, file_name_out )
 
-    call f_kokkos_print_configuration( file_name_out )
+        call f_kokkos_print_configuration( file_name_out )
+    else
+        call f_kokkos_print_configuration_screen
+    endif
 
   end subroutine kokkos_print_configuration
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
