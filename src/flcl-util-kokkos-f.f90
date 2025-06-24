@@ -55,7 +55,7 @@ module flcl_util_kokkos_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_initialize(argc, argv) &
       & bind(c, name="c_kokkos_initialize")
-        import :: c_int, c_ptr
+        import
         implicit none
         integer(c_int), intent(inout) :: argc
         type(c_ptr), value :: argv
@@ -76,14 +76,14 @@ module flcl_util_kokkos_mod
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine f_kokkos_print_configuration( file_name_in ) &
       & bind(c, name='c_kokkos_print_configuration')
-      import :: c_char
+      import
       implicit none
       character(kind=c_char), intent(in) :: file_name_in(*)
     end subroutine f_kokkos_print_configuration
 
     function f_kokkos_is_initialized() result(is_init) &
       & bind(c, name='c_kokkos_is_initialized')
-      import :: c_bool
+      import
       implicit none
       logical(c_bool) :: is_init
     end function f_kokkos_is_initialized
