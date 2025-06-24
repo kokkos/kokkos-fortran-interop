@@ -48,8 +48,8 @@ module complex_ndarray_f_mod
       interface
         subroutine f_complex_ndarray( nd_array_y, nd_array_x, alpha ) &
           & bind(c, name='c_complex_ndarray')
-          use, intrinsic :: iso_c_binding
-          use :: flcl_ndarray_mod
+          import
+          implicit none
           type(nd_array_t) :: nd_array_y
           type(nd_array_t) :: nd_array_x
           complex(c_double_complex) :: alpha
@@ -59,9 +59,6 @@ module complex_ndarray_f_mod
       contains
 
         subroutine complex_ndarray( y, x, alpha )
-          use, intrinsic :: iso_c_binding
-          use :: flcl_ndarray_mod
-          implicit none
           complex(c_double_complex), dimension(:), intent(inout) :: y
           complex(c_double_complex), dimension(:), intent(in) :: x
           complex(c_double_complex), intent(in) :: alpha
