@@ -56,7 +56,7 @@ extern "C" {
     double d_alpha = *alpha;
     Kokkos::parallel_for( "axpy", y.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
-      y.d_view(idx) += d_alpha * x.d_view(idx);
+      y.view_device()(idx) += d_alpha * x.view_device()(idx);
     });
 
     y.template modify<typename view_type::execution_space>();

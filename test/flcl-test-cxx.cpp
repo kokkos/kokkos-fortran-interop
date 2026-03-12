@@ -3518,7 +3518,7 @@ extern "C" {
     array_l_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_l_1d_get", array_l_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_index_c_t& temp_sum)
     {
-      if (array_l_1d.d_view(idx)) temp_sum++;
+      if (array_l_1d.view_device()(idx)) temp_sum++;
     }, *c_sum );
     array_l_1d.template modify<typename view_type::execution_space>();
     array_l_1d.template sync<typename view_type::host_mirror_space>();
@@ -3532,7 +3532,7 @@ extern "C" {
     array_l_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_for( "c_test_kokkos_allocate_dualview_l_1d_set", array_l_1d.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
-      array_l_1d.d_view(idx) = logical_post;
+      array_l_1d.view_device()(idx) = logical_post;
     });
     array_l_1d.template modify<typename view_type::execution_space>();
     array_l_1d.template sync<typename view_type::host_mirror_space>();
@@ -3548,7 +3548,7 @@ extern "C" {
     array_i32_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_1d_get", array_i32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
-      temp_sum += array_i32_1d.d_view(idx);
+      temp_sum += array_i32_1d.view_device()(idx);
     }, *c_sum );
     array_i32_1d.template modify<typename view_type::execution_space>();
     array_i32_1d.template sync<typename view_type::host_mirror_space>();
@@ -3563,8 +3563,8 @@ extern "C" {
     array_i32_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_1d_set", array_i32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
-      array_i32_1d.d_view(idx) = idx;
-      temp_sum += array_i32_1d.d_view(idx);
+      array_i32_1d.view_device()(idx) = idx;
+      temp_sum += array_i32_1d.view_device()(idx);
     }, *c_sum );
     array_i32_1d.template modify<typename view_type::execution_space>();
     array_i32_1d.template sync<typename view_type::host_mirror_space>();
@@ -3580,7 +3580,7 @@ extern "C" {
     array_i64_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_1d_get", array_i64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
-      temp_sum += array_i64_1d.d_view(idx);
+      temp_sum += array_i64_1d.view_device()(idx);
     }, *c_sum );
     array_i64_1d.template modify<typename view_type::execution_space>();
     array_i64_1d.template sync<typename view_type::host_mirror_space>();
@@ -3595,8 +3595,8 @@ extern "C" {
     array_i64_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_1d_set", array_i64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
-      array_i64_1d.d_view(idx) = idx;
-      temp_sum += array_i64_1d.d_view(idx);
+      array_i64_1d.view_device()(idx) = idx;
+      temp_sum += array_i64_1d.view_device()(idx);
     }, *c_sum );
     array_i64_1d.template modify<typename view_type::execution_space>();
     array_i64_1d.template sync<typename view_type::host_mirror_space>();
@@ -3612,7 +3612,7 @@ extern "C" {
     array_r32_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_1d_get", array_r32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
-      temp_sum += array_r32_1d.d_view(idx);
+      temp_sum += array_r32_1d.view_device()(idx);
     }, *c_sum );
     array_r32_1d.template modify<typename view_type::execution_space>();
     array_r32_1d.template sync<typename view_type::host_mirror_space>();
@@ -3627,8 +3627,8 @@ extern "C" {
     array_r32_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_1d_set", array_r32_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
-      array_r32_1d.d_view(idx) = idx;
-      temp_sum += array_r32_1d.d_view(idx);
+      array_r32_1d.view_device()(idx) = idx;
+      temp_sum += array_r32_1d.view_device()(idx);
     }, *c_sum );
     array_r32_1d.template modify<typename view_type::execution_space>();
     array_r32_1d.template sync<typename view_type::host_mirror_space>();
@@ -3644,7 +3644,7 @@ extern "C" {
     array_r64_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_1d_get", array_r64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
-      temp_sum += array_r64_1d.d_view(idx);
+      temp_sum += array_r64_1d.view_device()(idx);
     }, *c_sum );
     array_r64_1d.template modify<typename view_type::execution_space>();
     array_r64_1d.template sync<typename view_type::host_mirror_space>();
@@ -3659,8 +3659,8 @@ extern "C" {
     array_r64_1d.template sync<typename view_type::execution_space>();
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_1d_set", array_r64_1d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
-      array_r64_1d.d_view(idx) = idx;
-      temp_sum += array_r64_1d.d_view(idx);
+      array_r64_1d.view_device()(idx) = idx;
+      temp_sum += array_r64_1d.view_device()(idx);
     }, *c_sum );
     array_r64_1d.template modify<typename view_type::execution_space>();
     array_r64_1d.template sync<typename view_type::host_mirror_space>();
@@ -3677,7 +3677,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_l_2d_get", array_l_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_index_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_l_2d.extent(1); jj++) { 
-        if (array_l_2d.d_view(idx,jj)) temp_sum++;
+        if (array_l_2d.view_device()(idx,jj)) temp_sum++;
       }
     }, *c_sum );
     
@@ -3694,7 +3694,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_for( "c_test_kokkos_allocate_dualview_l_2d_set", array_l_2d.extent(0), KOKKOS_LAMBDA( const size_t idx)
     {
       for (size_t jj = 0; jj < array_l_2d.extent(1); jj++) {
-        array_l_2d.d_view(idx,jj) = logical_post;
+        array_l_2d.view_device()(idx,jj) = logical_post;
       }
     });
     array_l_2d.template modify<typename view_type::execution_space>();
@@ -3712,7 +3712,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_2d_get", array_i32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i32_2d.extent(1); jj++) {
-        temp_sum += array_i32_2d.d_view(idx,jj);
+        temp_sum += array_i32_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_i32_2d.template modify<typename view_type::execution_space>();
@@ -3729,8 +3729,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i32_2d_set", array_i32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i32_2d.extent(1); jj++) {
-        array_i32_2d.d_view(idx,jj) = idx+jj;
-        temp_sum += array_i32_2d.d_view(idx,jj);
+        array_i32_2d.view_device()(idx,jj) = idx+jj;
+        temp_sum += array_i32_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_i32_2d.template modify<typename view_type::execution_space>();
@@ -3748,7 +3748,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_2d_get", array_i64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i64_2d.extent(1); jj++) {
-        temp_sum += array_i64_2d.d_view(idx,jj);
+        temp_sum += array_i64_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_i64_2d.template modify<typename view_type::execution_space>();
@@ -3765,8 +3765,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_i64_2d_set", array_i64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_i64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_i64_2d.extent(1); jj++) {
-        array_i64_2d.d_view(idx,jj) = idx+jj;
-        temp_sum += array_i64_2d.d_view(idx,jj);
+        array_i64_2d.view_device()(idx,jj) = idx+jj;
+        temp_sum += array_i64_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_i64_2d.template modify<typename view_type::execution_space>();
@@ -3784,7 +3784,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_2d_get", array_r32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r32_2d.extent(1); jj++) {
-        temp_sum += array_r32_2d.d_view(idx,jj);
+        temp_sum += array_r32_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_r32_2d.template modify<typename view_type::execution_space>();
@@ -3801,8 +3801,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r32_2d_set", array_r32_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r32_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r32_2d.extent(1); jj++) {
-        array_r32_2d.d_view(idx,jj) = idx+jj;
-        temp_sum += array_r32_2d.d_view(idx,jj);
+        array_r32_2d.view_device()(idx,jj) = idx+jj;
+        temp_sum += array_r32_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_r32_2d.template modify<typename view_type::execution_space>();
@@ -3820,7 +3820,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_2d_get", array_r64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r64_2d.extent(1); jj++) {
-        temp_sum += array_r64_2d.d_view(idx,jj);
+        temp_sum += array_r64_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_r64_2d.template modify<typename view_type::execution_space>();
@@ -3837,8 +3837,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_2d( flcl::dualview_l_2d_t **
     Kokkos::parallel_reduce( "c_test_kokkos_allocate_dualview_r64_2d_set", array_r64_2d.extent(0), KOKKOS_LAMBDA( const size_t&idx, flcl::flcl_dualview_r64_c_t& temp_sum)
     {
       for (size_t jj = 0; jj < array_r64_2d.extent(1); jj++) {
-        array_r64_2d.d_view(idx,jj) = idx+jj;
-        temp_sum += array_r64_2d.d_view(idx,jj);
+        array_r64_2d.view_device()(idx,jj) = idx+jj;
+        temp_sum += array_r64_2d.view_device()(idx,jj);
       }
     }, *c_sum );
     array_r64_2d.template modify<typename view_type::execution_space>();
@@ -3857,7 +3857,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_l_3d.extent(1); jj++) { 
         for (size_t kk = 0; kk < array_l_3d.extent(2); kk++) {
-          if (array_l_3d.d_view(idx,jj,kk)) temp_sum++;
+          if (array_l_3d.view_device()(idx,jj,kk)) temp_sum++;
         }
       }
     }, *c_sum );
@@ -3876,7 +3876,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_l_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_l_3d.extent(2); kk++) {
-          array_l_3d.d_view(idx,jj,kk) = logical_post;
+          array_l_3d.view_device()(idx,jj,kk) = logical_post;
         }
       }
     });
@@ -3896,7 +3896,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_i32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_3d.extent(2); kk++) {
-          temp_sum += array_i32_3d.d_view(idx,jj,kk);
+          temp_sum += array_i32_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -3915,8 +3915,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_i32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_3d.extent(2); kk++) {
-          array_i32_3d.d_view(idx,jj,kk) = idx+jj+kk;
-          temp_sum += array_i32_3d.d_view(idx,jj,kk);
+          array_i32_3d.view_device()(idx,jj,kk) = idx+jj+kk;
+          temp_sum += array_i32_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -3936,7 +3936,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_i64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_3d.extent(2); kk++) {
-          temp_sum += array_i64_3d.d_view(idx,jj,kk);
+          temp_sum += array_i64_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -3955,8 +3955,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_i64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_3d.extent(2); kk++) {
-          array_i64_3d.d_view(idx,jj,kk) = idx+jj+kk;
-          temp_sum += array_i64_3d.d_view(idx,jj,kk);
+          array_i64_3d.view_device()(idx,jj,kk) = idx+jj+kk;
+          temp_sum += array_i64_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -3976,7 +3976,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_r32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_3d.extent(2); kk++) {
-          temp_sum += array_r32_3d.d_view(idx,jj,kk);
+          temp_sum += array_r32_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -3995,8 +3995,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_r32_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_3d.extent(2); kk++) {
-          array_r32_3d.d_view(idx,jj,kk) = idx+jj+kk;
-          temp_sum += array_r32_3d.d_view(idx,jj,kk);
+          array_r32_3d.view_device()(idx,jj,kk) = idx+jj+kk;
+          temp_sum += array_r32_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -4016,7 +4016,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_r64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_3d.extent(2); kk++) {
-          temp_sum += array_r64_3d.d_view(idx,jj,kk);
+          temp_sum += array_r64_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -4035,8 +4035,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_3d( flcl::dualview_l_3d_t **
     {
       for (size_t jj = 0; jj < array_r64_3d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_3d.extent(2); kk++) {
-          array_r64_3d.d_view(idx,jj,kk) = idx+jj+kk;
-          temp_sum += array_r64_3d.d_view(idx,jj,kk);
+          array_r64_3d.view_device()(idx,jj,kk) = idx+jj+kk;
+          temp_sum += array_r64_3d.view_device()(idx,jj,kk);
         }
       }
     }, *c_sum );
@@ -4057,7 +4057,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_l_4d.extent(1); jj++) { 
         for (size_t kk = 0; kk < array_l_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_l_4d.extent(3); ll++) {
-            if (array_l_4d.d_view(idx,jj,kk,ll)) temp_sum++;
+            if (array_l_4d.view_device()(idx,jj,kk,ll)) temp_sum++;
           }
         }
       }
@@ -4078,7 +4078,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_l_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_l_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_l_4d.extent(3); ll++) {
-            array_l_4d.d_view(idx,jj,kk,ll) = logical_post;
+            array_l_4d.view_device()(idx,jj,kk,ll) = logical_post;
           }
         }
       }
@@ -4100,7 +4100,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_i32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_4d.extent(3); ll++) {
-            temp_sum += array_i32_4d.d_view(idx,jj,kk,ll);
+            temp_sum += array_i32_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4121,8 +4121,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_i32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_4d.extent(3); ll++) {
-            array_i32_4d.d_view(idx,jj,kk,ll) = idx+jj+kk+ll;
-            temp_sum += array_i32_4d.d_view(idx,jj,kk,ll);
+            array_i32_4d.view_device()(idx,jj,kk,ll) = idx+jj+kk+ll;
+            temp_sum += array_i32_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4144,7 +4144,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_i64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_4d.extent(3); ll++) {
-            temp_sum += array_i64_4d.d_view(idx,jj,kk,ll);
+            temp_sum += array_i64_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4165,8 +4165,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_i64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_i64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_4d.extent(3); ll++) {
-            array_i64_4d.d_view(idx,jj,kk,ll) = idx+jj+kk+ll;
-            temp_sum += array_i64_4d.d_view(idx,jj,kk,ll);
+            array_i64_4d.view_device()(idx,jj,kk,ll) = idx+jj+kk+ll;
+            temp_sum += array_i64_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4188,7 +4188,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_r32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_4d.extent(3); ll++) {
-            temp_sum += array_r32_4d.d_view(idx,jj,kk,ll);
+            temp_sum += array_r32_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4209,8 +4209,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_r32_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r32_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_4d.extent(3); ll++) {
-            array_r32_4d.d_view(idx,jj,kk,ll) = idx+jj+kk+ll;
-            temp_sum += array_r32_4d.d_view(idx,jj,kk,ll);
+            array_r32_4d.view_device()(idx,jj,kk,ll) = idx+jj+kk+ll;
+            temp_sum += array_r32_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4232,7 +4232,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_r64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_4d.extent(3); ll++) {
-            temp_sum += array_r64_4d.d_view(idx,jj,kk,ll);
+            temp_sum += array_r64_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4253,8 +4253,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_4d( flcl::dualview_l_4d_t **
       for (size_t jj = 0; jj < array_r64_4d.extent(1); jj++) {
         for (size_t kk = 0; kk < array_r64_4d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_4d.extent(3); ll++) {
-            array_r64_4d.d_view(idx,jj,kk,ll) = idx+jj+kk+ll;
-            temp_sum += array_r64_4d.d_view(idx,jj,kk,ll);
+            array_r64_4d.view_device()(idx,jj,kk,ll) = idx+jj+kk+ll;
+            temp_sum += array_r64_4d.view_device()(idx,jj,kk,ll);
           }
         }
       }
@@ -4277,7 +4277,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_l_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_l_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_l_5d.extent(4); mm++) {
-              if (array_l_5d.d_view(idx,jj,kk,ll,mm)) temp_sum++;
+              if (array_l_5d.view_device()(idx,jj,kk,ll,mm)) temp_sum++;
             }
           }
         }
@@ -4300,7 +4300,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_l_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_l_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_l_5d.extent(4); mm++) {
-              array_l_5d.d_view(idx,jj,kk,ll,mm) = logical_post;
+              array_l_5d.view_device()(idx,jj,kk,ll,mm) = logical_post;
             }
           }
         }
@@ -4324,7 +4324,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_i32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_5d.extent(4); mm++) {
-              temp_sum += array_i32_5d.d_view(idx,jj,kk,ll,mm);
+              temp_sum += array_i32_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4347,8 +4347,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_i32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_5d.extent(4); mm++) {
-              array_i32_5d.d_view(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
-              temp_sum += array_i32_5d.d_view(idx,jj,kk,ll,mm);
+              array_i32_5d.view_device()(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
+              temp_sum += array_i32_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4372,7 +4372,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_i64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_5d.extent(4); mm++) {
-              temp_sum += array_i64_5d.d_view(idx,jj,kk,ll,mm);
+              temp_sum += array_i64_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4395,8 +4395,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_i64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_i64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_5d.extent(4); mm++) {
-              array_i64_5d.d_view(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
-              temp_sum += array_i64_5d.d_view(idx,jj,kk,ll,mm);
+              array_i64_5d.view_device()(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
+              temp_sum += array_i64_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4420,7 +4420,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_r32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_5d.extent(4); mm++) {
-              temp_sum += array_r32_5d.d_view(idx,jj,kk,ll,mm);
+              temp_sum += array_r32_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4443,8 +4443,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_r32_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r32_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_5d.extent(4); mm++) {
-              array_r32_5d.d_view(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
-              temp_sum += array_r32_5d.d_view(idx,jj,kk,ll,mm);
+              array_r32_5d.view_device()(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
+              temp_sum += array_r32_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4468,7 +4468,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_r64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_5d.extent(4); mm++) {
-              temp_sum += array_r64_5d.d_view(idx,jj,kk,ll,mm);
+              temp_sum += array_r64_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4491,8 +4491,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_5d( flcl::dualview_l_5d_t **
         for (size_t kk = 0; kk < array_r64_5d.extent(2); kk++) {
           for (size_t ll = 0; ll < array_r64_5d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_5d.extent(4); mm++) {
-              array_r64_5d.d_view(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
-              temp_sum += array_r64_5d.d_view(idx,jj,kk,ll,mm);
+              array_r64_5d.view_device()(idx,jj,kk,ll,mm) = idx+jj+kk+ll+mm;
+              temp_sum += array_r64_5d.view_device()(idx,jj,kk,ll,mm);
             }
           }
         }
@@ -4517,7 +4517,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_l_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_l_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_l_6d.extent(5); nn++) {
-                if (array_l_6d.d_view(idx,jj,kk,ll,mm,nn)) temp_sum++;
+                if (array_l_6d.view_device()(idx,jj,kk,ll,mm,nn)) temp_sum++;
               }
             }
           }
@@ -4542,7 +4542,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_l_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_l_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_l_6d.extent(5); nn++) {
-                array_l_6d.d_view(idx,jj,kk,ll,mm,nn) = logical_post;
+                array_l_6d.view_device()(idx,jj,kk,ll,mm,nn) = logical_post;
               }
             }
           }
@@ -4568,7 +4568,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
-                temp_sum += array_i32_6d.d_view(idx,jj,kk,ll,mm,nn);
+                temp_sum += array_i32_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4593,8 +4593,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_i32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_6d.extent(5); nn++) {
-                array_i32_6d.d_view(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
-                temp_sum += array_i32_6d.d_view(idx,jj,kk,ll,mm,nn);
+                array_i32_6d.view_device()(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
+                temp_sum += array_i32_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4620,7 +4620,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
-                temp_sum += array_i64_6d.d_view(idx,jj,kk,ll,mm,nn);
+                temp_sum += array_i64_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4645,8 +4645,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_i64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_i64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_6d.extent(5); nn++) {
-                array_i64_6d.d_view(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
-                temp_sum += array_i64_6d.d_view(idx,jj,kk,ll,mm,nn);
+                array_i64_6d.view_device()(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
+                temp_sum += array_i64_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4672,7 +4672,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
-                temp_sum += array_r32_6d.d_view(idx,jj,kk,ll,mm,nn);
+                temp_sum += array_r32_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4697,8 +4697,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_r32_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r32_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_6d.extent(5); nn++) {
-                array_r32_6d.d_view(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
-                temp_sum += array_r32_6d.d_view(idx,jj,kk,ll,mm,nn);
+                array_r32_6d.view_device()(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
+                temp_sum += array_r32_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4724,7 +4724,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
-                temp_sum += array_r64_6d.d_view(idx,jj,kk,ll,mm,nn);
+                temp_sum += array_r64_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4749,8 +4749,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_6d( flcl::dualview_l_6d_t **
           for (size_t ll = 0; ll < array_r64_6d.extent(3); ll++) {
             for (size_t mm = 0; mm < array_r64_6d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_6d.extent(5); nn++) {
-                array_r64_6d.d_view(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
-                temp_sum += array_r64_6d.d_view(idx,jj,kk,ll,mm,nn);
+                array_r64_6d.view_device()(idx,jj,kk,ll,mm,nn) = idx+jj+kk+ll+mm+nn;
+                temp_sum += array_r64_6d.view_device()(idx,jj,kk,ll,mm,nn);
               }
             }
           }
@@ -4777,7 +4777,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_l_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_l_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_l_7d.extent(6); oo++) {
-                  if (array_l_7d.d_view(idx,jj,kk,ll,mm,nn,oo)) temp_sum++;
+                  if (array_l_7d.view_device()(idx,jj,kk,ll,mm,nn,oo)) temp_sum++;
                 }
               }
             }
@@ -4804,7 +4804,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_l_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_l_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_l_7d.extent(6); oo++) {
-                  array_l_7d.d_view(idx,jj,kk,ll,mm,nn,oo) = logical_post;
+                  array_l_7d.view_device()(idx,jj,kk,ll,mm,nn,oo) = logical_post;
                 }
               }
             }
@@ -4832,7 +4832,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_i32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i32_7d.extent(6); oo++) {
-                  temp_sum += array_i32_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  temp_sum += array_i32_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -4859,8 +4859,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_i32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i32_7d.extent(6); oo++) {
-                  array_i32_7d.d_view(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
-                  temp_sum += array_i32_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  array_i32_7d.view_device()(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
+                  temp_sum += array_i32_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -4888,7 +4888,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_i64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i64_7d.extent(6); oo++) {
-                  temp_sum += array_i64_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  temp_sum += array_i64_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -4915,8 +4915,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_i64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_i64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_i64_7d.extent(6); oo++) {
-                  array_i64_7d.d_view(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
-                  temp_sum += array_i64_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  array_i64_7d.view_device()(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
+                  temp_sum += array_i64_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -4944,7 +4944,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_r32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r32_7d.extent(6); oo++) {
-                  temp_sum += array_r32_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  temp_sum += array_r32_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -4971,8 +4971,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_r32_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r32_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r32_7d.extent(6); oo++) {
-                  array_r32_7d.d_view(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
-                  temp_sum += array_r32_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  array_r32_7d.view_device()(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
+                  temp_sum += array_r32_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -5000,7 +5000,7 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_r64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r64_7d.extent(6); oo++) {
-                  temp_sum += array_r64_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  temp_sum += array_r64_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }
@@ -5027,8 +5027,8 @@ flcl_test_error_t c_test_kokkos_allocate_dualview_l_7d( flcl::dualview_l_7d_t **
             for (size_t mm = 0; mm < array_r64_7d.extent(4); mm++) {
               for (size_t nn = 0; nn < array_r64_7d.extent(5); nn++) {
                 for (size_t oo = 0; oo < array_r64_7d.extent(6); oo++) {
-                  array_r64_7d.d_view(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
-                  temp_sum += array_r64_7d.d_view(idx,jj,kk,ll,mm,nn,oo);
+                  array_r64_7d.view_device()(idx,jj,kk,ll,mm,nn,oo) = idx+jj+kk+ll+mm+nn+oo;
+                  temp_sum += array_r64_7d.view_device()(idx,jj,kk,ll,mm,nn,oo);
                 }
               }
             }

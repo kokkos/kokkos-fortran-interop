@@ -20,7 +20,7 @@ option(FLCL_BUILD_TESTS "Build tests" ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 
-find_package(Kokkos 4.0 REQUIRED)
+find_package(Kokkos 4.0 REQUIRED CONFIG)
 
 include(GNUInstallDirs)
 
