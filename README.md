@@ -15,8 +15,8 @@ git clone https://github.com/kokkos/kokkos-fortran-interop.git
 Configure using
 
 ```bash
-cmake -Bbuilddir -DKokkos_ROOT=/kokkos/path -DCMAKE_CXX_COMPILER=kokkos_compiler \
-    -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_INSTALL_PREFIX=/your/path /interop/path
+cmake -S/interop/path -Bbuilddir -DKokkos_ROOT=/kokkos/path -DCMAKE_CXX_COMPILER=kokkos_compiler \
+    -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_INSTALL_PREFIX=/your/path
 ```
 
 and finally compile and install the library
