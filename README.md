@@ -9,21 +9,21 @@ API for Fortran to C and C to Fortran multi-dimensional array interoperability.
 To check out the source code for FLCL,
 
 ```bash
-$ git clone https://github.com/kokkos/kokkos-fortran-interop.git
+git clone https://github.com/kokkos/kokkos-fortran-interop.git
 ```
 
 Configure using
 
 ```bash
-$ cmake -DKokkos\_ROOT=/kokkos/path -DCMAKE_CXX_COMPILER=kokkos_compiler \
+cmake -Bbuilddir -DKokkos_ROOT=/kokkos/path -DCMAKE_CXX_COMPILER=kokkos_compiler \
     -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_INSTALL_PREFIX=/your/path /interop/path
 ```
 
 and finally compile and install the library
 
 ```bash
-$ make
-$ make install
+cmake --build builddir
+cmake --install builddir
 ```
 
 # Feedback
