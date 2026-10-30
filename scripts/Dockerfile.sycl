@@ -1,0 +1,75 @@
+ARG BASE=nvcr.io/nvidia/cuda:12.0.0-devel-ubuntu22.04@sha256:0578d90ce082ed37cdc8daf31d401b5a62594a847e9cf6b5cdf4c2356ac49869
+FROM $BASE
+
+ARG ADDITIONAL_PACKAGES
+ARG ONEAPI_VERSION=2025.2
+
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
+
+RUN apt-get update && apt-get install -y \
+        bc \
+        ca-certificates \
+        wget \
+        ccache \
+        ninja-build \
+        python3 \
+        git \
+        libomp-dev \
+        ${ADDITIONAL_PACKAGES} \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN KEYDUMP_URL=https://cloud1.cees.ornl.gov/download && \
+    KEYDUMP_FILE=keydump && \
+    wget --quiet ${KEYDUMP_URL}/${KEYDUMP_FILE} && \
+    wget --quiet ${KEYDUMP_URL}/${KEYDUMP_FILE}.sig && \
+    gpg --import ${KEYDUMP_FILE} && \
+    gpg --verify ${KEYDUMP_FILE}.sig ${KEYDUMP_FILE} && \
+    rm ${KEYDUMP_FILE}*
+
+ARG CMAKE_VERSION=3.23.2
+ENV CMAKE_DIR=/opt/cmake
+RUN CMAKE_URL=https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION} && \
+    CMAKE_SCRIPT=cmake-${CMAKE_VERSION}-Linux-x86_64.sh && \
+    CMAKE_SHA256=cmake-${CMAKE_VERSION}-SHA-256.txt && \
+    wget --quiet ${CMAKE_URL}/${CMAKE_SHA256} && \
+    wget --quiet ${CMAKE_URL}/${CMAKE_SHA256}.asc && \
+    wget --quiet ${CMAKE_URL}/${CMAKE_SCRIPT} && \
+    gpg --verify ${CMAKE_SHA256}.asc ${CMAKE_SHA256} && \
+    grep -i ${CMAKE_SCRIPT} ${CMAKE_SHA256} | sed -e s/linux/Linux/ | sha256sum --check && \
+    mkdir -p ${CMAKE_DIR} && \
+    sh ${CMAKE_SCRIPT} --skip-license --prefix=${CMAKE_DIR} && \
+    rm cmake*
+ENV PATH=${CMAKE_DIR}/bin:$PATH
+
+RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+    | gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null && \
+    echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" \
+    | tee /etc/apt/sources.list.d/oneAPI.list
+
+RUN apt-get update && apt-get install -y \
+        intel-oneapi-compiler-dpcpp-cpp-${ONEAPI_VERSION} \
+        curl \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+ARG UNIFIED_RUNTIME_VERSION=6.2.0
+RUN cd /tmp && git clone https://github.com/intel/llvm.git -b v${UNIFIED_RUNTIME_VERSION} --depth=1 && cd llvm && \
+    cmake -S unified-runtime -B build_ur \
+      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
+      -DUR_BUILD_TESTS=OFF \
+      -DUR_ENABLE_TRACING=ON \
+      -DUR_BUILD_ADAPTER_CUDA=ON \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/opt/ur-${UNIFIED_RUNTIME_VERSION} && \
+    cmake --build build_ur -j 8 --target=install && \
+    rm -r /tmp/llvm
+
+# sycl-ls, icpx
+ENV PATH=/opt/intel/oneapi/compiler/latest/bin/:$PATH
+# libsycl, libsvml, libumf
+ENV LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/latest/lib:/opt/intel/oneapi/umf/latest/lib:$LD_LIBRARY_PATH
+# libur_adapter_cuda
+ENV UR_ADAPTERS_SEARCH_PATH=/opt/ur-${UNIFIED_RUNTIME_VERSION}/lib
