@@ -50,6 +50,7 @@ RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRO
 
 RUN apt-get update && apt-get install -y \
         intel-oneapi-compiler-dpcpp-cpp-${ONEAPI_VERSION} \
+        intel-oneapi-compiler-fortran-${ONEAPI_VERSION} \
         curl \
         && \
     apt-get clean && \
