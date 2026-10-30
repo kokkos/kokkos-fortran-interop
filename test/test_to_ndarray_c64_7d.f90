@@ -51,8 +51,6 @@ program test_to_ndarray_c64_7d_main
 
     if ( kokkos_is_initialized() ) then
       
-      ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
-  
       ierr = test_to_ndarray_c64_7d()
   
       call kokkos_finalize()

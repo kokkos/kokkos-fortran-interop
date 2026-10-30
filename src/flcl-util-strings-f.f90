@@ -47,8 +47,6 @@ module flcl_util_strings_mod
   contains
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     subroutine char_add_null( input_char, f_label )
-      use, intrinsic :: iso_c_binding
-      implicit none
       character(len=*), intent(in) :: input_char
       character(len=:), allocatable, target, intent(inout):: f_label
   

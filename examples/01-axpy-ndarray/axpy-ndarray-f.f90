@@ -48,8 +48,8 @@ module axpy_f_mod
       interface
         subroutine f_axpy_ndarray( nd_array_y, nd_array_x, alpha ) &
           & bind(c, name='c_axpy_ndarray')
-          use, intrinsic :: iso_c_binding
-          use :: flcl_ndarray_mod
+          import
+          implicit none
           type(nd_array_t) :: nd_array_y
           type(nd_array_t) :: nd_array_x
           real(c_double) :: alpha
@@ -59,9 +59,6 @@ module axpy_f_mod
       contains
 
         subroutine axpy_ndarray( y, x, alpha )
-          use, intrinsic :: iso_c_binding
-          use :: flcl_ndarray_mod
-          implicit none
           real(c_double), dimension(:), intent(inout) :: y
           real(c_double), dimension(:), intent(in) :: x
           real(c_double), intent(in) :: alpha

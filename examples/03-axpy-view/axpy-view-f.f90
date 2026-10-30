@@ -48,8 +48,8 @@ module axpy_f_mod
       interface
         subroutine f_axpy_view( y, x, alpha ) &
           & bind(c, name='c_axpy_view')
-          use, intrinsic :: iso_c_binding
-          use :: flcl_mod
+          import
+          implicit none
           type(c_ptr), intent(in) :: y
           type(c_ptr), intent(in) :: x
           real(c_double), intent(in) :: alpha
@@ -59,9 +59,6 @@ module axpy_f_mod
       contains
 
         subroutine axpy_view( y, x, alpha )
-          use, intrinsic :: iso_c_binding
-          use :: flcl_mod
-          implicit none
           type(view_r64_1d_t), intent(inout) :: y
           type(view_r64_1d_t), intent(in) :: x
           real(c_double), intent(in) :: alpha

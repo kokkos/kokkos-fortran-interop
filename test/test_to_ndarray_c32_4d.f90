@@ -51,8 +51,6 @@ program test_to_ndarray_c32_4d_main
 
     if ( kokkos_is_initialized() ) then
       
-      ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
-  
       ierr = test_to_ndarray_c32_4d()
   
       call kokkos_finalize()

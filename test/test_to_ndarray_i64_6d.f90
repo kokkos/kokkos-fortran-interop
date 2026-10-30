@@ -51,8 +51,6 @@ program test_to_ndarray_i64_6d_main
 
     if ( kokkos_is_initialized() ) then
       
-      ! call kokkos_print_configuration('flcl-test-', 'kokkos.out')
-  
       ierr = test_to_ndarray_i64_6d()
   
       call kokkos_finalize()

@@ -11,10 +11,3 @@
 
 # output files
 *.out
-
-# CI temporary things
-ci/build*
-ci/install*
-ci/output*
-ci/flcl-x86*
-ci/flcl-ppc*
