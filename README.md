@@ -1,16 +1,30 @@
 # Fortran Language Compatibility Layer (FLCL)
 API for Fortran to C and C to Fortran multi-dimensional array interoperability.
 
-# Getting the Code
+# Requirements
+- Compiler suite with both Fortran (F08) and C++ (C++11) support.
+- A build of [Kokkos](https://github.com/kokkos/kokkos) 4.x or 5.x.
+
+# Quick Start
 To check out the source code for FLCL,
 
 ```bash
-    git clone https://github.com/kokkos/kokkos-fortran-interop.git
+git clone https://github.com/kokkos/kokkos-fortran-interop.git
 ```
 
-# Requirements
-- Compiler suite with both Fortran (F08) and C++ (C++11) support.
-- A build of [Kokkos](https://github.com/kokkos/kokkos) 4.x built with the compiler suite above.
+Configure using
+
+```bash
+cmake -S/interop/path -Bbuilddir -DKokkos_ROOT=/kokkos/path -DCMAKE_CXX_COMPILER=kokkos_compiler \
+    -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_INSTALL_PREFIX=/your/path
+```
+
+and finally compile and install the library
+
+```bash
+cmake --build builddir
+cmake --install builddir
+```
 
 # Feedback
 Please raise an issue using the [GitHub issues](https://github.com/kokkos/kokkos-fortran-interop/issues)
