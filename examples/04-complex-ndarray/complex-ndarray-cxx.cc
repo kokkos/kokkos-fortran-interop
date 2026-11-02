@@ -37,7 +37,7 @@
 
 #include <Kokkos_Core.hpp>
 #include "flcl-cxx.hpp"
-#include <complex.h>
+#include <complex>
 
 extern "C" {
 

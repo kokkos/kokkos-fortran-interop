@@ -64,21 +64,11 @@ set(CTEST_BINARY_DIRECTORY ${PROJECT_BINARY_DIR}/test)
 
 file(GLOB files "test_*.f90")
 
-if (CMAKE_Fortran_COMPILER_ID STREQUAL "IntelLLVM")
-    get_target_property(_kokkos_link_opts Kokkos::kokkoscore INTERFACE_LINK_OPTIONS)
-    set(KOKKOS_SYCL_LINK_OPTIONS "")
-    if (_kokkos_link_opts)
-        # strip the $<$<LINK_LANGUAGE:CXX>:...> wrapper
-        string(REGEX REPLACE "^\\$<\\$<LINK_LANGUAGE:CXX>:(.*)>$" "\\1" _kokkos_link_opts "${_kokkos_link_opts}")
-        string(REGEX MATCHALL "-fsycl-targets=[^;]*|-Xsycl-target-backend;[^;]*" KOKKOS_SYCL_LINK_OPTIONS "${_kokkos_link_opts}")
-    endif()
-endif()
-
 # if cmake 3.17 is supported everywhere
 list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
 
 foreach(file ${files})
- 	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
+    string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
     add_executable(${file_without_ext} ${file})
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
         # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
@@ -88,24 +78,22 @@ foreach(file ${files})
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
         target_link_options(${file_without_ext} PRIVATE LINKER:-lxlf90_r)
     endif()
-    if (CMAKE_Fortran_COMPILER_ID MATCHES "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
+    if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
         set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
     endif()
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "IntelLLVM")
-        # Kokkos only attaches its SYCL link options (e.g. -fsycl-targets) to CXX links;
-        # Fortran links need them too or device kernels are not found at runtime.
-        target_link_options(${file_without_ext} PRIVATE -fsycl ${KOKKOS_SYCL_LINK_OPTIONS})
+        target_link_options(${file_without_ext} PRIVATE -fortlib)
     endif()
- 	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
+    target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
-	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
- 	set_tests_properties(${file_without_ext}
- 		PROPERTIES
- 		PASS_REGULAR_EXPRESSION "PASSED")
- 	set_tests_properties(${file_without_ext}
- 		PROPERTIES
- 		FAIL_REGULAR_EXPRESSION "FAILED")
- 	set_tests_properties(${file_without_ext}
- 		PROPERTIES
-        TIMEOUT 120)
+    # set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
+    set_tests_properties(${file_without_ext}
+       PROPERTIES
+       PASS_REGULAR_EXPRESSION "PASSED")
+    set_tests_properties(${file_without_ext}
+       PROPERTIES
+       FAIL_REGULAR_EXPRESSION "FAILED")
+    set_tests_properties(${file_without_ext}
+       PROPERTIES
+       TIMEOUT 120)
 endforeach()
