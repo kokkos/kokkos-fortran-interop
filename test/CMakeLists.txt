@@ -82,6 +82,7 @@ foreach(file ${files})
         set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
     endif()
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "IntelLLVM")
+	# Using icpx as linker, we need to explicitly ask for linking against the Fortran runtime libraries
         target_link_options(${file_without_ext} PRIVATE -fortlib)
     endif()
     target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
