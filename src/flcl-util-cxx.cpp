@@ -56,7 +56,6 @@ extern "C" {
   }
 
   void c_kokkos_print_configuration(const char* file_name_in) {
-
     std::string file_name( file_name_in );
     std::ofstream kokkos_output_file ( file_name );
     if ( kokkos_output_file.is_open()) {
@@ -66,7 +65,10 @@ extern "C" {
       std::cout << "Could not open filename " << file_name;
       std::cout << " to dump Kokkos::print_configuration to." << std::endl;
     }
-    
+  }
+
+  void c_kokkos_print_configuration_screen() {
+    Kokkos::print_configuration( std::cout, true );
   }
 
   bool c_kokkos_is_initialized() {
