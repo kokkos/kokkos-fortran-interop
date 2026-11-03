@@ -1,0 +1,71 @@
+name: Intel
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  Intel:
+    strategy:
+      matrix:
+        backend: ['SERIAL']
+        cmake_build_type: ['Release']
+        kokkos_ver: ['develop']
+    runs-on: ubuntu-20.04
+    container: fedora:latest
+    steps:
+      - name: Checkout code    
+        uses: actions/checkout@v2.2.0
+      - name: Install Deps
+        run: |
+          sudo dnf -y update
+          sudo dnf -y install make cmake hwloc-devel
+      - name: Install Intel packages
+        run: |
+          curl -O http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16756/parallel_studio_xe_2020_update2_professional_edition.tgz
+          tar -xf parallel_studio_xe_*.tgz
+          pushd parallel_studio_xe_*/rpm
+          printf "[icc]\nname=icc\nbaseurl=$PWD\nenabled=1" | sudo tee -a /etc/yum.repos.d/icc.repo
+          popd
+          sudo dnf -y update
+          sudo dnf --nogpgcheck -y install intel-parallel-studio-xe-icc intel-parallel-studio-xe-mkl intel-parallel-studio-xe-ifort
+          echo "LD_LIBRARY_PATH=/opt/intel/lib/intel64:/opt/intel/mkl/lib/intel64" >> $GITHUB_ENV
+          echo "/opt/intel/bin" >> $GITHUB_PATH
+      - name: Get trial license
+        run: |
+          mkdir ~/Licenses
+          curl https://dynamicinstaller.intel.com/api/v2/license > ~/Licenses/intel.lic
+      - name: Checkout kokkos
+        uses: actions/checkout@v2.2.0
+        with:
+          repository: kokkos/kokkos
+          ref: ${{ matrix.kokkos_ver }}
+          path: kokkos
+      - name: Build kokkos
+        working-directory: kokkos
+        run: |
+          cmake -B build \
+            -DCMAKE_INSTALL_PREFIX=$HOME/kokkos \
+            -DKokkos_ENABLE_${{ matrix.backend }}=ON \
+            -DKokkos_ENABLE_HWLOC=ON \
+            -DCMAKE_CXX_COMPILER=icpc \
+            -DCMAKE_BUILD_TYPE=${{ matrix.cmake_build_type }}
+          cmake --build build --parallel 2
+          cmake --install build
+      - name: Checkout FLCL
+        uses: actions/checkout@v2.2.0
+      - name: Build FLCL
+        run: |
+          cmake -B build \
+            -DCMAKE_INSTALL_PREFIX=$HOME/flcl \
+            -DCMAKE_PREFIX_PATH="$HOME/kokkos" \
+            -DCMAKE_CXX_COMPILER=icpc \
+            -DCMAKE_C_COMPILER=icc \
+            -DCMAKE_Fortran_COMPILER=ifort \
+            -DCMAKE_BUILD_TYPE=${{ matrix.cmake_build_type }}
+          cmake --build build --parallel 2
+          cmake --build build --target test
+          cmake --install build
