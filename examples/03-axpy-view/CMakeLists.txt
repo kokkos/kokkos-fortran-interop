@@ -23,6 +23,9 @@ endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
     set_target_properties(example-axpy-view PROPERTIES LINKER_LANGUAGE Fortran)
 endif()
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "IntelLLVM")
+    target_link_options(example-axpy-view PRIVATE -fortlib)
+endif()
 set(RPATHS "$ENV{LD_LIBRARY_PATH}")
 set_target_properties(example-axpy-view PROPERTIES 
                       BUILD_WITH_INSTALL_RPATH True

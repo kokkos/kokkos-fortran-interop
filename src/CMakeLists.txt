@@ -23,6 +23,10 @@ endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
     target_compile_options(flcl-fortran PRIVATE -std08)
 endif()
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "IntelLLVM")
+    # Intel stores .true. as -1 by default; C bool requires 1
+    target_compile_options(flcl-fortran PRIVATE -fpscomp logicals)
+endif()
 target_include_directories(flcl-fortran
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>

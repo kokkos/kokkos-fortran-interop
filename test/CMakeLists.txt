@@ -14,6 +14,10 @@ endif()
 if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel")
     target_compile_options(flcl-fortran PRIVATE -std08)
 endif()
+if (CMAKE_Fortran_COMPILER_ID STREQUAL "IntelLLVM")
+    # Intel stores .true. as -1 by default; C bool requires 1
+    target_compile_options(flcl-testlib-fortran PRIVATE -fpscomp logicals)
+endif()
 target_include_directories(flcl-testlib-fortran
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
@@ -68,7 +72,7 @@ file(GLOB files "test_*.f90")
 list(APPEND CMAKE_CTEST_ARGUMENTS "--output-on-failure")
 
 foreach(file ${files})
- 	string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
+    string(REGEX REPLACE "(^.*/|\\.[^.]*$)" "" file_without_ext ${file})
     add_executable(${file_without_ext} ${file})
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "XL")
         # fully enable F2008, per IBM article: https://www.ibm.com/docs/en/xl-fortran-linux/16.1.1?topic=scenarios-compiling-fortran-2008-programs
@@ -81,16 +85,20 @@ foreach(file ${files})
     if (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID STREQUAL "GNU")
         set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
     endif()
- 	target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
+    if (CMAKE_Fortran_COMPILER_ID STREQUAL "IntelLLVM")
+	# Using icpx as linker, we need to explicitly ask for linking against the Fortran runtime libraries
+        target_link_options(${file_without_ext} PRIVATE -fortlib)
+    endif()
+    target_link_libraries(${file_without_ext} ${PROJECT_LIBS} flcl::flcl flcl-testlib)
     add_test(${file_without_ext} ${file_without_ext})
-	# set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran) 
- 	set_tests_properties(${file_without_ext}
- 		PROPERTIES
- 		PASS_REGULAR_EXPRESSION "PASSED")
- 	set_tests_properties(${file_without_ext}
- 		PROPERTIES
- 		FAIL_REGULAR_EXPRESSION "FAILED")
- 	set_tests_properties(${file_without_ext}
- 		PROPERTIES
-        TIMEOUT 120)
+    # set_target_properties(${file_without_ext} PROPERTIES LINKER_LANGUAGE Fortran)
+    set_tests_properties(${file_without_ext}
+       PROPERTIES
+       PASS_REGULAR_EXPRESSION "PASSED")
+    set_tests_properties(${file_without_ext}
+       PROPERTIES
+       FAIL_REGULAR_EXPRESSION "FAILED")
+    set_tests_properties(${file_without_ext}
+       PROPERTIES
+       TIMEOUT 120)
 endforeach()
