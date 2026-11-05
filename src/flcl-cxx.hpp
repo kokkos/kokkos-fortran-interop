@@ -64,7 +64,12 @@ typedef struct _flcl_nd_array_t {
 //   necessary memory transfer explicitly over larger compute regions.
 namespace flcl {
 
+#ifdef KOKKOS_HAS_SHARED_SPACE
   using HostMemorySpace = Kokkos::SharedSpace;
+#else
+  // FIXME The types below aren't usable as intended if no shared memory space is available
+  using HostMemorySpace = Kokkos::HostSpace;
+#endif
 
   // 1D fortran-compatible view types
   typedef Kokkos::View<flcl_view_l_c_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>                 view_l_1d_t;
