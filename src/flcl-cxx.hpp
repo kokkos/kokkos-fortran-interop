@@ -55,19 +55,6 @@ typedef struct _flcl_nd_array_t {
     void *data;
 } flcl_ndarray_t;
 
-namespace flcl {
-#ifdef KOKKOS_ENABLE_CUDA
-using HostMemorySpace = Kokkos::CudaUVMSpace;
-#elif defined(KOKKOS_ENABLE_HIP)
-using HostMemorySpace = Kokkos::HIPManagedSpace;
-#elif defined(KOKKOS_ENABLE_SYCL)
-using HostMemorySpace = Kokkos::Experimental::SYCLSharedUSMSpace;
-#else
-using HostMemorySpace = Kokkos::HostSpace;
-#endif
-} // namespace flcl
-
-
 // Design thoughts: view types are intended to be used on host-host codes, or
 //   host-gpu codes with UVM as the default memory space. This allows for an
 //   incremental porting beginning with a Fortran driver, on the host, calling
@@ -77,15 +64,12 @@ using HostMemorySpace = Kokkos::HostSpace;
 //   necessary memory transfer explicitly over larger compute regions.
 namespace flcl {
 
-  #ifdef KOKKOS_ENABLE_CUDA
-    using HostMemorySpace = Kokkos::CudaUVMSpace;
-  #elif defined(KOKKOS_ENABLE_HIP)
-    using HostMemorySpace = Kokkos::HIPManagedSpace;
-  #elif defined(KOKKOS_ENABLE_SYCL)
-    using HostMemorySpace = Kokkos::Experimental::SYCLSharedUSMSpace;
-  #else
-    using HostMemorySpace = Kokkos::HostSpace;
-  #endif
+#ifdef KOKKOS_HAS_SHARED_SPACE
+  using HostMemorySpace = Kokkos::SharedSpace;
+#else
+  // FIXME The types below aren't usable as intended if no shared memory space is available
+  using HostMemorySpace = Kokkos::HostSpace;
+#endif
 
   // 1D fortran-compatible view types
   typedef Kokkos::View<flcl_view_l_c_t*,Kokkos::LayoutLeft,flcl::HostMemorySpace>                 view_l_1d_t;
